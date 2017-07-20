@@ -5,10 +5,11 @@
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../jwt-decode/jwt-decode.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 <dom-module id="teacher-profile">
   <template>
-    <style>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
         display: block;
       }
@@ -20,17 +21,39 @@
     </paper-input>
     <paper-checkbox checked="{{active}}">Active</paper-checkbox>
 
-    <paper-dialog id="dialog">
-     <h2>Header</h2>
+    <paper-dialog id="dialog" on-opened-changed="onStatusChanged">
+     <h2>ข้อมูลครู</h2>
      <p>
-       <paper-input value="{{document.value.firstname}}" label="ชื่อ">
+       <div class="layout horizontal">
+         <paper-input value="{{document.value.firstname}}" label="ชื่อ">
+         </paper-input>
+         <paper-input value="{{document.value.lastname}}" label="นามสกุล">
+         </paper-input>
+       </div>
+       <paper-input value="{{document.value.email}}" label="Email">
        </paper-input>
-       <paper-input value="{{document.value.lastname}}" label="นามสกุล">
+       <paper-input value="{{document.value.tel}}" label="Telephone">
        </paper-input>
+       <div class="layout horizontal">
+         <paper-input readonly value="{{document.value.hostid}}" 
+            label="Host ID">
+         </paper-input>
+         <paper-input readonly value="{{document.value.hostname}}" 
+            label="Host Name">
+         </paper-input>
+       </div>
+       <div class="layout horizontal">
+         <paper-input read-only value="{{document.value.areaid}}" 
+            label="Area ID">
+         </paper-input>
+         <paper-input read-only value="{{document.value.areaname}}" 
+            label="Area Name">
+         </paper-input>
+       </div>
      </p>
      <div class="buttons">
       <paper-button dialog-dismiss>Cancel</paper-button>
-      <paper-button dialog-confirm autofocus on-click="update">Save</paper-button>
+      <paper-button autofocus on-click="update">Save</paper-button>
      </div>
     </paper-dialog>
     
@@ -62,6 +85,10 @@
         return [
           '__decodeJwt(token,app)',
         ];
+      }
+
+      onStatusChanged(event) {
+        this.set('active',event.detail.value);
       }
 
       _isActive(active) {
@@ -114,6 +141,7 @@
       
       update(event) {
         if(!this.document.key) return;
+        var self = this;
         var ele = document.createElement('iron-request');
         var key = this.document.key;
         var value = this.document.value;
@@ -127,7 +155,9 @@
             handleAs:'json',
             body:value
           }).then(function(res) {
-            console.log(res.response);
+            if(res.response.ok) {
+              self.set('active',false);
+            }
           });
  
       }
