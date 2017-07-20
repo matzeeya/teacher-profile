@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
@@ -17,7 +18,7 @@
     </paper-input>
     <paper-input label="Application" value="{{app}}">
     </paper-input>
-    <paper-button on-click="open" raised>Open</paper-button>
+    <paper-checkbox checked="{{active}}">Active</paper-checkbox>
 
     <paper-dialog id="dialog">
      <h2>Header</h2>
@@ -47,18 +48,28 @@
           app: {
             type: String,
             notify:true
+          },
+          active:{
+            type: Boolean,
+            reflectToAttribute:true,
+            notify:true,
+            observer:'_isActive'
           }
         };
       }
 
       static get observers() {
         return [
-          '__decodeJwt(token,app)'
+          '__decodeJwt(token,app)',
         ];
       }
 
-      open() {
-        this.$.dialog.open();
+      _isActive(active) {
+        if(active) {
+          this.$.dialog.open();
+        } else {
+          this.$.dialog.close();
+        }
       }
 
       __decodeJwt(token,app) {
