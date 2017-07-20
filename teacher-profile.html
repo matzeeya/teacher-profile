@@ -29,7 +29,7 @@
      </p>
      <div class="buttons">
       <paper-button dialog-dismiss>Cancel</paper-button>
-      <paper-button dialog-confirm autofocus>Accept</paper-button>
+      <paper-button dialog-confirm autofocus on-click="update">Save</paper-button>
      </div>
     </paper-dialog>
     
@@ -99,6 +99,26 @@
           });
         } catch(e) {
         }
+      }
+      
+      update(event) {
+        if(!this.document.key) return;
+        var ele = document.createElement('iron-request');
+        var key = this.document.key;
+        var value = this.document.value;
+        ele.send({
+          url:'https://maas.nuqlis.com:9000/apis/dbs/teacher_db/'+key,
+          method:'POST',
+          headers:{
+              'Authorization':'JWT '+this.token,
+              'Content-Type':'application/json'
+            },
+            handleAs:'json',
+            body:value
+          }).then(function(res) {
+            console.log(res.response);
+          });
+ 
       }
     }
 
