@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="teacher-profile.html">
+
+<dom-module id="test-profile">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+    </style>
+
+    <paper-input label="Token" value="{{token}}">
+    </paper-input>
+    <paper-input label="Application" value="cct">
+    </paper-input>
+    <paper-checkbox checked="{{active}}">Active</paper-checkbox>
+
+    <teacher-profile token="{{token}}" app="cct" active="{{active}}">
+    </teacher-profile>
+
+  </template>
+
+  <script>
+    class TestProfile extends Polymer.Element {
+      static get is() { return 'test-profile'; }
+      static get properties() {
+        return {
+        };
+      }
+    }
+
+    window.customElements.define(TestProfile.is, TestProfile);
+  </script>
+</dom-module>
