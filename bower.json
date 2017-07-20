@@ -2,7 +2,12 @@
   "name": "teacher-profile",
   "main": "teacher-profile.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "paper-input": "^2.0.1",
+    "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
+    "jwt-decode": "^2.2.0",
+    "paper-button": "^2.0.0",
+    "iron-ajax": "^2.0.2"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

@@ -1,4 +1,9 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../iron-ajax/iron-request.html">
+<link rel="import" href="../jwt-decode/jwt-decode.html">
 
 <dom-module id="teacher-profile">
   <template>
@@ -7,27 +12,93 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+
+    <paper-input label="Token" value="{{token}}">
+    </paper-input>
+    <paper-input label="Application" value="{{app}}">
+    </paper-input>
+    <paper-button on-click="open" raised>Open</paper-button>
+
+    <paper-dialog id="dialog">
+     <h2>Header</h2>
+     <p>
+       <paper-input value="{{document.value.firstname}}" label="ชื่อ">
+       </paper-input>
+       <paper-input value="{{document.value.lastname}}" label="นามสกุล">
+       </paper-input>
+     </p>
+     <div class="buttons">
+      <paper-button dialog-dismiss>Cancel</paper-button>
+      <paper-button dialog-confirm autofocus>Accept</paper-button>
+     </div>
+    </paper-dialog>
+    
   </template>
 
   <script>
-    /**
-     * `teacher-profile`
-     * 
-     *
-     * @customElement
-     * @polymer
-     * @demo demo/index.html
-     */
     class TeacherProfile extends Polymer.Element {
       static get is() { return 'teacher-profile'; }
       static get properties() {
         return {
-          prop1: {
+          token: {
             type: String,
-            value: 'teacher-profile'
+            notify:true
+          },
+          app: {
+            type: String,
+            notify:true
           }
         };
+      }
+
+      static get observers() {
+        return [
+          '__decodeJwt(token,app)'
+        ];
+      }
+
+      open() {
+        this.$.dialog.open();
+      }
+
+      __decodeJwt(token,app) {
+        if(!token || !app) return;
+        var self = this;
+        try {
+          var profile = jwt_decode(token,{'header':false});
+          var ele = document.createElement('iron-request');
+          ele.send({
+            url:'https://maas.nuqlis.com:9000/apis/query/role_db/app_user',
+            method:'POST',
+            headers:{
+              'Authorization':'JWT '+token,
+              'Content-Type':'application/json'
+            },
+            handleAs:'json',
+            body:{'match':[app,profile.UserID],'limit':1,'include_doc':true}
+          }).then(function(res) {
+            if(res.response.length == 1) {
+              var doc = res.response[0].value.doc;
+              if(doc.profile.teacher_id) {
+                var tle = document.createElement('iron-request');
+                tle.send({
+                  url:'https://maas.nuqlis.com:9000/apis/dbs/teacher_db/'+doc.profile.teacher_id,
+                  method:'GET',
+                  handleAs:'json',
+                  headers:{
+                   'Authorization':'JWT '+token,
+                  },
+                }).then(function(res) {
+                  self.set('document',{
+                    'key':doc.profile.teacher_id,
+                    'value':res.response
+                  });
+                });
+              }
+            }
+          });
+        } catch(e) {
+        }
       }
     }
 
