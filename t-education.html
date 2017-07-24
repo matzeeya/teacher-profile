@@ -1,0 +1,61 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="t-education">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+         --paper-input-container-label: {
+            color:#000;
+            font-family: 'Itim', cursive;
+        }
+      }
+      .font-normal {
+        font-family: 'Itim', cursive;
+        font-size: 100%;
+      }
+    </style>
+
+    <div class="layout vertical" hidden$="{{!content.show}}">
+        <div class="layout horizontal">
+          <div class="flex-3">
+           <paper-input label="ปีที่จบ"
+             value="{{content.year}}">
+           </paper-input>
+          </div>
+          <div class="flex-5"><paper-input label="ระดับการศึกษา"></paper-input></div>
+          <div class="flex-7"><paper-input label="สาขาวิชา"></paper-input></div>
+          <div class="flex-8"><paper-input label="สถานศึกษา"></paper-input></div>
+          <div class="flex-4">
+            <div class="box"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 1</paper-checkbox></div>
+            <div class="box"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 2</paper-checkbox></div>
+          </div>
+          <div class="flex-3">
+            <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
+          </div>  
+        </div>
+    </div>
+  </template>
+<script>
+    Polymer({
+      is: 't-education',
+      properties: {        
+         content:{
+           type:Object,
+           notify:true
+         }
+      },
+      _removeItem:function(event) {
+        this.set('content.show',false);
+        this.fire('t-education-remove',{'obj':this});
+      }
+    });
+  </script>
+  
+</dom-module>

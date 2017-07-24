@@ -1,0 +1,71 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="t-profile">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+         --paper-input-container-label: {
+            color:#000;
+            font-family: 'Itim', cursive;
+        }
+      }
+      .font-face-big-bold {
+        font-family: 'Itim', cursive;
+        font-size: 120%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Itim', cursive;
+        font-size: 120%;
+      }
+    </style>
+
+    <div class="layout vertical">
+      <div class="layout horizontal">
+        <paper-input class="flex" label="หมายเลขบัตรประชาชน" value="{{cid}}"></paper-input>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex-3"><paper-input label="คำนำหน้า" 
+          value="{{doc.Title}}"></paper-input></div>
+        <div class="flex-5 margin-left-style">
+          <paper-input label="ชื่อ" 
+             value="{{doc.Firstname}}">
+          </paper-input>
+        </div>
+        <div class="flex margin-left-style"><paper-input label="นามสกุล" value="{{lname}}"></paper-input></div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex"><paper-input label="โรงเรียน" value="{{school}}"></paper-input></div>
+        <div class="flex"><paper-input label="จังหวัด" value="{{province}}"></paper-input></div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex font-face-big-bold">ประเภทบุคลากร</div>
+      </div>
+      <div class="layout horizontal">
+        <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
+          <paper-radio-button name="a" class ="font-face-normal" >ข้าราชการครู</paper-radio-button>
+          <paper-radio-button name="b" class ="font-face-normal">ข้าราชการพลเรือนสามัญ</paper-radio-button>
+          <paper-radio-button name="c" class ="font-face-normal">ลูกจ้างชั่วคราว</paper-radio-button>
+        </paper-radio-group>
+      </div>
+    </div>
+  </template>
+<script>
+    class tProfile extends Polymer.Element {
+      static get is() { return 't-profile'; }
+      static get properties() {
+        return {
+
+        }
+      }
+    }
+    window.customElements.define(tProfile.is, tProfile);
+  </script>
+  
+</dom-module>

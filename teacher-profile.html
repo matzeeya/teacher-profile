@@ -3,9 +3,16 @@
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-tabs/paper-tabs.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
+<link rel="import" href="../iron-pages/iron-pages.html">
 <link rel="import" href="../jwt-decode/jwt-decode.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+
+<link rel="import" href="t-profile.html">
+<link rel="import" href="teacher-list-education.html">
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
 <dom-module id="teacher-profile">
   <template>
@@ -13,10 +20,57 @@
       :host {
         display: block;
       }
+      .font-face-big-bold {
+        font-family: 'Itim', cursive;
+        font-size: 100%;
+        font-weight: bold;
+      }
+
+      paper-tabs {
+        --paper-tabs-selection-bar-color: #F44336;
+        background-color: var(--paper-grey-50);
+        height: 40px;
+      }
     </style>
 
     <paper-dialog id="dialog" on-opened-changed="onStatusChanged">
-     <h2>ข้อมูลครู</h2>
+        <paper-tabs selected="{{page}}" noink>
+          <paper-tab>
+            <div class="font-face-big-bold">ข้อมูลทั่วไป</div>
+          </paper-tab>
+          <paper-tab>
+            <div class="font-face-big-bold">ประวัติการศึกษา</div>
+          </paper-tab>
+          <paper-tab>
+            <div class="font-face-big-bold">ประวัติการทำงาน</div>
+          </paper-tab>
+          <paper-tab>
+            <div class="font-face-big-bold">ประวัติการปฏิบัติงาน</div>
+          </paper-tab>
+          <paper-tab>
+            <div class="font-face-big-bold">ประวัติการพัฒนา</div>
+          </paper-tab>
+        </paper-tabs>
+
+        <iron-pages selected="{{page}}"> 
+          <div>
+            <t-profile></t-profile>
+          </div>
+          <div>
+            <teacher-list-education></teacher-list-education>
+          </div>
+          <div>
+            ประวัติการทำงาน
+          </div>
+          <div>
+            ประวัติการปฏิบัติงาน
+          </div>
+          <div>
+            ประวัติการพัฒนา
+          </div>
+        </iron-pages>
+
+     <!--<h2>ข้อมูลครู</h2>
      <p>
        <div class="layout horizontal">
          <paper-input value="{{document.value.firstname}}" label="ชื่อ">
@@ -48,7 +102,7 @@
      <div class="buttons">
       <paper-button dialog-dismiss>Cancel</paper-button>
       <paper-button autofocus on-click="update">Save</paper-button>
-     </div>
+     </div>-->
     </paper-dialog>
     
   </template>
@@ -71,6 +125,10 @@
             reflectToAttribute:true,
             notify:true,
             observer:'_isActive'
+          },
+          page:{
+            type:Number,
+            value:0
           }
         };
       }

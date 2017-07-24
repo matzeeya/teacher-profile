@@ -1,0 +1,66 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+
+<link rel="import" href="t-education.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="teacher-list-education">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+         --paper-input-container-label: {
+            color:#000;
+            font-family: 'Itim', cursive;
+        }
+      }
+      .font-face-big-bold {
+        font-family: 'Itim', cursive;
+        font-size: 120%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Itim', cursive;
+        font-size: 120%;
+      }
+    </style>
+
+    <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
+    <template is="dom-repeat" items="{{list}}">
+      <t-education content="{{item}}" on-t-education-remove="_removeItem"></t-education>
+    </template>
+  </template>
+<script>
+    class TeacherListEducation extends Polymer.Element {
+      static get is() { return 'teacher-list-education'; }
+      static get properties() {
+        return {
+          list : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          }
+        }
+      }
+      _addItem(event) {
+        this.push('list',{'show':true});
+      }
+      _removeItem(event) {
+        for(var i=0;i<this.list.length;i++) {
+          if(this.list[i].show == false) {         
+            this.splice('list',i,1);              
+            break;
+          }
+        }
+      }
+    }
+    window.customElements.define(TeacherListEducation.is, TeacherListEducation);
+  </script>
+  
+</dom-module>
