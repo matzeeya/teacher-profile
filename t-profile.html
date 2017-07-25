@@ -28,14 +28,14 @@
 
     <div class="layout vertical">
       <div class="layout horizontal">
-        <paper-input class="flex" label="หมายเลขบัตรประชาชน" value="{{cid}}"></paper-input>
+        <paper-input class="flex" label="หมายเลขบัตรประชาชน" value="{{value.cid}}"></paper-input>
       </div>
       <div class="layout horizontal">
         <div class="flex-3"><paper-input label="คำนำหน้า" 
-          value="{{doc.Title}}"></paper-input></div>
+          value="{{value.title}}"></paper-input></div>
         <div class="flex-5 margin-left-style">
           <paper-input label="ชื่อ" 
-             value="{{doc.Firstname}}">
+             value="{{value.firstname}}">
           </paper-input>
         </div>
         <div class="flex margin-left-style"><paper-input label="นามสกุล" value="{{lname}}"></paper-input></div>
@@ -61,7 +61,10 @@
       static get is() { return 't-profile'; }
       static get properties() {
         return {
-
+          value:{
+            type:Object,
+            notify:true,
+          }
         }
       }
     }
