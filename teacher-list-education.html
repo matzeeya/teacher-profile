@@ -1,12 +1,13 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 
 <link rel="import" href="t-education.html">
 
-<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
 <dom-module id="teacher-list-education">
   <template>
@@ -14,25 +15,53 @@
       :host {
         display: block;
          --paper-input-container-label: {
-            color:#000;
-            font-family: 'Itim', cursive;
+            font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
         }
       }
       .font-face-big-bold {
-        font-family: 'Itim', cursive;
-        font-size: 120%;
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
         font-weight: bold;
       }
       .font-face-normal {
-        font-family: 'Itim', cursive;
-        font-size: 120%;
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      .margin-style{
+        margin-top: 20px;
+      }
+
+      paper-input{
+        margin-left: 5px;
+      }
+
+      paper-button{
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
       }
     </style>
 
     <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
+    <div class="layout horizontal">
+        <div class="flex font-face-big-bold margin-style">คุณวุฒิที่จบการศึกษา</div>
+    </div>
     <template is="dom-repeat" items="{{list}}">
       <t-education content="{{item}}" on-t-education-remove="_removeItem"></t-education>
     </template>
+    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">ความชำนาญ</div>
+    </div>
+    <div class="layout horizontal">
+      <div class="flex"><paper-input label="สาขาวิชาที่ชำนาญ"></paper-input></div>
+      <div class="flex"><paper-input label="ประสบการณ์การสอน/ปี"></paper-input></div>
+    </div>
+    <div class="buttons">
+      <paper-button dialog-dismiss raised>ยกเลิก</paper-button>
+      <paper-button dialog-confirm autofocus raised on-click="update">บันทึก</paper-button>
+    </div>
   </template>
 <script>
     class TeacherListEducation extends Polymer.Element {

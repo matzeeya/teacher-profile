@@ -11,35 +11,63 @@
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
         display: block;
-         --paper-input-container-label: {
-            color:#000;
-            font-family: 'Itim', cursive;
+        --paper-input-container-label: {
+            font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
         }
       }
-      .font-normal {
-        font-family: 'Itim', cursive;
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
         font-size: 100%;
       }
+      .margin-top-style{
+        margin-top: 20px;
+      }
+
+      paper-checkbox{
+        font-family: 'Kanit', sans-serif;
+        font-size: 70%;
+        margin-left: 5px;
+      }
+
+      paper-input{
+        margin-left: 5px;
+      }
+
+      iron-icon{
+        margin-left: 5px;
+      }
+
+      /*.shadow{
+        height: 70px;
+        @apply(--shadow-elevation-2dp);
+        @apply(--layout-center);
+      }*/
     </style>
 
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-3">
-           <paper-input label="ปีที่จบ"
-             value="{{content.year}}">
-           </paper-input>
+          <div class="flex-1"><paper-input label="ระดับการศึกษา"></paper-input></div>
+          <div class="flex-1"><paper-input label="ปีที่จบ"></paper-input></div>
+          <div class="flex-2"><paper-input label="วุฒิการศึกษา"></paper-input></div>
+          <div class="flex-3"><paper-input label="สาขาวิชา/วิชาเอก"></paper-input></div>
+          <div class="flex-3"><paper-input label="สถานศึกษา"></paper-input></div>
+          <div class="flex">
+            <div class="box flex-5"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 1</paper-checkbox></div>
+            <div class="box flex-5"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 2</paper-checkbox></div>
           </div>
-          <div class="flex-5"><paper-input label="ระดับการศึกษา"></paper-input></div>
-          <div class="flex-7"><paper-input label="สาขาวิชา"></paper-input></div>
-          <div class="flex-8"><paper-input label="สถานศึกษา"></paper-input></div>
-          <div class="flex-4">
-            <div class="box"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 1</paper-checkbox></div>
-            <div class="box"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 2</paper-checkbox></div>
-          </div>
-          <div class="flex-3">
+          <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
-          </div>  
+          </div>
         </div>
+        
     </div>
   </template>
 
@@ -56,7 +84,6 @@
       }
       _removeItem(event) {
         this.set('content.show',false);
-        /*this.fire('t-education-remove',{'obj':this});*/
         var eve = new CustomEvent('t-education-remove',{
           bubbles:true,
           composed:true,
@@ -67,20 +94,4 @@
     }
     window.customElements.define(TEducation.is, TEducation);
   </script>
-<!--<script>
-    Polymer({
-      is: 't-education',
-      properties: {        
-         content:{
-           type:Object,
-           notify:true
-         }
-      },
-      _removeItem:function(event) {
-        this.set('content.show',false);
-        this.fire('t-education-remove',{'obj':this});
-      }
-    });
-  </script>-->
-  
 </dom-module>

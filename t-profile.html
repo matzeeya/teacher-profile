@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
@@ -27,6 +28,10 @@
         font-size: 100%;
       }
 
+      .margin-top-style{
+        margin-top: 20px;
+      }
+
       paper-input{
         margin-left: 5px;
       }
@@ -49,7 +54,7 @@
         <div class="flex"><paper-input label="สำนักงานเขตพื้นที่การศึกษา" value="{{office}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex font-face-big-bold">ประเภทบุคลากร</div>
+        <div class="flex font-face-big-bold margin-top-style">ประเภทบุคลากร</div>
       </div>
       <div class="layout horizontal">
         <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
@@ -59,7 +64,7 @@
         </paper-radio-group>
       </div>
       <div class="layout horizontal">
-        <div class="flex font-face-big-bold">ข้อมูลส่วนบุคคล</div>
+        <div class="flex font-face-big-bold margin-top-style">ข้อมูลส่วนบุคคล</div>
       </div>
       <div class="layout horizontal">
         <paper-input class="flex" label="หมายเลขบัตรประชาชน" value="{{value.cid}}"></paper-input>
@@ -80,7 +85,7 @@
         <div class="flex"><paper-input label="E-mail" value="{{value.email}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex font-face-big-bold">(กรณีเป็นข้าราชการ)</div>
+        <div class="flex font-face-big-bold margin-top-style">(กรณีเป็นข้าราชการ)</div>
       </div>
       <div class="layout horizontal">
         <div class="flex"><paper-input label="เริ่มรับราชการเมื่อวันที่" value=""></paper-input></div>
@@ -96,7 +101,7 @@
         <div class="flex"><paper-input label="เกษียณอายุวันที่ 1 ตุลาคม พ.ศ." value=""></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex font-face-big-bold">ปัจจุบันดำรงตำแหน่ง</div>
+        <div class="flex font-face-big-bold margin-top-style">ปัจจุบันดำรงตำแหน่ง</div>
       </div>
       <div class="layout horizontal">
         <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
@@ -105,7 +110,7 @@
         </paper-radio-group>
       </div>
       <div class="layout horizontal">
-        <div class="flex font-face-big-bold">วิทยฐานะ</div>
+        <div class="flex font-face-big-bold margin-top-style">วิทยฐานะ</div>
       </div>
       <div class="layout horizontal">
         <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
@@ -120,7 +125,7 @@
     <div class="buttons">
       <paper-button dialog-dismiss raised>ยกเลิก</paper-button>
       <paper-button dialog-confirm autofocus raised on-click="update">บันทึก</paper-button>
-     </div>
+    </div>
   </template>
 <script>
     class tProfile extends Polymer.Element {
@@ -140,11 +145,7 @@
         var ele = document.createElement('iron-request');
         var key = this.document.key;
         var value = this.document.value;
-        console.log(self);
-        console.log(ele);
-        console.log(key);
-        console.log(value);
-        /*ele.send({
+        ele.send({
           url:'https://maas.nuqlis.com:9000/apis/dbs/teacher_db/'+key,
           method:'POST',
           headers:{
@@ -157,7 +158,7 @@
             if(res.response.ok) {
               self.set('active',false);
             }
-          });*/
+          });
         }
     }
     window.customElements.define(tProfile.is, tProfile);

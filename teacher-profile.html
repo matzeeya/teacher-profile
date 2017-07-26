@@ -34,9 +34,9 @@
 
       paper-dialog.colored {
         /*border: 2px solid;
-        border-color: #F44336;*/
+        border-color: #F44336;
+        color: #4caf50;*/
         background-color: #eeeeee;
-        /*color: #4caf50;*/
         width: 950px;
         height: auto;
         overflow: auto;
@@ -53,7 +53,7 @@
             <div class="font-face-big-bold">ข้อมูลทั่วไป</div>
           </paper-tab>
           <paper-tab>
-            <div class="font-face-big-bold">ประวัติการศึกษา</div>
+            <div class="font-face-big-bold">คุณวุฒิและความชำนาญ</div>
           </paper-tab>
           <paper-tab>
             <div class="font-face-big-bold">ประวัติการทำงาน</div>
@@ -74,49 +74,15 @@
             <teacher-list-education></teacher-list-education>
           </div>
           <div>
-            ประวัติการทำงาน
+            กำลังดำเนินการ
           </div>
           <div>
-            ประวัติการปฏิบัติงาน
+            กำลังดำเนินการ
           </div>
           <div>
-            ประวัติการพัฒนา
+            กำลังดำเนินการ
           </div>
         </iron-pages>
-
-     <!--<h2>ข้อมูลครู</h2>
-     <p>
-       <div class="layout horizontal">
-         <paper-input value="{{document.value.firstname}}" label="ชื่อ">
-         </paper-input>
-         <paper-input value="{{document.value.lastname}}" label="นามสกุล">
-         </paper-input>
-       </div>
-       <paper-input value="{{document.value.email}}" label="Email">
-       </paper-input>
-       <paper-input value="{{document.value.tel}}" label="Telephone">
-       </paper-input>
-       <div class="layout horizontal">
-         <paper-input readonly value="{{document.value.hostid}}" 
-            label="Host ID">
-         </paper-input>
-         <paper-input readonly value="{{document.value.hostname}}" 
-            label="Host Name">
-         </paper-input>
-       </div>
-       <div class="layout horizontal">
-         <paper-input read-only value="{{document.value.areaid}}" 
-            label="Area ID">
-         </paper-input>
-         <paper-input read-only value="{{document.value.areaname}}" 
-            label="Area Name">
-         </paper-input>
-       </div>
-     </p>
-     <div class="buttons">
-      <paper-button dialog-dismiss>Cancel</paper-button>
-      <paper-button autofocus on-click="update">Save</paper-button>
-     </div>-->
     </paper-dialog>
     
   </template>
