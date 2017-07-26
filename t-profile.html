@@ -3,7 +3,7 @@
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
 <dom-module id="t-profile">
   <template>
@@ -11,23 +11,32 @@
       :host {
         display: block;
         --paper-input-container-label: {
-          color:#000;
-          font-family: 'Itim', cursive;
+          font-family: 'Kanit', sans-serif;
         };
         --paper-input-container-input: {
-          font-family: 'Itim', cursive;
+          font-family: 'Kanit', sans-serif;
         }
       }
       .font-face-big-bold {
-        font-family: 'Itim', cursive;
-        font-size: 120%;
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
         font-weight: bold;
       }
       .font-face-normal {
-        font-family: 'Itim', cursive;
-        font-size: 120%;
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
       }
-    </style>
+
+      paper-input{
+        margin-left: 5px;
+      }
+
+      paper-button{
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+
+</style>
     <div class="layout vertical">
       <div class="layout horizontal">
         <div class="flex"><paper-input label="โรงเรียน" value="{{value.hostname}}"></paper-input></div>
@@ -56,38 +65,38 @@
         <paper-input class="flex" label="หมายเลขบัตรประชาชน" value="{{value.cid}}"></paper-input>
       </div>
       <div class="layout horizontal">
-        <div class="flex-3"><paper-input label="คำนำหน้า" value="{{value.title}}"></paper-input></div>
-        <div class="flex-5"><paper-input label="ชื่อ" value="{{value.firstname}}"></paper-input></div>
+        <div class="flex"><paper-input label="คำนำหน้า" value="{{value.title}}"></paper-input></div>
+        <div class="flex"><paper-input label="ชื่อ" value="{{value.firstname}}"></paper-input></div>
         <div class="flex"><paper-input label="นามสกุล" value="{{value.lastname}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex-5"><paper-input label="วัน/เดือน/ปี เกิด" value=""></paper-input></div>
-        <div class="flex-5"><paper-input label="เชื้อชาติ" value=""></paper-input></div>
-        <div class="flex-5"><paper-input label="สัญชาติ" value=""></paper-input></div>
+        <div class="flex"><paper-input label="วัน/เดือน/ปี เกิด" value=""></paper-input></div>
+        <div class="flex"><paper-input label="เชื้อชาติ" value=""></paper-input></div>
+        <div class="flex"><paper-input label="สัญชาติ" value=""></paper-input></div>
         <div class="flex"><paper-input label="ศาสนา" value=""></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex-8"><paper-input label="เบอร์โทรศัพท์" value="{{value.tel}}"></paper-input></div>
+        <div class="flex"><paper-input label="เบอร์โทรศัพท์" value="{{value.tel}}"></paper-input></div>
         <div class="flex"><paper-input label="E-mail" value="{{value.email}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex font-face-normal">(กรณีเป็นข้าราชการ)</div>
+        <div class="flex font-face-big-bold">(กรณีเป็นข้าราชการ)</div>
       </div>
       <div class="layout horizontal">
-        <div class="flex-8"><paper-input label="เริ่มรับราชการเมื่อวันที่" value=""></paper-input></div>
+        <div class="flex"><paper-input label="เริ่มรับราชการเมื่อวันที่" value=""></paper-input></div>
         <div class="flex"><paper-input label="ตำแหน่ง" value=""></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex-5"><paper-input label="โรงเรียน" value=""></paper-input></div>
-        <div class="flex-5"><paper-input label="อำเภอ" value=""></paper-input></div>
+        <div class="flex"><paper-input label="โรงเรียน" value=""></paper-input></div>
+        <div class="flex"><paper-input label="อำเภอ" value=""></paper-input></div>
         <div class="flex"><paper-input label="จังหวัด" value=""></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex-8"><paper-input label="เลขประจำตำแหน่งเลขที่" value=""></paper-input></div>
+        <div class="flex"><paper-input label="เลขประจำตำแหน่งเลขที่" value=""></paper-input></div>
         <div class="flex"><paper-input label="เกษียณอายุวันที่ 1 ตุลาคม พ.ศ." value=""></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex font-face-normal">ปัจจุบันดำรงตำแหน่ง</div>
+        <div class="flex font-face-big-bold">ปัจจุบันดำรงตำแหน่ง</div>
       </div>
       <div class="layout horizontal">
         <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
@@ -96,7 +105,7 @@
         </paper-radio-group>
       </div>
       <div class="layout horizontal">
-        <div class="flex font-face-normal">วิทยฐานะ</div>
+        <div class="flex font-face-big-bold">วิทยฐานะ</div>
       </div>
       <div class="layout horizontal">
         <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
@@ -109,8 +118,8 @@
       </div>
     </div>
     <div class="buttons">
-      <paper-button dialog-dismiss>Cancel</paper-button>
-      <paper-button autofocus on-click="update">Save</paper-button>
+      <paper-button dialog-dismiss raised>ยกเลิก</paper-button>
+      <paper-button dialog-confirm autofocus raised on-click="update">บันทึก</paper-button>
      </div>
   </template>
 <script>
