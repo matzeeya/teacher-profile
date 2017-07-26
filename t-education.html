@@ -42,7 +42,32 @@
         </div>
     </div>
   </template>
-<script>
+
+  <script>
+    class TEducation extends Polymer.Element {
+      static get is() { return 't-education'; }
+      static get properties() {
+        return {
+          content:{
+           type:Object,
+           notify:true
+         }
+        }
+      }
+      _removeItem(event) {
+        this.set('content.show',false);
+        /*this.fire('t-education-remove',{'obj':this});*/
+        var eve = new CustomEvent('t-education-remove',{
+          bubbles:true,
+          composed:true,
+          detail:this.document
+        }); 
+        this.dispatchEvent(eve);
+      }
+    }
+    window.customElements.define(TEducation.is, TEducation);
+  </script>
+<!--<script>
     Polymer({
       is: 't-education',
       properties: {        
@@ -56,6 +81,6 @@
         this.fire('t-education-remove',{'obj':this});
       }
     });
-  </script>
+  </script>-->
   
 </dom-module>

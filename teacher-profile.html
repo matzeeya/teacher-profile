@@ -31,9 +31,23 @@
         background-color: var(--paper-grey-50);
         height: 40px;
       }
+
+      paper-dialog.colored {
+        border: 2px solid;
+        border-color: #4caf50;
+        background-color: #f1f8e9;
+        color: #4caf50;
+        width: 950px;
+        height: auto;
+        overflow: auto;
+      }
     </style>
 
-    <paper-dialog id="dialog" on-opened-changed="onStatusChanged">
+    <paper-dialog id="dialog" class="colored"
+      on-opened-changed="onStatusChanged"  
+      entry-animation="scale-up-animation" 
+      exit-animation="fade-out-animation" 
+      with-backdrop>
         <paper-tabs selected="{{page}}" noink>
           <paper-tab>
             <div class="font-face-big-bold">ข้อมูลทั่วไป</div>
