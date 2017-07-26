@@ -10,9 +10,12 @@
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
         display: block;
-         --paper-input-container-label: {
-            color:#000;
-            font-family: 'Itim', cursive;
+        --paper-input-container-label: {
+          color:#000;
+          font-family: 'Itim', cursive;
+        };
+        --paper-input-container-input: {
+          font-family: 'Itim', cursive;
         }
       }
       .font-face-big-bold {
@@ -25,36 +28,90 @@
         font-size: 120%;
       }
     </style>
-
     <div class="layout vertical">
       <div class="layout horizontal">
-        <paper-input class="flex" label="หมายเลขบัตรประชาชน" value="{{value.cid}}"></paper-input>
+        <div class="flex"><paper-input label="โรงเรียน" value="{{value.hostname}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex-3"><paper-input label="คำนำหน้า" 
-          value="{{value.title}}"></paper-input></div>
-        <div class="flex-5 margin-left-style">
-          <paper-input label="ชื่อ" 
-             value="{{value.firstname}}">
-          </paper-input>
-        </div>
-        <div class="flex margin-left-style"><paper-input label="นามสกุล" value="{{lname}}"></paper-input></div>
-      </div>
-      <div class="layout horizontal">
-        <div class="flex"><paper-input label="โรงเรียน" value="{{school}}"></paper-input></div>
+        <div class="flex"><paper-input label="อำเภอ" value="{{Amphoe}}"></paper-input></div>
         <div class="flex"><paper-input label="จังหวัด" value="{{province}}"></paper-input></div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex"><paper-input label="สำนักงานเขตพื้นที่การศึกษา" value="{{office}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
         <div class="flex font-face-big-bold">ประเภทบุคลากร</div>
       </div>
       <div class="layout horizontal">
         <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
-          <paper-radio-button name="a" class ="font-face-normal" >ข้าราชการครู</paper-radio-button>
-          <paper-radio-button name="b" class ="font-face-normal">ข้าราชการพลเรือนสามัญ</paper-radio-button>
+          <paper-radio-button name="a" class ="font-face-normal">ข้าราชการ</paper-radio-button>
+          <paper-radio-button name="b" class ="font-face-normal">พนักงานราชการ</paper-radio-button>
           <paper-radio-button name="c" class ="font-face-normal">ลูกจ้างชั่วคราว</paper-radio-button>
         </paper-radio-group>
       </div>
+      <div class="layout horizontal">
+        <div class="flex font-face-big-bold">ข้อมูลส่วนบุคคล</div>
+      </div>
+      <div class="layout horizontal">
+        <paper-input class="flex" label="หมายเลขบัตรประชาชน" value="{{value.cid}}"></paper-input>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex-3"><paper-input label="คำนำหน้า" value="{{value.title}}"></paper-input></div>
+        <div class="flex-5"><paper-input label="ชื่อ" value="{{value.firstname}}"></paper-input></div>
+        <div class="flex"><paper-input label="นามสกุล" value="{{value.lastname}}"></paper-input></div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex-5"><paper-input label="วัน/เดือน/ปี เกิด" value=""></paper-input></div>
+        <div class="flex-5"><paper-input label="เชื้อชาติ" value=""></paper-input></div>
+        <div class="flex-5"><paper-input label="สัญชาติ" value=""></paper-input></div>
+        <div class="flex"><paper-input label="ศาสนา" value=""></paper-input></div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex-8"><paper-input label="เบอร์โทรศัพท์" value="{{value.tel}}"></paper-input></div>
+        <div class="flex"><paper-input label="E-mail" value="{{value.email}}"></paper-input></div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex font-face-normal">(กรณีเป็นข้าราชการ)</div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex-8"><paper-input label="เริ่มรับราชการเมื่อวันที่" value=""></paper-input></div>
+        <div class="flex"><paper-input label="ตำแหน่ง" value=""></paper-input></div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex-5"><paper-input label="โรงเรียน" value=""></paper-input></div>
+        <div class="flex-5"><paper-input label="อำเภอ" value=""></paper-input></div>
+        <div class="flex"><paper-input label="จังหวัด" value=""></paper-input></div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex-8"><paper-input label="เลขประจำตำแหน่งเลขที่" value=""></paper-input></div>
+        <div class="flex"><paper-input label="เกษียณอายุวันที่ 1 ตุลาคม พ.ศ." value=""></paper-input></div>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex font-face-normal">ปัจจุบันดำรงตำแหน่ง</div>
+      </div>
+      <div class="layout horizontal">
+        <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
+          <paper-radio-button name="d" class ="font-face-normal">ครูผู้ช่วย</paper-radio-button>
+          <paper-radio-button name="e" class ="font-face-normal">ครู</paper-radio-button>
+        </paper-radio-group>
+      </div>
+      <div class="layout horizontal">
+        <div class="flex font-face-normal">วิทยฐานะ</div>
+      </div>
+      <div class="layout horizontal">
+        <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
+          <paper-radio-button name="f" class ="font-face-normal">ไม่มี</paper-radio-button>
+          <paper-radio-button name="g" class ="font-face-normal">ครูชำนาญการ</paper-radio-button>
+          <paper-radio-button name="h" class ="font-face-normal">ครูชำนาญการพิเศษ</paper-radio-button>
+          <paper-radio-button name="k" class ="font-face-normal">ครูเชี่ยวชาญ</paper-radio-button>
+          <paper-radio-button name="m" class ="font-face-normal">ครูเชี่ยวชาญพิเศษ</paper-radio-button>
+        </paper-radio-group>
+      </div>
     </div>
+    <div class="buttons">
+      <paper-button dialog-dismiss>Cancel</paper-button>
+      <paper-button autofocus on-click="update">Save</paper-button>
+     </div>
   </template>
 <script>
     class tProfile extends Polymer.Element {
@@ -67,6 +124,32 @@
           }
         }
       }
+
+      update(event) {
+        if(!this.document.key) return;
+        var self = this;
+        var ele = document.createElement('iron-request');
+        var key = this.document.key;
+        var value = this.document.value;
+        console.log(self);
+        console.log(ele);
+        console.log(key);
+        console.log(value);
+        /*ele.send({
+          url:'https://maas.nuqlis.com:9000/apis/dbs/teacher_db/'+key,
+          method:'POST',
+          headers:{
+              'Authorization':'JWT '+this.token,
+              'Content-Type':'application/json'
+            },
+            handleAs:'json',
+            body:value
+          }).then(function(res) {
+            if(res.response.ok) {
+              self.set('active',false);
+            }
+          });*/
+        }
     }
     window.customElements.define(tProfile.is, tProfile);
   </script>
