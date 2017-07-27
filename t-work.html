@@ -6,7 +6,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<dom-module id="t-education">
+<dom-module id="t-work">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -45,27 +45,18 @@
         margin-left: 5px;
       }
 
-      /*.shadow{
-        height: 70px;
-        @apply(--shadow-elevation-2dp);
-        @apply(--layout-center);
-      }*/
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
           <div class="flex-1">
-            <paper-input label="ระดับการศึกษา"
-              value ="{{content.education}}">
+            <paper-input label="ลำดับที่"
+              value ="{{content.number}}">
             </paper-input>
           </div>
-          <div class="flex-1"><paper-input label="ปีที่จบ"></paper-input></div>
-          <div class="flex-2"><paper-input label="วุฒิการศึกษา"></paper-input></div>
-          <div class="flex-3"><paper-input label="สาขาวิชา/วิชาเอก"></paper-input></div>
-          <div class="flex-3"><paper-input label="สถานศึกษา"></paper-input></div>
-          <div class="flex">
-            <div class="box flex-5"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 1</paper-checkbox></div>
-            <div class="box flex-5"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 2</paper-checkbox></div>
-          </div>
+          <div class="flex-2"><paper-input label="ตำแหน่ง/หน้าที่"></paper-input></div>
+          <div class="flex-3"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่"></paper-input></div>
+          <div class="flex-4"><paper-input label="ลักษณะงานที่ปฏิบัติ"></paper-input></div>
+          <div class="flex-1"><paper-input label="ระยะเวลา (ปี)"></paper-input></div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
           </div>
@@ -74,8 +65,8 @@
   </template>
 
   <script>
-    class TEducation extends Polymer.Element {
-      static get is() { return 't-education'; }
+    class TWork extends Polymer.Element {
+      static get is() { return 't-work'; }
       static get properties() {
         return {
           content:{
@@ -86,7 +77,7 @@
       }
       _removeItem(event) {
         this.set('content.show',false);
-        var eve = new CustomEvent('t-education-remove',{
+        var eve = new CustomEvent('t-work-remove',{
           bubbles:true,
           composed:true,
           detail:this.document
@@ -94,6 +85,6 @@
         this.dispatchEvent(eve);
       }
     }
-    window.customElements.define(TEducation.is, TEducation);
+    window.customElements.define(TWork.is, TWork);
   </script>
 </dom-module>

@@ -11,6 +11,7 @@
 
 <link rel="import" href="t-profile.html">
 <link rel="import" href="teacher-list-education.html">
+<link rel="import" href="teacher-list-work.html">
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
@@ -33,9 +34,6 @@
       }
 
       paper-dialog.colored {
-        /*border: 2px solid;
-        border-color: #F44336;
-        color: #4caf50;*/
         background-color: #eeeeee;
         width: 950px;
         height: auto;
@@ -74,7 +72,7 @@
             <teacher-list-education value="{{document.value}}"></teacher-list-education>
           </div>
           <div>
-            กำลังดำเนินการ
+            <teacher-list-work value="{{document.value}}"></teacher-list-work>
           </div>
           <div>
             กำลังดำเนินการ
