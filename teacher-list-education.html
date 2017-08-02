@@ -45,8 +45,8 @@
     <div class="layout horizontal">
         <div class="flex font-face-big-bold margin-style">คุณวุฒิที่จบการศึกษา</div>
     </div>
-    <template is="dom-repeat" items="{{list}}">
-      <t-education content="{{item}}" value="{{value}}" on-t-education-remove="_removeItem"></t-education>
+    <template is="dom-repeat" items="{{value}}">
+      <t-education content="{{item}}" on-t-education-remove="_removeItem"></t-education>
     </template>
     <div class="layout horizontal">
       <div class="flex font-face-big-bold margin-style">ความชำนาญ</div>
@@ -69,13 +69,16 @@
             }
           },
           value:{
-            type:Object,
-            notify:true,
+            type:Array,
+            notify:true,            
+            value:function() {
+              return [];
+            }
           }
         }
       }
       _addItem(event) {
-        this.push('list',{'show':true});
+        this.push('value',{'show':true});
       }
       _removeItem(event) {
         for(var i=0;i<this.list.length;i++) {

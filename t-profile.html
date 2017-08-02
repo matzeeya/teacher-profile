@@ -104,7 +104,8 @@
         <div class="flex font-face-big-bold margin-top-style">ปัจจุบันดำรงตำแหน่ง</div>
       </div>
       <div class="layout horizontal">
-        <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
+        <paper-radio-group aria-labelledby="label1" selected="{{value.career_path}}">
+        <!-- <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}"> -->
           <paper-radio-button name="d" class ="font-face-normal">ครูผู้ช่วย</paper-radio-button>
           <paper-radio-button name="e" class ="font-face-normal">ครู</paper-radio-button>
         </paper-radio-group>
@@ -113,7 +114,8 @@
         <div class="flex font-face-big-bold margin-top-style">วิทยฐานะ</div>
       </div>
       <div class="layout horizontal">
-        <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}">
+        <!-- <paper-radio-group aria-labelledby="label1" selected="{{document.value.form_value.q1}}"> -->
+        <paper-radio-group aria-labelledby="label1" selected="{{value.career_title}}">
           <paper-radio-button name="f" class ="font-face-normal">ไม่มี</paper-radio-button>
           <paper-radio-button name="g" class ="font-face-normal">ครูชำนาญการ</paper-radio-button>
           <paper-radio-button name="h" class ="font-face-normal">ครูชำนาญการพิเศษ</paper-radio-button>

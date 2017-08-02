@@ -12,6 +12,7 @@
 <link rel="import" href="t-profile.html">
 <link rel="import" href="teacher-list-education.html">
 <link rel="import" href="teacher-list-work.html">
+<link rel="import" href="teacher-list-operating.html">
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
@@ -75,13 +76,13 @@
             <t-profile value="{{document.value}}"></t-profile>
           </div>
           <div>
-            <teacher-list-education value="{{document.value}}"></teacher-list-education>
+            <teacher-list-education value="{{document.value.education_list}}"></teacher-list-education>
           </div>
           <div>
             <teacher-list-work value="{{document.value}}"></teacher-list-work>
           </div>
           <div>
-            กำลังดำเนินการ
+            <teacher-list-operating value="{{document.value}}"></teacher-list-operating>
           </div>
           <div>
             กำลังดำเนินการ
@@ -89,8 +90,10 @@
         </iron-pages>
 
          <div class="buttons">
+          บันทึกเรียบร้อย
           <paper-button dialog-dismiss raised>ยกเลิก</paper-button>
-          <paper-button dialog-confirm raised on-click="update">บันทึก</paper-button>
+          <paper-button raised on-click="update">บันทึก</paper-button>
+          <paper-button dialog-confirm raised>ปิด</paper-button>
         </div>
     </paper-dialog>
     
@@ -168,9 +171,13 @@
                    'Authorization':'JWT '+token,
                   },
                 }).then(function(res) {
+                  var response = res.response;                  
+                  if(!response.hasOwnProperty("education_list")) {
+                    response["education_list"] = [];
+                  }
                   self.set('document',{
                     'key':doc.profile.teacher_id,
-                    'value':res.response
+                    'value':response
                   });
                 });
               }
