@@ -34,13 +34,6 @@
         height: 40px;
       }
 
-      paper-dialog.colored {
-        background-color: #eeeeee;
-        width: 950px;
-        height: auto;
-        overflow: auto;
-      }
-
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
@@ -48,11 +41,6 @@
       }
     </style>
 
-    <paper-dialog id="dialog" class="colored"
-      on-opened-changed="onStatusChanged" 
-      exit-animation="fade-out-animation" 
-      with-backdrop
-      modal>
         <paper-tabs selected="{{page}}" noink scrollable fit-container>
           <paper-tab>
             <div class="font-face-big-bold">ข้อมูลทั่วไป</div>
@@ -94,7 +82,6 @@
           <paper-button raised on-click="update">บันทึก</paper-button>
           <paper-button dialog-confirm raised>ปิด</paper-button>
         </div>
-    </paper-dialog>
     
   </template>
 
