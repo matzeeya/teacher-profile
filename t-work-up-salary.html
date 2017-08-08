@@ -4,6 +4,7 @@
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
@@ -51,17 +52,29 @@
         font-size: 70%;
         width: 110px;
       }
+      vaadin-date-picker{
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        margin-left: 5px;
+        width: 98%;
+        margin-bottom: 10px;
+      }
+
+      .bottom-style{
+        @apply(--layout-horizontal);
+        @apply(--layout-end);
+      }
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-1">
-            <paper-input label="วันเดือนปี"
-              value ="{{content.dates}}">
-            </paper-input>
+          <div class="flex-1 bottom-style">
+            <!--<paper-input label="วันเดือนปี" value ="{{content.dates}}"></paper-input>-->
+            <vaadin-date-picker placeholder="วัน/เดือน/ปี">
+          </vaadin-date-picker>
           </div>
           <div class="flex-2"><paper-input label="ตำแหน่ง/วิทยฐานะ"></paper-input></div>
           <div class="flex-3"><paper-input label="โรงเรียน"></paper-input></div>
-          <div class="flex-4"><paper-input label="รับเงินเดือน"></paper-input></div>
+          <div class="flex-4"><paper-input label="รับเงินเดือน/ระดับ"></paper-input></div>
           <div class="flex-2 layout horizontal center"><paper-button raised><iron-icon icon="icons:file-upload"></iron-icon>เอกสาร/หลักฐาน</paper-button></div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
