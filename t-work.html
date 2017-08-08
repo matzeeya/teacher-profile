@@ -1,18 +1,21 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
+<link rel="import" href="t-work-dialog.html">
 <dom-module id="t-work">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
         display: block;
         --paper-input-container-label: {
-            font-family: 'Kanit', sans-serif;
+          font-family: 'Kanit', sans-serif;
         };
         --paper-input-container-input: {
           font-family: 'Kanit', sans-serif;
@@ -31,20 +34,41 @@
         margin-top: 20px;
       }
 
-      paper-checkbox{
-        font-family: 'Kanit', sans-serif;
-        font-size: 70%;
-        margin-left: 5px;
-      }
-
       paper-input{
         margin-left: 5px;
+        font-family: 'Kanit', sans-serif;
       }
 
       iron-icon{
         margin-left: 5px;
       }
 
+      iron-icon:hover {
+        color: #999966;
+        cursor:hand;
+        cursor:pointer;
+      }
+
+      paper-dropdown-menu.custom {
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+       }
+
+      paper-dropdown-menu{
+        width: 250px;
+      }
+      paper-dropdown-menu.marginleft{
+       margin-left: 5px;
+      }
+      paper-listbox{
+        width: 250px;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
@@ -55,13 +79,27 @@
           </div>
           <div class="flex-2"><paper-input label="ตำแหน่ง/หน้าที่"></paper-input></div>
           <div class="flex-3"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่"></paper-input></div>
-          <div class="flex-4"><paper-input label="ลักษณะงานที่ปฏิบัติ"></paper-input></div>
+          <div class="flex-4">
+          <paper-dropdown-menu label="ลักษณะงานที่ปฏิบัติ" class="marginleft custom" id="fromMenu">  
+          <paper-listbox slot="dropdown-content" 
+            attr-for-selected="level"   
+            selected="{{selectedLevel}}">
+              <paper-item level="กลุ่มบริหารงานวิชาการ">กลุ่มบริหารงานวิชาการ</paper-item>
+              <paper-item level="กลุ่มบริหารงานงบประมาณ">กลุ่มบริหารงานงบประมาณ</paper-item>
+              <paper-item level="กลุ่มบริหารงานบุคคล">กลุ่มบริหารงานบุคคล</paper-item>
+              <paper-item level="กลุ่มบริหารงานทั่วไป">กลุ่มบริหารงานทั่วไป</paper-item>
+          </paper-listbox>
+          </paper-dropdown-menu>
+          </div>
           <div class="flex-1"><paper-input label="ระยะเวลา (ปี)"></paper-input></div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
           </div>
-        </div>
+        </div>  
     </div>
+
+    <t-work-dialog active="{{active}}"></t-work-dialog>
+    <!--test [[active]]-->
   </template>
 
   <script>
@@ -72,6 +110,11 @@
           content:{
            type:Object,
            notify:true
+          },
+          active:{
+            type:Boolean,
+            notify:true,
+            value:true
           }
         }
       }

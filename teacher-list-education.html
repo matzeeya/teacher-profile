@@ -41,10 +41,11 @@
         font-size: 100%;
       }
     </style>
-    <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
+    
     <div class="layout horizontal">
         <div class="flex font-face-big-bold margin-style">คุณวุฒิที่จบการศึกษา</div>
     </div>
+      <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
     <template is="dom-repeat" items="{{value}}">
       <t-education content="{{item}}" on-t-education-remove="_removeItem"></t-education>
     </template>
