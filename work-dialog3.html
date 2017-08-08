@@ -1,0 +1,106 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="work-dialog3">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      paper-tabs {
+        --paper-tabs-selection-bar-color: #F44336;
+        background-color: var(--paper-grey-50);
+        height: 40px;
+      }
+      paper-dialog{
+        width: 800px;
+        height: 600px;
+      }
+    </style>
+    <div class="layout horizontal">
+      <paper-checkbox>การวางแผนอัตรากำลัง</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดสรรอัตรากำลังข้าราชการครูและบุคลากรทางการศึกษา</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การสรรหาและบรรจุแต่งตั้ง</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การเปลี่ยนตำแหน่งให้สูงขึ้น การย้ายข้าราชการครูและบุคลากรทางการศึกษา</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การดำเนินการเกี่ยวกับการเลื่อนขั้นเงินเดือน</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การลาทุกประเภท</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การประเมินผลการปฏิบัติงาน</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การดำเนินการทางวินัยและการลงโทษ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การสั่งพักราชการและการสั่งให้ออกจากราชการไว้ก่อน</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การรายงานการดำเนินการทางวินัยและการลงโทษ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การอุทธรณ์และการร้องทุกข์</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การออกจากราชการ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดระบบและการจัดทำระเบียนประวัติ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดทำ บัญชีรายชื่อและให้ความเห็นเกี่ยวกับการเสนอขอพระราชทานเครื่องราชอิสริยาภรณ์</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การส่งเสริมการประเมินวิทยฐานะข้าราชการครูและบุคลากรทางการศึกษา</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การส่งเสริมและยกย่องเชิดชูเกียรติ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การส่งเสริมมาตรฐานวิชาชีพและจรรยาบรรณวิชาชีพ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การส่งเสริมวินัย คุณธรรมและจริยธรรมสำหรับข้าราชการครูและบุคลากรทางการศึกษา</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การริเริ่มส่งเสริมการขอรับใบอนุญาต</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การพัฒนาข้าราชการครูและบุคลากรทางการศึกษา การดำเนินการที่เกี่ยวกับการบริหารงานบุคคลให้เป็นไปตามกฎหมายว่าด้วยการนั้น</paper-checkbox>
+    </div>
+  </template>
+
+  <script>
+    class workDialog3 extends Polymer.Element {
+      static get is() { return 'work-dialog3'; }
+      static get properties() {
+        return {
+        
+        }
+      }
+      
+    }
+    window.customElements.define(workDialog3.is, workDialog3);
+  </script>
+</dom-module>

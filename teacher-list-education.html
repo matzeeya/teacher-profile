@@ -46,7 +46,7 @@
         <div class="flex font-face-big-bold margin-style">คุณวุฒิที่จบการศึกษา</div>
     </div>
       <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
-    <template is="dom-repeat" items="{{value}}">
+    <template is="dom-repeat" items="{{list}}">
       <t-education content="{{item}}" on-t-education-remove="_removeItem"></t-education>
     </template>
     <div class="layout horizontal">
@@ -79,7 +79,7 @@
         }
       }
       _addItem(event) {
-        this.push('value',{'show':true});
+        this.push('list',{'show':true});
       }
       _removeItem(event) {
         for(var i=0;i<this.list.length;i++) {

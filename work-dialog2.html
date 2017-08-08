@@ -1,0 +1,112 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="work-dialog2">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      paper-tabs {
+        --paper-tabs-selection-bar-color: #F44336;
+        background-color: var(--paper-grey-50);
+        height: 40px;
+      }
+      paper-dialog{
+        width: 800px;
+        height: 600px;
+      }
+    </style>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดทำแผนงบประมาณและคำขอตั้งงบประมาณเพื่อเสนอต่อปลัดกระทรวงศึกษาธิการ หรือ เลขาธิการคณะกรรมการการศึกษาขั้นพื้นฐาน แล้วแต่กรณี</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดทำแผนปฏิบัติการใช้จ่ายเงินตามที่ได้รับจัดสรรงบประมาณจากสำนักงานคณะกรรมการการศึกษาขั้นพื้นฐานโดยตรง</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การอนุมัติการใช้จ่ายงบประมาณที่ได้รับจัดสรร</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การขอโอนและการขอเปลี่ยนแปลงงบประมาณ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การรายงานผลการเบิกจ่ายงบประมาณ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การตรวจสอบติดตามและรายงานการใช้งบประมาณ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การตรวจสอบติดตามและรายงานการใช้ผลผลิตจากงบประมาณ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การระดมทรัพยากรและการลงทุนเพื่อการศึกษา</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การปฏิบัติงานอื่นใดตามที่ได้รับมอบหมายเกี่ยวกับกองทุนเพื่อการศึกษา</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การบริหารจัดการทรัพยากรเพื่อการศึกษา</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การวางแผนพัสดุ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การกำหนดรูปแบบรายการ หรือ คุณลักษณะเฉพาะของครุภัณฑ์ หรือสิ่งก่อสร้างที่ใช้เงินงบประมาณเพื่อเสนอต่อปลัดกระทรวงศึกษาธิการหรือเลขาธิการคณะกรรมการการศึกษาขั้นพื้นฐานแล้วแต่กรณี</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การพัฒนาระบบข้อมูลสารสนเทศเพื่อการจัดทำและจัดหาพัสดุ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดหาพัสดุ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การควบคุมดูแล บำรุงรักษาและจำหน่ายพัสดุ</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดหาผลประโยชน์จากทรัพย์สิน</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การเบิกเงินจากคลัง</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การรับเงิน การเก็บรักษาเงิน และการจ่ายเงิน</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การนำเงินส่งคลัง</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดทำบัญชีการเงิน</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดทำรายงานทางการเงินและงบการเงิน</paper-checkbox>
+    </div>
+    <div class="layout horizontal">
+      <paper-checkbox>การจัดทำหรือจัดหาแบบพิมพ์บัญชี ทะเบียน และรายงาน</paper-checkbox>
+    </div>
+  </template>
+
+  <script>
+    class workDialog2 extends Polymer.Element {
+      static get is() { return 'work-dialog2'; }
+      static get properties() {
+        return {
+        
+        }
+      }
+      
+    }
+    window.customElements.define(workDialog2.is, workDialog2);
+  </script>
+</dom-module>

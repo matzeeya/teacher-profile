@@ -8,6 +8,11 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
+<link rel="import" href="work-dialog1.html">
+<link rel="import" href="work-dialog2.html">
+<link rel="import" href="work-dialog3.html">
+<link rel="import" href="work-dialog4.html">
+
 <dom-module id="t-work-dialog">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
@@ -33,7 +38,7 @@
         height: 600px;
       }
     </style>
-    <paper-dialog id="dialog">
+    <paper-dialog id="dialog" modal>
       <paper-tabs selected="{{page}}" noink scrollable fit-container>
           <paper-tab>
             <div class="font-face-big-bold">กลุ่มบริหารงานวิชาการ</div>
@@ -51,72 +56,21 @@
 
         <iron-pages selected="{{page}}"> 
           <div>
-            <paper-dialog-scrollable>
-              <div class="layout horizontal">
-                <paper-checkbox>การพัฒนาหรือการดำเนินการเกี่ยวกับการให้ความเห็นการพัฒนาสาระหลักสูตรท้องถิ่น</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การวางแผนงานด้านวิชาการ</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การจัดการเรียนการสอนในสถานศึกษา</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การพัฒนาหลักสูตรของสถานศึกษา</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การพัฒนากระบวนการเรียนรู้</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การวัดผล ประเมินผล และดำเนินการเทียบโอนผลการเรียน</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การวิจัยเพื่อพัฒนาคุณภาพการศึกษาในสถานศึกษา</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การพัฒนาและส่งเสริมให้มีแหล่งเรียนรู้</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การนิเทศการศึกษา</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การแนะแนว</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การพัฒนาระบบประกันคุณภาพภายในและมาตรฐานการศึกษา</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การส่งเสริมให้ชุมชนมีความเข้มแข็งทางวิชาการ</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การประสานความร่วมมือในการพัฒนาวิชาการกับสถานศึกษาและองค์กรอื่น</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การส่งเสริมและสนับสนุนงานวิชาการแก่บุคคล ครอบครัว องค์กร หน่วยงานสถานประกอบการและสถาบันอื่นที่จัดการศึกษา</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การจัดทำระเบียบและแนวปฏิบัติเกี่ยวกับงานด้านวิชาการของสถานศึกษา</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การคัดเลือกหนังสือ แบบเรียนเพื่อใช้ในสถานศึกษา</paper-checkbox>
-              </div>
-              <div class="layout horizontal">
-                <paper-checkbox>การพัฒนาและใช้สื่อเทคโนโลยีเพื่อการศึกษา</paper-checkbox>
-              </div>
-            </paper-dialog-scrollable>
+            <work-dialog1></work-dialog1>
           </div>
           <div>
-             &nbsp;
+            <work-dialog2></work-dialog2>
           </div>
           <div>
-             &nbsp;
+            <work-dialog3></work-dialog3>
           </div>
           <div>
-            &nbsp;
+            <work-dialog4></work-dialog4>
           </div>
         </iron-pages>
   <div class="buttons">
-    <paper-button dialog-dismiss>Close</paper-button>
+    <paper-button dialog-confirm>ตกลง</paper-button>
+    <paper-button dialog-dismiss>ปิด</paper-button>
   </div>
 </paper-dialog>
   </template>
@@ -131,6 +85,11 @@
             reflectToAttribute:true,
             notify:true,
             observer:'_isActive'
+          },
+          page:{
+            type: Boolean,
+            notify:true,
+            value:0
           }
         }
       }
