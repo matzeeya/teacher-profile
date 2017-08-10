@@ -1,0 +1,85 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="t-operating-special">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+        --paper-input-container-label: {
+            font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      .margin-top-style{
+        margin-top: 20px;
+      }
+
+      paper-input{
+        margin-left: 5px;
+      }
+
+      iron-icon{
+        margin-left: 5px;
+      }
+
+    </style>
+    <div class="layout vertical" hidden$="{{!content.show}}">
+        <div class="layout horizontal">
+          <div class="flex-1">
+            <paper-input label="ปีการศึกษา"
+              value ="{{content.year}}">
+            </paper-input>
+          </div>
+          <div class="flex-2"><paper-input label="ภาคเรียน" value ="{{content.semester}}"></paper-input></div>
+          <div class="flex-3"><paper-input label="รายวิชา" value ="{{content.subject}}"></paper-input></div>
+          <div class="flex-4"><paper-input label="ระดับชั้น/ห้อง" value ="{{content.classroom}}"></paper-input></div>
+          <div class="flex-1"><paper-input label="จำนวนชั่วโมง/สัปดาห์" value ="{{content.hourPerWeek}}"></paper-input></div>
+          <div class="flex-1"><paper-input label="จำนวนนักเรียน" value ="{{content.studentAmount}}"></paper-input></div>
+          <div class="flex-1 layout horizontal center">
+            <iron-icon icon="icons:delete"  on-click="_removeItemCourse"></iron-icon>
+          </div>
+        </div>
+    </div>
+  </template>
+
+  <script>
+    class tOperatingSpecial extends Polymer.Element {
+      static get is() { return 't-operating-special'; }
+      static get properties() {
+        return {
+          content:{
+           type:Object,
+           notify:true
+          }
+        }
+      }
+      _removeItemSpecial(event) {
+        this.set('content.show',false);
+        var eve = new CustomEvent('t-operating-special-remove',{
+          bubbles:true,
+          composed:true,
+          detail:this.document
+        }); 
+        this.dispatchEvent(eve);
+      }
+    }
+    window.customElements.define(tOperatingSpecial.is, tOperatingSpecial);
+  </script>
+</dom-module>

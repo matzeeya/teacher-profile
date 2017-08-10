@@ -33,6 +33,14 @@
         margin-top: 20px;
       }
 
+      /* ---table --*/
+      .header {
+        text-align:left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        height:60px;
+      }
+      /* ---table --*/
       paper-input{
         margin-left: 5px;
       }
@@ -48,9 +56,18 @@
     <div class="layout horizontal">
       <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{list}}">
-      <t-work content="{{item}}" value="{{value}}" on-t-work-remove="_removeItem"></t-work>
-    </template>
+    <div class="layout vertical">
+      <div class="layout horizontal flex header">
+        <div class="flex">ตำแหน่ง/หน้าที่</div>
+        <div class="flex">หน่วยงานที่ปฏิบัติหน้าที่</div>
+        <div class="flex">ลักษณะงานที่ปฏิบัติ</div>
+        <div class="flex">ระยะเวลา (ปี)</div>
+        <div class="flex">&nbsp;</div> 
+      </div>
+        <template is="dom-repeat" items="{{list}}">
+          <t-work content="{{item}}" value="{{value}}" on-t-work-remove="_removeItem"></t-work>
+        </template>
+    </div>
     <div class="layout horizontal">
       <div class="flex font-face-big-bold margin-style">(กรณีเป็นข้าราชการ)</div>
     </div>

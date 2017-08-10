@@ -6,7 +6,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<dom-module id="t-operating-teach-hour">
+<dom-module id="t-operating-class">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -59,15 +59,15 @@
           <div class="flex-1"><paper-input label="จำนวนชั่วโมง/สัปดาห์" value ="{{content.hourPerWeek}}"></paper-input></div>
           <div class="flex-1"><paper-input label="จำนวนนักเรียน" value ="{{content.studentAmount}}"></paper-input></div>
           <div class="flex-1 layout horizontal center">
-            <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
+            <iron-icon icon="icons:delete"  on-click="_removeItemClass"></iron-icon>
           </div>
         </div>
     </div>
   </template>
 
   <script>
-    class tOperatingTeachHour extends Polymer.Element {
-      static get is() { return 't-operating-teach-hour'; }
+    class tOperatingClass extends Polymer.Element {
+      static get is() { return 't-operating-class'; }
       static get properties() {
         return {
           content:{
@@ -76,9 +76,9 @@
           }
         }
       }
-      _removeItem(event) {
+      _removeItemClass(event) {
         this.set('content.show',false);
-        var eve = new CustomEvent('t-work-remove',{
+        var eve = new CustomEvent('t-operating-class-remove',{
           bubbles:true,
           composed:true,
           detail:this.document
@@ -86,6 +86,6 @@
         this.dispatchEvent(eve);
       }
     }
-    window.customElements.define(tOperatingTeachHour.is, tOperatingTeachHour);
+    window.customElements.define(tOperatingClass.is, tOperatingClass);
   </script>
 </dom-module>
