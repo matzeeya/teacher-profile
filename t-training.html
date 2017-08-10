@@ -5,7 +5,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<dom-module id="t-operating-course">
+<dom-module id="t-training">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -41,20 +41,20 @@
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-2"><paper-input label="กิจกรรม" value ="{{content.semester}}"></paper-input></div>
-          <div class="flex-4"><paper-input label="ชั้น/ห้อง" value ="{{content.classroom}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนนักเรียน" value ="{{content.studentAmount}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนชั่วโมง" value ="{{content.hourPerWeek}}"></paper-input></div>
+          <div class="flex-1"><paper-input label="ปี พ.ศ." value ="{{content.year}}"></paper-input></div>
+          <div class="flex-2"><paper-input label="หน่วยงานที่จัดอบรม/สัมมนา" value ="{{content.semester}}"></paper-input></div>
+          <div class="flex-4"><paper-input label="หัวข้อที่อบรม/สัมมนา" value ="{{content.topic}}"></paper-input></div>
+          <div class="flex-1"><paper-input label="ระยะเวลา (ชั่วโมง)" value ="{{content.hour}}"></paper-input></div>
           <div class="flex-1 layout horizontal center">
-            <iron-icon icon="icons:delete"  on-click="_removeItemCourse"></iron-icon>
+            <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
           </div>
         </div>
     </div>
   </template>
 
   <script>
-    class tOperatingCourse extends Polymer.Element {
-      static get is() { return 't-operating-course'; }
+    class tTraining extends Polymer.Element {
+      static get is() { return 't-training'; }
       static get properties() {
         return {
           content:{
@@ -63,9 +63,9 @@
           }
         }
       }
-      _removeItemCourse(event) {
+      _removeItem(event) {
         this.set('content.show',false);
-        var eve = new CustomEvent('t-operating-course-remove',{
+        var eve = new CustomEvent('t-training-remove',{
           bubbles:true,
           composed:true,
           detail:this.document
@@ -73,6 +73,6 @@
         this.dispatchEvent(eve);
       }
     }
-    window.customElements.define(tOperatingCourse.is, tOperatingCourse);
+    window.customElements.define(tTraining.is, tTraining);
   </script>
 </dom-module>

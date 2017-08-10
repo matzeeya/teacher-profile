@@ -1,7 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
@@ -60,7 +59,8 @@
           <div class="flex-2"><paper-input label="งานพิเศษที่ได้รับมอบหมาย" value ="{{content.semester}}"></paper-input></div>
           <div class="flex-3 bottom-style"><vaadin-date-picker placeholder="วันที่เริ่มต้น"></vaadin-date-picker></div>
           <div class="flex-4 bottom-style"><vaadin-date-picker placeholder="วันที่สิ้นสุด"></vaadin-date-picker></div>
-          <div class="flex-2 layout horizontal center"><paper-button raised><iron-icon icon="icons:file-upload"></iron-icon>เอกสาร/หลักฐาน</paper-button></div>
+          <div class="flex-2 layout horizontal center">
+            <paper-button raised><iron-icon icon="icons:file-upload"></iron-icon>เอกสารอ้างอิง</paper-button></div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItemSpecial"></iron-icon>
           </div>

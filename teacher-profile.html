@@ -13,6 +13,7 @@
 <link rel="import" href="teacher-list-education.html">
 <link rel="import" href="teacher-list-work.html">
 <link rel="import" href="teacher-list-operating.html">
+<link rel="import" href="teacher-list-training.html">
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
@@ -55,6 +56,9 @@
             <div class="font-face-big-bold">ประวัติการปฏิบัติงาน</div>
           </paper-tab>
           <paper-tab>
+            <div class="font-face-big-bold">การจัดการเรียนการสอน</div>
+          </paper-tab>
+          <paper-tab>
             <div class="font-face-big-bold">ประวัติการพัฒนา</div>
           </paper-tab>
         </paper-tabs>
@@ -74,6 +78,9 @@
           </div>
           <div>
             กำลังดำเนินการ
+          </div>
+          <div>
+            <teacher-list-training value="{{document.value}}"></teacher-list-training>
           </div>
         </iron-pages>
 
@@ -106,7 +113,7 @@
           },
           page:{
             type:Number,
-            value:3
+            value:5
           }
         };
       }

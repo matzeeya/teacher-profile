@@ -1,11 +1,13 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<dom-module id="t-operating-course">
+<dom-module id="t-training-reward">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -30,6 +32,11 @@
         margin-top: 20px;
       }
 
+      .bottom-style{
+        @apply(--layout-horizontal);
+        @apply(--layout-end);
+      }
+
       paper-input{
         margin-left: 5px;
       }
@@ -38,23 +45,32 @@
         margin-left: 5px;
       }
 
+      vaadin-date-picker{
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        margin-left: 5px;
+        width: 98%;
+        margin-bottom: 10px;
+      }
+
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-2"><paper-input label="กิจกรรม" value ="{{content.semester}}"></paper-input></div>
-          <div class="flex-4"><paper-input label="ชั้น/ห้อง" value ="{{content.classroom}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนนักเรียน" value ="{{content.studentAmount}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนชั่วโมง" value ="{{content.hourPerWeek}}"></paper-input></div>
+          <div class="flex-1"><paper-input label="ปี พ.ศ." value ="{{content.year}}"></paper-input></div>
+          <div class="flex-2 bottom-style"><vaadin-date-picker placeholder="วัน/เดือน/ปี"></vaadin-date-picker></div>
+          <div class="flex-4"><paper-input label="รางวัลที่ได้รับ" value ="{{content.classroom}}"></paper-input></div>
+          <div class="flex-1"><paper-input label="หน่วยงานที่มอบรางวัล" value ="{{content.studentAmount}}"></paper-input></div>
+          <div class="flex-2 layout horizontal center"><paper-button raised><iron-icon icon="icons:file-upload"></iron-icon>เอกสารอ้างอิง</paper-button></div>
           <div class="flex-1 layout horizontal center">
-            <iron-icon icon="icons:delete"  on-click="_removeItemCourse"></iron-icon>
+            <iron-icon icon="icons:delete"  on-click="_removeItemReward"></iron-icon>
           </div>
         </div>
     </div>
   </template>
 
   <script>
-    class tOperatingCourse extends Polymer.Element {
-      static get is() { return 't-operating-course'; }
+    class tTrainingReward extends Polymer.Element {
+      static get is() { return 't-training-reward'; }
       static get properties() {
         return {
           content:{
@@ -63,9 +79,9 @@
           }
         }
       }
-      _removeItemCourse(event) {
+      _removeItemReward(event) {
         this.set('content.show',false);
-        var eve = new CustomEvent('t-operating-course-remove',{
+        var eve = new CustomEvent('t-training-reward-remove',{
           bubbles:true,
           composed:true,
           detail:this.document
@@ -73,6 +89,6 @@
         this.dispatchEvent(eve);
       }
     }
-    window.customElements.define(tOperatingCourse.is, tOperatingCourse);
+    window.customElements.define(tTrainingReward.is, tTrainingReward);
   </script>
 </dom-module>

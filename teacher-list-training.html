@@ -1,0 +1,154 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+
+<link rel="import" href="t-training.html">
+<link rel="import" href="t-training-lecturer.html">
+<link rel="import" href="t-training-reward.html">
+
+<dom-module id="teacher-list-training">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+         --paper-input-container-label: {
+            font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      .margin-style{
+        margin-top: 20px;
+      }
+
+      paper-input{
+        margin-left: 5px;
+      }
+
+      paper-button{
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+    </style>
+    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">การเข้าร่วมกิจกรรมทางวิชาการ อบรม สัมมนา ศึกษาดูงาน</div>
+    </div>
+    <div class="layout horizontal">
+      <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
+    </div>
+    <template is="dom-repeat" items="{{list}}">
+      <t-training content="{{item}}" 
+        value="{{value}}" 
+        on-t-training-remove="_removeItem">
+      </t-training>
+    </template>
+    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">การเป็นวิทยากร</div>
+    </div>
+    <div class="layout horizontal">
+      <paper-button raised on-click="_addItemLecturer">+ เพิ่ม</paper-button>
+    </div>
+    <template is="dom-repeat" items="{{listLecturer}}" as="lecturer">
+      <t-training-lecturer content="{{lecturer}}" 
+        value="{{value}}" 
+        on-t-training-lecturer-remove="_removeItemLecturer">
+      </t-training-lecturer>
+    </template>
+    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">การได้รับรางวัล / การประกาศเกียรติคุณ</div>
+    </div>
+    <div class="layout horizontal">
+      <paper-button raised on-click="_addItemReward">+ เพิ่ม</paper-button>
+    </div>
+    <template is="dom-repeat" items="{{listReward}}" as="reward">
+      <t-training-reward content="{{reward}}" 
+        value="{{value}}" 
+        on-t-training-reward-remove="_removeItemReward">
+      </t-training-reward>
+    </template>
+  </template>
+<script>
+    class TeacherListTraining extends Polymer.Element {
+      static get is() { return 'teacher-list-training'; }
+      static get properties() {
+        return {
+          list : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          listLecturer : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          listReward : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          value:{
+            type:Object,
+            notify:true,
+          }
+        }
+      }
+      _addItem(event) {
+        this.push('list',{'show':true});
+      }
+      _removeItem(event) {
+        for(var i=0;i<this.list.length;i++) {
+          if(this.list[i].show == false) {         
+            this.splice('list',i,1);              
+            break;
+          }
+        }
+      }
+
+      _addItemLecturer(event) {
+        this.push('listLecturer',{'show':true});
+      }
+      _removeItemLecturer(event) {
+        for(var i=0;i<this.listLecturer.length;i++) {
+          if(this.listLecturer[i].show == false) {         
+            this.splice('listLecturer',i,1);              
+            break;
+          }
+        }
+      }
+
+      _addItemReward(event) {
+        this.push('listReward',{'show':true});
+      }
+      _removeItemReward(event) {
+        for(var i=0;i<this.listReward.length;i++) {
+          if(this.listReward[i].show == false) {         
+            this.splice('listReward',i,1);              
+            break;
+          }
+        }
+      }
+    }
+    window.customElements.define(TeacherListTraining.is, TeacherListTraining);
+  </script>
+  
+</dom-module>
