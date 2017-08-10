@@ -1,0 +1,277 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="t-teaching.html">
+<link rel="import" href="t-teaching-innovation.html">
+<link rel="import" href="t-teaching-integration.html">
+<link rel="import" href="t-teaching-class.html">
+<link rel="import" href="t-teaching-reward.html">
+
+<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+
+<dom-module id="teacher-list-teaching">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+         --paper-input-container-label: {
+            font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      .margin-style{
+        margin-top: 20px;
+      }
+
+      /* ---table --*/
+      .header {
+        text-align:left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        height:60px;
+      }
+      /* ---table --*/
+      paper-input{
+        margin-left: 5px;
+      }
+
+      paper-button{
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+    </style>
+    <div class="layout horizontal">
+        <div class="flex font-face-big-bold margin-style">จัดทำแผนการจัดการเรียนรู้ </div>
+    </div>
+    <div class="layout horizontal">
+      <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
+    </div>
+    <div class="layout vertical">
+      <div class="layout horizontal flex header">
+        <div class="flex">ปีการศึกษา</div>
+        <div class="flex">ภาคเรียนที่</div>
+        <div class="flex">รายวิชา</div>
+        <div class="flex">ระดับชั้น</div>
+        <div class="flex">จำนวนชั่วโมง</div>
+        <div class="flex">จำนวนหน่วยการเรียนรู้</div>
+        <div class="flex">จำนวนนักเรียน</div>
+        <div class="flex">จำนวนแผน</div>
+        <div class="flex">รูปแบบจัดกิจกรรม</div>
+        <div class="flex">วัดผลประเมินผล</div>
+        <div class="flex">&nbsp;</div> 
+      </div>
+        <template is="dom-repeat" items="{{list}}">
+          <t-teaching content="{{item}}" value="{{value}}" on-t-teaching-remove="_removeItem"></t-teaching>
+        </template>
+    </div>
+    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">ผลิตสื่อ/นวัตกรรม</div>
+    </div>
+    <div class="layout horizontal">
+      <paper-button raised on-click="_addItemInnovation">+ เพิ่ม</paper-button>
+    </div>
+    <div class="layout vertical">
+      <div class="layout horizontal flex header">
+        <div class="flex">ปีการศึกษา</div>
+        <div class="flex">ชื่อสื่อ/นวัตกรรม</div>
+        <div class="flex">ประเภท</div>
+        <div class="flex">จำนวน (ชิ้น)</div>
+        <div class="flex">&nbsp;</div> 
+      </div>
+      <template is="dom-repeat" items="{{listInnovation}}" as="innovation">
+        <t-teaching-innovation content="{{innovation}}" 
+          value="{{value}}" 
+          on-t-teaching-innovation-remove="_removeItemInnovation">
+        </t-teaching-innovation>
+      </template>
+    </div>
+    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">จัดทำหน่วยการเรียนรู้แบบบูรณาการ</div>
+    </div>
+    <div class="layout horizontal">
+      <paper-button raised on-click="_addItemIntegration">+ เพิ่ม</paper-button>
+    </div>
+    <div class="layout vertical">
+      <div class="layout horizontal flex header">
+        <div class="flex">ปีการศึกษา</div>
+        <div class="flex">หน่วยที่</div>
+        <div class="flex">เรื่อง</div>
+        <div class="flex">รายละเอียดการบูรณาการ</div>
+        <div class="flex">จำนวนชั่วโมง</div>
+        <div class="flex">&nbsp;</div> 
+      </div>
+      <template is="dom-repeat" items="{{listIntegration}}" as="integration">
+        <t-teaching-Integration content="{{integration}}" 
+          value="{{value}}" 
+          on-t-teaching-Integration-remove="_removeItemIntegration">
+        </t-teaching-Integration>
+      </template>
+    </div>
+    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">การทำวิจัยในชั้นเรียน</div>
+    </div>
+    <div class="layout horizontal">
+      <paper-button raised on-click="_addItemClass">+ เพิ่ม</paper-button>
+    </div>
+    <div class="layout vertical">
+      <div class="layout horizontal flex header">
+        <div class="flex">ปีการศึกษา</div>
+        <div class="flex">งานวิจัยเรื่อง</div>
+        <div class="flex">ระดับชั้น</div>
+        <div class="flex">ผลรับรอง</div>
+        <div class="flex">วิชา</div>
+        <div class="flex">&nbsp;</div> 
+      </div>
+      <template is="dom-repeat" items="{{listClass}}" as="class">
+        <t-teaching-Class content="{{class}}" 
+          value="{{value}}" 
+          on-t-teaching-Integration-remove="_removeItemClass">
+        </t-teaching-Class>
+      </template>
+    </div>
+    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">การพัฒนานักเรียนจนได้รับรางวัล / ยกย่องเชิดชูเกียรติ</div>
+    </div>
+    <div class="layout horizontal">
+      <paper-button raised on-click="_addItemReward">+ เพิ่ม</paper-button>
+    </div>
+    <div class="layout vertical">
+      <div class="layout horizontal flex header">
+        <div class="flex">ปี</div>
+        <div class="flex">ชื่อ-สกุล นักเรียน</div>
+        <div class="flex">รางวัลที่ได้รับ</div>
+        <div class="flex">หน่วยงานที่มอบ</div>
+        <div class="flex">&nbsp;</div> 
+      </div>
+      <template is="dom-repeat" items="{{listReward}}" as="reward">
+        <t-teaching-Reward content="{{reward}}" 
+          value="{{value}}" 
+          on-t-teaching-Integration-remove="_removeItemReward">
+        </t-teaching-Reward>
+      </template>
+    </div>
+  </template>
+<script>
+    class TeacherListTeaching extends Polymer.Element {
+      static get is() { return 'teacher-list-teaching'; }
+      static get properties() {
+        return {
+          list : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          listInnovation : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          listIntegration : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          listClass : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          listReward : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          value:{
+            type:Object,
+            notify:true,
+          }
+        }
+      }
+      _addItem(event) {
+        this.push('list',{'show':true});
+      }
+      _removeItem(event) {
+        for(var i=0;i<this.list.length;i++) {
+          if(this.list[i].show == false) {         
+            this.splice('list',i,1);              
+            break;
+          }
+        }
+      }
+
+      _addItemInnovation(event) {
+        this.push('listInnovation',{'show':true});
+      }
+      _removeItemInnovation(event) {
+        for(var i=0;i<this.listInnovation.length;i++) {
+          if(this.listInnovation[i].show == false) {         
+            this.splice('listInnovation',i,1);              
+            break;
+          }
+        }
+      }
+
+      _addItemIntegration(event) {
+        this.push('listIntegration',{'show':true});
+      }
+      _removeItemIntegration(event) {
+        for(var i=0;i<this.listIntegration.length;i++) {
+          if(this.listIntegration[i].show == false) {         
+            this.splice('listIntegration',i,1);              
+            break;
+          }
+        }
+      }
+
+      _addItemClass(event) {
+        this.push('listClass',{'show':true});
+      }
+      _removeItemClass(event) {
+        for(var i=0;i<this.listClass.length;i++) {
+          if(this.listClass[i].show == false) {         
+            this.splice('listClass',i,1);              
+            break;
+          }
+        }
+      }
+
+      _addItemReward(event) {
+        this.push('listReward',{'show':true});
+      }
+      _removeItemReward(event) {
+        for(var i=0;i<this.listReward.length;i++) {
+          if(this.listReward[i].show == false) {         
+            this.splice('listReward',i,1);              
+            break;
+          }
+        }
+      }
+    }
+    window.customElements.define(TeacherListTeaching.is, TeacherListTeaching);
+  </script>
+  
+</dom-module>

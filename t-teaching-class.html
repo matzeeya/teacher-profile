@@ -1,0 +1,89 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<!--<link rel="import" href="t-teaching-class-dialog.html">-->
+
+<dom-module id="t-teaching-class">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+
+      /* ---table --*/
+      .content {
+        text-align:left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+        height:50px;
+        opacity: 0.70;
+      }
+      /* ---table --*/
+      iron-icon{
+        margin-left: 5px;
+      }
+
+      iron-icon:hover {
+        color: #999966;
+        cursor:hand;
+        cursor:pointer;
+      }
+  </style>
+
+    <div class="layout horizontal flex content" hidden$="{{!content.show}}">
+      <div class="flex">ตำแหน่ง/หน้าที่</div>
+      <div class="flex">หน่วยงานที่ปฏิบัติหน้าที่</div>
+      <div class="flex">ลักษณะงานที่ปฏิบัติ</div>
+      <div class="flex">ระยะเวลา (ปี)</div>
+      <div class="flex layout horizontal center">
+        <iron-icon icon="icons:delete"  on-click="_removeItemClass"></iron-icon>
+      </div>
+    </div>  
+    <!--<t-teaching-class-dialog active="{{active}}"></t-teaching-class-dialog>-->
+  </template>
+
+  <script>
+    class tTeachingClass extends Polymer.Element {
+      static get is() { return 't-teaching-class'; }
+      static get properties() {
+        return {
+          content:{
+           type:Object,
+           notify:true
+          },
+          active:{
+            type:Boolean,
+            notify:true,
+            value:true
+          }
+        }
+      }
+      _removeItemClass(event) {
+        this.set('content.show',false);
+        var eve = new CustomEvent('t-teaching-class-remove',{
+          bubbles:true,
+          composed:true,
+          detail:this.document
+        }); 
+        this.dispatchEvent(eve);
+      }
+    }
+    window.customElements.define(tTeachingClass.is, tTeachingClass);
+  </script>
+</dom-module>
