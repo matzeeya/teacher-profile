@@ -1,8 +1,10 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
@@ -31,6 +33,11 @@
         margin-top: 20px;
       }
 
+      .bottom-style{
+        @apply(--layout-horizontal);
+        @apply(--layout-end);
+      }
+
       paper-input{
         margin-left: 5px;
       }
@@ -39,21 +46,23 @@
         margin-left: 5px;
       }
 
+      vaadin-date-picker{
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        margin-left: 5px;
+        width: 98%;
+        margin-bottom: 10px;
+      }
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-1">
-            <paper-input label="ปีการศึกษา"
-              value ="{{content.year}}">
-            </paper-input>
-          </div>
-          <div class="flex-2"><paper-input label="ภาคเรียน" value ="{{content.semester}}"></paper-input></div>
-          <div class="flex-3"><paper-input label="รายวิชา" value ="{{content.subject}}"></paper-input></div>
-          <div class="flex-4"><paper-input label="ระดับชั้น/ห้อง" value ="{{content.classroom}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนชั่วโมง/สัปดาห์" value ="{{content.hourPerWeek}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนนักเรียน" value ="{{content.studentAmount}}"></paper-input></div>
+          <div class="flex-1"><paper-input label="ปีการศึกษา" value ="{{content.year}}"></paper-input></div>
+          <div class="flex-2"><paper-input label="งานพิเศษที่ได้รับมอบหมาย" value ="{{content.semester}}"></paper-input></div>
+          <div class="flex-3 bottom-style"><vaadin-date-picker placeholder="วันที่เริ่มต้น"></vaadin-date-picker></div>
+          <div class="flex-4 bottom-style"><vaadin-date-picker placeholder="วันที่สิ้นสุด"></vaadin-date-picker></div>
+          <div class="flex-2 layout horizontal center"><paper-button raised><iron-icon icon="icons:file-upload"></iron-icon>เอกสาร/หลักฐาน</paper-button></div>
           <div class="flex-1 layout horizontal center">
-            <iron-icon icon="icons:delete"  on-click="_removeItemCourse"></iron-icon>
+            <iron-icon icon="icons:delete"  on-click="_removeItemSpecial"></iron-icon>
           </div>
         </div>
     </div>
