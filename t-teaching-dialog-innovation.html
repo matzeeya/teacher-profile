@@ -1,0 +1,145 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-tabs/paper-tabs.html">
+<link rel="import" href="../iron-pages/iron-pages.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<link rel="import" href="t-teaching-dialog-type.html">
+
+<dom-module id="t-teaching-dialog-innovation">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+
+      paper-dialog{
+        width: 800px;
+        height: 700px;
+      }
+
+      paper-input{
+        margin-left: 5px;
+        font-family: 'Kanit', sans-serif;
+      }
+
+      paper-dropdown-menu.custom {
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+       }
+
+      paper-dropdown-menu{
+        width: 150px;
+      }
+      paper-dropdown-menu.marginleft{
+       margin-left: 5px;
+      }
+      paper-listbox{
+        width: 150px;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
+
+      paper-button{
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
+
+      paper-checkbox{
+        font-family: 'Kanit', sans-serif;
+        font-size: 90%;
+      }
+    </style>
+      <paper-dialog id="dialog" modal>
+        <div class="layout vertical">
+          <div class="layout horizontal">
+            <div class="flex">
+              <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
+              <paper-listbox slot="dropdown-content">
+                <paper-item>2558</paper-item>
+                <paper-item>2559</paper-item>
+                <paper-item>2560</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
+            </div>
+            <div class="flex"><paper-input label="ชื่อสื่อ/นวัตกรรม"></paper-input></div>
+            <div class="flex"><paper-input label="จำนวนชิ้น"></paper-input></div>
+          </div>
+          <div class="layout horizontal">
+            <div class="flex font-face-big-bold">ประเภท</div>
+          </div>
+          <div class="layout horizontal">
+            <div class="flex"><paper-checkbox>ใบความรู้</paper-checkbox></div>
+            <div class="flex"><paper-checkbox>สื่อบทเรียนแผ่นเดียว</paper-checkbox></div>
+            <div class="flex"><paper-checkbox>วิดีโอคลิป</paper-checkbox></div>
+          </div>
+          <div class="layout horizontal">
+            <div class="flex"><paper-checkbox>แผ่นภาพ/แผ่นใส</paper-checkbox></div>
+            <div class="flex"><paper-checkbox>ภูมิปัญญาท้องถิ่น</paper-checkbox></div>
+            <div class="flex"><paper-checkbox>ศูนย์การเรียนรู้</paper-checkbox></div>
+          </div>
+          <div class="layout horizontal">
+            <div class="flex"><paper-checkbox>สื่อของจริง</paper-checkbox></div>
+            <div class="flex"><paper-checkbox>ใบงาน</paper-checkbox></div>
+            <div class="flex"><paper-checkbox>บทเรียนการ์ตูน</paper-checkbox></div>
+          </div>
+          <div class="layout horizontal">
+            <div class="flex"><paper-checkbox>E-book, E-learning</paper-checkbox></div>
+            <div class="flex"><paper-checkbox>วิดีทัศน์</paper-checkbox></div>
+            <div class="flex"><paper-checkbox>อื่นๆ</paper-checkbox></div>
+          </div>
+          <div class="layout horizontal">
+            <div class="flex"><paper-checkbox>สไลด์อิเล็กทรอนิกส์</paper-checkbox></div>
+            <div class="flex"><paper-checkbox>CAI</paper-checkbox></div>
+            <div class="flex">&nbsp;</div>
+          </div>
+        </div>
+      <div class="buttons">
+        <paper-button dialog-confirm>ตกลง</paper-button>
+        <paper-button dialog-dismiss>ปิด</paper-button>
+      </div>
+    </paper-dialog>
+  </template>
+
+  <script>
+    class tTeachingDialogInnovation extends Polymer.Element {
+      static get is() { return 't-teaching-dialog-innovation'; }
+      static get properties() {
+        return {
+          active:{
+            type: Boolean,
+            reflectToAttribute:true,
+            notify:true,
+            observer:'_isActive'
+          }
+        }
+      }
+      _isActive(active) {
+        this.set('active',false);
+        if(active) {
+          this.$.dialog.open();
+        } else {
+          this.$.dialog.close();
+        }
+      }
+    }
+    window.customElements.define(tTeachingDialogInnovation.is, tTeachingDialogInnovation);
+  </script>
+</dom-module>

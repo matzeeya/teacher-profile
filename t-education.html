@@ -64,7 +64,7 @@
         }
        }
 
-       paper-dropdown-menu{
+      paper-dropdown-menu{
         width: 150px;
       }
       paper-dropdown-menu.marginleft{
@@ -75,18 +75,10 @@
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
-      /*.shadow{
-        height: 70px;
-        @apply(--shadow-elevation-2dp);
-        @apply(--layout-center);
-      }*/
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
           <div class="flex-1">
-            <!--<paper-input label="ระดับการศึกษา"
-              value ="{{content.education}}">
-            </paper-input>-->
             <paper-dropdown-menu label="ระดับการศึกษา" class="marginleft custom">
             <paper-listbox slot="dropdown-content">
               <paper-item>ปริญญาตรี</paper-item>

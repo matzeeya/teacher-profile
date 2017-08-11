@@ -1,0 +1,83 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="t-teaching-dialog-activity">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      paper-checkbox{
+        font-family: 'Kanit', sans-serif;
+        font-size: 90%;
+      }
+</style>
+<div class="layout vertical">
+  <div class="layout horizontal">
+    <div class="flex"><paper-checkbox>บรรยาย</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การเรียนแบบโครงงาน</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>ศูนย์การเรียน</paper-checkbox></div>
+  </div>
+  <div class="layout horizontal">
+    <div class="flex"><paper-checkbox>การสืบสวนสอบสวน</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การตั้งคำถาม</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การเรียนรู้แบบโครงการ</paper-checkbox></div>
+  </div>
+  <div class="layout horizontal">
+    <div class="flex"><paper-checkbox>การใช้เกมประกอบ</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การเรียนแบบสร้างแผนผังความคิด</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>อริยสัท 4</paper-checkbox></div>
+  </div>
+  <div class="layout horizontal">
+    <div class="flex"><paper-checkbox>การเรียนรู้แบบร่วมมือ</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การสืบค้นแล้วนำเสนอโดยผู้เรียน</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การศึกษาเป็นรายบุคคล</paper-checkbox></div>
+  </div>
+  <div class="layout horizontal">
+    <div class="flex"><paper-checkbox>โปรแกรมสำเร็จรูป</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การสาธิต/ทดลอง</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การอธิปรายกลุ่มย่อย – ใหญ่</paper-checkbox></div>
+  </div>
+  <div class="layout horizontal">
+    <div class="flex"><paper-checkbox>คอมพิวเตอร์ช่วยสอน</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การบูรณาการ</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>เพื่อนคู่คิด</paper-checkbox></div>
+  </div>
+  <div class="layout horizontal">
+    <div class="flex"><paper-checkbox>การแก้ปัญหา</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>กลุ่มสัมพันธ์</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>บทบาทสมมติ</paper-checkbox></div>
+  </div>
+  <div class="layout horizontal">
+    <div class="flex"><paper-checkbox>การเรียนรู้แบบพหุปัญญา</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>การระดับพลังสมอง</paper-checkbox></div>
+    <div class="flex"><paper-checkbox>อื่นๆ </paper-checkbox></div>
+  </div>
+</div>
+  </template>
+
+  <script>
+    class tTeachingDialogActivity extends Polymer.Element {
+      static get is() { return 't-teaching-dialog-activity'; }
+      static get properties() {
+        return {
+        
+        }
+      }
+      
+    }
+    window.customElements.define(tTeachingDialogActivity.is, tTeachingDialogActivity);
+  </script>
+</dom-module>

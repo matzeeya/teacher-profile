@@ -1,6 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../paper-listbox/paper-listbox.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
@@ -8,7 +7,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<!--<link rel="import" href="t-teaching-dialog.html">-->
+<link rel="import" href="t-teaching-dialog-main.html">
 
 <dom-module id="t-teaching">
   <template>
@@ -47,15 +46,21 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex">ตำแหน่ง/หน้าที่</div>
-      <div class="flex">หน่วยงานที่ปฏิบัติหน้าที่</div>
-      <div class="flex">ลักษณะงานที่ปฏิบัติ</div>
-      <div class="flex">ระยะเวลา (ปี)</div>
+        <div class="flex">ปีการศึกษา</div>
+        <div class="flex">ภาคเรียนที่</div>
+        <div class="flex">รายวิชา</div>
+        <div class="flex">ระดับชั้น</div>
+        <div class="flex">จำนวนชั่วโมง</div>
+        <div class="flex">จำนวนหน่วยการเรียนรู้</div>
+        <div class="flex">จำนวนนักเรียน</div>
+        <div class="flex">จำนวนแผน</div>
+        <div class="flex">รูปแบบจัดกิจกรรม</div>
+        <div class="flex">วัดผลประเมินผล</div>
       <div class="flex layout horizontal center">
         <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
       </div>
     </div>  
-    <!--<t-teaching-dialog active="{{active}}"></t-teaching-dialog>-->
+    <t-teaching-dialog-main active="{{active}}"></t-teaching-dialog-main>
   </template>
 
   <script>
