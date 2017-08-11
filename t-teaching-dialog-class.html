@@ -8,7 +8,10 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<dom-module id="t-teaching-dialog-innovation">
+<link rel="import" href="t-teaching-dialog-evaluation.html">
+<link rel="import" href="t-teaching-dialog-subject.html">
+
+<dom-module id="t-teaching-dialog-class">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -23,7 +26,11 @@
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
       }
-
+      paper-tabs {
+        --paper-tabs-selection-bar-color: #F44336;
+        background-color: var(--paper-grey-50);
+        height: 40px;
+      }
       paper-dialog{
         width: 800px;
         height: 700px;
@@ -59,11 +66,6 @@
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
-
-      paper-checkbox{
-        font-family: 'Kanit', sans-serif;
-        font-size: 90%;
-      }
     </style>
       <paper-dialog id="dialog" modal>
         <div class="layout vertical">
@@ -77,37 +79,44 @@
               </paper-listbox>
             </paper-dropdown-menu>
             </div>
-            <div class="flex"><paper-input label="ชื่อสื่อ/นวัตกรรม"></paper-input></div>
-            <div class="flex"><paper-input label="จำนวนชิ้น"></paper-input></div>
+            <div class="flex"><paper-input label="งานวิจัยเรื่อง"></paper-input></div>
+            <div class="flex">
+              <paper-dropdown-menu label="ระดับชั้น" class="marginleft custom">
+              <paper-listbox slot="dropdown-content">
+                <paper-item>ประถมศึกษาปีที่ 1</paper-item>
+                <paper-item>ประถมศึกษาปีที่ 2</paper-item>
+                <paper-item>ประถมศึกษาปีที่ 3</paper-item>
+                <paper-item>ประถมศึกษาปีที่ 4</paper-item>
+                <paper-item>ประถมศึกษาปีที่ 5</paper-item>
+                <paper-item>ประถมศึกษาปีที่ 6</paper-item>
+                <paper-item>มัธยมศึกษาปีที่ 1</paper-item>
+                <paper-item>มัธยมศึกษาปีที่ 2</paper-item>
+                <paper-item>มัธยมศึกษาปีที่ 3</paper-item>
+                <paper-item>มัธยมศึกษาปีที่ 4</paper-item>
+                <paper-item>มัธยมศึกษาปีที่ 5</paper-item>
+                <paper-item>มัธยมศึกษาปีที่ 6</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
           </div>
-          <div class="layout horizontal">
-            <div class="flex font-face-big-bold">ประเภท</div>
           </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>ใบความรู้</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>สื่อบทเรียนแผ่นเดียว</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>วิดีโอคลิป</paper-checkbox></div>
-          </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>แผ่นภาพ/แผ่นใส</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>ภูมิปัญญาท้องถิ่น</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>ศูนย์การเรียนรู้</paper-checkbox></div>
-          </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>สื่อของจริง</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>ใบงาน</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>บทเรียนการ์ตูน</paper-checkbox></div>
-          </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>E-book, E-learning</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>วิดีทัศน์</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>อื่นๆ</paper-checkbox></div>
-          </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>สไลด์อิเล็กทรอนิกส์</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>CAI</paper-checkbox></div>
-            <div class="flex">&nbsp;</div>
-          </div>
+
+          <paper-tabs selected="{{page}}" noink scrollable fit-container>
+            <paper-tab>
+              <div class="font-face-big-bold">ผลรับรอง</div>
+            </paper-tab>
+            <paper-tab>
+              <div class="font-face-big-bold">วิชา</div>
+            </paper-tab>
+          </paper-tabs>
+
+          <iron-pages selected="{{page}}"> 
+            <div>
+              <t-teaching-dialog-evaluation></t-teaching-dialog-evaluation>
+            </div>
+            <div>
+              <t-teaching-dialog-subject></t-teaching-dialog-subject>
+            </div>
+          </iron-pages>
         </div>
       <div class="buttons">
         <paper-button dialog-confirm>ตกลง</paper-button>
@@ -117,8 +126,8 @@
   </template>
 
   <script>
-    class tTeachingDialogInnovation extends Polymer.Element {
-      static get is() { return 't-teaching-dialog-innovation'; }
+    class tTeachingDialogClass extends Polymer.Element {
+      static get is() { return 't-teaching-dialog-class'; }
       static get properties() {
         return {
           active:{
@@ -126,6 +135,11 @@
             reflectToAttribute:true,
             notify:true,
             observer:'_isActive'
+          },
+          page:{
+            type: Boolean,
+            notify:true,
+            value:0
           }
         }
       }
@@ -138,6 +152,6 @@
         }
       }
     }
-    window.customElements.define(tTeachingDialogInnovation.is, tTeachingDialogInnovation);
+    window.customElements.define(tTeachingDialogClass.is, tTeachingDialogClass);
   </script>
 </dom-module>

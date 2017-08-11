@@ -33,6 +33,11 @@
         margin-top: 20px;
       }
 
+      .bottom-style{
+        @apply(--layout-horizontal);
+        @apply(--layout-end);
+      }
+
       paper-input{
         margin-left: 5px;
       }
@@ -82,7 +87,7 @@
         <div class="flex"><paper-input label="นามสกุล" value="{{value.lastname}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex">
+        <div class="flex bottom-style">
           <vaadin-date-picker placeholder="วัน/เดือน/ปี เกิด">
           </vaadin-date-picker>
         </div>

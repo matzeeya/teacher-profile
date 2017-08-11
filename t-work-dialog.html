@@ -8,7 +8,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<link rel="import" href="work-dialog1.html">
+<link rel="import" href="./work-history/work-dialog1.html">
 <link rel="import" href="work-dialog2.html">
 <link rel="import" href="work-dialog3.html">
 <link rel="import" href="work-dialog4.html">
@@ -51,8 +51,8 @@
       <paper-dialog id="dialog" modal>
         <div class="layout vertical">
           <div class="layout horizontal">
-            <div class="flex-4"><paper-input label="ตำแหน่ง/หน้าที่"></paper-input></div>
-            <div class="flex-5"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่"></paper-input></div>
+            <div class="flex-4"><paper-input label="ตำแหน่ง/หน้าที่" value="{{value.type}}"></paper-input></div>
+            <div class="flex-5"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่" value="{{value.unit}}"></paper-input></div>
             <div class="flex-3"><paper-input label="ระยะเวลา (ปี)"></paper-input></div>
           </div>  
           <div class="layout horizontal">
@@ -72,21 +72,12 @@
               <div class="font-face-big-bold">กลุ่มบริหารงานทั่วไป</div>
             </paper-tab>
           </paper-tabs>
-          
-          
-          <iron-pages selected="{{page}}"> 
-            <div>
-              <work-dialog1></work-dialog1>
-            </div>
-            <div>
+                    
+          <iron-pages selected="{{page}}">             
+              <work-dialog1 list="{{value.jobs.type_1}}"></work-dialog1>
               <work-dialog2></work-dialog2>
-            </div>
-            <div>
               <work-dialog3></work-dialog3>
-            </div>
-            <div>
-              <work-dialog4></work-dialog4>
-            </div>
+              <work-dialog4></work-dialog4>            
           </iron-pages>
         </div>
       <div class="buttons">
@@ -106,6 +97,13 @@
             reflectToAttribute:true,
             notify:true,
             observer:'_isActive'
+          },
+          value:{
+            type:Object,
+            notify:true,
+            value:function() {
+              return {};
+            }
           },
           page:{
             type: Boolean,

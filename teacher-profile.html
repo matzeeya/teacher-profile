@@ -72,7 +72,7 @@
             <teacher-list-education value="{{document.value.education_list}}"></teacher-list-education>
           </div>
           <div>
-            <teacher-list-work value="{{document.value}}"></teacher-list-work>
+            <teacher-list-work list="{{document.value.work_history}}"></teacher-list-work>
           </div>
           <div>
             <teacher-list-operating value="{{document.value}}"></teacher-list-operating>
@@ -88,7 +88,6 @@
          <div class="buttons">
           <paper-button raised on-click="update">บันทึก</paper-button>
           <paper-button dialog-dismiss raised>ยกเลิก</paper-button>
-          <!--<paper-button dialog-confirm raised>ปิด</paper-button>-->
         </div>
     
   </template>
@@ -114,7 +113,7 @@
           },
           page:{
             type:Number,
-            value:4
+            value:0
           }
         };
       }
@@ -166,9 +165,17 @@
                   },
                 }).then(function(res) {
                   var response = res.response;                  
-                  if(!response.hasOwnProperty("education_list")) {
-                    response["education_list"] = [];
-                  }
+                  var list_properties = [
+                    "education_list",
+                    "work_history"
+                  ];
+
+                  list_properties.forEach(function(attr) {
+                    if(!response.hasOwnProperty(attr)) {
+                      response[attr] = [];
+                    }
+                  });
+                  
                   self.set('document',{
                     'key':doc.profile.teacher_id,
                     'value':response

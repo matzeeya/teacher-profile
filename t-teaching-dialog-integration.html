@@ -1,0 +1,139 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="t-teaching-dialog-integration">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+
+      paper-dialog{
+        width: 800px;
+        height: 700px;
+      }
+
+      paper-input{
+        margin-left: 5px;
+        font-family: 'Kanit', sans-serif;
+      }
+
+      paper-dropdown-menu.custom {
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+       }
+
+      paper-dropdown-menu{
+        width: 150px;
+      }
+      paper-dropdown-menu.marginleft{
+       margin-left: 5px;
+      }
+      paper-listbox{
+        width: 150px;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
+
+      paper-button{
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
+
+      paper-checkbox{
+        font-family: 'Kanit', sans-serif;
+        font-size: 90%;
+      }
+    </style>
+      <paper-dialog id="dialog" modal>
+        <div class="layout vertical">
+          <div class="layout horizontal">
+            <div class="flex">
+              <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
+              <paper-listbox slot="dropdown-content">
+                <paper-item>2558</paper-item>
+                <paper-item>2559</paper-item>
+                <paper-item>2560</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
+            </div>
+            <div class="flex"><paper-input label="หน่วยที่"></paper-input></div>
+            <div class="flex"><paper-input label="เรื่อง"></paper-input></div>
+            <div class="flex"><paper-input label="จำนวนชั่วโมง"></paper-input></div>
+          </div>
+          <div class="layout horizontal">
+            <div class="flex font-face-big-bold">รายละเอียดการบูรณาการ</div>
+          </div>
+          <div class="layout horizontal">
+            <div class="flex font-face-normal">ลักษณะการบูรณาการ ประกอบด้วย</div>
+          </div>
+          <div class="layout horizontal">
+            <paper-checkbox>การบูรณาการเชิงเนื้อหาสาระ  เป็นการผสมผสานเชื่อมโยงเนื้อหาสาระ ในลักษณะหลอมรวม</paper-checkbox>
+          </div>
+          <div class="layout horizontal">
+            <paper-checkbox>การบูรณาการเชิงวิธีการ เป็นการผสมผสานวิธีการสอนแบบต่าง ๆ เข้าใจการสอน โดยการจัดกิจกรรมการเรียนการสอนที่หลากหลายวิธี การสนทนา การอภิปราย การใช้คำถาม การบรรยาย การค้นคว้าและการทำงานกลุ่ม การไปศึกษานอกห้องเรียน และการนำเสนอข้อมูลเป็นต้น</paper-checkbox>
+          </div>
+          <div class="layout horizontal">
+            <paper-checkbox>การบูรณาการความรู้กับกระบวนการเรียนรู้ โดยออกแบบการเรียนรู้ให้มีทั้งการให้ความรู้และกระบวนการไปพร้อม ๆ กัน เช่น กระบวนการแสวงหาความรู้ กระบวนการแก้ปัญหา และกระบวนการสร้างความคิดรวบยอดเป็นต้น</paper-checkbox>
+          </div>
+          <div class="layout horizontal">
+            <paper-checkbox>การบูรณาการความรู้ ความคิด กับคุณธรรม โดยเน้นทั้งพุทธิพิสัยและจิตพิสัยเป็นการเรียนที่สอดแทรกคุณธรรมจริยธรรมไปพร้อม ๆ กัน</paper-checkbox>
+          </div>
+          <div class="layout horizontal">
+            <paper-checkbox>การบูรณาการความรู้กับการปฏิบัติ เน้นการปฏิบัติจริง ควบคู่ไปพร้อม ๆ กับการจัดการเรียนรู้</paper-checkbox>
+          </div>
+          <div class="layout horizontal">
+            <paper-checkbox>การบูรณาการความรู้ในโรงเรียนกับชีวิตจริงของนักเรียน พยายามให้เด็กได้เรียนรู้เนื้อหาที่สัมพันธ์กับชีวิตจริงของนักเรียน เพื่อให้นักเรียนได้เห็นคุณค่าและความหมายในสิ่งที่เรียน</paper-checkbox>
+          </div>
+          </div>
+        </div>
+      <div class="buttons">
+        <paper-button dialog-confirm>ตกลง</paper-button>
+        <paper-button dialog-dismiss>ปิด</paper-button>
+      </div>
+    </paper-dialog>
+  </template>
+
+  <script>
+    class tTeachingDialogIntegration extends Polymer.Element {
+      static get is() { return 't-teaching-dialog-integration'; }
+      static get properties() {
+        return {
+          active:{
+            type: Boolean,
+            reflectToAttribute:true,
+            notify:true,
+            observer:'_isActive'
+          }
+        }
+      }
+      _isActive(active) {
+        this.set('active',false);
+        if(active) {
+          this.$.dialog.open();
+        } else {
+          this.$.dialog.close();
+        }
+      }
+    }
+    window.customElements.define(tTeachingDialogIntegration.is, tTeachingDialogIntegration);
+  </script>
+</dom-module>

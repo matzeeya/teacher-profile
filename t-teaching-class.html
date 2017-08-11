@@ -8,7 +8,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<!--<link rel="import" href="t-teaching-class-dialog.html">-->
+<link rel="import" href="t-teaching-dialog-class.html">
 
 <dom-module id="t-teaching-class">
   <template>
@@ -47,15 +47,16 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex">ตำแหน่ง/หน้าที่</div>
-      <div class="flex">หน่วยงานที่ปฏิบัติหน้าที่</div>
-      <div class="flex">ลักษณะงานที่ปฏิบัติ</div>
-      <div class="flex">ระยะเวลา (ปี)</div>
+      <div class="flex">ปีการศึกษา</div>
+      <div class="flex">งานวิจัยเรื่อง</div>
+      <div class="flex">ระดับชั้น</div>
+      <div class="flex">ผลรับรอง</div>
+      <div class="flex">วิชา</div>
       <div class="flex layout horizontal center">
         <iron-icon icon="icons:delete"  on-click="_removeItemClass"></iron-icon>
       </div>
     </div>  
-    <!--<t-teaching-class-dialog active="{{active}}"></t-teaching-class-dialog>-->
+    <t-teaching-dialog-class active="{{active}}"></t-teaching-dialog-class>
   </template>
 
   <script>

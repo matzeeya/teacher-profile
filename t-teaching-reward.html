@@ -1,14 +1,9 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../paper-listbox/paper-listbox.html">
-<link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
-
-<!--<link rel="import" href="t-teaching-reward-dialog.html">-->
 
 <dom-module id="t-teaching-reward">
   <template>
@@ -35,6 +30,11 @@
         opacity: 0.70;
       }
       /* ---table --*/
+
+      paper-input{
+        margin-left: 5px;
+      }
+      
       iron-icon{
         margin-left: 5px;
       }
@@ -47,15 +47,14 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex">ตำแหน่ง/หน้าที่</div>
-      <div class="flex">หน่วยงานที่ปฏิบัติหน้าที่</div>
-      <div class="flex">ลักษณะงานที่ปฏิบัติ</div>
-      <div class="flex">ระยะเวลา (ปี)</div>
+      <div class="flex-1"><paper-input label="ปี" value ="{{content.year}}"></paper-input></div>
+      <div class="flex-4"><paper-input label="ชื่อ-นามสกุล นักเรียน" value ="{{content.classroom}}"></paper-input></div>
+      <div class="flex-4"><paper-input label="รางวัลที่ได้รับ" value ="{{content.classroom}}"></paper-input></div>
+      <div class="flex-1"><paper-input label="หน่วยงานที่มอบรางวัล" value ="{{content.studentAmount}}"></paper-input></div>
       <div class="flex layout horizontal center">
         <iron-icon icon="icons:delete"  on-click="_removeItemReward"></iron-icon>
       </div>
     </div>  
-    <!--<t-teaching-reward-dialog active="{{active}}"></t-teaching-reward-dialog>-->
   </template>
 
   <script>

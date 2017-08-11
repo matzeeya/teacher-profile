@@ -1,6 +1,7 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-checkbox/paper-checkbox.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../iron-selector/iron-selector.html">
+<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
@@ -8,6 +9,7 @@
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
+        @apply(--layout-vertical);
         display: block;
       }
       .font-face-big-bold {
@@ -23,19 +25,17 @@
         font-family: 'Kanit', sans-serif;
         font-size: 90%;
       }
-    </style>
-    <div class="layout horizontal">
-      <paper-checkbox>การพัฒนาหรือการดำเนินการเกี่ยวกับการให้ความเห็นการพัฒนาสาระหลักสูตรท้องถิ่น</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การวางแผนงานด้านวิชาการ</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การจัดการเรียนการสอนในสถานศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การพัฒนาหลักสูตรของสถานศึกษา</paper-checkbox>
-    </div>
+  </style>    
+    <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">    
+      <paper-checkbox name="การพัฒนาหรือการดำเนินการเกี่ยวกับการให้ความเห็นการพัฒนาสาระหลักสูตรท้องถิ่น">
+        การพัฒนาหรือการดำเนินการเกี่ยวกับการให้ความเห็นการพัฒนาสาระหลักสูตรท้องถิ่น
+      </paper-checkbox>        
+      <paper-checkbox name="2">การวางแผนงานด้านวิชาการ</paper-checkbox>            
+      <paper-checkbox name="3">การจัดการเรียนการสอนในสถานศึกษา</paper-checkbox>              
+      <paper-checkbox name="4">การพัฒนาหลักสูตรของสถานศึกษา</paper-checkbox>
+    </iron-selector>
+      
+    <!--
     <div class="layout horizontal">
       <paper-checkbox>การพัฒนากระบวนการเรียนรู้</paper-checkbox>
     </div>
@@ -75,6 +75,7 @@
     <div class="layout horizontal">
       <paper-checkbox>การพัฒนาและใช้สื่อเทคโนโลยีเพื่อการศึกษา</paper-checkbox>
     </div>
+    -->
   </template>
 
   <script>
@@ -82,7 +83,13 @@
       static get is() { return 'work-dialog1'; }
       static get properties() {
         return {
-        
+          list:{
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
         }
       }
       

@@ -1,14 +1,10 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../paper-listbox/paper-listbox.html">
-<link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<!--<link rel="import" href="t-teaching-integration-dialog.html">-->
+<link rel="import" href="t-teaching-dialog-integration.html">
 
 <dom-module id="t-teaching-integration">
   <template>
@@ -47,15 +43,16 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex">ตำแหน่ง/หน้าที่</div>
-      <div class="flex">หน่วยงานที่ปฏิบัติหน้าที่</div>
-      <div class="flex">ลักษณะงานที่ปฏิบัติ</div>
-      <div class="flex">ระยะเวลา (ปี)</div>
+      <div class="flex">ปีการศึกษา</div>
+      <div class="flex">หน่วยที่</div>
+      <div class="flex">เรื่อง</div>
+      <div class="flex">รายละเอียดการบูรณาการ</div>
+      <div class="flex">จำนวนชั่วโมง</div>
       <div class="flex layout horizontal center">
         <iron-icon icon="icons:delete"  on-click="_removeItemIntegration"></iron-icon>
       </div>
     </div>  
-    <!--<t-teaching-integration-dialog active="{{active}}"></t-teaching-integration-dialog>-->
+    <t-teaching-dialog-integration active="{{active}}"></t-teaching-dialog-integration>
   </template>
 
   <script>

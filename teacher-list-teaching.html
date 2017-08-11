@@ -149,14 +149,6 @@
     <div class="layout horizontal">
       <paper-button raised on-click="_addItemReward">+ เพิ่ม</paper-button>
     </div>
-    <div class="layout vertical">
-      <div class="layout horizontal flex header">
-        <div class="flex">ปี</div>
-        <div class="flex">ชื่อ-สกุล นักเรียน</div>
-        <div class="flex">รางวัลที่ได้รับ</div>
-        <div class="flex">หน่วยงานที่มอบ</div>
-        <div class="flex">&nbsp;</div> 
-      </div>
       <template is="dom-repeat" items="{{listReward}}" as="reward">
         <t-teaching-Reward content="{{reward}}" 
           value="{{value}}" 
