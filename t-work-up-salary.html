@@ -61,16 +61,33 @@
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
           <div class="flex-1 bottom-style">
-            <!--<paper-input label="วันเดือนปี" value ="{{content.dates}}"></paper-input>-->
-            <vaadin-date-picker placeholder="วัน/เดือน/ปี">
-          </vaadin-date-picker>
+            <vaadin-date-picker placeholder="วัน/เดือน/ปี"
+              value="{{content.dates}}">
+            </vaadin-date-picker>
           </div>
-          <div class="flex-2"><paper-input label="ตำแหน่ง/วิทยฐานะ"></paper-input></div>
-          <div class="flex-3"><paper-input label="โรงเรียน"></paper-input></div>
-          <div class="flex-4"><paper-input label="รับเงินเดือน/ระดับ"></paper-input></div>
-          <div class="flex-2 layout horizontal center"><paper-button raised><iron-icon icon="icons:file-upload"></iron-icon>เอกสาร/หลักฐาน</paper-button></div>
+          <div class="flex-2">
+            <paper-input label="ตำแหน่ง/วิทยฐานะ"
+              value="{{content.rank}}">
+            </paper-input>
+          </div>
+          <div class="flex-3">
+            <paper-input label="โรงเรียน"
+            value="{{content.school}}">
+            </paper-input>
+          </div>
+          <div class="flex-4">
+            <paper-input label="รับเงินเดือน/ระดับ"
+              value="{{content.degree}}">
+            </paper-input>
+          </div>
+          <div class="flex-2 layout horizontal center">
+            <paper-button raised>
+              <iron-icon icon="icons:file-upload">
+              </iron-icon>เอกสาร/หลักฐาน
+            </paper-button>
+          </div>
           <div class="flex-1 layout horizontal center">
-            <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
+            <iron-icon icon="icons:delete" on-click="_removeItem"></iron-icon>
           </div>
         </div>
     </div>

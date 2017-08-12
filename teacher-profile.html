@@ -12,6 +12,7 @@
 <link rel="import" href="t-profile.html">
 <link rel="import" href="teacher-list-education.html">
 <link rel="import" href="teacher-list-work.html">
+<link rel="import" href="teacher-list-work-upsalary.html">
 <link rel="import" href="teacher-list-operating.html">
 <link rel="import" href="teacher-list-training.html">
 <link rel="import" href="teacher-list-teaching.html">
@@ -73,6 +74,9 @@
           </div>
           <div>
             <teacher-list-work list="{{document.value.work_history}}"></teacher-list-work>
+            <teacher-list-work-upsalary 
+              listUpSalary="{{document.value.work_upsalary}}">
+            </teacher-list-work-upsalary>
           </div>
           <div>
             <teacher-list-operating value="{{document.value}}"></teacher-list-operating>
@@ -167,7 +171,8 @@
                   var response = res.response;                  
                   var list_properties = [
                     "education_list",
-                    "work_history"
+                    "work_history",
+                    "work_upsalary"
                   ];
 
                   list_properties.forEach(function(attr) {

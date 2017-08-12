@@ -4,10 +4,10 @@
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="t-work.html">
+<link rel="import" href="t-work-up-salary.html">
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
-<dom-module id="teacher-list-work">
+<dom-module id="teacher-list-work-upsalary">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
@@ -51,28 +51,22 @@
         font-size: 100%;
       }
     </style>
-    
-    <div class="flex font-face-big-bold margin-style">ประวัติการทำงาน</div>    
-    <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>        
-    <div class="layout horizontal flex header">
-      <div class="flex-1">ตำแหน่ง/หน้าที่</div>
-      <div class="flex-1">หน่วยงานที่ปฏิบัติหน้าที่</div>
-      <div class="flex-1">ลักษณะงานที่ปฏิบัติ</div>
-      <div class="flex-1">ระยะเวลา (ปี)</div>
-      <div class="flex-1">&nbsp;</div> 
-    </div>
-    
-    <template is="dom-repeat" items="{{list}}">
-      <t-work content="{{item}}" on-t-work-remove="_removeItem">
-      </t-work>
-    </template>        
+
+    <div class="flex font-face-big-bold margin-style">(กรณีเป็นข้าราชการ)</div>    
+    <div class="flex font-face-big-bold margin-style">ประวัติการเลื่อนขั้นเงินเดือน</div>      
+    <paper-button raised on-click="_addItemUpSalary">+ เพิ่ม</paper-button>    
+    <template is="dom-repeat" items="{{listUpSalary}}" as="UpSalary">
+      <t-work-up-salary content="{{UpSalary}}" 
+        on-t-work-up-salary-remove="_removeItemUpSalary">
+      </t-work-up-salary>
+    </template>
   </template>
 <script>
-    class TeacherListWork extends Polymer.Element {
-      static get is() { return 'teacher-list-work'; }
+    class TeacherListWorkUpsalary extends Polymer.Element {
+      static get is() { return 'teacher-list-work-upsalary'; }
       static get properties() {
         return {
-          list : {
+          listUpSalary : {
             type:Array,
             notify:true,
             value:function() {
@@ -81,24 +75,20 @@
           }          
         }
       }
-      _addItem(event) {
-        this.push('list',{'show':true,'jobs':{
-          'type_1':[],
-          'type_2':[],
-          'type_3':[],
-          'type_4':[]          
-        }});
+
+      _addItemUpSalary(event) {
+        this.push('listUpSalary',{'show':true});
       }
-      _removeItem(event) {
-        for(var i=0;i<this.list.length;i++) {
-          if(this.list[i].show == false) {         
-            this.splice('list',i,1);              
+      _removeItemUpSalary(event) {
+        for(var i=0;i<this.listUpSalary.length;i++) {
+          if(this.listUpSalary[i].show == false) {         
+            this.splice('listUpSalary',i,1);              
             break;
           }
         }
       }
     }
-    window.customElements.define(TeacherListWork.is, TeacherListWork);
+    window.customElements.define(TeacherListWorkUpsalary.is, TeacherListWorkUpsalary);
   </script>
   
 </dom-module>
