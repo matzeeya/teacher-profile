@@ -1,12 +1,11 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../paper-checkbox/paper-checkbox.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../paper-input/paper-input.html">
+<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../iron-icons/iron-icons.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<dom-module id="t-operating-class">
+<dom-module id="t-operating-course">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -31,12 +30,6 @@
         margin-top: 20px;
       }
 
-      paper-checkbox{
-        font-family: 'Kanit', sans-serif;
-        font-size: 70%;
-        margin-left: 5px;
-      }
-
       paper-input{
         margin-left: 5px;
       }
@@ -48,20 +41,20 @@
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-1"><paper-input label="ปีการศึกษา" value ="{{content.year}}"></paper-input></div>
-          <div class="flex-2"><paper-input label="ภาคเรียน" value ="{{content.semester}}"></paper-input></div>
+          <div class="flex-2"><paper-input label="กิจกรรม" value ="{{content.semester}}"></paper-input></div>
           <div class="flex-4"><paper-input label="ชั้น/ห้อง" value ="{{content.classroom}}"></paper-input></div>
           <div class="flex-1"><paper-input label="จำนวนนักเรียน" value ="{{content.studentAmount}}"></paper-input></div>
+          <div class="flex-1"><paper-input label="จำนวนชั่วโมง" value ="{{content.hourPerWeek}}"></paper-input></div>
           <div class="flex-1 layout horizontal center">
-            <iron-icon icon="icons:delete"  on-click="_removeItemClass"></iron-icon>
+            <iron-icon icon="icons:delete"  on-click="_removeItemCourse"></iron-icon>
           </div>
         </div>
     </div>
   </template>
 
   <script>
-    class tOperatingClass extends Polymer.Element {
-      static get is() { return 't-operating-class'; }
+    class tOperatingCourse extends Polymer.Element {
+      static get is() { return 't-operating-course'; }
       static get properties() {
         return {
           content:{
@@ -70,9 +63,9 @@
           }
         }
       }
-      _removeItemClass(event) {
+      _removeItemCourse(event) {
         this.set('content.show',false);
-        var eve = new CustomEvent('t-operating-class-remove',{
+        var eve = new CustomEvent('t-operating-course-remove',{
           bubbles:true,
           composed:true,
           detail:this.document
@@ -80,6 +73,6 @@
         this.dispatchEvent(eve);
       }
     }
-    window.customElements.define(tOperatingClass.is, tOperatingClass);
+    window.customElements.define(tOperatingCourse.is, tOperatingCourse);
   </script>
 </dom-module>

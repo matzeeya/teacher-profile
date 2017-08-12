@@ -5,9 +5,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<link rel="import" href="t-teaching-dialog-innovation.html">
-
-<dom-module id="t-teaching-innovation">
+<dom-module id="t-teaching-reward">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -29,10 +27,14 @@
         text-align:left;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
-        height:50px;
         opacity: 0.70;
       }
       /* ---table --*/
+
+      paper-input{
+        margin-left: 5px;
+      }
+      
       iron-icon{
         margin-left: 5px;
       }
@@ -45,20 +47,19 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex">ปีการศึกษา</div>
-      <div class="flex">ชื่อสื่อ/นวัตกรรม</div>
-      <div class="flex">ประเภท</div>
-      <div class="flex">จำนวน (ชิ้น)</div>
+      <div class="flex-1"><paper-input label="ปี" value ="{{content.year}}"></paper-input></div>
+      <div class="flex-4"><paper-input label="ชื่อ-นามสกุล นักเรียน" value ="{{content.classroom}}"></paper-input></div>
+      <div class="flex-4"><paper-input label="รางวัลที่ได้รับ" value ="{{content.classroom}}"></paper-input></div>
+      <div class="flex-1"><paper-input label="หน่วยงานที่มอบรางวัล" value ="{{content.studentAmount}}"></paper-input></div>
       <div class="flex layout horizontal center">
-        <iron-icon icon="icons:delete"  on-click="_removeItemInnovation"></iron-icon>
+        <iron-icon icon="icons:delete"  on-click="_removeItemReward"></iron-icon>
       </div>
     </div>  
-    <t-teaching-dialog-innovation active="{{active}}"></t-teaching-dialog-innovation>
   </template>
 
   <script>
-    class tTeachingInnovation extends Polymer.Element {
-      static get is() { return 't-teaching-innovation'; }
+    class tTeachingReward extends Polymer.Element {
+      static get is() { return 't-teaching-reward'; }
       static get properties() {
         return {
           content:{
@@ -72,9 +73,9 @@
           }
         }
       }
-      _removeItemInnovation(event) {
+      _removeItemReward(event) {
         this.set('content.show',false);
-        var eve = new CustomEvent('t-teaching-innovation-remove',{
+        var eve = new CustomEvent('t-teaching-reward-remove',{
           bubbles:true,
           composed:true,
           detail:this.document
@@ -82,6 +83,6 @@
         this.dispatchEvent(eve);
       }
     }
-    window.customElements.define(tTeachingInnovation.is, tTeachingInnovation);
+    window.customElements.define(tTeachingReward.is, tTeachingReward);
   </script>
 </dom-module>

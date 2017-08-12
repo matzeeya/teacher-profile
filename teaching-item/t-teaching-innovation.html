@@ -1,15 +1,13 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../paper-listbox/paper-listbox.html">
-<link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<link rel="import" href="t-teaching-dialog-main.html">
+<link rel="import" href="t-teaching-dialog-innovation.html">
 
-<dom-module id="t-teaching">
+<dom-module id="t-teaching-innovation">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -31,7 +29,6 @@
         text-align:left;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
-        height:50px;
         opacity: 0.70;
       }
       /* ---table --*/
@@ -47,26 +44,20 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-        <div class="flex">ปีการศึกษา</div>
-        <div class="flex">ภาคเรียนที่</div>
-        <div class="flex">รายวิชา</div>
-        <div class="flex">ระดับชั้น</div>
-        <div class="flex">จำนวนชั่วโมง</div>
-        <div class="flex">จำนวนหน่วยการเรียนรู้</div>
-        <div class="flex">จำนวนนักเรียน</div>
-        <div class="flex">จำนวนแผน</div>
-        <div class="flex">รูปแบบจัดกิจกรรม</div>
-        <div class="flex">วัดผลประเมินผล</div>
+      <div class="flex">ปีการศึกษา</div>
+      <div class="flex">ชื่อสื่อ/นวัตกรรม</div>
+      <div class="flex">ประเภท</div>
+      <div class="flex">จำนวน (ชิ้น)</div>
       <div class="flex layout horizontal center">
-        <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
+        <iron-icon icon="icons:delete"  on-click="_removeItemInnovation"></iron-icon>
       </div>
     </div>  
-    <t-teaching-dialog-main active="{{active}}"></t-teaching-dialog-main>
+    <t-teaching-dialog-innovation active="{{active}}"></t-teaching-dialog-innovation>
   </template>
 
   <script>
-    class tTeaching extends Polymer.Element {
-      static get is() { return 't-teaching'; }
+    class tTeachingInnovation extends Polymer.Element {
+      static get is() { return 't-teaching-innovation'; }
       static get properties() {
         return {
           content:{
@@ -80,9 +71,9 @@
           }
         }
       }
-      _removeItem(event) {
+      _removeItemInnovation(event) {
         this.set('content.show',false);
-        var eve = new CustomEvent('t-teaching-remove',{
+        var eve = new CustomEvent('t-teaching-innovation-remove',{
           bubbles:true,
           composed:true,
           detail:this.document
@@ -90,6 +81,6 @@
         this.dispatchEvent(eve);
       }
     }
-    window.customElements.define(tTeaching.is, tTeaching);
+    window.customElements.define(tTeachingInnovation.is, tTeachingInnovation);
   </script>
 </dom-module>

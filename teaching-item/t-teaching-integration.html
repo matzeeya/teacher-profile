@@ -1,11 +1,12 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<dom-module id="t-teaching-reward">
+<link rel="import" href="t-teaching-dialog-integration.html">
+
+<dom-module id="t-teaching-integration">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -27,15 +28,9 @@
         text-align:left;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
-        height:50px;
         opacity: 0.70;
       }
       /* ---table --*/
-
-      paper-input{
-        margin-left: 5px;
-      }
-      
       iron-icon{
         margin-left: 5px;
       }
@@ -48,19 +43,21 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex-1"><paper-input label="ปี" value ="{{content.year}}"></paper-input></div>
-      <div class="flex-4"><paper-input label="ชื่อ-นามสกุล นักเรียน" value ="{{content.classroom}}"></paper-input></div>
-      <div class="flex-4"><paper-input label="รางวัลที่ได้รับ" value ="{{content.classroom}}"></paper-input></div>
-      <div class="flex-1"><paper-input label="หน่วยงานที่มอบรางวัล" value ="{{content.studentAmount}}"></paper-input></div>
+      <div class="flex">ปีการศึกษา</div>
+      <div class="flex">หน่วยที่</div>
+      <div class="flex">เรื่อง</div>
+      <div class="flex">รายละเอียดการบูรณาการ</div>
+      <div class="flex">จำนวนชั่วโมง</div>
       <div class="flex layout horizontal center">
-        <iron-icon icon="icons:delete"  on-click="_removeItemReward"></iron-icon>
+        <iron-icon icon="icons:delete"  on-click="_removeItemIntegration"></iron-icon>
       </div>
     </div>  
+    <t-teaching-dialog-integration active="{{active}}"></t-teaching-dialog-integration>
   </template>
 
   <script>
-    class tTeachingReward extends Polymer.Element {
-      static get is() { return 't-teaching-reward'; }
+    class tTeachingIntegration extends Polymer.Element {
+      static get is() { return 't-teaching-integration'; }
       static get properties() {
         return {
           content:{
@@ -74,9 +71,9 @@
           }
         }
       }
-      _removeItemReward(event) {
+      _removeItemIntegration(event) {
         this.set('content.show',false);
-        var eve = new CustomEvent('t-teaching-reward-remove',{
+        var eve = new CustomEvent('t-teaching-integration-remove',{
           bubbles:true,
           composed:true,
           detail:this.document
@@ -84,6 +81,6 @@
         this.dispatchEvent(eve);
       }
     }
-    window.customElements.define(tTeachingReward.is, tTeachingReward);
+    window.customElements.define(tTeachingIntegration.is, tTeachingIntegration);
   </script>
 </dom-module>
