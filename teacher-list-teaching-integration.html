@@ -1,0 +1,99 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="./teaching-item/t-teaching-integration.html">
+
+<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+
+<dom-module id="teacher-list-teaching-integration">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        @apply(--layout-vertical);
+        display: block;
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      .margin-style{
+        margin-top: 20px;
+      }
+
+      /* ---table --*/
+      .header {
+        text-align:left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        margin-top: 20px;
+        opacity: 0.54;
+        height:56px;
+        border-bottom-width:1px;
+        border-bottom-style:solid;
+        border-bottom-color: var(--divider-color);
+      }
+      /* ---table --*/
+
+      paper-button{
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+    </style>
+      <div class="flex font-face-big-bold margin-style">จัดทำหน่วยการเรียนรู้แบบบูรณาการ</div>
+      <paper-button raised on-click="_addItemIntegration">+ เพิ่ม</paper-button>
+      <div class="layout horizontal flex header">
+        <div class="flex">ปีการศึกษา</div>
+        <div class="flex">หน่วยที่</div>
+        <div class="flex">เรื่อง</div>
+        <div class="flex">รายละเอียดการบูรณาการ</div>
+        <div class="flex">จำนวนชั่วโมง</div>
+        <div class="flex">&nbsp;</div> 
+      </div>
+      <template is="dom-repeat" items="{{listIntegration}}" as="integration">
+        <t-teaching-Integration content="{{integration}}" 
+          value="{{value}}" 
+          on-t-teaching-Integration-remove="_removeItemIntegration">
+        </t-teaching-Integration>
+      </template>
+  </template>
+<script>
+    class TeacherListTeachingIntegration extends Polymer.Element {
+      static get is() { return 'teacher-list-teaching-integration'; }
+      static get properties() {
+        return {
+          listIntegration : {
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          value:{
+            type:Object,
+            notify:true,
+          }
+        }
+      }
+      
+      _addItemIntegration(event) {
+        this.push('listIntegration',{'show':true});
+      }
+      _removeItemIntegration(event) {
+        for(var i=0;i<this.listIntegration.length;i++) {
+          if(this.listIntegration[i].show == false) {         
+            this.splice('listIntegration',i,1);              
+            break;
+          }
+        }
+      }
+    }
+    window.customElements.define(TeacherListTeachingIntegration.is, TeacherListTeachingIntegration);
+  </script>
+  
+</dom-module>

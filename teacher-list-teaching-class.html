@@ -1,22 +1,17 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
+<link rel="import" href="./teaching-item/t-teaching-class.html">
+
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
-<link rel="import" href="./operating-item/t-operating-class.html">
-<dom-module id="teacher-list-operating">
+<dom-module id="teacher-list-teaching-class">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
+        @apply(--layout-vertical);
         display: block;
-         --paper-input-container-label: {
-            font-family: 'Kanit', sans-serif;
-        };
-        --paper-input-container-input: {
-          font-family: 'Kanit', sans-serif;
-        }
       }
       .font-face-big-bold {
         font-family: 'Kanit', sans-serif;
@@ -31,31 +26,45 @@
         margin-top: 20px;
       }
 
-      paper-input{
-        margin-left: 5px;
+      /* ---table --*/
+      .header {
+        text-align:left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        margin-top: 20px;
+        opacity: 0.54;
+        height:56px;
+        border-bottom-width:1px;
+        border-bottom-style:solid;
+        border-bottom-color: var(--divider-color);
       }
+      /* ---table --*/
 
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
       }
     </style>
-    <div class="layout horizontal">
-      <div class="flex font-face-big-bold margin-style">การทำหน้าที่ครูประจำชั้น</div>
-    </div>
-    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">การทำวิจัยในชั้นเรียน</div>
       <paper-button raised on-click="_addItemClass">+ เพิ่ม</paper-button>
-    </div>
-    <template is="dom-repeat" items="{{listClass}}" as="class">
-      <t-operating-class content="{{class}}" 
-        value="{{value}}" 
-        on-t-operating-class-remove="_removeItemClass">
-      </t-operating-class>
-    </template>
+      <div class="layout horizontal flex header">
+        <div class="flex">ปีการศึกษา</div>
+        <div class="flex">งานวิจัยเรื่อง</div>
+        <div class="flex">ระดับชั้น</div>
+        <div class="flex">ผลรับรอง</div>
+        <div class="flex">วิชา</div>
+        <div class="flex">&nbsp;</div> 
+      </div>
+      <template is="dom-repeat" items="{{listClass}}" as="class">
+        <t-teaching-Class content="{{class}}" 
+          value="{{value}}" 
+          on-t-teaching-class-remove="_removeItemClass">
+        </t-teaching-Class>
+      </template>
   </template>
 <script>
-    class TeacherListOperating extends Polymer.Element {
-      static get is() { return 'teacher-list-operating'; }
+    class TeacherListTeachingClass extends Polymer.Element {
+      static get is() { return 'teacher-list-teaching-class'; }
       static get properties() {
         return {
           listClass : {
@@ -71,6 +80,7 @@
           }
         }
       }
+      
       _addItemClass(event) {
         this.push('listClass',{'show':true});
       }
@@ -83,7 +93,7 @@
         }
       }
     }
-    window.customElements.define(TeacherListOperating.is, TeacherListOperating);
+    window.customElements.define(TeacherListTeachingClass.is, TeacherListTeachingClass);
   </script>
   
 </dom-module>

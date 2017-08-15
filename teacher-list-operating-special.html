@@ -5,8 +5,8 @@
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
-<link rel="import" href="./operating-item/t-operating-class.html">
-<dom-module id="teacher-list-operating">
+<link rel="import" href="./operating-item/t-operating-special.html">
+<dom-module id="teacher-list-operating-special">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -41,24 +41,24 @@
       }
     </style>
     <div class="layout horizontal">
-      <div class="flex font-face-big-bold margin-style">การทำหน้าที่ครูประจำชั้น</div>
+      <div class="flex font-face-big-bold margin-style">งานพิเศษที่ได้รับมอบหมาย</div>
     </div>
     <div class="layout horizontal">
-      <paper-button raised on-click="_addItemClass">+ เพิ่ม</paper-button>
+      <paper-button raised on-click="_addItemSpecial">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{listClass}}" as="class">
-      <t-operating-class content="{{class}}" 
+    <template is="dom-repeat" items="{{listSpecial}}" as="special">
+      <t-operating-special content="{{special}}" 
         value="{{value}}" 
-        on-t-operating-class-remove="_removeItemClass">
-      </t-operating-class>
+        on-t-operating-special-remove="_removeItemSpecial">
+      </t-operating-special>
     </template>
   </template>
 <script>
-    class TeacherListOperating extends Polymer.Element {
-      static get is() { return 'teacher-list-operating'; }
+    class TeacherListOperatingSpecial extends Polymer.Element {
+      static get is() { return 'teacher-list-operating-special'; }
       static get properties() {
         return {
-          listClass : {
+          listSpecial : {
             type:Array,
             notify:true,
             value:function() {
@@ -71,19 +71,20 @@
           }
         }
       }
-      _addItemClass(event) {
-        this.push('listClass',{'show':true});
+    
+      _addItemSpecial(event) {
+        this.push('listSpecial',{'show':true});
       }
-      _removeItemClass(event) {
-        for(var i=0;i<this.listClass.length;i++) {
-          if(this.listClass[i].show == false) {         
-            this.splice('listClass',i,1);              
+      _removeItemSpecial(event) {
+        for(var i=0;i<this.listSpecial.length;i++) {
+          if(this.listSpecial[i].show == false) {         
+            this.splice('listSpecial',i,1);              
             break;
           }
         }
       }
     }
-    window.customElements.define(TeacherListOperating.is, TeacherListOperating);
+    window.customElements.define(TeacherListOperatingSpecial.is, TeacherListOperatingSpecial);
   </script>
   
 </dom-module>

@@ -2,11 +2,11 @@
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="./teaching-item/t-teaching.html">
+<link rel="import" href="./teaching-item/t-teaching-reward.html">
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
-<dom-module id="teacher-list-teaching">
+<dom-module id="teacher-list-teaching-reward">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -51,32 +51,21 @@
         font-size: 100%;
       }
     </style>
-
-    <div class="flex font-face-big-bold margin-style">จัดทำแผนการจัดการเรียนรู้ </div>
-    <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
-    <div class="layout horizontal flex header">
-      <div class="flex">ปีการศึกษา</div>
-      <div class="flex">ภาคเรียนที่</div>
-      <div class="flex">รายวิชา</div>
-      <div class="flex">ระดับชั้น</div>
-      <div class="flex">จำนวนชั่วโมง</div>
-      <div class="flex">จำนวนหน่วยการเรียนรู้</div>
-      <div class="flex">จำนวนนักเรียน</div>
-      <div class="flex">จำนวนแผน</div>
-      <div class="flex">รูปแบบจัดกิจกรรม</div>
-      <div class="flex">วัดผลประเมินผล</div>
-      <div class="flex">&nbsp;</div> 
-    </div>
-    <template is="dom-repeat" items="{{list}}">
-      <t-teaching content="{{item}}" value="{{value}}" on-t-teaching-remove="_removeItem"></t-teaching>
-    </template>
+      <div class="flex font-face-big-bold margin-style">การพัฒนานักเรียนจนได้รับรางวัล / ยกย่องเชิดชูเกียรติ</div>
+      <paper-button raised on-click="_addItemReward">+ เพิ่ม</paper-button>
+      <template is="dom-repeat" items="{{listReward}}" as="reward">
+        <t-teaching-Reward content="{{reward}}" 
+          value="{{value}}" 
+          on-t-teaching-Integration-remove="_removeItemReward">
+        </t-teaching-Reward>
+      </template>
   </template>
 <script>
-    class TeacherListTeaching extends Polymer.Element {
-      static get is() { return 'teacher-list-teaching'; }
+    class TeacherListTeachingReward extends Polymer.Element {
+      static get is() { return 'teacher-list-teaching-reward'; }
       static get properties() {
         return {
-          list : {
+          listReward : {
             type:Array,
             notify:true,
             value:function() {
@@ -89,19 +78,20 @@
           }
         }
       }
-      _addItem(event) {
-        this.push('list',{'show':true});
+      
+      _addItemReward(event) {
+        this.push('listReward',{'show':true});
       }
-      _removeItem(event) {
-        for(var i=0;i<this.list.length;i++) {
-          if(this.list[i].show == false) {         
-            this.splice('list',i,1);              
+      _removeItemReward(event) {
+        for(var i=0;i<this.listReward.length;i++) {
+          if(this.listReward[i].show == false) {         
+            this.splice('listReward',i,1);              
             break;
           }
         }
       }
     }
-    window.customElements.define(TeacherListTeaching.is, TeacherListTeaching);
+    window.customElements.define(TeacherListTeachingReward.is, TeacherListTeachingReward);
   </script>
   
 </dom-module>

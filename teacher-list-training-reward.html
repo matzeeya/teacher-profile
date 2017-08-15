@@ -4,9 +4,9 @@
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
-<link rel="import" href="./training-item/t-training.html">
+<link rel="import" href="./training-item/t-training-reward.html">
 
-<dom-module id="teacher-list-training">
+<dom-module id="teacher-list-training-reward">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -31,24 +31,24 @@
       }
     </style>
     <div class="layout horizontal">
-      <div class="flex font-face-big-bold margin-style">การเข้าร่วมกิจกรรมทางวิชาการ อบรม สัมมนา ศึกษาดูงาน</div>
+      <div class="flex font-face-big-bold margin-style">การได้รับรางวัล / การประกาศเกียรติคุณ</div>
     </div>
     <div class="layout horizontal">
-      <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
+      <paper-button raised on-click="_addItemReward">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{list}}">
-      <t-training content="{{item}}" 
+    <template is="dom-repeat" items="{{listReward}}" as="reward">
+      <t-training-reward content="{{reward}}" 
         value="{{value}}" 
-        on-t-training-remove="_removeItem">
-      </t-training>
+        on-t-training-reward-remove="_removeItemReward">
+      </t-training-reward>
     </template>
   </template>
 <script>
-    class TeacherListTraining extends Polymer.Element {
-      static get is() { return 'teacher-list-training'; }
+    class TeacherListTrainingReward extends Polymer.Element {
+      static get is() { return 'teacher-list-training-reward'; }
       static get properties() {
         return {
-          list : {
+          listReward : {
             type:Array,
             notify:true,
             value:function() {
@@ -61,19 +61,20 @@
           }
         }
       }
-      _addItem(event) {
-        this.push('list',{'show':true});
+
+      _addItemReward(event) {
+        this.push('listReward',{'show':true});
       }
-      _removeItem(event) {
-        for(var i=0;i<this.list.length;i++) {
-          if(this.list[i].show == false) {         
-            this.splice('list',i,1);              
+      _removeItemReward(event) {
+        for(var i=0;i<this.listReward.length;i++) {
+          if(this.listReward[i].show == false) {         
+            this.splice('listReward',i,1);              
             break;
           }
         }
       }
     }
-    window.customElements.define(TeacherListTraining.is, TeacherListTraining);
+    window.customElements.define(TeacherListTrainingReward.is, TeacherListTrainingReward);
   </script>
   
 </dom-module>

@@ -15,8 +15,17 @@
 <link rel="import" href="teacher-list-work.html">
 <link rel="import" href="teacher-list-work-upsalary.html">
 <link rel="import" href="teacher-list-operating.html">
-<link rel="import" href="teacher-list-training.html">
+<link rel="import" href="teacher-list-operating-course.html">
+<link rel="import" href="teacher-list-operating-other.html">
+<link rel="import" href="teacher-list-operating-special.html">
 <link rel="import" href="teacher-list-teaching.html">
+<link rel="import" href="teacher-list-teaching-innovation.html">
+<link rel="import" href="teacher-list-teaching-integration.html">
+<link rel="import" href="teacher-list-teaching-class.html">
+<link rel="import" href="teacher-list-teaching-reward.html">
+<link rel="import" href="teacher-list-training.html">
+<link rel="import" href="teacher-list-training-lecturer.html">
+<link rel="import" href="teacher-list-training-reward.html">
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
@@ -81,13 +90,22 @@
             </teacher-list-work-upsalary>
           </div>
           <div>
-            <teacher-list-operating value="{{document.value}}"></teacher-list-operating>
+            <teacher-list-operating listClass="{{document.operating_class}}"></teacher-list-operating>
+            <teacher-list-operating-course listCourse="{{document.operating_course}}"></teacher-list-operating-course>
+            <teacher-list-operating-other listOther="{{document.operating_other}}"></teacher-list-operating-other>
+            <teacher-list-operating-special listSpecial="{{document.operating_special}}"></teacher-list-operating-special>
           </div>
           <div>
             <teacher-list-teaching value="{{document.value}}"></teacher-list-teaching>
+            <teacher-list-teaching-innovation value="{{document.value}}"></teacher-list-teaching-innovation>
+            <teacher-list-teaching-integration value="{{document.value}}"></teacher-list-teaching-integration>
+            <teacher-list-teaching-class value="{{document.value}}"></teacher-list-teaching-class>
+            <teacher-list-teaching-reward value="{{document.value}}"></teacher-list-teaching-reward>
           </div>
           <div>
             <teacher-list-training value="{{document.value}}"></teacher-list-training>
+            <teacher-list-training-lecturer value="{{document.value}}"></teacher-list-training-lecturer>
+            <teacher-list-training-reward value="{{document.value}}"></teacher-list-training-reward>
           </div>
         </iron-pages>
 
@@ -174,7 +192,11 @@
                   var list_properties = [
                     "education_list",
                     "work_history",
-                    "work_upsalary"
+                    "work_upsalary",
+                    "operating_class",
+                    "operating_course",
+                    "operating_other",
+                    "operating_special"
                   ];
 
                   list_properties.forEach(function(attr) {

@@ -4,9 +4,9 @@
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
-<link rel="import" href="./training-item/t-training.html">
+<link rel="import" href="./training-item/t-training-lecturer.html">
 
-<dom-module id="teacher-list-training">
+<dom-module id="teacher-list-training-lecturer">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -31,24 +31,24 @@
       }
     </style>
     <div class="layout horizontal">
-      <div class="flex font-face-big-bold margin-style">การเข้าร่วมกิจกรรมทางวิชาการ อบรม สัมมนา ศึกษาดูงาน</div>
+      <div class="flex font-face-big-bold margin-style">การเป็นวิทยากร</div>
     </div>
     <div class="layout horizontal">
-      <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
+      <paper-button raised on-click="_addItemLecturer">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{list}}">
-      <t-training content="{{item}}" 
+    <template is="dom-repeat" items="{{listLecturer}}" as="lecturer">
+      <t-training-lecturer content="{{lecturer}}" 
         value="{{value}}" 
-        on-t-training-remove="_removeItem">
-      </t-training>
+        on-t-training-lecturer-remove="_removeItemLecturer">
+      </t-training-lecturer>
     </template>
   </template>
 <script>
-    class TeacherListTraining extends Polymer.Element {
-      static get is() { return 'teacher-list-training'; }
+    class TeacherListTrainingLecturer extends Polymer.Element {
+      static get is() { return 'teacher-list-training-lecturer'; }
       static get properties() {
         return {
-          list : {
+          listLecturer : {
             type:Array,
             notify:true,
             value:function() {
@@ -61,19 +61,19 @@
           }
         }
       }
-      _addItem(event) {
-        this.push('list',{'show':true});
+      _addItemLecturer(event) {
+        this.push('listLecturer',{'show':true});
       }
-      _removeItem(event) {
-        for(var i=0;i<this.list.length;i++) {
-          if(this.list[i].show == false) {         
-            this.splice('list',i,1);              
+      _removeItemLecturer(event) {
+        for(var i=0;i<this.listLecturer.length;i++) {
+          if(this.listLecturer[i].show == false) {         
+            this.splice('listLecturer',i,1);              
             break;
           }
         }
       }
     }
-    window.customElements.define(TeacherListTraining.is, TeacherListTraining);
+    window.customElements.define(TeacherListTrainingLecturer.is, TeacherListTrainingLecturer);
   </script>
   
 </dom-module>

@@ -5,8 +5,8 @@
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
-<link rel="import" href="./operating-item/t-operating-class.html">
-<dom-module id="teacher-list-operating">
+<link rel="import" href="./operating-item/t-operating-other.html">
+<dom-module id="teacher-list-operating-other">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
@@ -41,24 +41,24 @@
       }
     </style>
     <div class="layout horizontal">
-      <div class="flex font-face-big-bold margin-style">การทำหน้าที่ครูประจำชั้น</div>
+      <div class="flex font-face-big-bold margin-style">งานอื่น ๆ ในโรงเรียน</div>
     </div>
     <div class="layout horizontal">
-      <paper-button raised on-click="_addItemClass">+ เพิ่ม</paper-button>
+      <paper-button raised on-click="_addItemOther">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{listClass}}" as="class">
-      <t-operating-class content="{{class}}" 
+    <template is="dom-repeat" items="{{listOther}}" as="other">
+      <t-operating-other content="{{other}}" 
         value="{{value}}" 
-        on-t-operating-class-remove="_removeItemClass">
-      </t-operating-class>
+        on-t-operating-other-remove="_removeItemOther">
+      </t-operating-other>
     </template>
   </template>
 <script>
-    class TeacherListOperating extends Polymer.Element {
-      static get is() { return 'teacher-list-operating'; }
+    class TeacherListOperatingOther extends Polymer.Element {
+      static get is() { return 'teacher-list-operating-other'; }
       static get properties() {
         return {
-          listClass : {
+          listOther : {
             type:Array,
             notify:true,
             value:function() {
@@ -71,19 +71,20 @@
           }
         }
       }
-      _addItemClass(event) {
-        this.push('listClass',{'show':true});
+      
+      _addItemOther(event) {
+        this.push('listOther',{'show':true});
       }
-      _removeItemClass(event) {
-        for(var i=0;i<this.listClass.length;i++) {
-          if(this.listClass[i].show == false) {         
-            this.splice('listClass',i,1);              
+      _removeItemOther(event) {
+        for(var i=0;i<this.listOther.length;i++) {
+          if(this.listOther[i].show == false) {         
+            this.splice('listOther',i,1);              
             break;
           }
         }
       }
     }
-    window.customElements.define(TeacherListOperating.is, TeacherListOperating);
+    window.customElements.define(TeacherListOperatingOther.is, TeacherListOperatingOther);
   </script>
   
 </dom-module>
