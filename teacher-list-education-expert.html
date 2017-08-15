@@ -1,0 +1,61 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+
+<dom-module id="teacher-list-education-expert">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+         --paper-input-container-label: {
+            font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+
+      .margin-style{
+        margin-top: 20px;
+      }
+
+      paper-input{
+        margin-left: 5px;
+      }
+
+    </style>
+    
+    <div class="layout horizontal">
+      <div class="flex font-face-big-bold margin-style">ความชำนาญ</div>
+    </div>
+    <div class="layout horizontal">
+      <div class="flex"><paper-input label="สาขาวิชาที่ชำนาญ" value="{{value.branch_expert}}"></paper-input></div>
+      <div class="flex"><paper-input label="ประสบการณ์การสอน (ปี)" value="{{value.experience}}"></paper-input></div>
+    </div>
+  </template>
+<script>
+    class TeacherListEducationExpert extends Polymer.Element {
+      static get is() { return 'teacher-list-education-expert'; }
+      static get properties() {
+        return {
+          value:{
+            type:Array,
+            notify:true,            
+            value:function() {
+              return [];
+            }
+          }
+        }
+      }
+    }
+    window.customElements.define(TeacherListEducationExpert.is, TeacherListEducationExpert);
+  </script>
+  
+</dom-module>

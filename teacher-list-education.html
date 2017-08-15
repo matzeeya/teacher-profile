@@ -49,13 +49,6 @@
     <template is="dom-repeat" items="{{list}}">
       <t-education content="{{item}}" on-t-education-remove="_removeItem"></t-education>
     </template>
-    <div class="layout horizontal">
-      <div class="flex font-face-big-bold margin-style">ความชำนาญ</div>
-    </div>
-    <div class="layout horizontal">
-      <div class="flex"><paper-input label="สาขาวิชาที่ชำนาญ"></paper-input></div>
-      <div class="flex"><paper-input label="ประสบการณ์การสอน (ปี)"></paper-input></div>
-    </div>
   </template>
 <script>
     class TeacherListEducation extends Polymer.Element {

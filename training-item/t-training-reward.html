@@ -1,9 +1,10 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../iron-icons/iron-icons.html">
-<link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../paper-input/paper-input.html">
+<link rel="import" href="../../paper-button/paper-button.html">
+<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../iron-icons/iron-icons.html">
+<link rel="import" href="../../vaadin-date-picker/vaadin-date-picker.html">
+<link rel="import" href="../../vaadin-upload/vaadin-upload.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
@@ -60,7 +61,10 @@
           <div class="flex-2 bottom-style"><vaadin-date-picker placeholder="วัน/เดือน/ปี"></vaadin-date-picker></div>
           <div class="flex-4"><paper-input label="รางวัลที่ได้รับ" value ="{{content.classroom}}"></paper-input></div>
           <div class="flex-1"><paper-input label="หน่วยงานที่มอบรางวัล" value ="{{content.studentAmount}}"></paper-input></div>
-          <div class="flex-2 layout horizontal center"><paper-button raised><iron-icon icon="icons:file-upload"></iron-icon>เอกสารอ้างอิง</paper-button></div>
+          <div class="flex-2 layout horizontal center">
+            <vaadin-upload accept=".pdf">
+            </vaadin-upload>
+          </div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItemReward"></iron-icon>
           </div>

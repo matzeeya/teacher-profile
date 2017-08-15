@@ -11,6 +11,7 @@
 
 <link rel="import" href="t-profile.html">
 <link rel="import" href="teacher-list-education.html">
+<link rel="import" href="teacher-list-education-expert.html">
 <link rel="import" href="teacher-list-work.html">
 <link rel="import" href="teacher-list-work-upsalary.html">
 <link rel="import" href="teacher-list-operating.html">
@@ -70,7 +71,8 @@
             <t-profile value="{{document.value}}"></t-profile>
           </div>
           <div>
-            <teacher-list-education value="{{document.value.education_list}}"></teacher-list-education>
+            <teacher-list-education list="{{document.value.education_list}}"></teacher-list-education>
+            <teacher-list-education-expert value="{{document.value}}"></teacher-list-education-expert>
           </div>
           <div>
             <teacher-list-work list="{{document.value.work_history}}"></teacher-list-work>
