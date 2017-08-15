@@ -36,6 +36,13 @@
         @apply(--layout-end);
       }
 
+      .content {
+        text-align:left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+        opacity: 0.70;
+      }
+
       paper-input{
         margin-left: 5px;
       }
@@ -53,7 +60,7 @@
       }
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
-        <div class="layout horizontal">
+        <div class="layout horizontal content">
           <div class="flex-1"><paper-input label="ปี พ.ศ." value ="{{content.year}}"></paper-input></div>
           <div class="flex-2 bottom-style"><vaadin-date-picker placeholder="วัน/เดือน/ปี"></vaadin-date-picker></div>
           <div class="flex-3"><paper-input label="เรื่องที่เป็นวิทยากร" value ="{{content.classroom}}"></paper-input></div>

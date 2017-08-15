@@ -30,6 +30,13 @@
         margin-top: 20px;
       }
 
+      .content {
+        text-align:left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+        opacity: 0.70;
+      }
+
       paper-input{
         margin-left: 5px;
       }
@@ -40,7 +47,7 @@
 
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
-        <div class="layout horizontal">
+        <div class="layout horizontal content">
           <div class="flex-1"><paper-input label="ปี พ.ศ." value ="{{content.year}}"></paper-input></div>
           <div class="flex-2"><paper-input label="หน่วยงานที่จัดอบรม/สัมมนา" value ="{{content.semester}}"></paper-input></div>
           <div class="flex-4"><paper-input label="หัวข้อที่อบรม/สัมมนา" value ="{{content.topic}}"></paper-input></div>
