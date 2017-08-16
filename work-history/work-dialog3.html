@@ -1,5 +1,6 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../iron-selector/iron-selector.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
@@ -24,66 +25,65 @@
         font-size: 90%;
       }
     </style>
-    <div class="layout horizontal">
-      <paper-checkbox>การวางแผนอัตรากำลัง</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การจัดสรรอัตรากำลังข้าราชการครูและบุคลากรทางการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การสรรหาและบรรจุแต่งตั้ง</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การเปลี่ยนตำแหน่งให้สูงขึ้น การย้ายข้าราชการครูและบุคลากรทางการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การดำเนินการเกี่ยวกับการเลื่อนขั้นเงินเดือน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การลาทุกประเภท</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การประเมินผลการปฏิบัติงาน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การดำเนินการทางวินัยและการลงโทษ</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การสั่งพักราชการและการสั่งให้ออกจากราชการไว้ก่อน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การรายงานการดำเนินการทางวินัยและการลงโทษ</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การอุทธรณ์และการร้องทุกข์</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การออกจากราชการ</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การจัดระบบและการจัดทำระเบียนประวัติ</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การจัดทำ บัญชีรายชื่อและให้ความเห็นเกี่ยวกับการเสนอขอพระราชทานเครื่องราชอิสริยาภรณ์</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การส่งเสริมการประเมินวิทยฐานะข้าราชการครูและบุคลากรทางการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การส่งเสริมและยกย่องเชิดชูเกียรติ</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การส่งเสริมมาตรฐานวิชาชีพและจรรยาบรรณวิชาชีพ</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การส่งเสริมวินัย คุณธรรมและจริยธรรมสำหรับข้าราชการครูและบุคลากรทางการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การริเริ่มส่งเสริมการขอรับใบอนุญาต</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การพัฒนาข้าราชการครูและบุคลากรทางการศึกษา การดำเนินการที่เกี่ยวกับการบริหารงานบุคคลให้เป็นไปตามกฎหมายว่าด้วยการนั้น</paper-checkbox>
-    </div>
+    <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">
+      <paper-checkbox name="การวางแผนอัตรากำลัง">
+        การวางแผนอัตรากำลัง
+      </paper-checkbox>
+      <paper-checkbox name="การสรรหาและบรรจุแต่งตั้ง">
+        การสรรหาและบรรจุแต่งตั้ง
+      </paper-checkbox>
+      <paper-checkbox name="การเปลี่ยนตำแหน่งให้สูงขึ้น การย้ายข้าราชการครูและบุคลากรทางการศึกษา">
+        การเปลี่ยนตำแหน่งให้สูงขึ้น การย้ายข้าราชการครูและบุคลากรทางการศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="การดำเนินการเกี่ยวกับการเลื่อนขั้นเงินเดือน">
+        การดำเนินการเกี่ยวกับการเลื่อนขั้นเงินเดือน
+      </paper-checkbox>
+      <paper-checkbox name="การลาทุกประเภท">
+        การลาทุกประเภท
+      </paper-checkbox>
+      <paper-checkbox name="การประเมินผลการปฏิบัติงาน">
+        การประเมินผลการปฏิบัติงาน
+      </paper-checkbox>
+      <paper-checkbox name="การดำเนินการทางวินัยและการลงโทษ">
+        การดำเนินการทางวินัยและการลงโทษ
+      </paper-checkbox>
+      <paper-checkbox name="การสั่งพักราชการและการสั่งให้ออกจากราชการไว้ก่อน">
+        การสั่งพักราชการและการสั่งให้ออกจากราชการไว้ก่อน
+      </paper-checkbox>
+      <paper-checkbox name="การรายงานการดำเนินการทางวินัยและการลงโทษ">
+        การรายงานการดำเนินการทางวินัยและการลงโทษ
+      </paper-checkbox>
+      <paper-checkbox name="การอุทธรณ์และการร้องทุกข์">
+        การอุทธรณ์และการร้องทุกข์
+      </paper-checkbox>
+      <paper-checkbox name="การออกจากราชการ">
+        การออกจากราชการ
+      </paper-checkbox>
+      <paper-checkbox name="การจัดระบบและการจัดทำระเบียนประวัติ">
+        การจัดระบบและการจัดทำระเบียนประวัติ
+      </paper-checkbox>
+      <paper-checkbox name="การจัดทำ บัญชีรายชื่อและให้ความเห็นเกี่ยวกับการเสนอขอพระราชทานเครื่องราชอิสริยาภรณ์">
+        การจัดทำ บัญชีรายชื่อและให้ความเห็นเกี่ยวกับการเสนอขอพระราชทานเครื่องราชอิสริยาภรณ์
+      </paper-checkbox>
+      <paper-checkbox name="การส่งเสริมการประเมินวิทยฐานะข้าราชการครูและบุคลากรทางการศึกษา">
+        การส่งเสริมการประเมินวิทยฐานะข้าราชการครูและบุคลากรทางการศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="การส่งเสริมและยกย่องเชิดชูเกียรติ">
+        การส่งเสริมและยกย่องเชิดชูเกียรติ
+      </paper-checkbox>
+      <paper-checkbox name="การส่งเสริมมาตรฐานวิชาชีพและจรรยาบรรณวิชาชีพ">
+        การส่งเสริมมาตรฐานวิชาชีพและจรรยาบรรณวิชาชีพ
+      </paper-checkbox>
+      <paper-checkbox name="การส่งเสริมวินัย คุณธรรมและจริยธรรมสำหรับข้าราชการครูและบุคลากรทางการศึกษา">
+        การส่งเสริมวินัย คุณธรรมและจริยธรรมสำหรับข้าราชการครูและบุคลากรทางการศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="การริเริ่มส่งเสริมการขอรับใบอนุญาต">
+        การริเริ่มส่งเสริมการขอรับใบอนุญาต
+      </paper-checkbox>
+      <paper-checkbox name="การพัฒนาข้าราชการครูและบุคลากรทางการศึกษา การดำเนินการที่เกี่ยวกับการบริหารงานบุคคลให้เป็นไปตามกฎหมายว่าด้วยการนั้น">
+        การพัฒนาข้าราชการครูและบุคลากรทางการศึกษา การดำเนินการที่เกี่ยวกับการบริหารงานบุคคลให้เป็นไปตามกฎหมายว่าด้วยการนั้น
+      </paper-checkbox>
+    </iron-selector>
   </template>
 
   <script>
@@ -91,7 +91,13 @@
       static get is() { return 'work-dialog3'; }
       static get properties() {
         return {
-        
+          list:{
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          }
         }
       }
       

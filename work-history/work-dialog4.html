@@ -1,5 +1,6 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../iron-selector/iron-selector.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
@@ -24,69 +25,71 @@
         font-size: 90%;
       }
     </style>
-    <div class="layout horizontal">
-      <paper-checkbox>การพัฒนาระบบและเครือข่ายข้อมูลสารสนเทศ</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การประสานงานและพัฒนาเครือข่ายการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การวางแผนการบริหารงานการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>งานวิจัยเพื่อพัฒนานโยบายและแผน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การจัดระบบการบริหารและพัฒนาองค์กร</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การพัฒนามาตรฐานการปฏิบัติงาน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>งานเทคโนโลยีเพื่อการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การดำเนินงานธุรการ</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การดูแลอาคารสถานที่และสภาพแวดล้อม</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การจัดทำสำมะโนผู้เรียน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การรับนักเรียน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การเสนอความเห็นเกี่ยวกับเรื่องการจัดตั้ง ยุบ รวมหรือเลิกสถานศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การประสานการจัดการศึกษาในระบบ นอกระบบและตามอัธยาศัย</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การระดมทรัพยากรเพื่อการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การทัศนศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>งานกิจการนักเรียน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การประชาสัมพันธ์งานการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การส่งเสริม สนับสนุนและประสานการจัดการศึกษาของบุคคล ชุมชน องค์กร หน่วยงานและสถานบันสังคมอื่นที่จัดการศึกษา</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>งานประสานราชการกับส่วนภูมิภาคและส่วนท้องถ่าน การรายงานผลการปฏิบัติงาน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>การจัดระบบการควบคุมภายในหน่วยงาน</paper-checkbox>
-    </div>
-    <div class="layout horizontal">
-      <paper-checkbox>แนวทางการจัดกิจกรรมเพื่อปรับเปลี่ยนพฤติกรรมในการลงโทษนักเรียน</paper-checkbox>
-    </div>
+    <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">
+      <paper-checkbox name="การพัฒนาระบบและเครือข่ายข้อมูลสารสนเทศ">
+        การพัฒนาระบบและเครือข่ายข้อมูลสารสนเทศ
+      </paper-checkbox>
+      <paper-checkbox name="การประสานงานและพัฒนาเครือข่ายการศึกษา">
+        การประสานงานและพัฒนาเครือข่ายการศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="การวางแผนการบริหารงานการศึกษา">
+        การวางแผนการบริหารงานการศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="งานวิจัยเพื่อพัฒนานโยบายและแผน">
+        งานวิจัยเพื่อพัฒนานโยบายและแผน
+      </paper-checkbox>
+      <paper-checkbox name="การจัดระบบการบริหารและพัฒนาองค์กร">
+        การจัดระบบการบริหารและพัฒนาองค์กร
+      </paper-checkbox>
+      <paper-checkbox name="การพัฒนามาตรฐานการปฏิบัติงาน">
+        การพัฒนามาตรฐานการปฏิบัติงาน
+      </paper-checkbox>
+      <paper-checkbox name="งานเทคโนโลยีเพื่อการศึกษา">
+        งานเทคโนโลยีเพื่อการศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="การดำเนินงานธุรการ">
+        การดำเนินงานธุรการ
+      </paper-checkbox>
+      <paper-checkbox name="การดูแลอาคารสถานที่และสภาพแวดล้อม">
+        การดูแลอาคารสถานที่และสภาพแวดล้อม
+      </paper-checkbox>
+      <paper-checkbox name="การจัดทำสำมะโนผู้เรียน">
+        การจัดทำสำมะโนผู้เรียน
+      </paper-checkbox>
+      <paper-checkbox name="การรับนักเรียน">
+        การรับนักเรียน
+      </paper-checkbox>
+      <paper-checkbox name="การเสนอความเห็นเกี่ยวกับเรื่องการจัดตั้ง ยุบ รวมหรือเลิกสถานศึกษา">
+        การเสนอความเห็นเกี่ยวกับเรื่องการจัดตั้ง ยุบ รวมหรือเลิกสถานศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="การประสานการจัดการศึกษาในระบบ นอกระบบและตามอัธยาศัย">
+        การประสานการจัดการศึกษาในระบบ นอกระบบและตามอัธยาศัย
+      </paper-checkbox>
+      <paper-checkbox name="การระดมทรัพยากรเพื่อการศึกษา">
+        การระดมทรัพยากรเพื่อการศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="การทัศนศึกษา">
+        การทัศนศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="งานกิจการนักเรียน">
+        งานกิจการนักเรียน
+      </paper-checkbox>
+      <paper-checkbox name="การประชาสัมพันธ์งานการศึกษา">
+        การประชาสัมพันธ์งานการศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="การส่งเสริม สนับสนุนและประสานการจัดการศึกษาของบุคคล ชุมชน องค์กร หน่วยงานและสถานบันสังคมอื่นที่จัดการศึกษา">
+        การส่งเสริม สนับสนุนและประสานการจัดการศึกษาของบุคคล ชุมชน องค์กร หน่วยงานและสถานบันสังคมอื่นที่จัดการศึกษา
+      </paper-checkbox>
+      <paper-checkbox name="งานประสานราชการกับส่วนภูมิภาคและส่วนท้องถ่าน การรายงานผลการปฏิบัติงาน">
+        งานประสานราชการกับส่วนภูมิภาคและส่วนท้องถ่าน การรายงานผลการปฏิบัติงาน
+      </paper-checkbox>
+      <paper-checkbox name="การจัดระบบการควบคุมภายในหน่วยงาน">
+        การจัดระบบการควบคุมภายในหน่วยงาน
+      </paper-checkbox>
+      <paper-checkbox name="แนวทางการจัดกิจกรรมเพื่อปรับเปลี่ยนพฤติกรรมในการลงโทษนักเรียน">
+        แนวทางการจัดกิจกรรมเพื่อปรับเปลี่ยนพฤติกรรมในการลงโทษนักเรียน
+      </paper-checkbox>
+    </iron-selector>
   </template>
 
   <script>
@@ -94,7 +97,13 @@
       static get is() { return 'work-dialog4'; }
       static get properties() {
         return {
-        
+          list:{
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          }
         }
       }
       
