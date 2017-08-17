@@ -43,6 +43,7 @@
         border-bottom-width:1px;
         border-bottom-style:solid;
         border-bottom-color: var(--divider-color);
+        @apply(--layout-center);
       }
       /* ---table --*/
 
@@ -68,7 +69,8 @@
       <div class="flex">&nbsp;</div> 
     </div>
     <template is="dom-repeat" items="{{list}}">
-      <t-teaching content="{{item}}" value="{{value}}" on-t-teaching-remove="_removeItem"></t-teaching>
+      <t-teaching content="{{item}}" on-t-teaching-remove="_removeItem">
+      </t-teaching>
     </template>
   </template>
 <script>
@@ -90,7 +92,10 @@
         }
       }
       _addItem(event) {
-        this.push('list',{'show':true});
+        this.push('list',{'show':true,'jobs':{
+          'type_1':[],
+          'type_2':[]
+          }});
       }
       _removeItem(event) {
         for(var i=0;i<this.list.length;i++) {

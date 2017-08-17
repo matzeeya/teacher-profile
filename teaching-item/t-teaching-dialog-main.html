@@ -72,46 +72,46 @@
           <div class="layout horizontal">
             <div class="flex">
               <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
-              <paper-listbox slot="dropdown-content">
-                <paper-item>2558</paper-item>
-                <paper-item>2559</paper-item>
-                <paper-item>2560</paper-item>
+              <paper-listbox selected="{{value.year}}" slot="dropdown-content">
+                <paper-item value="2558">2558</paper-item>
+                <paper-item value="2559">2559</paper-item>
+                <paper-item value="2560">2560</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
             </div>
             <div class="flex">
               <paper-dropdown-menu label="ภาคเรียนที่" class="marginleft custom">
-              <paper-listbox slot="dropdown-content">
-                <paper-item>1</paper-item>
-                <paper-item>2</paper-item>
+              <paper-listbox selected="{{value.semester}}" slot="dropdown-content">
+                <paper-item value="1">1</paper-item>
+                <paper-item value="2">2</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
           </div>
-            <div class="flex"><paper-input label="รายวิชา"></paper-input></div>
+            <div class="flex"><paper-input label="รายวิชา" value="{{value.subject}}"></paper-input></div>
             <div class="flex">
               <paper-dropdown-menu label="ระดับชั้น" class="marginleft custom">
-              <paper-listbox slot="dropdown-content">
-                <paper-item>ประถมศึกษาปีที่ 1</paper-item>
-                <paper-item>ประถมศึกษาปีที่ 2</paper-item>
-                <paper-item>ประถมศึกษาปีที่ 3</paper-item>
-                <paper-item>ประถมศึกษาปีที่ 4</paper-item>
-                <paper-item>ประถมศึกษาปีที่ 5</paper-item>
-                <paper-item>ประถมศึกษาปีที่ 6</paper-item>
-                <paper-item>มัธยมศึกษาปีที่ 1</paper-item>
-                <paper-item>มัธยมศึกษาปีที่ 2</paper-item>
-                <paper-item>มัธยมศึกษาปีที่ 3</paper-item>
-                <paper-item>มัธยมศึกษาปีที่ 4</paper-item>
-                <paper-item>มัธยมศึกษาปีที่ 5</paper-item>
-                <paper-item>มัธยมศึกษาปีที่ 6</paper-item>
+              <paper-listbox selected="{{value.class}}" slot="dropdown-content">
+                <paper-item value="ประถมศึกษาปีที่ 1">ประถมศึกษาปีที่ 1</paper-item>
+                <paper-item value="ประถมศึกษาปีที่ 2">ประถมศึกษาปีที่ 2</paper-item>
+                <paper-item value="ประถมศึกษาปีที่ 3">ประถมศึกษาปีที่ 3</paper-item>
+                <paper-item value="ประถมศึกษาปีที่ 4">ประถมศึกษาปีที่ 4</paper-item>
+                <paper-item value="ประถมศึกษาปีที่ 5">ประถมศึกษาปีที่ 5</paper-item>
+                <paper-item value="ประถมศึกษาปีที่ 6">ประถมศึกษาปีที่ 6</paper-item>
+                <paper-item value="มัธยมศึกษาปีที่ 1">มัธยมศึกษาปีที่ 1</paper-item>
+                <paper-item value="มัธยมศึกษาปีที่ 2">มัธยมศึกษาปีที่ 2</paper-item>
+                <paper-item value="มัธยมศึกษาปีที่ 3">มัธยมศึกษาปีที่ 3</paper-item>
+                <paper-item value="มัธยมศึกษาปีที่ 4">มัธยมศึกษาปีที่ 4</paper-item>
+                <paper-item value="มัธยมศึกษาปีที่ 5">มัธยมศึกษาปีที่ 5</paper-item>
+                <paper-item value="มัธยมศึกษาปีที่ 6">มัธยมศึกษาปีที่ 6</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
           </div>
           </div>
         <div class="layout horizontal">
-            <div class="flex"><paper-input label="จำนวนชั่วโมง"></paper-input></div>
-            <div class="flex"><paper-input label="จำนวนหน่วยการเรียนรู้"></paper-input></div>
-            <div class="flex"><paper-input label="จำนวนนักเรียน"></paper-input></div>
-            <div class="flex"><paper-input label="จำนวนแผน"></paper-input></div>
+            <div class="flex"><paper-input label="จำนวนชั่วโมง" value="{{value.hour}}"></paper-input></div>
+            <div class="flex"><paper-input label="จำนวนหน่วยการเรียนรู้" value="{{value.unit}}"></paper-input></div>
+            <div class="flex"><paper-input label="จำนวนนักเรียน" value="{{value.student_unit}}"></paper-input></div>
+            <div class="flex"><paper-input label="จำนวนแผน" value="{{value.plan}}"></paper-input></div>
           </div>  
 
           <paper-tabs selected="{{page}}" noink scrollable fit-container>
@@ -125,12 +125,8 @@
           
           
           <iron-pages selected="{{page}}"> 
-            <div>
-              <t-teaching-dialog-activity></t-teaching-dialog-activity>
-            </div>
-            <div>
-              <t-teaching-dialog-evaluation></t-teaching-dialog-evaluation>
-            </div>
+            <t-teaching-dialog-activity  list="{{value.jobs.type_1}}"></t-teaching-dialog-activity>
+            <t-teaching-dialog-evaluation  list="{{value.jobs.type_1}}"></t-teaching-dialog-evaluation>
           </iron-pages>
         </div>
       <div class="buttons">
@@ -155,6 +151,13 @@
             type: Boolean,
             notify:true,
             value:0
+          },
+          value:{
+            type:Object,
+            notify:true,
+            value:function() {
+              return {};
+            }
           }
         }
       }

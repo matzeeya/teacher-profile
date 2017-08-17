@@ -63,6 +63,12 @@
       <div class="flex">{{content.type}}</div>
       <div class="flex">{{content.unit}}</div>
       <div class="flex">
+          <!--<template is="dom-if" if="{{content.jobs.type_1}}">
+              <p>P1</p>
+          </template>
+          <template is="dom-if" if="{{!content.jobs.type_1}}">
+              <p>P2</p>
+          </template>-->
         <div class="vertical-style font-face-small-bold">กลุ่มบริหารงานวิชาการ</div>
         <template is="dom-repeat" items="{{content.jobs.type_1}}" as="type1">
           <div class="vertical-style">- {{type1}}</div>

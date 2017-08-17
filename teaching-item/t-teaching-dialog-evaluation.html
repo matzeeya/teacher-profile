@@ -1,5 +1,6 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../iron-selector/iron-selector.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
@@ -8,7 +9,9 @@
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
+        @apply(--layout-vertical);
         display: block;
+        padding:10px;
       }
       .font-face-big-bold {
         font-family: 'Kanit', sans-serif;
@@ -24,38 +27,24 @@
         font-size: 90%;
       }
 </style>
-<div class="layout vertical">
-  <div class="layout horizontal">
+  <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">
     <div class="flex"><paper-checkbox>สอบอัตนัย</paper-checkbox></div>
     <div class="flex"><paper-checkbox>การปฏิบัติการทดลอง</paper-checkbox></div>
     <div class="flex"><paper-checkbox>การสืบค้นและส่งงานทาง E-mail</paper-checkbox></div>
-  </div>
-  <div class="layout horizontal">
     <div class="flex"><paper-checkbox>การสังเกต</paper-checkbox></div>
     <div class="flex"><paper-checkbox>การทำโครงการดูแล อนุรักษ์</paper-checkbox></div>
     <div class="flex"><paper-checkbox>การทำแบบฝึกหัด</paper-checkbox></div>
-  </div>
-  <div class="layout horizontal">
     <div class="flex"><paper-checkbox>การมอบหมายงาน</paper-checkbox></div>
     <div class="flex"><paper-checkbox>สิ่งแวดล้อม</paper-checkbox></div>
     <div class="flex"><paper-checkbox>การทำโครงงานวิทยาศาสตร์</paper-checkbox></div>
-  </div>
-  <div class="layout horizontal">
     <div class="flex"><paper-checkbox>ชิ้นงาน</paper-checkbox></div>
     <div class="flex"><paper-checkbox>สอบปรนัย</paper-checkbox></div>
     <div class="flex"><paper-checkbox>อื่นๆ</paper-checkbox></div>
-  </div>
-  <div class="layout horizontal">
     <div class="flex"><paper-checkbox>การนำเสนองานตามหัวข้อมอบหมาย</paper-checkbox></div>
     <div class="flex"><paper-checkbox>การรายงาน</paper-checkbox></div>
-    <div class="flex">&nbsp;</div>
-  </div>
-  <div class="layout horizontal">
     <div class="flex"><paper-checkbox>การสัมภาษณ์</paper-checkbox></div>
     <div class="flex"><paper-checkbox>ถาม-ตอบ</paper-checkbox></div>
-    <div class="flex">&nbsp;</div>
-  </div>
-</div>
+  </iron-selector>
   </template>
 
   <script>
@@ -63,7 +52,13 @@
       static get is() { return 't-teaching-dialog-evaluation'; }
       static get properties() {
         return {
-        
+          list:{
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          }
         }
       }
       

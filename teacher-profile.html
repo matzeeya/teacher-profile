@@ -96,11 +96,11 @@
             <teacher-list-operating-special listSpecial="{{document.operating_special}}"></teacher-list-operating-special>
           </div>
           <div>
-            <teacher-list-teaching value="{{document.value}}"></teacher-list-teaching>
-            <teacher-list-teaching-innovation value="{{document.value}}"></teacher-list-teaching-innovation>
-            <teacher-list-teaching-integration value="{{document.value}}"></teacher-list-teaching-integration>
-            <teacher-list-teaching-class value="{{document.value}}"></teacher-list-teaching-class>
-            <teacher-list-teaching-reward value="{{document.value}}"></teacher-list-teaching-reward>
+            <teacher-list-teaching list="{{document.teaching}}"></teacher-list-teaching>
+            <teacher-list-teaching-innovation list="{{document.teaching_innovation}}"></teacher-list-teaching-innovation>
+            <teacher-list-teaching-integration list="{{document.teaching_integration}}"></teacher-list-teaching-integration>
+            <teacher-list-teaching-class list="{{document.teaching_class}}"></teacher-list-teaching-class>
+            <teacher-list-teaching-reward list="{{document.teaching_reward}}"></teacher-list-teaching-reward>
           </div>
           <div>
             <teacher-list-training value="{{document.value}}"></teacher-list-training>
@@ -196,7 +196,12 @@
                     "operating_class",
                     "operating_course",
                     "operating_other",
-                    "operating_special"
+                    "operating_special",
+                    "teaching",
+                    "teaching_innovation",
+                    "teaching_integration",
+                    "teaching_class",
+                    "teaching_reward"
                   ];
 
                   list_properties.forEach(function(attr) {
