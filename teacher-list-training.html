@@ -36,7 +36,7 @@
     <div class="layout horizontal">
       <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{list}}">
+    <template is="dom-repeat" items="{{listTraining}}">
       <t-training content="{{item}}" 
         on-t-training-remove="_removeItem">
       </t-training>
@@ -47,7 +47,7 @@
       static get is() { return 'teacher-list-training'; }
       static get properties() {
         return {
-          list : {
+          listTraining : {
             type:Array,
             notify:true,
             value:function() {
@@ -61,12 +61,12 @@
         }
       }
       _addItem(event) {
-        this.push('list',{'show':true});
+        this.push('listTraining',{'show':true});
       }
       _removeItem(event) {
-        for(var i=0;i<this.list.length;i++) {
-          if(this.list[i].show == false) {         
-            this.splice('list',i,1);              
+        for(var i=0;i<this.listTraining.length;i++) {
+          if(this.listTraining[i].show == false) {         
+            this.splice('listTraining',i,1);              
             break;
           }
         }

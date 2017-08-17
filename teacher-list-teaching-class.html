@@ -56,7 +56,7 @@
         <div class="flex">วิชา</div>
         <div class="flex">&nbsp;</div> 
       </div>
-      <template is="dom-repeat" items="{{listClass}}" as="class">
+      <template is="dom-repeat" items="{{listTeachingClass}}" as="class">
         <t-teaching-Class content="{{class}}" 
           on-t-teaching-class-remove="_removeItemClass">
         </t-teaching-Class>
@@ -67,7 +67,7 @@
       static get is() { return 'teacher-list-teaching-class'; }
       static get properties() {
         return {
-          listClass : {
+          listTeachingClass : {
             type:Array,
             notify:true,
             value:function() {
@@ -82,15 +82,15 @@
       }
       
       _addItemClass(event) {
-        this.push('listClass',{'show':true,'jobs':{
+        this.push('listTeachingClass',{'show':true,'jobs':{
           'approve':[],
           'subject':[]
           }});
       }
       _removeItemClass(event) {
-        for(var i=0;i<this.listClass.length;i++) {
-          if(this.listClass[i].show == false) {         
-            this.splice('listClass',i,1);              
+        for(var i=0;i<this.listTeachingClass.length;i++) {
+          if(this.listTeachingClass[i].show == false) {         
+            this.splice('listTeachingClass',i,1);              
             break;
           }
         }

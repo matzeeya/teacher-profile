@@ -80,7 +80,7 @@
             <t-profile value="{{document.value}}"></t-profile>
           </div>
           <div>
-            <teacher-list-education list="{{document.value.education_list}}"></teacher-list-education>
+            <teacher-list-education listEducation="{{document.value.education_list}}"></teacher-list-education>
             <teacher-list-education-expert value="{{document.value}}"></teacher-list-education-expert>
           </div>
           <div>
@@ -90,22 +90,22 @@
             </teacher-list-work-upsalary>
           </div>
           <div>
-            <teacher-list-operating listClass="{{document.operating_class}}"></teacher-list-operating>
-            <teacher-list-operating-course listCourse="{{document.operating_course}}"></teacher-list-operating-course>
-            <teacher-list-operating-other listOther="{{document.operating_other}}"></teacher-list-operating-other>
-            <teacher-list-operating-special listSpecial="{{document.operating_special}}"></teacher-list-operating-special>
+            <teacher-list-operating listClass="{{document.value.operating_class}}"></teacher-list-operating>
+            <teacher-list-operating-course listCourse="{{document.value.operating_course}}"></teacher-list-operating-course>
+            <teacher-list-operating-other listOther="{{document.value.operating_other}}"></teacher-list-operating-other>
+            <teacher-list-operating-special listSpecial="{{document.value.operating_special}}"></teacher-list-operating-special>
           </div>
           <div>
-            <teacher-list-teaching list="{{document.teaching}}"></teacher-list-teaching>
-            <teacher-list-teaching-innovation listInnovation="{{document.teaching_innovation}}"></teacher-list-teaching-innovation>
-            <teacher-list-teaching-integration listIntegration="{{document.teaching_integration}}"></teacher-list-teaching-integration>
-            <teacher-list-teaching-class listClass="{{document.teaching_class}}"></teacher-list-teaching-class>
-            <teacher-list-teaching-reward listReward="{{document.teaching_reward}}"></teacher-list-teaching-reward>
+            <teacher-list-teaching listTeaching="{{document.value.teaching}}"></teacher-list-teaching>
+            <teacher-list-teaching-innovation listInnovation="{{document.value.teaching_innovation}}"></teacher-list-teaching-innovation>
+            <teacher-list-teaching-integration listIntegration="{{document.value.teaching_integration}}"></teacher-list-teaching-integration>
+            <teacher-list-teaching-class listTeachingClass="{{document.value.teaching_class}}"></teacher-list-teaching-class>
+            <teacher-list-teaching-reward listReward="{{document.value.teaching_reward}}"></teacher-list-teaching-reward>
           </div>
           <div>
-            <teacher-list-training list="{{document.training}}"></teacher-list-training>
-            <teacher-list-training-lecturer listLecturer="{{document.training_lecturer}}"></teacher-list-training-lecturer>
-            <teacher-list-training-reward listReward="{{document.training_reward}}"></teacher-list-training-reward>
+            <teacher-list-training listTraining="{{document.value.training}}"></teacher-list-training>
+            <teacher-list-training-lecturer listLecturer="{{document.value.training_lecturer}}"></teacher-list-training-lecturer>
+            <teacher-list-training-reward listTrainingReward="{{document.value.training_reward}}"></teacher-list-training-reward>
           </div>
         </iron-pages>
 
@@ -153,6 +153,7 @@
       }
 
       _isActive(active) {
+        this.set('active',false);
         if(active) {
           this.$.dialog.open();
         } else {

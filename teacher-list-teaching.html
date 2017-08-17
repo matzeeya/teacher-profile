@@ -68,7 +68,7 @@
       <div class="flex">วัดผลประเมินผล</div>
       <div class="flex">&nbsp;</div> 
     </div>
-    <template is="dom-repeat" items="{{list}}">
+    <template is="dom-repeat" items="{{listTeaching}}">
       <t-teaching content="{{item}}" on-t-teaching-remove="_removeItem">
       </t-teaching>
     </template>
@@ -78,7 +78,7 @@
       static get is() { return 'teacher-list-teaching'; }
       static get properties() {
         return {
-          list : {
+          listTeaching : {
             type:Array,
             notify:true,
             value:function() {
@@ -92,15 +92,15 @@
         }
       }
       _addItem(event) {
-        this.push('list',{'show':true,'jobs':{
+        this.push('listTeaching',{'show':true,'jobs':{
           'type_1':[],
           'type_2':[]
           }});
       }
       _removeItem(event) {
-        for(var i=0;i<this.list.length;i++) {
-          if(this.list[i].show == false) {         
-            this.splice('list',i,1);              
+        for(var i=0;i<this.listTeaching.length;i++) {
+          if(this.listTeaching[i].show == false) {         
+            this.splice('listTeaching',i,1);              
             break;
           }
         }
