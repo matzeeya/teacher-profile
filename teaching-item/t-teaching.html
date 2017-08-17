@@ -58,13 +58,11 @@
         <div class="flex">{{content.student_unit}}</div>
         <div class="flex">{{content.plan}}</div>
         <div class="flex">
-          <div class="vertical-style font-face-small-bold">รูปแบบจัดกิจกรรม</div>
           <template is="dom-repeat" items="{{content.jobs.type_1}}" as="type1">
             <div class="vertical-style">- {{type1}}</div>
           </template>
         </div>
         <div class="flex">
-          <div class="vertical-style font-face-small-bold">วัดผลประเมินผล</div>
           <template is="dom-repeat" items="{{content.jobs.type_2}}" as="type2">
             <div class="vertical-style">- {{type2}}</div>
           </template>
@@ -73,7 +71,7 @@
         <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
       </div>
     </div>  
-    <t-teaching-dialog-main active="{{active}}"></t-teaching-dialog-main>
+    <t-teaching-dialog-main active="{{active}}" value="{{content}}"></t-teaching-dialog-main>
   </template>
 
   <script>

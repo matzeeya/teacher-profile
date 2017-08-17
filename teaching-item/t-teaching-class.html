@@ -49,16 +49,24 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex">ปีการศึกษา</div>
-      <div class="flex">งานวิจัยเรื่อง</div>
-      <div class="flex">ระดับชั้น</div>
-      <div class="flex">ผลรับรอง</div>
-      <div class="flex">วิชา</div>
+      <div class="flex">{{content.year}}</div>
+      <div class="flex">{{content.title}}</div>
+      <div class="flex">{{content.class}}</div>
+      <div class="flex">
+        <template is="dom-repeat" items="{{content.jobs.approve}}" as="approve">
+          <div class="vertical-style">- {{approve}}</div>
+        </template>
+      </div>
+      <div class="flex">
+        <template is="dom-repeat" items="{{content.jobs.subject}}" as="subject">
+          <div class="vertical-style">- {{subject}}</div>
+        </template>
+      </div>
       <div class="flex layout horizontal center">
         <iron-icon icon="icons:delete"  on-click="_removeItemClass"></iron-icon>
       </div>
     </div>  
-    <t-teaching-dialog-class active="{{active}}"></t-teaching-dialog-class>
+    <t-teaching-dialog-class active="{{active}}" value="{{content}}"></t-teaching-dialog-class>
   </template>
 
   <script>

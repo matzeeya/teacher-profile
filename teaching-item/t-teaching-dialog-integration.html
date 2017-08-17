@@ -4,6 +4,7 @@
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../iron-icons/iron-icons.html">
 
+<link rel="import" href="t-teaching-dialog-integration-detail.html">
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
 <dom-module id="t-teaching-dialog-integration">
@@ -68,16 +69,16 @@
           <div class="layout horizontal">
             <div class="flex">
               <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
-              <paper-listbox slot="dropdown-content">
-                <paper-item>2558</paper-item>
-                <paper-item>2559</paper-item>
-                <paper-item>2560</paper-item>
-              </paper-listbox>
+                <paper-listbox attr-for-selected="value" selected="{{value.year}}" slot="dropdown-content">
+                  <paper-item value="2558">2558</paper-item>
+                  <paper-item value="2559">2559</paper-item>
+                  <paper-item value="2560">2560</paper-item>
+                </paper-listbox>
             </paper-dropdown-menu>
             </div>
-            <div class="flex"><paper-input label="หน่วยที่"></paper-input></div>
-            <div class="flex"><paper-input label="เรื่อง"></paper-input></div>
-            <div class="flex"><paper-input label="จำนวนชั่วโมง"></paper-input></div>
+            <div class="flex"><paper-input label="เรื่อง" value="{{value.chapter}}"></paper-input></div>
+            <div class="flex"><paper-input label="หน่วยที่" value="{{value.unit}}"></paper-input></div>
+            <div class="flex"><paper-input label="จำนวนชั่วโมง" value="{{value.hour}}"></paper-input></div>
           </div>
           <div class="layout horizontal">
             <div class="flex font-face-big-bold">รายละเอียดการบูรณาการ</div>
@@ -85,25 +86,7 @@
           <div class="layout horizontal">
             <div class="flex font-face-normal">ลักษณะการบูรณาการ ประกอบด้วย</div>
           </div>
-          <div class="layout horizontal">
-            <paper-checkbox>การบูรณาการเชิงเนื้อหาสาระ  เป็นการผสมผสานเชื่อมโยงเนื้อหาสาระ ในลักษณะหลอมรวม</paper-checkbox>
-          </div>
-          <div class="layout horizontal">
-            <paper-checkbox>การบูรณาการเชิงวิธีการ เป็นการผสมผสานวิธีการสอนแบบต่าง ๆ เข้าใจการสอน โดยการจัดกิจกรรมการเรียนการสอนที่หลากหลายวิธี การสนทนา การอภิปราย การใช้คำถาม การบรรยาย การค้นคว้าและการทำงานกลุ่ม การไปศึกษานอกห้องเรียน และการนำเสนอข้อมูลเป็นต้น</paper-checkbox>
-          </div>
-          <div class="layout horizontal">
-            <paper-checkbox>การบูรณาการความรู้กับกระบวนการเรียนรู้ โดยออกแบบการเรียนรู้ให้มีทั้งการให้ความรู้และกระบวนการไปพร้อม ๆ กัน เช่น กระบวนการแสวงหาความรู้ กระบวนการแก้ปัญหา และกระบวนการสร้างความคิดรวบยอดเป็นต้น</paper-checkbox>
-          </div>
-          <div class="layout horizontal">
-            <paper-checkbox>การบูรณาการความรู้ ความคิด กับคุณธรรม โดยเน้นทั้งพุทธิพิสัยและจิตพิสัยเป็นการเรียนที่สอดแทรกคุณธรรมจริยธรรมไปพร้อม ๆ กัน</paper-checkbox>
-          </div>
-          <div class="layout horizontal">
-            <paper-checkbox>การบูรณาการความรู้กับการปฏิบัติ เน้นการปฏิบัติจริง ควบคู่ไปพร้อม ๆ กับการจัดการเรียนรู้</paper-checkbox>
-          </div>
-          <div class="layout horizontal">
-            <paper-checkbox>การบูรณาการความรู้ในโรงเรียนกับชีวิตจริงของนักเรียน พยายามให้เด็กได้เรียนรู้เนื้อหาที่สัมพันธ์กับชีวิตจริงของนักเรียน เพื่อให้นักเรียนได้เห็นคุณค่าและความหมายในสิ่งที่เรียน</paper-checkbox>
-          </div>
-          </div>
+          <t-teaching-dialog-integration-detail list="{{value.jobs.detail}}"></t-teaching-dialog-integration-detail>
         </div>
       <div class="buttons">
         <paper-button dialog-confirm>ตกลง</paper-button>
@@ -122,6 +105,13 @@
             reflectToAttribute:true,
             notify:true,
             observer:'_isActive'
+          },
+          value:{
+            type:Object,
+            notify:true,
+            value:function() {
+              return {};
+            }
           }
         }
       }

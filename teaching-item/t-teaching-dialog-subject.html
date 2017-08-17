@@ -1,5 +1,6 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../iron-selector/iron-selector.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
@@ -8,7 +9,9 @@
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
+        @apply(--layout-vertical);
         display: block;
+        padding:10px;
       }
       .font-face-big-bold {
         font-family: 'Kanit', sans-serif;
@@ -23,25 +26,17 @@
         font-family: 'Kanit', sans-serif;
         font-size: 90%;
       }
-</style>
-<div class="layout vertical">
-  <div class="layout horizontal">
-    <div class="flex"><paper-checkbox>กลุ่มสาระการเรียนรู้ภาษาไทย</paper-checkbox></div>
-    <div class="flex"><paper-checkbox>กลุ่มสาระการเรียนรู้สุขศึกษาและพลศึกษา</paper-checkbox></div>
-  </div>
-  <div class="layout horizontal">
-    <div class="flex"><paper-checkbox>กลุ่มสาระการเรียนรู้คณิตศาสตร์</paper-checkbox></div>
-    <div class="flex"><paper-checkbox>กลุ่มสาระการเรียนรู้ศิลปะ</paper-checkbox></div>
-  </div>
-  <div class="layout horizontal">
-    <div class="flex"><paper-checkbox>กลุ่มสาระการเรียนรู้วิทยาศาสตร์</paper-checkbox></div>
-    <div class="flex"><paper-checkbox>กลุ่มสาระการเรียนรู้การงานอาชีพและเทคโนโลยี</paper-checkbox></div>
-  </div>
-  <div class="layout horizontal">
-    <div class="flex"><paper-checkbox>กลุ่มสาระการเรียนรู้สังคมศึกษา ศาสนา และวัฒนธรรม</paper-checkbox></div>
-    <div class="flex"><paper-checkbox>กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ</paper-checkbox></div>
-  </div>
-</div>
+  </style>
+  <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">
+    <paper-checkbox name="กลุ่มสาระการเรียนรู้ภาษาไทย">กลุ่มสาระการเรียนรู้ภาษาไทย</paper-checkbox>
+    <paper-checkbox name="กลุ่มสาระการเรียนรู้สุขศึกษาและพลศึกษา">กลุ่มสาระการเรียนรู้สุขศึกษาและพลศึกษา</paper-checkbox>
+    <paper-checkbox name="กลุ่มสาระการเรียนรู้คณิตศาสตร์">กลุ่มสาระการเรียนรู้คณิตศาสตร์</paper-checkbox>
+    <paper-checkbox name="กลุ่มสาระการเรียนรู้ศิลปะ">กลุ่มสาระการเรียนรู้ศิลปะ</paper-checkbox>
+    <paper-checkbox name="กลุ่มสาระการเรียนรู้วิทยาศาสตร์">กลุ่มสาระการเรียนรู้วิทยาศาสตร์</paper-checkbox>
+    <paper-checkbox name="กลุ่มสาระการเรียนรู้การงานอาชีพและเทคโนโลยี">กลุ่มสาระการเรียนรู้การงานอาชีพและเทคโนโลยี</paper-checkbox>
+    <paper-checkbox name="กลุ่มสาระการเรียนรู้สังคมศึกษา ศาสนา และวัฒนธรรม">กลุ่มสาระการเรียนรู้สังคมศึกษา ศาสนา และวัฒนธรรม</paper-checkbox>
+    <paper-checkbox name="กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ">กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ</paper-checkbox>
+  </iron-selector>
   </template>
 
   <script>
@@ -49,7 +44,13 @@
       static get is() { return 't-teaching-dialog-subject'; }
       static get properties() {
         return {
-        
+          list:{
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          }
         }
       }
       

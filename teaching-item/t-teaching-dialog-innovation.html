@@ -4,7 +4,10 @@
 <link rel="import" href="../../paper-tabs/paper-tabs.html">
 <link rel="import" href="../../iron-pages/iron-pages.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../iron-selector/iron-selector.html">
 <link rel="import" href="../../iron-icons/iron-icons.html">
+
+<link rel="import" href="t-teaching-dialog-innovation-type.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
@@ -12,6 +15,7 @@
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
       :host {
+        @apply(--layout-vertical);
         display: block;
       }
       .font-face-big-bold {
@@ -63,6 +67,7 @@
       paper-checkbox{
         font-family: 'Kanit', sans-serif;
         font-size: 90%;
+        margin-left:10px;
       }
     </style>
       <paper-dialog id="dialog" modal>
@@ -70,44 +75,20 @@
           <div class="layout horizontal">
             <div class="flex">
               <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
-              <paper-listbox slot="dropdown-content">
-                <paper-item>2558</paper-item>
-                <paper-item>2559</paper-item>
-                <paper-item>2560</paper-item>
-              </paper-listbox>
+                <paper-listbox attr-for-selected="value" selected="{{value.year}}" slot="dropdown-content">
+                  <paper-item value="2558">2558</paper-item>
+                  <paper-item value="2559">2559</paper-item>
+                  <paper-item value="2560">2560</paper-item>
+                </paper-listbox>
             </paper-dropdown-menu>
             </div>
-            <div class="flex"><paper-input label="ชื่อสื่อ/นวัตกรรม"></paper-input></div>
-            <div class="flex"><paper-input label="จำนวนชิ้น"></paper-input></div>
+            <div class="flex"><paper-input label="ชื่อสื่อ/นวัตกรรม" value="{{value.innovation_name}}"></paper-input></div>
+            <div class="flex"><paper-input label="จำนวนชิ้น" value="{{value.unit}}"></paper-input></div>
           </div>
           <div class="layout horizontal">
             <div class="flex font-face-big-bold">ประเภท</div>
           </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>ใบความรู้</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>สื่อบทเรียนแผ่นเดียว</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>วิดีโอคลิป</paper-checkbox></div>
-          </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>แผ่นภาพ/แผ่นใส</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>ภูมิปัญญาท้องถิ่น</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>ศูนย์การเรียนรู้</paper-checkbox></div>
-          </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>สื่อของจริง</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>ใบงาน</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>บทเรียนการ์ตูน</paper-checkbox></div>
-          </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>E-book, E-learning</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>วิดีทัศน์</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>อื่นๆ</paper-checkbox></div>
-          </div>
-          <div class="layout horizontal">
-            <div class="flex"><paper-checkbox>สไลด์อิเล็กทรอนิกส์</paper-checkbox></div>
-            <div class="flex"><paper-checkbox>CAI</paper-checkbox></div>
-            <div class="flex">&nbsp;</div>
-          </div>
+          <t-teaching-dialog-innovation-type  list="{{value.jobs.type1}}"></t-teaching-dialog--innovation-type>
         </div>
       <div class="buttons">
         <paper-button dialog-confirm>ตกลง</paper-button>
@@ -126,6 +107,13 @@
             reflectToAttribute:true,
             notify:true,
             observer:'_isActive'
+          },
+          value:{
+            type:Object,
+            notify:true,
+            value:function() {
+              return {};
+            }
           }
         }
       }

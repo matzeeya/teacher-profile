@@ -1,0 +1,66 @@
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../iron-selector/iron-selector.html">
+<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="t-teaching-dialog-innovation-type">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        @apply(--layout-vertical);
+        display: block;
+        padding:10px;
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      paper-checkbox{
+        font-family: 'Kanit', sans-serif;
+        font-size: 90%;
+      }
+</style>
+  <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">
+    <paper-checkbox name="ใบความรู้">ใบความรู้</paper-checkbox>
+    <paper-checkbox name="สื่อบทเรียนแผ่นเดียว">สื่อบทเรียนแผ่นเดียว</paper-checkbox>
+    <paper-checkbox name="วิดีโอคลิป">วิดีโอคลิป</paper-checkbox>
+    <paper-checkbox name="แผ่นภาพ/แผ่นใส">แผ่นภาพ/แผ่นใส</paper-checkbox>
+    <paper-checkbox name="ภูมิปัญญาท้องถิ่น">ภูมิปัญญาท้องถิ่น</paper-checkbox>
+    <paper-checkbox name="ศูนย์การเรียนรู้">ศูนย์การเรียนรู้</paper-checkbox>
+    <paper-checkbox name="สื่อของจริง">สื่อของจริง</paper-checkbox>
+    <paper-checkbox name="ใบงาน">ใบงาน</paper-checkbox>
+    <paper-checkbox name="บทเรียนการ์ตูน">บทเรียนการ์ตูน</paper-checkbox>
+    <paper-checkbox name="E-book, E-learning">E-book, E-learning</paper-checkbox>
+    <paper-checkbox name="วิดีทัศน์">วิดีทัศน์</paper-checkbox>
+    <paper-checkbox name="อื่นๆ">อื่นๆ</paper-checkbox>
+    <paper-checkbox name="สไลด์อิเล็กทรอนิกส์">สไลด์อิเล็กทรอนิกส์</paper-checkbox>
+    <paper-checkbox name="CAI">CAI</paper-checkbox>
+  </iron-selector>
+  </template>
+
+  <script>
+    class tTeachingDialogInnovationType extends Polymer.Element {
+      static get is() { return 't-teaching-dialog-innovation-type'; }
+      static get properties() {
+        return {
+          list:{
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          }
+        }
+      }
+      
+    }
+    window.customElements.define(tTeachingDialogInnovationType.is, tTeachingDialogInnovationType);
+  </script>
+</dom-module>

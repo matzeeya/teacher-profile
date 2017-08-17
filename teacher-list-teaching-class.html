@@ -58,7 +58,6 @@
       </div>
       <template is="dom-repeat" items="{{listClass}}" as="class">
         <t-teaching-Class content="{{class}}" 
-          value="{{value}}" 
           on-t-teaching-class-remove="_removeItemClass">
         </t-teaching-Class>
       </template>
@@ -83,7 +82,10 @@
       }
       
       _addItemClass(event) {
-        this.push('listClass',{'show':true});
+        this.push('listClass',{'show':true,'jobs':{
+          'approve':[],
+          'subject':[]
+          }});
       }
       _removeItemClass(event) {
         for(var i=0;i<this.listClass.length;i++) {

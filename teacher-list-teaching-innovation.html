@@ -58,7 +58,6 @@
       </div>
       <template is="dom-repeat" items="{{listInnovation}}" as="innovation">
         <t-teaching-innovation content="{{innovation}}" 
-          value="{{value}}" 
           on-t-teaching-innovation-remove="_removeItemInnovation">
         </t-teaching-innovation>
       </template>
@@ -83,7 +82,9 @@
       }
       
       _addItemInnovation(event) {
-        this.push('listInnovation',{'show':true});
+        this.push('listInnovation',{'show':true,'jobs':{
+          'type1':[]
+          }});
       }
       _removeItemInnovation(event) {
         for(var i=0;i<this.listInnovation.length;i++) {

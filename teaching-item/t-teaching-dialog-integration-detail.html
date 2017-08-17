@@ -1,0 +1,70 @@
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../iron-selector/iron-selector.html">
+<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
+
+<dom-module id="t-teaching-dialog-integration-detail">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment">
+      :host {
+        @apply(--layout-vertical);
+        display: block;
+        padding:10px;
+      }
+      .font-face-big-bold {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+      paper-checkbox{
+        font-family: 'Kanit', sans-serif;
+        font-size: 90%;
+      }
+</style>
+  <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">
+    <paper-checkbox name="การบูรณาการเชิงเนื้อหาสาระ  เป็นการผสมผสานเชื่อมโยงเนื้อหาสาระ ในลักษณะหลอมรวม">
+      การบูรณาการเชิงเนื้อหาสาระ  เป็นการผสมผสานเชื่อมโยงเนื้อหาสาระ ในลักษณะหลอมรวม
+    </paper-checkbox>
+    <paper-checkbox name="การบูรณาการเชิงวิธีการ เป็นการผสมผสานวิธีการสอนแบบต่าง ๆ เข้าใจการสอน โดยการจัดกิจกรรมการเรียนการสอนที่หลากหลายวิธี การสนทนา การอภิปราย การใช้คำถาม การบรรยาย การค้นคว้าและการทำงานกลุ่ม การไปศึกษานอกห้องเรียน และการนำเสนอข้อมูลเป็นต้น">
+      การบูรณาการเชิงวิธีการ เป็นการผสมผสานวิธีการสอนแบบต่าง ๆ เข้าใจการสอน โดยการจัดกิจกรรมการเรียนการสอนที่หลากหลายวิธี การสนทนา การอภิปราย การใช้คำถาม การบรรยาย การค้นคว้าและการทำงานกลุ่ม การไปศึกษานอกห้องเรียน และการนำเสนอข้อมูลเป็นต้น
+    </paper-checkbox>
+    <paper-checkbox name="การบูรณาการความรู้กับกระบวนการเรียนรู้ โดยออกแบบการเรียนรู้ให้มีทั้งการให้ความรู้และกระบวนการไปพร้อม ๆ กัน เช่น กระบวนการแสวงหาความรู้ กระบวนการแก้ปัญหา และกระบวนการสร้างความคิดรวบยอดเป็นต้น">
+      การบูรณาการความรู้กับกระบวนการเรียนรู้ โดยออกแบบการเรียนรู้ให้มีทั้งการให้ความรู้และกระบวนการไปพร้อม ๆ กัน เช่น กระบวนการแสวงหาความรู้ กระบวนการแก้ปัญหา และกระบวนการสร้างความคิดรวบยอดเป็นต้น
+    </paper-checkbox>
+    <paper-checkbox name="การบูรณาการความรู้ ความคิด กับคุณธรรม โดยเน้นทั้งพุทธิพิสัยและจิตพิสัยเป็นการเรียนที่สอดแทรกคุณธรรมจริยธรรมไปพร้อม ๆ กัน">
+      การบูรณาการความรู้ ความคิด กับคุณธรรม โดยเน้นทั้งพุทธิพิสัยและจิตพิสัยเป็นการเรียนที่สอดแทรกคุณธรรมจริยธรรมไปพร้อม ๆ กัน
+    </paper-checkbox>
+    <paper-checkbox name="การบูรณาการความรู้กับการปฏิบัติ เน้นการปฏิบัติจริง ควบคู่ไปพร้อม ๆ กับการจัดการเรียนรู้">
+      การบูรณาการความรู้กับการปฏิบัติ เน้นการปฏิบัติจริง ควบคู่ไปพร้อม ๆ กับการจัดการเรียนรู้
+    </paper-checkbox>
+    <paper-checkbox name="การบูรณาการความรู้ในโรงเรียนกับชีวิตจริงของนักเรียน พยายามให้เด็กได้เรียนรู้เนื้อหาที่สัมพันธ์กับชีวิตจริงของนักเรียน เพื่อให้นักเรียนได้เห็นคุณค่าและความหมายในสิ่งที่เรียน">
+      การบูรณาการความรู้ในโรงเรียนกับชีวิตจริงของนักเรียน พยายามให้เด็กได้เรียนรู้เนื้อหาที่สัมพันธ์กับชีวิตจริงของนักเรียน เพื่อให้นักเรียนได้เห็นคุณค่าและความหมายในสิ่งที่เรียน
+    </paper-checkbox>
+  </iron-selector>
+  </template>
+
+  <script>
+    class tTeachingDialogIntegrationDetail extends Polymer.Element {
+      static get is() { return 't-teaching-dialog-integration-detail'; }
+      static get properties() {
+        return {
+          list:{
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          }
+        }
+      }
+      
+    }
+    window.customElements.define(tTeachingDialogIntegrationDetail.is, tTeachingDialogIntegrationDetail);
+  </script>
+</dom-module>

@@ -72,7 +72,7 @@
           <div class="layout horizontal">
             <div class="flex">
               <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
-              <paper-listbox selected="{{value.year}}" slot="dropdown-content">
+              <paper-listbox attr-for-selected="value" selected="{{value.year}}" slot="dropdown-content">
                 <paper-item value="2558">2558</paper-item>
                 <paper-item value="2559">2559</paper-item>
                 <paper-item value="2560">2560</paper-item>
@@ -81,7 +81,7 @@
             </div>
             <div class="flex">
               <paper-dropdown-menu label="ภาคเรียนที่" class="marginleft custom">
-              <paper-listbox selected="{{value.semester}}" slot="dropdown-content">
+              <paper-listbox attr-for-selected="value" selected="{{value.semester}}" slot="dropdown-content">
                 <paper-item value="1">1</paper-item>
                 <paper-item value="2">2</paper-item>
               </paper-listbox>
@@ -90,7 +90,7 @@
             <div class="flex"><paper-input label="รายวิชา" value="{{value.subject}}"></paper-input></div>
             <div class="flex">
               <paper-dropdown-menu label="ระดับชั้น" class="marginleft custom">
-              <paper-listbox selected="{{value.class}}" slot="dropdown-content">
+              <paper-listbox attr-for-selected="value" selected="{{value.class}}" slot="dropdown-content">
                 <paper-item value="ประถมศึกษาปีที่ 1">ประถมศึกษาปีที่ 1</paper-item>
                 <paper-item value="ประถมศึกษาปีที่ 2">ประถมศึกษาปีที่ 2</paper-item>
                 <paper-item value="ประถมศึกษาปีที่ 3">ประถมศึกษาปีที่ 3</paper-item>
@@ -126,7 +126,7 @@
           
           <iron-pages selected="{{page}}"> 
             <t-teaching-dialog-activity  list="{{value.jobs.type_1}}"></t-teaching-dialog-activity>
-            <t-teaching-dialog-evaluation  list="{{value.jobs.type_1}}"></t-teaching-dialog-evaluation>
+            <t-teaching-dialog-evaluation  list="{{value.jobs.type_2}}"></t-teaching-dialog-evaluation>
           </iron-pages>
         </div>
       <div class="buttons">

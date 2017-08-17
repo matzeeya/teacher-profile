@@ -58,7 +58,6 @@
       </div>
       <template is="dom-repeat" items="{{listIntegration}}" as="integration">
         <t-teaching-Integration content="{{integration}}" 
-          value="{{value}}" 
           on-t-teaching-Integration-remove="_removeItemIntegration">
         </t-teaching-Integration>
       </template>
@@ -83,7 +82,9 @@
       }
       
       _addItemIntegration(event) {
-        this.push('listIntegration',{'show':true});
+        this.push('listIntegration',{'show':true,'jobs':{
+          'detail':[]
+          }});
       }
       _removeItemIntegration(event) {
         for(var i=0;i<this.listIntegration.length;i++) {

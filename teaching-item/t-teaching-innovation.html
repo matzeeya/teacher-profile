@@ -47,15 +47,19 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex">ปีการศึกษา</div>
-      <div class="flex">ชื่อสื่อ/นวัตกรรม</div>
-      <div class="flex">ประเภท</div>
-      <div class="flex">จำนวน (ชิ้น)</div>
+      <div class="flex">{{content.year}}</div>
+      <div class="flex">{{content.innovation_name}}</div>
+      <div class="flex">
+        <template is="dom-repeat" items="{{content.jobs.type1}}" as="type1">
+          <div class="vertical-style">- {{type1}}</div>
+        </template>
+      </div>
+      <div class="flex">{{content.unit}}</div>
       <div class="flex layout horizontal center">
         <iron-icon icon="icons:delete"  on-click="_removeItemInnovation"></iron-icon>
       </div>
     </div>  
-    <t-teaching-dialog-innovation active="{{active}}"></t-teaching-dialog-innovation>
+    <t-teaching-dialog-innovation active="{{active}}" value="{{content}}"></t-teaching-dialog-innovation>
   </template>
 
   <script>

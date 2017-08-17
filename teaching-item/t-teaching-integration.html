@@ -46,16 +46,20 @@
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex">ปีการศึกษา</div>
-      <div class="flex">หน่วยที่</div>
-      <div class="flex">เรื่อง</div>
-      <div class="flex">รายละเอียดการบูรณาการ</div>
-      <div class="flex">จำนวนชั่วโมง</div>
+      <div class="flex">{{content.year}}</div>
+      <div class="flex">{{content.unit}}</div>
+      <div class="flex">{{content.chapter}}</div>
+      <div class="flex">
+        <template is="dom-repeat" items="{{content.jobs.detail}}" as="detail">
+          <div class="vertical-style">- {{detail}}</div>
+        </template>
+      </div>
+      <div class="flex">{{content.hour}}</div>
       <div class="flex layout horizontal center">
         <iron-icon icon="icons:delete"  on-click="_removeItemIntegration"></iron-icon>
       </div>
     </div>  
-    <t-teaching-dialog-integration active="{{active}}"></t-teaching-dialog-integration>
+    <t-teaching-dialog-integration active="{{active}}" value="{{content}}"></t-teaching-dialog-integration>
   </template>
 
   <script>
