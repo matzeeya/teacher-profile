@@ -103,9 +103,9 @@
             <teacher-list-teaching-reward listReward="{{document.teaching_reward}}"></teacher-list-teaching-reward>
           </div>
           <div>
-            <teacher-list-training value="{{document.value}}"></teacher-list-training>
-            <teacher-list-training-lecturer value="{{document.value}}"></teacher-list-training-lecturer>
-            <teacher-list-training-reward value="{{document.value}}"></teacher-list-training-reward>
+            <teacher-list-training list="{{document.training}}"></teacher-list-training>
+            <teacher-list-training-lecturer listLecturer="{{document.training_lecturer}}"></teacher-list-training-lecturer>
+            <teacher-list-training-reward listReward="{{document.training_reward}}"></teacher-list-training-reward>
           </div>
         </iron-pages>
 
@@ -201,7 +201,10 @@
                     "teaching_innovation",
                     "teaching_integration",
                     "teaching_class",
-                    "teaching_reward"
+                    "teaching_reward",
+                    "training",
+                    "training_lecturer",
+                    "training_reward"
                   ];
 
                   list_properties.forEach(function(attr) {
