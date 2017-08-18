@@ -61,8 +61,16 @@
           <div class="flex-3 bottom-style"><vaadin-date-picker placeholder="วันที่เริ่มต้น"></vaadin-date-picker></div>
           <div class="flex-4 bottom-style"><vaadin-date-picker placeholder="วันที่สิ้นสุด"></vaadin-date-picker></div>
           <div class="flex-2 layout horizontal center">
-            <vaadin-upload accept=".pdf">
+            <vaadin-upload accept=".pdf" target="/upload/file"
+              on-upload-response="_uploadResponse">
             </vaadin-upload>
+            <template is="dom-if" if="{{_isFileExist(content.file_name)}}">
+              <a download="{{content.file_name}}"
+                href$="data:application/pdf;base64,{{content.file_base64}}"
+                title="Dowload">
+                {{content.file_name}}
+              </a>
+            </template>
           </div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItemSpecial"></iron-icon>
@@ -82,6 +90,23 @@
           }
         }
       }
+
+      _uploadResponse(event) {
+        var obj = JSON.parse(event.detail.xhr.response);
+        this.set('content.file_name',obj.name);
+        this.set('content.file_base64',obj.base64);
+        console.log(obj);
+      }
+
+      _downloadFile(event) {
+        window.open("data:application/pdf;base64,"+
+          this.content.file_base64);
+      }
+    
+      _isFileExist(file) {
+        return file && file.length > 0;
+      }
+
       _removeItemSpecial(event) {
         this.set('content.show',false);
         var eve = new CustomEvent('t-operating-special-remove',{
