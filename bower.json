@@ -19,7 +19,8 @@
     "paper-listbox": "^2.0.0",
     "paper-item": "^2.0.0",
     "paper-dialog-scrollable": "^2.1.0",
-    "vaadin-upload": "^2.0.0"
+    "vaadin-upload": "^2.0.0",
+    "iron-sessionstorage": "frenchynz/iron-sessionstorage#^1.0.1"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

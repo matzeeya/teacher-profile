@@ -121,13 +121,11 @@
           </vaadin-date-picker>
         </div>
         <div class="flex"><paper-input label="ตำแหน่ง" value="{{value.rank}}"></paper-input></div>
+        <div class="flex"><paper-input label="โรงเรียน" value="{{value.school}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex"><paper-input label="โรงเรียน" value="{{value.school}}"></paper-input></div>
         <div class="flex"><paper-input label="อำเภอ" value="{{value.amphoe}}"></paper-input></div>
         <div class="flex"><paper-input label="จังหวัด" value="{{value.province}}"></paper-input></div>
-      </div>
-      <div class="layout horizontal">
         <div class="flex"><paper-input label="เลขประจำตำแหน่งเลขที่" value="{{value.rank_id}}"></paper-input></div>
         <div class="flex bottom-style">
           <vaadin-date-picker placeholder="เกษียณอายุวันที่ 1 ตุลาคม พ.ศ."
@@ -167,6 +165,11 @@
           value:{
             type:Object,
             notify:true,
+          },
+          end_date:{
+            type:String,
+            notify:true,
+            computed:'__calculateDate(start_date)'
           }
         }        
       }  
@@ -176,7 +179,9 @@
             '__checkSub(value)',
           ];
         }   
-      
+        __calculateDate(start_date){
+          console.log(start_date);
+        }
       __checkSub(value) {
         if(!value['host_address']) {
           value['host_address'] = {};

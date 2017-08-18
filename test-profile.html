@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../iron-sessionstorage/iron-sessionstorage.html">
 <link rel="import" href="teacher-profile.html">
 
 <dom-module id="test-profile">
@@ -10,8 +11,11 @@
         display: block;
       }
     </style>
-    <paper-input label="token" value="{{token}}"></paper-input>
-    <paper-input label="app" value="cct"></paper-input>
+    
+    <iron-sessionstorage name="token" use-raw value="{{token}}">
+    </iron-sessionstorage>
+    <!--<paper-input label="token" value="{{token}}"></paper-input>
+    <paper-input label="app" value="cct"></paper-input>-->
     <teacher-profile token="{{token}}" app="cct"></teacher-profile>
   </template>
 
@@ -20,7 +24,7 @@
       static get is() { return 'test-profile'; }
       static get properties() {
         return {
-        };
+        }
       }
     }
 
