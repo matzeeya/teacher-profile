@@ -80,7 +80,12 @@
         <div class="flex font-face-big-bold margin-top-style">ข้อมูลส่วนบุคคล</div>
       </div>
       <div class="layout horizontal">
-        <paper-input class="flex" label="หมายเลขบัตรประชาชน" value="{{value.cid}}"></paper-input>
+        <paper-input class="flex" 
+          label="หมายเลขบัตรประชาชน" 
+          value="{{value.cid}}" 
+          char-counter maxlength="13"
+          auto-validate allowed-pattern="[0-9]">
+        </paper-input>
       </div>
       <div class="layout horizontal">
         <div class="flex"><paper-input label="คำนำหน้า" value="{{value.title}}"></paper-input></div>
@@ -98,14 +103,23 @@
         <div class="flex"><paper-input label="ศาสนา" value="{{value.religion}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex"><paper-input label="เบอร์โทรศัพท์" value="{{value.phone}}"></paper-input></div>
+        <div class="flex">
+          <paper-input 
+            label="เบอร์โทรศัพท์" 
+            value="{{value.phone}}"
+            auto-validate allowed-pattern="[0-9]">
+          </paper-input></div>
         <div class="flex"><paper-input label="E-mail" value="{{value.email}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
         <div class="flex font-face-big-bold margin-top-style">(กรณีเป็นข้าราชการ)</div>
       </div>
       <div class="layout horizontal">
-        <div class="flex"><paper-input label="เริ่มรับราชการเมื่อวันที่" value="{{value.start_date}}"></paper-input></div>
+        <div class="flex bottom-style">
+          <vaadin-date-picker placeholder="เริ่มรับราชการเมื่อวันที่"
+            value="{{value.start_date}}">
+          </vaadin-date-picker>
+        </div>
         <div class="flex"><paper-input label="ตำแหน่ง" value="{{value.rank}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
@@ -115,7 +129,11 @@
       </div>
       <div class="layout horizontal">
         <div class="flex"><paper-input label="เลขประจำตำแหน่งเลขที่" value="{{value.rank_id}}"></paper-input></div>
-        <div class="flex"><paper-input label="เกษียณอายุวันที่ 1 ตุลาคม พ.ศ." value="{{value.end_date}}"></paper-input></div>
+        <div class="flex bottom-style">
+          <vaadin-date-picker placeholder="เกษียณอายุวันที่ 1 ตุลาคม พ.ศ."
+            value="{{value.end_date}}">
+          </vaadin-date-picker>
+        </div>
       </div>
       <div class="layout horizontal">
         <div class="flex font-face-big-bold margin-top-style">ปัจจุบันดำรงตำแหน่ง</div>
