@@ -36,11 +36,6 @@
         margin-top: 20px;
       }
 
-      .bottom-style{
-        @apply(--layout-horizontal);
-        @apply(--layout-end);
-      }
-
       .content {
         text-align:left;
         font-family: 'Kanit', sans-serif;
@@ -96,7 +91,12 @@
               </paper-listbox>
             </paper-dropdown-menu>
           </div>
-          <div class="flex-2 bottom-style"><vaadin-date-picker placeholder="วัน/เดือน/ปี" value="{{content.date}}"></vaadin-date-picker></div>
+          <div class="flex-2">
+            <vaadin-date-picker 
+              label="วัน/เดือน/ปี" 
+              value="{{content.date}}">
+            </vaadin-date-picker>
+          </div>
           <div class="flex-4">
             <paper-input label="รางวัลที่ได้รับ" value ="{{content.reward}}"></paper-input>
           </div>

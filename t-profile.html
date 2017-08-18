@@ -34,11 +34,6 @@
         margin-top: 20px;
       }
 
-      .bottom-style{
-        @apply(--layout-horizontal);
-        @apply(--layout-end);
-      }
-
       paper-input{
         margin-left: 5px;
       }
@@ -93,8 +88,12 @@
         <div class="flex"><paper-input label="นามสกุล" value="{{value.lastname}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
-        <div class="flex bottom-style">
-          <vaadin-date-picker placeholder="วัน/เดือน/ปี เกิด"
+        <div class="flex">
+          <!--<vaadin-date-picker label="วัน/เดือน/ปี เกิด"
+            placeholder="วัน/เดือน/ปี เกิด"
+            value="{{value.date_of_birth}}">-->
+          <vaadin-date-picker 
+            label="วัน/เดือน/ปี เกิด"
             value="{{value.date_of_birth}}">
           </vaadin-date-picker>
         </div>
@@ -115,8 +114,9 @@
         <div class="flex font-face-big-bold margin-top-style">(กรณีเป็นข้าราชการ)</div>
       </div>
       <div class="layout horizontal">
-        <div class="flex bottom-style">
-          <vaadin-date-picker placeholder="เริ่มรับราชการเมื่อวันที่"
+        <div class="flex">
+          <vaadin-date-picker  
+            label="เริ่มรับราชการเมื่อวันที่"
             value="{{value.start_date}}">
           </vaadin-date-picker>
         </div>
@@ -127,8 +127,9 @@
         <div class="flex"><paper-input label="อำเภอ" value="{{value.amphoe}}"></paper-input></div>
         <div class="flex"><paper-input label="จังหวัด" value="{{value.province}}"></paper-input></div>
         <div class="flex"><paper-input label="เลขประจำตำแหน่งเลขที่" value="{{value.rank_id}}"></paper-input></div>
-        <div class="flex bottom-style">
-          <vaadin-date-picker placeholder="เกษียณอายุวันที่ 1 ตุลาคม พ.ศ."
+        <div class="flex">
+          <vaadin-date-picker 
+            label="เกษียณอายุวันที่ 1 ตุลาคม พ.ศ."
             value="{{value.end_date}}">
           </vaadin-date-picker>
         </div>

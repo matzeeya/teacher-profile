@@ -58,8 +58,18 @@
         <div class="layout horizontal">
           <div class="flex-1"><paper-input label="ปีการศึกษา" value ="{{content.year}}"></paper-input></div>
           <div class="flex-2"><paper-input label="งานพิเศษที่ได้รับมอบหมาย" value ="{{content.semester}}"></paper-input></div>
-          <div class="flex-3 bottom-style"><vaadin-date-picker placeholder="วันที่เริ่มต้น"></vaadin-date-picker></div>
-          <div class="flex-4 bottom-style"><vaadin-date-picker placeholder="วันที่สิ้นสุด"></vaadin-date-picker></div>
+          <div class="flex-3">
+            <vaadin-date-picker 
+              label="วันที่เริ่มต้น"
+              value ="{{content.start_date}}">
+            </vaadin-date-picker>
+          </div>
+          <div class="flex-4">
+            <vaadin-date-picker 
+              label="วันที่สิ้นสุด"
+              value ="{{content.end_date}}">
+            </vaadin-date-picker>
+          </div>
           <div class="flex-2 layout horizontal center">
             <vaadin-upload accept=".pdf" target="/upload/file"
               on-upload-response="_uploadResponse">

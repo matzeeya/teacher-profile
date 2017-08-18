@@ -51,7 +51,6 @@
         font-size: 100%;
         margin-left: 5px;
         width: 98%;
-        margin-bottom: 10px;
       }
 
       .bottom-style{
@@ -61,8 +60,9 @@
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-1 bottom-style">
-            <vaadin-date-picker placeholder="วัน/เดือน/ปี"
+          <div class="flex-1">
+            <vaadin-date-picker 
+              label="วัน/เดือน/ปี"
               value="{{content.dates}}">
             </vaadin-date-picker>
           </div>

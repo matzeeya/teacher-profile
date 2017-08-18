@@ -34,11 +34,6 @@
         margin-top: 20px;
       }
 
-      .bottom-style{
-        @apply(--layout-horizontal);
-        @apply(--layout-end);
-      }
-
       .content {
         text-align:left;
         font-family: 'Kanit', sans-serif;
@@ -94,7 +89,12 @@
               </paper-listbox>
             </paper-dropdown-menu>
           </div>
-          <div class="flex-2 bottom-style"><vaadin-date-picker placeholder="วัน/เดือน/ปี" value="{{content.date}}"></vaadin-date-picker></div>
+          <div class="flex-2">
+            <vaadin-date-picker 
+              label="วัน/เดือน/ปี" 
+              value="{{content.date}}">
+            </vaadin-date-picker>
+          </div>
           <div class="flex-3"><paper-input label="เรื่องที่เป็นวิทยากร" value ="{{content.topic}}"></paper-input></div>
           <div class="flex-1"><paper-input label="กลุ่มเป้าหมาย" value ="{{content.target}}"></paper-input></div>
           <div class="flex-3"><paper-input label="หน่วยงานที่จัดอบรม/สัมนา" value ="{{content.institution_training}}"></paper-input></div>
