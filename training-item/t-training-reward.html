@@ -97,12 +97,21 @@
             </paper-dropdown-menu>
           </div>
           <div class="flex-2 bottom-style"><vaadin-date-picker placeholder="วัน/เดือน/ปี" value="{{content.date}}"></vaadin-date-picker></div>
-          <div class="flex-4"><paper-input label="รางวัลที่ได้รับ" value ="{{content.reward}}"></paper-input></div>
+          <div class="flex-4">
+            <paper-input label="รางวัลที่ได้รับ" value ="{{content.reward}}"></paper-input>
+          </div>
           <div class="flex-1"><paper-input label="หน่วยงานที่มอบรางวัล" value ="{{content.institution_reward}}"></paper-input></div>
           <div class="flex-2 layout horizontal center">
             <vaadin-upload accept=".pdf" target="/upload/file"
-              on-upload-response="_uploadResposne">
+              on-upload-response="_uploadResponse">
             </vaadin-upload>
+            <template is="dom-if" if="{{_isFileExist(content.file_name)}}">
+              <a download="{{content.file_name}}"
+                href$="data:application/pdf;base64,{{content.file_base64}}"
+                title="Dowload">
+                {{content.file_name}}
+              </a>
+            </template>
           </div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItemReward"></iron-icon>
@@ -124,8 +133,19 @@
       }
 
       _uploadResponse(event) {
-        console.log(event.detail.xhr);
-        console.log(event);
+        var obj = JSON.parse(event.detail.xhr.response);
+        this.set('content.file_name',obj.name);
+        this.set('content.file_base64',obj.base64);
+        console.log(obj);
+      }
+
+      _downloadFile(event) {
+        window.open("data:application/pdf;base64,"+
+          this.content.file_base64);
+      }
+    
+      _isFileExist(file) {
+        return file && file.length > 0;
       }
 
       _removeItemReward(event) {
