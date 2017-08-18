@@ -100,7 +100,8 @@
           <div class="flex-4"><paper-input label="รางวัลที่ได้รับ" value ="{{content.reward}}"></paper-input></div>
           <div class="flex-1"><paper-input label="หน่วยงานที่มอบรางวัล" value ="{{content.institution_reward}}"></paper-input></div>
           <div class="flex-2 layout horizontal center">
-            <vaadin-upload accept=".pdf" target="/upload/file">
+            <vaadin-upload accept=".pdf" target="/upload/file"
+              on-upload-response="_uploadResposne">
             </vaadin-upload>
           </div>
           <div class="flex-1 layout horizontal center">
@@ -121,6 +122,12 @@
           }
         }
       }
+
+      _uploadResponse(event) {
+        console.log(event.detail.xhr);
+        console.log(event);
+      }
+
       _removeItemReward(event) {
         this.set('content.show',false);
         var eve = new CustomEvent('t-training-reward-remove',{
