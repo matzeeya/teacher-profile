@@ -46,9 +46,8 @@
     <div class="layout horizontal">
       <paper-button raised on-click="_addItemCourse">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{listCourse}}" as="course">
+    <template is="dom-repeat" items="{{list}}" as="course">
       <t-operating-course content="{{course}}" 
-        value="{{value}}" 
         on-t-operating-course-remove="_removeItemCourse">
       </t-operating-course>
     </template>
@@ -58,27 +57,23 @@
       static get is() { return 'teacher-list-operating-course'; }
       static get properties() {
         return {
-          listCourse : {
+          list : {
             type:Array,
             notify:true,
             value:function() {
               return [];
             }
-          },
-          value:{
-            type:Object,
-            notify:true,
           }
         }
       }
 
       _addItemCourse(event) {
-        this.push('listCourse',{'show':true});
+        this.push('list',{'show':true});
       }
       _removeItemCourse(event) {
-        for(var i=0;i<this.listCourse.length;i++) {
-          if(this.listCourse[i].show == false) {         
-            this.splice('listCourse',i,1);              
+        for(var i=0;i<this.list.length;i++) {
+          if(this.list[i].show == false) {         
+            this.splice('list',i,1);              
             break;
           }
         }

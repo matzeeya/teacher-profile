@@ -46,9 +46,8 @@
     <div class="layout horizontal">
       <paper-button raised on-click="_addItemClass">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{listClass}}" as="class">
+    <template is="dom-repeat" items="{{list}}" as="class">
       <t-operating-class content="{{class}}" 
-        value="{{value}}" 
         on-t-operating-class-remove="_removeItemClass">
       </t-operating-class>
     </template>
@@ -58,26 +57,22 @@
       static get is() { return 'teacher-list-operating'; }
       static get properties() {
         return {
-          listClass : {
+          list : {
             type:Array,
             notify:true,
             value:function() {
               return [];
             }
-          },
-          value:{
-            type:Object,
-            notify:true,
           }
         }
       }
       _addItemClass(event) {
-        this.push('listClass',{'show':true});
+        this.push('list',{'show':true});
       }
       _removeItemClass(event) {
-        for(var i=0;i<this.listClass.length;i++) {
-          if(this.listClass[i].show == false) {         
-            this.splice('listClass',i,1);              
+        for(var i=0;i<this.list.length;i++) {
+          if(this.list[i].show == false) {         
+            this.splice('list',i,1);              
             break;
           }
         }

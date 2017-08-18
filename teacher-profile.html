@@ -80,32 +80,32 @@
             <t-profile value="{{document.value}}"></t-profile>
           </div>
           <div>
-            <teacher-list-education listEducation="{{document.value.education_list}}"></teacher-list-education>
+            <teacher-list-education list="{{document.value.education_list}}"></teacher-list-education>
             <teacher-list-education-expert value="{{document.value}}"></teacher-list-education-expert>
           </div>
           <div>
             <teacher-list-work list="{{document.value.work_history}}"></teacher-list-work>
             <teacher-list-work-upsalary 
-              listUpSalary="{{document.value.work_upsalary}}">
+              list="{{document.value.work_upsalary}}">
             </teacher-list-work-upsalary>
           </div>
           <div>
-            <teacher-list-operating listClass="{{document.value.operating_class}}"></teacher-list-operating>
-            <teacher-list-operating-course listCourse="{{document.value.operating_course}}"></teacher-list-operating-course>
-            <teacher-list-operating-other listOther="{{document.value.operating_other}}"></teacher-list-operating-other>
-            <teacher-list-operating-special listSpecial="{{document.value.operating_special}}"></teacher-list-operating-special>
+            <teacher-list-operating list="{{document.value.operating_class}}"></teacher-list-operating>
+            <teacher-list-operating-course list="{{document.value.operating_course}}"></teacher-list-operating-course>
+            <teacher-list-operating-other list="{{document.value.operating_other}}"></teacher-list-operating-other>
+            <teacher-list-operating-special list="{{document.value.operating_special}}"></teacher-list-operating-special>
           </div>
           <div>
-            <teacher-list-teaching listTeaching="{{document.value.teaching}}"></teacher-list-teaching>
-            <teacher-list-teaching-innovation listInnovation="{{document.value.teaching_innovation}}"></teacher-list-teaching-innovation>
-            <teacher-list-teaching-integration listIntegration="{{document.value.teaching_integration}}"></teacher-list-teaching-integration>
-            <teacher-list-teaching-class listTeachingClass="{{document.value.teaching_class}}"></teacher-list-teaching-class>
-            <teacher-list-teaching-reward listReward="{{document.value.teaching_reward}}"></teacher-list-teaching-reward>
+            <teacher-list-teaching list="{{document.value.teaching}}"></teacher-list-teaching>
+            <teacher-list-teaching-innovation list="{{document.value.teaching_innovation}}"></teacher-list-teaching-innovation>
+            <teacher-list-teaching-integration list="{{document.value.teaching_integration}}"></teacher-list-teaching-integration>
+            <teacher-list-teaching-class list="{{document.value.teaching_class}}"></teacher-list-teaching-class>
+            <teacher-list-teaching-reward list="{{document.value.teaching_reward}}"></teacher-list-teaching-reward>
           </div>
           <div>
-            <teacher-list-training listTraining="{{document.value.training}}"></teacher-list-training>
-            <teacher-list-training-lecturer listLecturer="{{document.value.training_lecturer}}"></teacher-list-training-lecturer>
-            <teacher-list-training-reward listTrainingReward="{{document.value.training_reward}}"></teacher-list-training-reward>
+            <teacher-list-training list="{{document.value.training}}"></teacher-list-training>
+            <teacher-list-training-lecturer list="{{document.value.training_lecturer}}"></teacher-list-training-lecturer>
+            <teacher-list-training-reward list="{{document.value.training_reward}}"></teacher-list-training-reward>
           </div>
         </iron-pages>
 
@@ -128,13 +128,13 @@
           app: {
             type: String,
             notify:true
-          },
+          }/*,
           active:{
             type: Boolean,
             reflectToAttribute:true,
             notify:true,
             observer:'_isActive'
-          },
+          }*/,
           page:{
             type:Number,
             value:0
@@ -152,14 +152,14 @@
         this.set('active',event.detail.value);
       }
 
-      _isActive(active) {
+      /*_isActive(active) {
         this.set('active',false);
         if(active) {
           this.$.dialog.open();
         } else {
           this.$.dialog.close();
         }
-      }
+      }*/
 
       __decodeJwt(token,app) {
         if(!token || !app) return;
@@ -243,7 +243,7 @@
             body:value
           }).then(function(res) {
             if(res.response.ok) {
-              self.set('active',false);
+              //self.set('active',false);
             }
           });
  

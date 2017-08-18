@@ -46,9 +46,8 @@
     <div class="layout horizontal">
       <paper-button raised on-click="_addItemOther">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{listOther}}" as="other">
+    <template is="dom-repeat" items="{{list}}" as="other">
       <t-operating-other content="{{other}}" 
-        value="{{value}}" 
         on-t-operating-other-remove="_removeItemOther">
       </t-operating-other>
     </template>
@@ -58,27 +57,23 @@
       static get is() { return 'teacher-list-operating-other'; }
       static get properties() {
         return {
-          listOther : {
+          list : {
             type:Array,
             notify:true,
             value:function() {
               return [];
             }
-          },
-          value:{
-            type:Object,
-            notify:true,
           }
         }
       }
       
       _addItemOther(event) {
-        this.push('listOther',{'show':true});
+        this.push('list',{'show':true});
       }
       _removeItemOther(event) {
-        for(var i=0;i<this.listOther.length;i++) {
-          if(this.listOther[i].show == false) {         
-            this.splice('listOther',i,1);              
+        for(var i=0;i<this.list.length;i++) {
+          if(this.list[i].show == false) {         
+            this.splice('list',i,1);              
             break;
           }
         }

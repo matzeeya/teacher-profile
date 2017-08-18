@@ -56,7 +56,7 @@
         <div class="flex">จำนวน (ชิ้น)</div>
         <div class="flex">&nbsp;</div> 
       </div>
-      <template is="dom-repeat" items="{{listInnovation}}" as="innovation">
+      <template is="dom-repeat" items="{{list}}" as="innovation">
         <t-teaching-innovation content="{{innovation}}" 
           on-t-teaching-innovation-remove="_removeItemInnovation">
         </t-teaching-innovation>
@@ -67,29 +67,25 @@
       static get is() { return 'teacher-list-teaching-innovation'; }
       static get properties() {
         return {
-          listInnovation : {
+          list : {
             type:Array,
             notify:true,
             value:function() {
               return [];
             }
-          },
-          value:{
-            type:Object,
-            notify:true,
           }
         }
       }
       
       _addItemInnovation(event) {
-        this.push('listInnovation',{'show':true,'jobs':{
+        this.push('list',{'show':true,'jobs':{
           'type1':[]
           }});
       }
       _removeItemInnovation(event) {
-        for(var i=0;i<this.listInnovation.length;i++) {
-          if(this.listInnovation[i].show == false) {         
-            this.splice('listInnovation',i,1);              
+        for(var i=0;i<this.list.length;i++) {
+          if(this.list[i].show == false) {         
+            this.splice('list',i,1);              
             break;
           }
         }

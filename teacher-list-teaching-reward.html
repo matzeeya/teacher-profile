@@ -54,7 +54,7 @@
     </style>
       <div class="flex font-face-big-bold margin-style">การพัฒนานักเรียนจนได้รับรางวัล / ยกย่องเชิดชูเกียรติ</div>
       <paper-button raised on-click="_addItemReward">+ เพิ่ม</paper-button>
-      <template is="dom-repeat" items="{{listReward}}" as="reward">
+      <template is="dom-repeat" items="{{list}}" as="reward">
         <t-teaching-Reward content="{{reward}}" 
           on-t-teaching-Integration-remove="_removeItemReward">
         </t-teaching-Reward>
@@ -65,27 +65,23 @@
       static get is() { return 'teacher-list-teaching-reward'; }
       static get properties() {
         return {
-          listReward : {
+          list : {
             type:Array,
             notify:true,
             value:function() {
               return [];
             }
-          },
-          value:{
-            type:Object,
-            notify:true,
           }
         }
       }
       
       _addItemReward(event) {
-        this.push('listReward',{'show':true});
+        this.push('list',{'show':true});
       }
       _removeItemReward(event) {
-        for(var i=0;i<this.listReward.length;i++) {
-          if(this.listReward[i].show == false) {         
-            this.splice('listReward',i,1);              
+        for(var i=0;i<this.list.length;i++) {
+          if(this.list[i].show == false) {         
+            this.splice('list',i,1);              
             break;
           }
         }

@@ -46,9 +46,8 @@
     <div class="layout horizontal">
       <paper-button raised on-click="_addItemSpecial">+ เพิ่ม</paper-button>
     </div>
-    <template is="dom-repeat" items="{{listSpecial}}" as="special">
+    <template is="dom-repeat" items="{{list}}" as="special">
       <t-operating-special content="{{special}}" 
-        value="{{value}}" 
         on-t-operating-special-remove="_removeItemSpecial">
       </t-operating-special>
     </template>
@@ -58,27 +57,23 @@
       static get is() { return 'teacher-list-operating-special'; }
       static get properties() {
         return {
-          listSpecial : {
+          list : {
             type:Array,
             notify:true,
             value:function() {
               return [];
             }
-          },
-          value:{
-            type:Object,
-            notify:true,
           }
         }
       }
     
       _addItemSpecial(event) {
-        this.push('listSpecial',{'show':true});
+        this.push('list',{'show':true});
       }
       _removeItemSpecial(event) {
-        for(var i=0;i<this.listSpecial.length;i++) {
-          if(this.listSpecial[i].show == false) {         
-            this.splice('listSpecial',i,1);              
+        for(var i=0;i<this.list.length;i++) {
+          if(this.list[i].show == false) {         
+            this.splice('list',i,1);              
             break;
           }
         }
