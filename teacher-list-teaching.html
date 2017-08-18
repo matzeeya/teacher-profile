@@ -40,9 +40,25 @@
         margin-top: 20px;
         opacity: 0.54;
         height:56px;
-        border-bottom-width:1px;
-        border-bottom-style:solid;
-        border-bottom-color: var(--divider-color);
+        border-width:1px;
+        border-style:solid;
+        /*border-color: var(--divider-color);*/
+        @apply(--layout-center);
+      }
+
+      .border-table{
+        height:56px;
+        border-left-width:1px;
+        border-left-style:solid;
+        /*border-left-color: var(--divider-color);*/
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+        @apply(--layout-center);
+      }
+
+      .table-margin{
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
         @apply(--layout-center);
       }
       /* ---table --*/
@@ -56,16 +72,16 @@
     <div class="flex font-face-big-bold margin-style">จัดทำแผนการจัดการเรียนรู้ </div>
     <paper-button raised on-click="_addItem">+ เพิ่ม</paper-button>
     <div class="layout horizontal flex header">
-      <div class="flex">ปีการศึกษา</div>
-      <div class="flex">ภาคเรียนที่</div>
-      <div class="flex">รายวิชา</div>
-      <div class="flex">ระดับชั้น</div>
-      <div class="flex">จำนวนชั่วโมง</div>
-      <div class="flex">จำนวนหน่วยการเรียนรู้</div>
-      <div class="flex">จำนวนนักเรียน</div>
-      <div class="flex">จำนวนแผน</div>
-      <div class="flex">รูปแบบจัดกิจกรรม</div>
-      <div class="flex">วัดผลประเมินผล</div>
+      <div class="flex table-margin">ปีการศึกษา</div>
+      <div class="flex border-table">ภาคเรียนที่</div>
+      <div class="flex border-table">รายวิชา</div>
+      <div class="flex border-table">ระดับชั้น</div>
+      <div class="flex border-table">จำนวนชั่วโมง</div>
+      <div class="flex border-table">จำนวนหน่วยการเรียนรู้</div>
+      <div class="flex border-table">จำนวนนักเรียน</div>
+      <div class="flex border-table">จำนวนแผน</div>
+      <div class="flex border-table">รูปแบบจัดกิจกรรม</div>
+      <div class="flex border-table">วัดผลประเมินผล</div>
       <div class="flex">&nbsp;</div> 
     </div>
     <template is="dom-repeat" items="{{list}}">

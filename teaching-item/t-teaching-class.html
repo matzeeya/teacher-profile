@@ -32,9 +32,15 @@
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
         opacity: 0.87;
-        border-bottom-width:1px;
-        border-bottom-style:solid;
-        border-bottom-color: var(--divider-color);
+        border-width:1px;
+        border-style:solid;
+        /*border-color: var(--divider-color);*/
+      }
+
+      .border-table{
+        border-left-width:1px;
+        border-left-style:solid;
+        /*border-left-color: var(--divider-color);*/
       }
       /* ---table --*/
       iron-icon{
@@ -50,19 +56,19 @@
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
       <div class="flex">{{content.year}}</div>
-      <div class="flex">{{content.title}}</div>
-      <div class="flex">{{content.class}}</div>
-      <div class="flex">
+      <div class="flex border-table">{{content.title}}</div>
+      <div class="flex border-table">{{content.class}}</div>
+      <div class="flex border-table">
         <template is="dom-repeat" items="{{content.jobs.approve}}" as="approve">
           <div class="vertical-style">- {{approve}}</div>
         </template>
       </div>
-      <div class="flex">
+      <div class="flex border-table">
         <template is="dom-repeat" items="{{content.jobs.subject}}" as="subject">
           <div class="vertical-style">- {{subject}}</div>
         </template>
       </div>
-      <div class="flex layout horizontal center">
+      <div class="flex">
         <iron-icon icon="icons:delete"  on-click="_removeItemClass"></iron-icon>
       </div>
     </div>  

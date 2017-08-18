@@ -30,13 +30,29 @@
       .header {
         text-align:left;
         font-family: 'Kanit', sans-serif;
-        font-size: 16px;
+        font-size: 14px;
         margin-top: 20px;
-        opacity: 0.54;
+        /*opacity: 0.54;*/
         height:56px;
-        border-bottom-width:1px;
-        border-bottom-style:solid;
-        border-bottom-color: var(--divider-color);
+        border-width:1px;
+        border-style:solid;
+        /*border-color: var(--divider-color);*/
+        @apply(--layout-center);
+      }
+
+      .border-table{
+        height:56px;
+        border-left-width:1px;
+        border-left-style:solid;
+        /*border-left-color: var(--divider-color);*/
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+        @apply(--layout-center);
+      }
+
+      .table-margin{
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
         @apply(--layout-center);
       }
       /* ---table --*/
@@ -49,11 +65,11 @@
       <div class="flex font-face-big-bold margin-style">การทำวิจัยในชั้นเรียน</div>
       <paper-button raised on-click="_addItemClass">+ เพิ่ม</paper-button>
       <div class="layout horizontal flex header">
-        <div class="flex">ปีการศึกษา</div>
-        <div class="flex">งานวิจัยเรื่อง</div>
-        <div class="flex">ระดับชั้น</div>
-        <div class="flex">ผลรับรอง</div>
-        <div class="flex">วิชา</div>
+        <div class="flex table-margin">ปีการศึกษา</div>
+        <div class="flex border-table">งานวิจัยเรื่อง</div>
+        <div class="flex border-table">ระดับชั้น</div>
+        <div class="flex border-table">ผลรับรอง</div>
+        <div class="flex border-table">วิชา</div>
         <div class="flex">&nbsp;</div> 
       </div>
       <template is="dom-repeat" items="{{list}}" as="class">
