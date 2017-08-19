@@ -59,7 +59,13 @@
           <div class="layout horizontal">
             <div class="flex-4"><paper-input label="ตำแหน่ง/หน้าที่" value="{{value.type}}"></paper-input></div>
             <div class="flex-5"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่" value="{{value.unit}}"></paper-input></div>
-            <div class="flex-3"><paper-input label="ระยะเวลา (ปี)" value="{{value.period_of_time}}"></paper-input></div>
+            <div class="flex-3">
+              <paper-input 
+                label="ระยะเวลา (ปี)" 
+                value="{{value.period_of_time}}"
+                auto-validate allowed-pattern="[0-9]">
+              </paper-input>
+            </div>
           </div>  
 
           <div class="flex font-face-normal">ลักษณะงานที่ปฏิบัติ</div>

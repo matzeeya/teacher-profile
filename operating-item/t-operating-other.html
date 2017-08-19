@@ -1,6 +1,9 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-input/paper-input.html">
 <link rel="import" href="../../paper-button/paper-button.html">
+<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../paper-listbox/paper-listbox.html">
+<link rel="import" href="../../paper-item/paper-item.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../iron-icons/iron-icons.html">
 <link rel="import" href="../../vaadin-upload/vaadin-upload.html">
@@ -40,12 +43,41 @@
         margin-left: 5px;
       }
 
+      paper-dropdown-menu.custom {
+        /*--paper-input-container-focus-color: #000;*/
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+       }
+
+      paper-dropdown-menu{
+        width: 150px;
+      }
+      paper-dropdown-menu.marginleft{
+       margin-left: 5px;
+      }
+      paper-listbox{
+        width: 150px;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-1"><paper-input label="ปีการศึกษา" value ="{{content.year}}"></paper-input></div>
-          <div class="flex-2"><paper-input label="งาน" value ="{{content.semester}}"></paper-input></div>
-          <div class="flex-3"><paper-input label="ตำแหน่ง" value ="{{content.subject}}"></paper-input></div>
+          <div class="flex-1">
+            <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
+              <paper-listbox attr-for-selected="value" selected="{{content.year}}" slot="dropdown-content">
+                <paper-item value="2558">2558</paper-item>
+                <paper-item value="2559">2559</paper-item>
+                <paper-item value="2560">2560</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
+          <div class="flex-2"><paper-input label="งาน" value ="{{content.work}}"></paper-input></div>
+          <div class="flex-3"><paper-input label="ตำแหน่ง" value ="{{content.rank}}"></paper-input></div>
           <div class="flex-2 layout horizontal center">
             <vaadin-upload accept=".pdf" target="/upload/file"
               on-upload-response="_uploadResponse">

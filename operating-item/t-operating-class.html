@@ -1,6 +1,9 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-input/paper-input.html">
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../paper-listbox/paper-listbox.html">
+<link rel="import" href="../../paper-item/paper-item.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../iron-icons/iron-icons.html">
 
@@ -45,13 +48,60 @@
         margin-left: 5px;
       }
 
+      paper-dropdown-menu.custom {
+        /*--paper-input-container-focus-color: #000;*/
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+       }
+
+      paper-dropdown-menu{
+        width: 150px;
+      }
+      paper-dropdown-menu.marginleft{
+       margin-left: 5px;
+      }
+      paper-listbox{
+        width: 150px;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-1"><paper-input label="ปีการศึกษา" value ="{{content.year}}"></paper-input></div>
-          <div class="flex-2"><paper-input label="ภาคเรียน" value ="{{content.semester}}"></paper-input></div>
-          <div class="flex-4"><paper-input label="ชั้น/ห้อง" value ="{{content.classroom}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนนักเรียน" value ="{{content.studentAmount}}"></paper-input></div>
+          <div class="flex-2">
+            <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
+              <paper-listbox attr-for-selected="value" selected="{{content.year}}" slot="dropdown-content">
+                <paper-item value="2558">2558</paper-item>
+                <paper-item value="2559">2559</paper-item>
+                <paper-item value="2560">2560</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
+          <div class="flex-2">
+            <paper-dropdown-menu label="ภาคเรียนที่" class="marginleft custom">
+              <paper-listbox attr-for-selected="value" selected="{{content.semester}}" slot="dropdown-content">
+                <paper-item value="1">1</paper-item>
+                <paper-item value="2">2</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
+          <div class="flex-4">
+            <paper-input 
+              label="ชั้น/ห้อง" 
+              value ="{{content.classroom}}">
+            </paper-input>
+          </div>
+          <div class="flex-1">
+            <paper-input 
+              label="จำนวนนักเรียน" 
+              value ="{{content.studentAmount}}"
+              auto-validate allowed-pattern="[0-9]">
+            </paper-input>
+          </div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItemClass"></iron-icon>
           </div>

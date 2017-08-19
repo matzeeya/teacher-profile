@@ -83,7 +83,13 @@
             </paper-dropdown-menu>
             </div>
             <div class="flex"><paper-input label="ชื่อสื่อ/นวัตกรรม" value="{{value.innovation_name}}"></paper-input></div>
-            <div class="flex"><paper-input label="จำนวนชิ้น" value="{{value.unit}}"></paper-input></div>
+            <div class="flex">
+              <paper-input 
+                label="จำนวนชิ้น" 
+                value="{{value.unit}}"
+                auto-validate allowed-pattern="[0-9]">
+              </paper-input>
+            </div>
           </div>
           <div class="layout horizontal">
             <div class="flex font-face-big-bold">ประเภท</div>

@@ -77,8 +77,20 @@
             </paper-dropdown-menu>
             </div>
             <div class="flex"><paper-input label="เรื่อง" value="{{value.chapter}}"></paper-input></div>
-            <div class="flex"><paper-input label="หน่วยที่" value="{{value.unit}}"></paper-input></div>
-            <div class="flex"><paper-input label="จำนวนชั่วโมง" value="{{value.hour}}"></paper-input></div>
+            <div class="flex">
+              <paper-input 
+                label="หน่วยที่" 
+                value="{{value.unit}}"
+                auto-validate allowed-pattern="[0-9]">
+              </paper-input>
+            </div>
+            <div class="flex">
+              <paper-input 
+                label="จำนวนชั่วโมง" 
+                value="{{value.hour}}"
+                auto-validate allowed-pattern="[0-9]">
+              </paper-input>
+            </div>
           </div>
           <div class="layout horizontal">
             <div class="flex font-face-big-bold">รายละเอียดการบูรณาการ</div>

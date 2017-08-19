@@ -41,10 +41,27 @@
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-2"><paper-input label="กิจกรรม" value ="{{content.semester}}"></paper-input></div>
-          <div class="flex-4"><paper-input label="ชั้น/ห้อง" value ="{{content.classroom}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนนักเรียน" value ="{{content.studentAmount}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนชั่วโมง" value ="{{content.hourPerWeek}}"></paper-input></div>
+          <div class="flex-2"><paper-input label="กิจกรรม" value ="{{content.activity}}"></paper-input></div>
+          <div class="flex-4">
+            <paper-input 
+              label="ชั้น/ห้อง" 
+              value ="{{content.classroom}}">
+            </paper-input>
+          </div>
+          <div class="flex-1">
+            <paper-input 
+              label="จำนวนนักเรียน" 
+              value ="{{content.studentAmount}}"
+              auto-validate allowed-pattern="[0-9]">
+            </paper-input>
+          </div>
+          <div class="flex-1">
+            <paper-input 
+              label="จำนวนชั่วโมง" 
+              value ="{{content.hourPerWeek}}"
+              auto-validate allowed-pattern="[0-9]">
+            </paper-input>
+          </div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItemCourse"></iron-icon>
           </div>

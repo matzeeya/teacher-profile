@@ -82,7 +82,13 @@
           </div>
           <div class="flex-2"><paper-input label="หน่วยงานที่จัดอบรม/สัมมนา" value ="{{content.institution_training}}"></paper-input></div>
           <div class="flex-4"><paper-input label="หัวข้อที่อบรม/สัมมนา" value ="{{content.topic}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="ระยะเวลา (ชั่วโมง)" value ="{{content.hour}}"></paper-input></div>
+          <div class="flex-1">
+            <paper-input 
+              label="ระยะเวลา (ชั่วโมง)" 
+              value ="{{content.hour}}"
+              auto-validate allowed-pattern="[0-9]">
+            </paper-input>
+          </div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
           </div>

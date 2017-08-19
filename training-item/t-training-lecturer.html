@@ -98,7 +98,13 @@
           <div class="flex-3"><paper-input label="เรื่องที่เป็นวิทยากร" value ="{{content.topic}}"></paper-input></div>
           <div class="flex-1"><paper-input label="กลุ่มเป้าหมาย" value ="{{content.target}}"></paper-input></div>
           <div class="flex-3"><paper-input label="หน่วยงานที่จัดอบรม/สัมนา" value ="{{content.institution_training}}"></paper-input></div>
-          <div class="flex-1"><paper-input label="จำนวนชั่วโมง" value ="{{content.hour}}"></paper-input></div>
+          <div class="flex-1">
+            <paper-input 
+              label="จำนวนชั่วโมง" 
+              value ="{{content.hour}}"
+              auto-validate allowed-pattern="[0-9]">
+            </paper-input>
+          </div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItemLecturer"></iron-icon>
           </div>

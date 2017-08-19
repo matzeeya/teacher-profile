@@ -44,7 +44,13 @@
     </div>
     <div class="layout horizontal content">
       <div class="flex"><paper-input label="สาขาวิชาที่ชำนาญ" value="{{value.branch_expert}}"></paper-input></div>
-      <div class="flex"><paper-input label="ประสบการณ์การสอน (ปี)" value="{{value.experience}}"></paper-input></div>
+      <div class="flex">
+        <paper-input 
+          label="ประสบการณ์การสอน (ปี)"
+          value="{{value.experience}}"
+          auto-validate allowed-pattern="[0-9]">
+        </paper-input>
+      </div>
     </div>
   </template>
 <script>
