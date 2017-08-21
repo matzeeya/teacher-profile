@@ -65,7 +65,7 @@
         <iron-icon icon="icons:delete"  on-click="_removeItemInnovation"></iron-icon>
       </div>
     </div>  
-    <t-teaching-dialog-innovation active="{{active}}" value="{{content}}"></t-teaching-dialog-innovation>
+    <t-teaching-dialog-innovation active="{{content.active}}" value="{{content}}"></t-teaching-dialog-innovation>
   </template>
 
   <script>
@@ -80,7 +80,10 @@
           active:{
             type:Boolean,
             notify:true,
-            value:true
+            reflectToAttribute:true,
+            value:function() {
+              return false;
+            }
           }
         }
       }

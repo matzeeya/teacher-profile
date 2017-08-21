@@ -66,7 +66,7 @@
         <iron-icon icon="icons:delete"  on-click="_removeItemIntegration"></iron-icon>
       </div>
     </div>  
-    <t-teaching-dialog-integration active="{{active}}" value="{{content}}"></t-teaching-dialog-integration>
+    <t-teaching-dialog-integration active="{{content.active}}" value="{{content}}"></t-teaching-dialog-integration>
   </template>
 
   <script>
@@ -81,7 +81,10 @@
           active:{
             type:Boolean,
             notify:true,
-            value:true
+            reflectToAttribute:true,
+            value:function() {
+              return false;
+            }
           }
         }
       }

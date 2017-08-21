@@ -74,10 +74,10 @@
           </template>
         </div>
       <div class="flex">
-        <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
+        <iron-icon icon="icons:delete" on-click="_removeItem"></iron-icon>
       </div>
     </div>  
-    <t-teaching-dialog-main active="{{active}}" value="{{content}}"></t-teaching-dialog-main>
+    <t-teaching-dialog-main active="{{content.active}}" value="{{content}}"></t-teaching-dialog-main>
   </template>
 
   <script>
@@ -92,7 +92,10 @@
           active:{
             type:Boolean,
             notify:true,
-            value:true
+            reflectToAttribute:true,
+            value:function() {
+              return false;
+            }
           }
         }
       }

@@ -64,7 +64,7 @@
         font-size: 90%;
       }
     </style>
-      <paper-dialog id="dialog">
+      <paper-dialog id="dialog" on-iron-overlay-closed="_disableActive">
         <div class="layout vertical">
           <div class="layout horizontal">
             <div class="flex">
@@ -116,7 +116,10 @@
             type: Boolean,
             reflectToAttribute:true,
             notify:true,
-            observer:'_isActive'
+            observer:'_isActive',
+            value:function() {
+              return false;
+            }
           },
           value:{
             type:Object,
@@ -126,6 +129,10 @@
             }
           }
         }
+      }
+
+      _disableActive(event) {
+        this.set('active',false);
       }
       _isActive(active) {
         this.set('active',false);

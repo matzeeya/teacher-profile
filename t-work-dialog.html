@@ -52,52 +52,52 @@
       }
 </style>
       <!--modal-->
-      <paper-dialog id="dialog">
-        <h2>Header</h2>
-        <paper-dialog-scrollable>
-        <div class="layout vertical content">
-          <div class="layout horizontal">
-            <div class="flex-4"><paper-input label="ตำแหน่ง/หน้าที่" value="{{value.type}}"></paper-input></div>
-            <div class="flex-5"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่" value="{{value.unit}}"></paper-input></div>
-            <div class="flex-3">
-              <paper-input 
-                label="ระยะเวลา (ปี)" 
-                value="{{value.period_of_time}}"
-                auto-validate allowed-pattern="[0-9]">
-              </paper-input>
-            </div>
-          </div>  
-
-          <div class="flex font-face-normal">ลักษณะงานที่ปฏิบัติ</div>
-
-          <paper-tabs selected="{{page}}" noink scrollable fit-container>
-            <paper-tab>
-              <div class="font-face-big-bold">กลุ่มบริหารงานวิชาการ</div>
-            </paper-tab>
-            <paper-tab>
-              <div class="font-face-big-bold">กลุ่มบริหารงานงบประมาณ</div>
-            </paper-tab>
-            <paper-tab>
-              <div class="font-face-big-bold">กลุ่มบริหารงานบุคคล</div>
-            </paper-tab>
-            <paper-tab>
-              <div class="font-face-big-bold">กลุ่มบริหารงานทั่วไป</div>
-            </paper-tab>
-          </paper-tabs>
-                    
-          <iron-pages selected="{{page}}">             
-            <work-dialog1 list="{{value.jobs.type_1}}"></work-dialog1>
-            <work-dialog2 list="{{value.jobs.type_2}}"></work-dialog2>
-            <work-dialog3 list="{{value.jobs.type_3}}"></work-dialog3>
-            <work-dialog4 list="{{value.jobs.type_4}}"></work-dialog4>            
-          </iron-pages>
+  <paper-dialog id="dialog" on-iron-overlay-closed="_disableActive">
+    <h2>Header</h2>
+    <paper-dialog-scrollable>
+    <div class="layout vertical content">
+      <div class="layout horizontal">
+        <div class="flex-4"><paper-input label="ตำแหน่ง/หน้าที่" value="{{value.type}}"></paper-input></div>
+        <div class="flex-5"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่" value="{{value.agency}}"></paper-input></div>
+        <div class="flex-3">
+          <paper-input 
+            label="ระยะเวลา (ปี)" 
+            value="{{value.period_of_time}}"
+            auto-validate allowed-pattern="[0-9]">
+          </paper-input>
         </div>
-        </paper-dialog-scrollable>
-        <div class="buttons">
-          <paper-button dialog-confirm>ตกลง</paper-button>
-          <paper-button dialog-dismiss>ปิด</paper-button>
-        </div>
-      </paper-dialog>
+      </div>  
+
+      <div class="flex font-face-normal">ลักษณะงานที่ปฏิบัติ</div>
+
+      <paper-tabs selected="{{page}}" noink scrollable fit-container>
+        <paper-tab>
+          <div class="font-face-big-bold">กลุ่มบริหารงานวิชาการ</div>
+        </paper-tab>
+        <paper-tab>
+          <div class="font-face-big-bold">กลุ่มบริหารงานงบประมาณ</div>
+        </paper-tab>
+        <paper-tab>
+          <div class="font-face-big-bold">กลุ่มบริหารงานบุคคล</div>
+        </paper-tab>
+        <paper-tab>
+          <div class="font-face-big-bold">กลุ่มบริหารงานทั่วไป</div>
+        </paper-tab>
+      </paper-tabs>
+                
+      <iron-pages selected="{{page}}">             
+        <work-dialog1 list="{{value.jobs.type_1}}"></work-dialog1>
+        <work-dialog2 list="{{value.jobs.type_2}}"></work-dialog2>
+        <work-dialog3 list="{{value.jobs.type_3}}"></work-dialog3>
+        <work-dialog4 list="{{value.jobs.type_4}}"></work-dialog4>            
+      </iron-pages>
+    </div>
+    </paper-dialog-scrollable>
+    <div class="buttons">
+      <paper-button dialog-confirm>ตกลง</paper-button>
+      <paper-button dialog-dismiss>ปิด</paper-button>
+    </div>
+  </paper-dialog>
   </template>
 
   <script>
@@ -109,7 +109,10 @@
             type: Boolean,
             reflectToAttribute:true,
             notify:true,
-            observer:'_isActive'
+            observer:'_isActive',
+            value:function() {
+              return false;
+            }
           },
           value:{
             type:Object,
@@ -125,8 +128,14 @@
           }
         }
       }
-      _isActive(active) {
+
+      _disableActive(event) {
         this.set('active',false);
+      }
+
+      _isActive(active) {
+        //console.log(active);
+        //this.set('active',false);
         if(active) {
           this.$.dialog.open();
         } else {

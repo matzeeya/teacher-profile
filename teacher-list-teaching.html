@@ -104,13 +104,14 @@
         }
       }
       _addItem(event) {
-        this.push('list',{'show':true,'jobs':{
+        this.push('list',{'show':true,'active':true,
+        'jobs':{
           'type_1':[],
           'type_2':[]
           }});
       }
       _removeItem(event) {
-        for(var i=0;i<this.listlength;i++) {
+        for(var i=0;i<this.list.length;i++) {
           if(this.list[i].show == false) {         
             this.splice('list',i,1);              
             break;

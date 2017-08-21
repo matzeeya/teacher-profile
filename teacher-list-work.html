@@ -84,8 +84,7 @@
     </div>
     
     <template is="dom-repeat" items="{{list}}">
-      <t-work content="{{item}}" on-t-work-remove="_removeItem">
-      </t-work>
+      <t-work content="{{item}}" on-t-work-remove="_removeItem"></t-work>
     </template>        
   </template>
 <script>
@@ -102,9 +101,9 @@
           }          
         }
       }
-      _addItem(event) {
-        this.set('active',true);
-        this.push('list',{'show':true,'jobs':{
+      _addItem(event) {        
+        this.push('list',{'show':true,'active':true,
+        'jobs':{
           'type_1':[],
           'type_2':[],
           'type_3':[],
