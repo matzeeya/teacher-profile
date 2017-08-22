@@ -20,7 +20,9 @@
     "paper-item": "^2.0.0",
     "paper-dialog-scrollable": "^2.1.0",
     "vaadin-upload": "^2.0.0",
-    "iron-sessionstorage": "frenchynz/iron-sessionstorage#^1.0.1"
+    "iron-sessionstorage": "frenchynz/iron-sessionstorage#^1.0.1",
+    "paper-spinner": "PolymerElements/paper-spinner#^2.0.0",
+    "paper-alert-dialog": "Collaborne/paper-alert-dialog#^2.0.1"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
@@ -28,6 +30,7 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
   },
   "resolutions": {
-    "polymer": "^2.0.0"
+    "polymer": "^2.0.0",
+    "webcomponentsjs": "^1.0.0"
   }
 }

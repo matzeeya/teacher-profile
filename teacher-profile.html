@@ -2,12 +2,14 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-tabs/paper-tabs.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-pages/iron-pages.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../jwt-decode/jwt-decode.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../paper-spinner/paper-spinner.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
 
 <link rel="import" href="t-profile.html">
 <link rel="import" href="teacher-list-education.html">
@@ -40,6 +42,13 @@
         font-size: 120%;
         font-weight: bold;
       }
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 120%;
+        font-weight: bold;
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
+      }
 
       paper-tabs {
         --paper-tabs-selection-bar-color: #F44336;
@@ -50,10 +59,22 @@
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
-        color:#000;
+      }
+
+      paper-button.color{
+        color:#1a75ff;
+      }
+
+      paper-dialog{
+        width: 350px;
+      }
+
+      iron-icon{
+        height:40px; 
+        width:40px;
+        color: green;
       }
     </style>
-
         <paper-tabs selected="{{page}}" noink scrollable fit-container>
           <paper-tab>
             <div class="font-face-big-bold">ข้อมูลทั่วไป</div>
@@ -110,10 +131,20 @@
         </iron-pages>
 
          <div class="buttons">
-          <paper-button raised on-click="update">บันทึก</paper-button>
+          <paper-spinner active="{{loading}}"></paper-spinner>
+          <paper-button on-tap="openDialog" on-click="update" raised>บันทึก</paper-button>
           <paper-button dialog-dismiss raised>ยกเลิก</paper-button>
         </div>
-    
+
+        <paper-dialog id="dialog" modal>
+          <h2><div class="font-face-normal">
+            <iron-icon src="{{img}}"></iron-icon>
+          </div></h2>
+          <div class="font-face-normal">บันทึกข้อมูลสำเร็จ</div>
+          <div class="buttons">
+            <paper-button class="color" dialog-confirm>ตกลง</paper-button>
+          </div>
+        </paper-dialog>
   </template>
 
   <script>
@@ -128,16 +159,20 @@
           app: {
             type: String,
             notify:true
-          }/*,
-          active:{
+          },
+          loading: {
             type: Boolean,
-            reflectToAttribute:true,
-            notify:true,
-            observer:'_isActive'
-          }*/,
+            value: false,
+            notify: true
+          },
           page:{
             type:Number,
             value:0
+          },
+          img:{
+            type:String,
+            notify:true,
+            computed:'__defaultImg()'
           }
         };
       }
@@ -148,18 +183,17 @@
         ];
       }
 
+      __defaultImg(){
+        return this.resolveUrl("./images/true.png");
+      }
+
+      openDialog(){
+        this.$.dialog.open();
+      }
+
       onStatusChanged(event) {
         this.set('active',event.detail.value);
       }
-
-      /*_isActive(active) {
-        this.set('active',false);
-        if(active) {
-          this.$.dialog.open();
-        } else {
-          this.$.dialog.close();
-        }
-      }*/
 
       __decodeJwt(token,app) {
         if(!token || !app) return;
@@ -232,6 +266,7 @@
         var ele = document.createElement('iron-request');
         var key = this.document.key;
         var value = this.document.value;
+        this.set('loading',true);
         ele.send({
           url:'https://maas.nuqlis.com:9000/apis/dbs/teacher_db/'+key,
           method:'POST',
@@ -243,7 +278,7 @@
             body:value
           }).then(function(res) {
             if(res.response.ok) {
-              //self.set('active',false);
+              self.set('loading',false);
             }
           });
  
