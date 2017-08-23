@@ -34,10 +34,10 @@
         margin-top: 20px;
       }
 
-      paper-checkbox{
+      paper-radio-button{
         font-family: 'Kanit', sans-serif;
-        font-size: 70%;
-        margin-left: 5px;
+        font-size: 100%;
+        /*margin-left: 5px;*/
       }
 
       paper-input{
@@ -96,8 +96,10 @@
           <div class="flex-3"><paper-input label="สาขาวิชา/วิชาเอก" value="{{content.branch}}"></paper-input></div>
           <div class="flex-3"><paper-input label="สถานศึกษา" value="{{content.place_of_education}}"></paper-input></div>
           <div class="flex">
-            <div class="box flex-5"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 1</paper-checkbox></div>
-            <div class="box flex-5"><paper-checkbox class="font-normal">เกียรตินิยมอันดับ 2</paper-checkbox></div>
+            <paper-radio-group aria-labelledby="label1" selected="{{content.honor}}">
+              <paper-radio-button name="1">เกียรตินิยมอันดับ 1</paper-radio-button>
+              <paper-radio-button name="2">เกียรตินิยมอันดับ 2</paper-radio-button>
+            </paper-radio-group>
           </div>
           <div class="flex-1 layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>

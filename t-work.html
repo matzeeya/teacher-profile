@@ -101,6 +101,7 @@
       </div>
       <div class="flex border-table">{{content.period_of_time}}</div>
       <div class="flex">
+        <iron-icon icon="icons:create"  on-click="_editItem"></iron-icon> 
         <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>        
       </div>      
     </div>  
@@ -137,6 +138,15 @@
         this.dispatchEvent(eve);
       }
 
+      _editItem(event) {
+        this.set('active',true);
+        var eve = new CustomEvent('t-work-edit',{
+          bubbles:true,
+          composed:true,
+          detail:this.document
+        }); 
+        this.dispatchEvent(eve);
+      }
       _checkFirstElement(index) {                
         return index == 0;
       }

@@ -166,11 +166,6 @@
           value:{
             type:Object,
             notify:true,
-          },
-          end_date:{
-            type:String,
-            notify:true,
-            computed:'__calculateDate(start_date)'
           }
         }        
       }  
@@ -180,9 +175,6 @@
             '__checkSub(value)',
           ];
         }   
-        __calculateDate(start_date){
-          console.log(start_date);
-        }
       __checkSub(value) {
         if(!value['host_address']) {
           value['host_address'] = {};

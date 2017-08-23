@@ -278,7 +278,9 @@
             body:value
           }).then(function(res) {
             if(res.response.ok) {
+              //console.log("ok");
               self.set('loading',false);
+              //this.$.dialog.open();
             }
           });
  

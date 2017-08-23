@@ -84,7 +84,7 @@
     </div>
     
     <template is="dom-repeat" items="{{list}}">
-      <t-work content="{{item}}" on-t-work-remove="_removeItem"></t-work>
+      <t-work content="{{item}}" on-t-work-remove="_removeItem" on-t-work-edit="_editItem"></t-work>
     </template>        
   </template>
 <script>
@@ -117,6 +117,10 @@
             break;
           }
         }
+      }
+
+      _editItem(event) {
+        //--
       }
     }
     window.customElements.define(TeacherListWork.is, TeacherListWork);
