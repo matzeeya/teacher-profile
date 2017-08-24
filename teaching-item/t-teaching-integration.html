@@ -8,61 +8,62 @@
 
 <dom-module id="t-teaching-integration">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         @apply(--layout-vertical);
         display: block;
       }
-      .font-face-big-bold {
+      .font-face-bold {
         font-family: 'Kanit', sans-serif;
-        font-size: 100%;
+        font-size: 110;
         font-weight: bold;
-      }
+      } 
+
       .font-face-normal {
         font-family: 'Kanit', sans-serif;
-        font-size: 100%;
+        font-size: 110;
       }
 
       /* ---table --*/
-      .content {
+      .table-content {
+        background-color: #edf7f8;
         text-align:left;
         font-family: 'Kanit', sans-serif;
-        font-size: 14px;
+        font-size: 110%;
         opacity: 0.87;
-        border-width:1px;
-        border-style:solid;
-        /*border-color: var(--divider-color);*/
+        padding: 10px;
+        border-bottom-width:1px;
+        border-bottom-style:solid;
+        border-bottom-color: var(--divider-color);
       }
 
-      .border-table{
-        border-left-width:1px;
-        border-left-style:solid;
-        /*border-left-color: var(--divider-color);*/
-      }
+      .text-center{
+        text-align:center;
       }
       /* ---table --*/
-      iron-icon{
-        margin-left: 5px;
-      }
 
       iron-icon:hover {
         color: #999966;
         cursor:hand;
         cursor:pointer;
       }
+
+      .vertical-style{
+        @apply(--layout-vertical);
+      }
   </style>
 
-    <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex">{{content.year}}</div>
-      <div class="flex border-table">{{content.unit}}</div>
-      <div class="flex border-table">{{content.chapter}}</div>
-      <div class="flex border-table">
+    <div class="layout horizontal flex table-content" hidden$="{{!content.show}}">
+      <div class="flex-1 text-center">{{content.year}}</div>
+      <div class="flex-1 text-center">{{content.unit}}</div>
+      <div class="flex-3">{{content.chapter}}</div>
+      <div class="flex-5">
         <template is="dom-repeat" items="{{content.jobs.detail}}" as="detail">
           <div class="vertical-style">- {{detail}}</div>
         </template>
       </div>
-      <div class="flex border-table">{{content.hour}}</div>
-      <div class="flex">
+      <div class="flex-1 text-center">{{content.hour}}</div>
+      <div class="flex-1">
         <iron-icon icon="icons:delete"  on-click="_removeItemIntegration"></iron-icon>
       </div>
     </div>  

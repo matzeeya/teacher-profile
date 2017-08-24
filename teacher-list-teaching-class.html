@@ -8,7 +8,7 @@
 
 <dom-module id="teacher-list-teaching-class">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         @apply(--layout-vertical);
         display: block;
@@ -28,32 +28,20 @@
 
       /* ---table --*/
       .header {
-        text-align:left;
         font-family: 'Kanit', sans-serif;
-        font-size: 14px;
-        margin-top: 20px;
-        /*opacity: 0.54;*/
+        font-size: 110%;
+        background-color: #327a81;
+        color: white;
         height:56px;
-        border-width:1px;
-        border-style:solid;
-        /*border-color: var(--divider-color);*/
+        margin-top: 10px;
+        text-align: center;
+        text-transform: uppercase;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
         @apply(--layout-center);
-      }
 
-      .border-table{
-        height:56px;
-        border-left-width:1px;
-        border-left-style:solid;
-        /*border-left-color: var(--divider-color);*/
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
-        @apply(--layout-center);
-      }
-
-      .table-margin{
-        @apply --layout-horizontal;
-        @apply --layout-center-justified;
-        @apply(--layout-center);
       }
       /* ---table --*/
 
@@ -65,12 +53,12 @@
       <div class="flex font-face-big-bold margin-style">การทำวิจัยในชั้นเรียน</div>
       <paper-button raised on-click="_addItemClass">+ เพิ่ม</paper-button>
       <div class="layout horizontal flex header">
-        <div class="flex table-margin">ปีการศึกษา</div>
-        <div class="flex border-table">งานวิจัยเรื่อง</div>
-        <div class="flex border-table">ระดับชั้น</div>
-        <div class="flex border-table">ผลรับรอง</div>
-        <div class="flex border-table">วิชา</div>
-        <div class="flex">&nbsp;</div> 
+        <div class="flex-1">ปีการศึกษา</div>
+        <div class="flex-3">งานวิจัยเรื่อง</div>
+        <div class="flex-2">ระดับชั้น</div>
+        <div class="flex-2">ผลรับรอง</div>
+        <div class="flex-3">วิชา</div>
+        <div class="flex-1">&nbsp;</div> 
       </div>
       <template is="dom-repeat" items="{{list}}" as="class">
         <t-teaching-Class content="{{class}}" 
