@@ -12,7 +12,7 @@
 
 <dom-module id="t-operating-other">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
         --paper-input-container-label: {
@@ -21,18 +21,6 @@
         --paper-input-container-input: {
           font-family: 'Kanit', sans-serif;
         }
-      }
-      .font-face-big-bold {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-        font-weight: bold;
-      }
-      .font-face-normal {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-      }
-      .margin-top-style{
-        margin-top: 20px;
       }
 
       paper-input{
@@ -44,7 +32,6 @@
       }
 
       paper-dropdown-menu.custom {
-        /*--paper-input-container-focus-color: #000;*/
         --paper-input-container-label: {
           font-family: 'Kanit', sans-serif;
         };
@@ -54,31 +41,36 @@
        }
 
       paper-dropdown-menu{
-        width: 150px;
+        width: 98%;
       }
       paper-dropdown-menu.marginleft{
        margin-left: 5px;
       }
       paper-listbox{
-        width: 150px;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
+
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-1">
-            <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
+          <div class="flex-2">
+            <!--<paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
               <paper-listbox attr-for-selected="value" selected="{{content.year}}" slot="dropdown-content">
                 <paper-item value="2558">2558</paper-item>
                 <paper-item value="2559">2559</paper-item>
                 <paper-item value="2560">2560</paper-item>
               </paper-listbox>
-            </paper-dropdown-menu>
+            </paper-dropdown-menu>-->
+          <paper-input label="ปีที่จบ" 
+            value="{{content.year}}"
+            auto-validate allowed-pattern="[0-9]"
+            char-counter maxlength="4">
+          </paper-input>
           </div>
-          <div class="flex-2"><paper-input label="งาน" value ="{{content.work}}"></paper-input></div>
-          <div class="flex-3"><paper-input label="ตำแหน่ง" value ="{{content.rank}}"></paper-input></div>
-          <div class="flex-2 layout horizontal center">
+          <div class="flex-5"><paper-input label="งาน" value ="{{content.work}}"></paper-input></div>
+          <div class="flex-2"><paper-input label="ตำแหน่ง" value ="{{content.rank}}"></paper-input></div>
+          <div class="flex-3 layout horizontal center">
             <vaadin-upload accept=".pdf" target="/upload/file"
               on-upload-response="_uploadResponse">
             </vaadin-upload>
@@ -90,7 +82,7 @@
               </a>
             </template>
           </div>
-          <div class="flex-1 layout horizontal center">
+          <div class="flex layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItemOther"></iron-icon>
           </div>
         </div>

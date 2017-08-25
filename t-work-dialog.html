@@ -18,6 +18,7 @@
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
+        @apply(--layout-vertical);
         display: block;
         --paper-input-container-label: {
             font-family: 'Kanit', sans-serif;
@@ -35,7 +36,7 @@
       .font-face-normal {
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
-        margin-left: 10px;
+        /*margin-left: 10px;*/
       }
 
       paper-tabs {
@@ -47,8 +48,7 @@
         color: #fff;
         height: 40px;
       }
-      
-      
+
       paper-dialog{
         width: 800px;
       /*  height: 700px; */
@@ -73,34 +73,45 @@
         };
       }
 </style>
-      <!--modal-->
-  <paper-dialog id="dialog" on-iron-overlay-closed="_disableActive">
+  <paper-dialog id="dialog" on-iron-overlay-closed="_disableActive" modal>
     <paper-toolbar class="toolbar-color">
       <span class="title" slot="top">ประวัติการทำงาน</span>
       <paper-progress slot="middle" class="fit" value="60"></paper-progress>
     </paper-toolbar>
-    <paper-dialog-scrollable>
-    <div class="layout vertical">
       <div class="layout horizontal">
-        <div class="flex-4">
-          <span class="font-face-normal">ตำแหน่ง/หน้าที่</span>
+        <div class="flex-3 font-face-normal">ตำแหน่ง/หน้าที่
           <paper-radio-group aria-labelledby="label1" selected="{{value.type}}">
             <paper-radio-button name="ครูผู้ช่วย" class ="font-face-normal">ครูผู้ช่วย</paper-radio-button>
             <paper-radio-button name="ครู" class ="font-face-normal">ครู</paper-radio-button>
           </paper-radio-group>
         </div>
-        <div class="flex-5"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่" value="{{value.agency}}"></paper-input></div>
-        <div class="flex-3">
-          <paper-input 
-            label="ระยะเวลา (ปี)" 
+        <div class="flex-7"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่" value="{{value.agency}}"></paper-input></div>
+        <div class="flex-2"><paper-input label="ระยะเวลา (ปี)" 
+          value="{{value.period_of_time}}"
+          auto-validate allowed-pattern="[0-9]">
+        </paper-input>
+      </div>
+      </div>
+      <!--<div class="flex font-face-normal">หน่วยงานที่ปฏิบัติหน้าที่</div>
+      <div class="layout horizontal">
+        <div class="flex-4">
+          <paper-input label="เขต" 
+            value="{{value.area}}">
+          </paper-input>
+        </div>
+        <div class="flex-6">
+            <paper-input label="โรงเรียน" 
+              value="{{value.school}}">
+            </paper-input>
+          </div>
+          <div class="flex-2"><paper-input label="ระยะเวลา (ปี)" 
             value="{{value.period_of_time}}"
             auto-validate allowed-pattern="[0-9]">
           </paper-input>
         </div>
-      </div>  
+      </div>-->  
 
       <div class="flex font-face-normal">ลักษณะงานที่ปฏิบัติ</div>
-
       <paper-tabs selected="{{page}}" noink scrollable fit-container>
         <paper-tab>
           <div class="font-face-normal">กลุ่มบริหารงานวิชาการ</div>
@@ -122,8 +133,7 @@
         <work-dialog3 list="{{value.jobs.type_3}}"></work-dialog3>
         <work-dialog4 list="{{value.jobs.type_4}}"></work-dialog4>            
       </iron-pages>
-    </div>
-    </paper-dialog-scrollable>
+
     <div class="buttons">
       <paper-button dialog-confirm>ตกลง</paper-button>
       <paper-button dialog-dismiss>ปิด</paper-button>

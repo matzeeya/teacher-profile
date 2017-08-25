@@ -7,7 +7,7 @@
 
 <dom-module id="t-operating-course">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
         --paper-input-container-label: {
@@ -16,18 +16,6 @@
         --paper-input-container-input: {
           font-family: 'Kanit', sans-serif;
         }
-      }
-      .font-face-big-bold {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-        font-weight: bold;
-      }
-      .font-face-normal {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-      }
-      .margin-top-style{
-        margin-top: 20px;
       }
 
       paper-input{
@@ -41,8 +29,8 @@
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-2"><paper-input label="กิจกรรม" value ="{{content.activity}}"></paper-input></div>
-          <div class="flex-4">
+          <div class="flex-6"><paper-input label="กิจกรรม" value ="{{content.activity}}"></paper-input></div>
+          <div class="flex-3">
             <paper-input 
               label="ชั้น/ห้อง" 
               value ="{{content.classroom}}">
