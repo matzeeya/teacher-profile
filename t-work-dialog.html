@@ -28,6 +28,11 @@
         }
       }
 
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
+
       paper-tabs {
         --paper-tabs-selection-bar-color: #cceeff;
         --paper-tab-content-unselected: {
@@ -66,7 +71,7 @@
     <paper-toolbar class="toolbarcolor">
       <span class="title" slot="top">ประวัติการทำงาน</span>
       <paper-progress slot="middle" class="fit" value="60"></paper-progress>
-    </paper-toolbar>
+    </paper-toolbar>   
       <div class="layout horizontal">
         <div class="flex-3 font-face-normal">ตำแหน่ง/หน้าที่
           <paper-radio-group aria-labelledby="label1" selected="{{value.type}}">
@@ -116,13 +121,12 @@
         </paper-tab>
       </paper-tabs>
                 
-      <iron-pages selected="{{page}}">             
+      <iron-pages selected="{{page}}">    
         <work-dialog1 list="{{value.jobs.type_1}}"></work-dialog1>
         <work-dialog2 list="{{value.jobs.type_2}}"></work-dialog2>
         <work-dialog3 list="{{value.jobs.type_3}}"></work-dialog3>
-        <work-dialog4 list="{{value.jobs.type_4}}"></work-dialog4>            
-      </iron-pages>
-
+        <work-dialog4 list="{{value.jobs.type_4}}"></work-dialog4>    
+      </iron-pages> 
     <div class="buttons">
       <paper-button dialog-confirm>ตกลง</paper-button>
       <paper-button dialog-dismiss>ปิด</paper-button>
