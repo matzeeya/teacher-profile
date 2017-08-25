@@ -6,7 +6,7 @@
 
 <dom-module id="teacher-list-education-expert">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
          --paper-input-container-label: {
@@ -30,7 +30,7 @@
         text-align:left;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
-        opacity: 0.70;
+        /*opacity: 0.70;*/
       }
 
       paper-input{
@@ -43,8 +43,8 @@
       <div class="flex font-face-big-bold margin-style">ความชำนาญ</div>
     </div>
     <div class="layout horizontal content">
-      <div class="flex"><paper-input label="สาขาวิชาที่ชำนาญ" value="{{value.branch_expert}}"></paper-input></div>
-      <div class="flex">
+      <div class="flex-8"><paper-input label="สาขาวิชาที่ชำนาญ" value="{{value.branch_expert}}"></paper-input></div>
+      <div class="flex-3">
         <paper-input 
           label="ประสบการณ์การสอน (ปี)"
           value="{{value.experience}}"

@@ -2,6 +2,7 @@
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-tabs/paper-tabs.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../iron-pages/iron-pages.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
@@ -15,22 +16,35 @@
 
 <dom-module id="t-work-dialog">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
+        --paper-input-container-label: {
+            font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
       }
       .font-face-big-bold {
         font-family: 'Kanit', sans-serif;
-        font-size: 100%;
+        font-size: 140%;
         font-weight: bold;
       }
+
       .font-face-normal {
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
+        margin-left: 10px;
       }
+
       paper-tabs {
-        --paper-tabs-selection-bar-color: #F44336;
-        background-color: var(--paper-grey-50);
+        --paper-tabs-selection-bar-color: #cceeff;
+        --paper-tab-content-unselected: {
+          opacity: 0.52;
+        };
+        background-color: #3f51b5;
+        color: #fff;
         height: 40px;
       }
       
@@ -39,7 +53,6 @@
         width: 800px;
       /*  height: 700px; */
       }
-      
 
       paper-input{
         margin-left: 5px;
@@ -50,14 +63,32 @@
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
+
+      paper-toolbar.toolbar-color {
+        --paper-toolbar-background: #47aeb8;
+        --paper-toolbar-title: {
+          font-family: 'Kanit', sans-serif;
+          font-size: 140%;
+          font-weight: bold;
+        };
+      }
 </style>
       <!--modal-->
   <paper-dialog id="dialog" on-iron-overlay-closed="_disableActive">
-    <h2>Header</h2>
+    <paper-toolbar class="toolbar-color">
+      <span class="title" slot="top">ประวัติการทำงาน</span>
+      <paper-progress slot="middle" class="fit" value="60"></paper-progress>
+    </paper-toolbar>
     <paper-dialog-scrollable>
-    <div class="layout vertical content">
+    <div class="layout vertical">
       <div class="layout horizontal">
-        <div class="flex-4"><paper-input label="ตำแหน่ง/หน้าที่" value="{{value.type}}"></paper-input></div>
+        <div class="flex-4">
+          <span class="font-face-normal">ตำแหน่ง/หน้าที่</span>
+          <paper-radio-group aria-labelledby="label1" selected="{{value.type}}">
+            <paper-radio-button name="ครูผู้ช่วย" class ="font-face-normal">ครูผู้ช่วย</paper-radio-button>
+            <paper-radio-button name="ครู" class ="font-face-normal">ครู</paper-radio-button>
+          </paper-radio-group>
+        </div>
         <div class="flex-5"><paper-input label="หน่วยงานที่ปฏิบัติหน้าที่" value="{{value.agency}}"></paper-input></div>
         <div class="flex-3">
           <paper-input 
@@ -72,16 +103,16 @@
 
       <paper-tabs selected="{{page}}" noink scrollable fit-container>
         <paper-tab>
-          <div class="font-face-big-bold">กลุ่มบริหารงานวิชาการ</div>
+          <div class="font-face-normal">กลุ่มบริหารงานวิชาการ</div>
         </paper-tab>
         <paper-tab>
-          <div class="font-face-big-bold">กลุ่มบริหารงานงบประมาณ</div>
+          <div class="font-face-normal">กลุ่มบริหารงานงบประมาณ</div>
         </paper-tab>
         <paper-tab>
-          <div class="font-face-big-bold">กลุ่มบริหารงานบุคคล</div>
+          <div class="font-face-normal">กลุ่มบริหารงานบุคคล</div>
         </paper-tab>
         <paper-tab>
-          <div class="font-face-big-bold">กลุ่มบริหารงานทั่วไป</div>
+          <div class="font-face-normal">กลุ่มบริหารงานทั่วไป</div>
         </paper-tab>
       </paper-tabs>
                 

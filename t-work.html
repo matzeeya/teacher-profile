@@ -30,7 +30,7 @@
 
       /* ---table --*/
       .table-content {
-        background-color: #edf7f8;
+        background-color: var(--t-teaching-background-color,#edf7f8);
         text-align:left;
         font-family: 'Kanit', sans-serif;
         font-size: 110%;
@@ -89,7 +89,7 @@
       </div>
       <div class="flex-1 text-center">{{content.period_of_time}}</div>
       <div class="flex-1">
-        <!--<iron-icon icon="icons:create"  on-click="_editItem"></iron-icon> -->
+        <iron-icon icon="icons:create"  on-click="_editItem"></iron-icon> 
         <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>        
       </div>    
     </div>  
@@ -126,15 +126,9 @@
         this.dispatchEvent(eve);
       }
 
-      /*_editItem(event) {
-        this.set('active',true);
-        var eve = new CustomEvent('t-work-edit',{
-          bubbles:true,
-          composed:true,
-          detail:this.document
-        }); 
-        this.dispatchEvent(eve);
-      }*/
+      _editItem(event) {
+        this.set('content.active',true);
+      }
 
       _checkFirstElement(index) {                
         return index == 0;

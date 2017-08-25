@@ -45,6 +45,10 @@
 
       /* ---table --*/
 
+      .even_row {
+        --t-teaching-background-color: white;
+      }
+
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
@@ -61,7 +65,7 @@
         <div class="flex-1">&nbsp;</div> 
       </div>
       <template is="dom-repeat" items="{{list}}" as="innovation">
-        <t-teaching-innovation content="{{innovation}}" 
+        <t-teaching-innovation content="{{innovation}}" class$="{{_isEven(index)}}"
           on-t-teaching-innovation-remove="_removeItemInnovation">
         </t-teaching-innovation>
       </template>
@@ -81,6 +85,11 @@
         }
       }
       
+      _isEven(idx) {        
+        if(idx % 2 == 0) return "even_row";
+        return "";
+      }
+
       _addItemInnovation(event) {
         this.push('list',{'show':true,'active':true,
         'jobs':{

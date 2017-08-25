@@ -11,7 +11,7 @@
 
 <dom-module id="t-education">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
         --paper-input-container-label: {
@@ -21,23 +21,10 @@
           font-family: 'Kanit', sans-serif;
         }
       }
-      .font-face-big-bold {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-        font-weight: bold;
-      }
-      .font-face-normal {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-      }
-      .margin-top-style{
-        margin-top: 20px;
-      }
 
       paper-radio-button{
         font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-        /*margin-left: 5px;*/
+        font-size: 90%;
       }
 
       paper-input{
@@ -65,22 +52,25 @@
        }
 
       paper-dropdown-menu{
-        width: 150px;
+        width: 98%;
       }
       paper-dropdown-menu.marginleft{
        margin-left: 5px;
       }
       paper-listbox{
-        width: 150px;
+        /*width: 100%;*/
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-1">
+          <div class="flex-2">
             <paper-dropdown-menu label="ระดับการศึกษา" class="marginleft custom">
-            <paper-listbox attr-for-selected="value" selected="{{content.education}}" slot="dropdown-content">
+            <paper-listbox class="dropdown-content" 
+              attr-for-selected="value" 
+              selected="{{content.education}}" 
+              slot="dropdown-content">
               <paper-item value="ปริญญาตรี">ปริญญาตรี</paper-item>
               <paper-item value="ปริญญาโท">ปริญญาโท</paper-item>
               <paper-item value="ปริญญาเอก">ปริญญาเอก</paper-item>
@@ -93,15 +83,15 @@
               auto-validate allowed-pattern="[0-9]"
               char-counter maxlength="4"></paper-input></div>
           <div class="flex-2"><paper-input label="วุฒิการศึกษา" value="{{content.educational}}"></paper-input></div>
-          <div class="flex-3"><paper-input label="สาขาวิชา/วิชาเอก" value="{{content.branch}}"></paper-input></div>
-          <div class="flex-3"><paper-input label="สถานศึกษา" value="{{content.place_of_education}}"></paper-input></div>
-          <div class="flex">
+          <div class="flex-2"><paper-input label="สาขาวิชา/วิชาเอก" value="{{content.branch}}"></paper-input></div>
+          <div class="flex-4"><paper-input label="สถานศึกษา" value="{{content.place_of_education}}"></paper-input></div>
+          <div class="flex-1">
             <paper-radio-group aria-labelledby="label1" selected="{{content.honor}}">
               <paper-radio-button name="1">เกียรตินิยมอันดับ 1</paper-radio-button>
               <paper-radio-button name="2">เกียรตินิยมอันดับ 2</paper-radio-button>
             </paper-radio-group>
           </div>
-          <div class="flex-1 layout horizontal center">
+          <div class="flex layout horizontal center">
             <iron-icon icon="icons:delete"  on-click="_removeItem"></iron-icon>
           </div>
         </div>

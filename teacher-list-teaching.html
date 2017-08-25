@@ -50,6 +50,10 @@
       }
       /* ---table --*/
 
+      .even_row {
+        --t-teaching-background-color: white;
+      }
+
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
@@ -72,7 +76,7 @@
       <div class="flex">&nbsp;</div> 
     </div>
     <template is="dom-repeat" items="{{list}}">
-      <t-teaching content="{{item}}" on-t-teaching-remove="_removeItem">
+      <t-teaching content="{{item}}" class$="{{_isEven(index)}}" on-t-teaching-remove="_removeItem">
       </t-teaching>
     </template>
   </template>
@@ -90,6 +94,12 @@
           }
         }
       }
+
+      _isEven(idx) {        
+        if(idx % 2 == 0) return "even_row";
+        return "";
+      }
+
       _addItem(event) {
         this.push('list',{'show':true,'active':true,
         'jobs':{

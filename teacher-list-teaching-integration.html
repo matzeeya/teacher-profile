@@ -44,6 +44,11 @@
       }
 
       /* ---table --*/
+
+      .even_row {
+        --t-teaching-background-color: white;
+      }
+
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
@@ -61,6 +66,7 @@
       </div>
       <template is="dom-repeat" items="{{list}}" as="integration">
         <t-teaching-Integration content="{{integration}}" 
+          class$="{{_isEven(index)}}"
           on-t-teaching-Integration-remove="_removeItemIntegration">
         </t-teaching-Integration>
       </template>
@@ -78,6 +84,11 @@
             }
           }
         }
+      }
+      
+      _isEven(idx) {        
+        if(idx % 2 == 0) return "even_row";
+        return "";
       }
       
       _addItemIntegration(event) {

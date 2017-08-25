@@ -7,7 +7,7 @@
 
 <dom-module id="t-teaching-reward">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         @apply(--layout-vertical);
         display: block;
@@ -55,20 +55,19 @@
        }
 
       paper-dropdown-menu{
-        width: 150px;
+        width: 98%;
       }
       paper-dropdown-menu.marginleft{
        margin-left: 5px;
       }
       paper-listbox{
-        width: 150px;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
-      <div class="flex-1">
+      <div class="flex-2">
         <paper-dropdown-menu label="ปี" class="marginleft custom">
           <paper-listbox attr-for-selected="value" selected="{{content.year}}" slot="dropdown-content">
             <paper-item value="2558">2558</paper-item>
@@ -77,9 +76,9 @@
           </paper-listbox>
         </paper-dropdown-menu>
       </div>
-      <div class="flex-4"><paper-input label="ชื่อ-นามสกุล นักเรียน" value ="{{content.student_name}}"></paper-input></div>
+      <div class="flex-2"><paper-input label="ชื่อ-นามสกุล นักเรียน" value ="{{content.student_name}}"></paper-input></div>
       <div class="flex-4"><paper-input label="รางวัลที่ได้รับ" value ="{{content.reward}}"></paper-input></div>
-      <div class="flex-1"><paper-input label="หน่วยงานที่มอบรางวัล" value ="{{content.institution_reward}}"></paper-input></div>
+      <div class="flex-4"><paper-input label="หน่วยงานที่มอบรางวัล" value ="{{content.institution_reward}}"></paper-input></div>
       <div class="flex layout horizontal center">
         <iron-icon icon="icons:delete"  on-click="_removeItemReward"></iron-icon>
       </div>

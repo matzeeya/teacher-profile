@@ -1,5 +1,4 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
@@ -13,22 +12,13 @@
       :host {
         @apply(--layout-vertical);
         display: block;
-         --paper-input-container-label: {
-            font-family: 'Kanit', sans-serif;
-        };
-        --paper-input-container-input: {
-          font-family: 'Kanit', sans-serif;
-        }
       }
       .font-face-big-bold {
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
         font-weight: bold;
       }
-      .font-face-normal {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-      }
+
       .margin-style{
         margin-top: 20px;
       }
@@ -54,8 +44,8 @@
       }
 
       /* ---table --*/
-      paper-input{
-        margin-left: 5px;
+      .even_row {
+        --t-teaching-background-color: white;
       }
 
       paper-button{
@@ -75,8 +65,7 @@
     </div>
     
     <template is="dom-repeat" items="{{list}}">
-      <t-work content="{{item}}" on-t-work-remove="_removeItem"></t-work>
-      <!--<t-work content="{{item}}" on-t-work-remove="_removeItem" on-t-work-edit="_editItem"></t-work>-->
+      <t-work content="{{item}}" class$="{{_isEven(index)}}" on-t-work-remove="_removeItem"></t-work>
     </template>        
   </template>
 <script>
@@ -93,6 +82,12 @@
           }          
         }
       }
+
+      _isEven(idx) {        
+        if(idx % 2 == 0) return "even_row";
+        return "";
+      }
+      
       _addItem(event) {        
         this.push('list',{'show':true,'active':true,
         'jobs':{
@@ -110,9 +105,6 @@
           }
         }
       }
-
-      /*_editItem(event) {
-      }*/
     }
     window.customElements.define(TeacherListWork.is, TeacherListWork);
   </script>

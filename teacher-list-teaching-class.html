@@ -45,6 +45,10 @@
       }
       /* ---table --*/
 
+      .even_row {
+        --t-teaching-background-color: white;
+      }
+
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
@@ -62,6 +66,7 @@
       </div>
       <template is="dom-repeat" items="{{list}}" as="class">
         <t-teaching-Class content="{{class}}" 
+          class$="{{_isEven(index)}}"
           on-t-teaching-class-remove="_removeItemClass">
         </t-teaching-Class>
       </template>
@@ -79,6 +84,11 @@
             }
           }
         }
+      }
+
+      _isEven(idx) {        
+        if(idx % 2 == 0) return "even_row";
+        return "";
       }
       
       _addItemClass(event) {

@@ -4,7 +4,7 @@
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
-
+<script src="../moment/moment.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
 <dom-module id="t-profile">
@@ -128,7 +128,7 @@
         <div class="flex"><paper-input label="จังหวัด" value="{{value.province}}"></paper-input></div>
         <div class="flex"><paper-input label="เลขประจำตำแหน่งเลขที่" value="{{value.rank_id}}"></paper-input></div>
         <div class="flex">
-          <vaadin-date-picker 
+          <vaadin-date-picker
             label="เกษียณอายุวันที่ 1 ตุลาคม พ.ศ."
             value="{{value.end_date}}">
           </vaadin-date-picker>
@@ -173,8 +173,18 @@
       static get observers() {
           return [
             '__checkSub(value)',
+            '__calculateEndDate(value.date_of_birth)'
           ];
-        }   
+      }
+
+      __calculateEndDate(dob) {        
+        if(!dob) return;
+        //console.log(dob);        
+        var end_date = moment(dob).add(60, 'years').format('YYYY');
+        //console.log(end_date);
+        this.set('value.end_date',end_date+'-10-01');
+      } 
+
       __checkSub(value) {
         if(!value['host_address']) {
           value['host_address'] = {};

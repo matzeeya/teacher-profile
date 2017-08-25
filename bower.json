@@ -22,7 +22,10 @@
     "vaadin-upload": "^2.0.0",
     "iron-sessionstorage": "frenchynz/iron-sessionstorage#^1.0.1",
     "paper-spinner": "PolymerElements/paper-spinner#^2.0.0",
-    "paper-alert-dialog": "Collaborne/paper-alert-dialog#^2.0.1"
+    "paper-alert-dialog": "Collaborne/paper-alert-dialog#^2.0.1",
+    "moment": "^2.18.1",
+    "paper-header-panel": "PolymerElements/paper-header-panel#^2.0.0",
+    "paper-toolbar": "PolymerElements/paper-toolbar#^2.0.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

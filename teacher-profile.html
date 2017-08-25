@@ -3,13 +3,13 @@
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-tabs/paper-tabs.html">
+<link rel="import" href="../paper-spinner/paper-spinner.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-pages/iron-pages.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
-<link rel="import" href="../jwt-decode/jwt-decode.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../paper-spinner/paper-spinner.html">
-<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../jwt-decode/jwt-decode.html">
 
 <link rel="import" href="t-profile.html">
 <link rel="import" href="teacher-list-education.html">
@@ -33,7 +33,7 @@
 
 <dom-module id="teacher-profile">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
       }
@@ -74,10 +74,10 @@
       }
 
       iron-icon{
-        height:40px; 
-        width:40px;
-        color: green;
+        height:46px; 
+        width:50px;
       }
+
     </style>
         <paper-tabs selected="{{page}}" noink scrollable fit-container>
           <paper-tab>
@@ -135,16 +135,26 @@
         </iron-pages>
 
          <div class="buttons">
-          <paper-spinner active="{{loading}}"></paper-spinner>
-          <paper-button on-tap="openDialog" on-click="update" raised>บันทึก</paper-button>
+          <paper-button on-click="update" raised>บันทึก</paper-button>
           <paper-button dialog-dismiss raised>ยกเลิก</paper-button>
+          <paper-spinner active="{{loading}}"></paper-spinner>
         </div>
 
-        <paper-dialog id="dialog" modal>
+        <paper-dialog id="dialog_success" modal>
           <h2><div class="font-face-normal">
-            <iron-icon src="{{img}}"></iron-icon>
+            <iron-icon src="{{successImg}}"></iron-icon>
           </div></h2>
           <div class="font-face-normal">บันทึกข้อมูลสำเร็จ</div>
+          <div class="buttons">
+            <paper-button class="color" dialog-confirm>ตกลง</paper-button>
+          </div>
+        </paper-dialog>
+
+        <paper-dialog id="dialog_unsuccess" modal>
+          <h2><div class="font-face-normal">
+            <iron-icon src="{{unsuccessImg}}"></iron-icon>
+          </div></h2>
+          <div class="font-face-normal">บันทึกข้อมูลไม่สำเร็จ  {{_r_message}} </div>
           <div class="buttons">
             <paper-button class="color" dialog-confirm>ตกลง</paper-button>
           </div>
@@ -171,12 +181,17 @@
           },
           page:{
             type:Number,
-            value:0
+            value:2
           },
-          img:{
+          successImg:{
             type:String,
             notify:true,
-            computed:'__defaultImg()'
+            computed:'__successImg()'
+          },
+          unsuccessImg:{
+            type:String,
+            notify:true,
+            computed:'__unsuccessImg()'
           }
         };
       }
@@ -187,14 +202,14 @@
         ];
       }
 
-      __defaultImg(){
-        return this.resolveUrl("./images/true.png");
+      __successImg(){
+        return this.resolveUrl("./images/success.png");
       }
 
-      openDialog(){
-        this.$.dialog.open();
+      __unsuccessImg(){
+        return this.resolveUrl("./images/unsuccess.png");
       }
-
+      
       onStatusChanged(event) {
         this.set('active',event.detail.value);
       }
@@ -281,10 +296,12 @@
             handleAs:'json',
             body:value
           }).then(function(res) {
-            if(res.response.ok) {
-              //console.log("ok");
-              self.set('loading',false);
-              //this.$.dialog.open();
+            self.set('loading',false);
+            if(res.response.ok) {              
+              self.$.dialog_success.open();              
+            } else {
+              self.set('_r_message',res.response.message);
+              self.$.dialog_unsuccess.open();              
             }
           });
  

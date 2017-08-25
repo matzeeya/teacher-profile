@@ -10,7 +10,7 @@
 
 <dom-module id="t-work-up-salary">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
         --paper-input-container-label: {
@@ -71,17 +71,17 @@
               value="{{content.rank}}">
             </paper-input>
           </div>
-          <div class="flex-3">
+          <div class="flex-5">
             <paper-input label="โรงเรียน"
             value="{{content.school}}">
             </paper-input>
           </div>
-          <div class="flex-4">
+          <div class="flex-1">
             <paper-input label="รับเงินเดือน/ระดับ"
               value="{{content.degree}}">
             </paper-input>
           </div>
-          <div class="flex-2 layout horizontal center">
+          <div class="flex-3 layout horizontal center">
             <vaadin-upload accept=".pdf" target="/upload/file"
               on-upload-response="_uploadResponse">
             </vaadin-upload>
@@ -93,7 +93,7 @@
               </a>
             </template>
           </div>
-          <div class="flex-1 layout horizontal center">
+          <div class="flex layout horizontal center">
             <iron-icon icon="icons:delete" on-click="_removeItem"></iron-icon>
           </div>
         </div>
