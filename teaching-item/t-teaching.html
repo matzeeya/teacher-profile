@@ -77,6 +77,7 @@
           </template>
         </div>
       <div class="flex">
+        <iron-icon icon="icons:create"  on-click="_editItem"></iron-icon> 
         <iron-icon icon="icons:delete" on-click="_removeItem"></iron-icon>
       </div>
     </div>  
@@ -102,6 +103,10 @@
           }
         }
       }
+      _editItem(event) {
+        this.set('content.active',true);
+      }
+      
       _removeItem(event) {
         this.set('content.show',false);
         var eve = new CustomEvent('t-teaching-remove',{

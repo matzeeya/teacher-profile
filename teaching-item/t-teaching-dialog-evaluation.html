@@ -7,7 +7,7 @@
 
 <dom-module id="t-teaching-dialog-evaluation">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         @apply(--layout-vertical);
         display: block;
@@ -26,6 +26,9 @@
         font-family: 'Kanit', sans-serif;
         font-size: 90%;
       }
+      iron-selector{
+        @apply(--layout-vertical);
+      }
 </style>
   <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">
     <paper-checkbox name="สอบอัตนัย">สอบอัตนัย</paper-checkbox>
@@ -39,11 +42,11 @@
     <paper-checkbox name="การทำโครงงานวิทยาศาสตร์">การทำโครงงานวิทยาศาสตร์</paper-checkbox>
     <paper-checkbox name="ชิ้นงาน">ชิ้นงาน</paper-checkbox>
     <paper-checkbox name="สอบปรนัย">สอบปรนัย</paper-checkbox>
-    <paper-checkbox name="อื่นๆ">อื่นๆ</paper-checkbox>
     <paper-checkbox name="การนำเสนองานตามหัวข้อมอบหมาย">การนำเสนองานตามหัวข้อมอบหมาย</paper-checkbox>
     <paper-checkbox name="การรายงาน">การรายงาน</paper-checkbox>
     <paper-checkbox name="การสัมภาษณ์">การสัมภาษณ์</paper-checkbox>
     <paper-checkbox name="ถาม-ตอบ">ถาม-ตอบ</paper-checkbox>
+    <paper-checkbox name="อื่นๆ">อื่นๆ</paper-checkbox>
   </iron-selector>
   </template>
 

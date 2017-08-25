@@ -64,6 +64,7 @@
       </div>
       <div class="flex-1 text-center">{{content.hour}}</div>
       <div class="flex-1">
+        <iron-icon icon="icons:create"  on-click="_editItem"></iron-icon> 
         <iron-icon icon="icons:delete"  on-click="_removeItemIntegration"></iron-icon>
       </div>
     </div>  
@@ -89,6 +90,11 @@
           }
         }
       }
+
+      _editItem(event) {
+        this.set('content.active',true);
+      }
+      
       _removeItemIntegration(event) {
         this.set('content.show',false);
         var eve = new CustomEvent('t-teaching-integration-remove',{

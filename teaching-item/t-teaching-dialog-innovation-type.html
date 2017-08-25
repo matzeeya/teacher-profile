@@ -7,7 +7,7 @@
 
 <dom-module id="t-teaching-dialog-innovation-type">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         @apply(--layout-vertical);
         display: block;
@@ -26,6 +26,9 @@
         font-family: 'Kanit', sans-serif;
         font-size: 90%;
       }
+      iron-selector{
+        @apply(--layout-vertical);
+      }
 </style>
   <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">
     <paper-checkbox name="ใบความรู้">ใบความรู้</paper-checkbox>
@@ -39,9 +42,9 @@
     <paper-checkbox name="บทเรียนการ์ตูน">บทเรียนการ์ตูน</paper-checkbox>
     <paper-checkbox name="E-book, E-learning">E-book, E-learning</paper-checkbox>
     <paper-checkbox name="วิดีทัศน์">วิดีทัศน์</paper-checkbox>
-    <paper-checkbox name="อื่นๆ">อื่นๆ</paper-checkbox>
     <paper-checkbox name="สไลด์อิเล็กทรอนิกส์">สไลด์อิเล็กทรอนิกส์</paper-checkbox>
     <paper-checkbox name="CAI">CAI</paper-checkbox>
+    <paper-checkbox name="อื่นๆ">อื่นๆ</paper-checkbox>
   </iron-selector>
   </template>
 

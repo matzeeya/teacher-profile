@@ -2,6 +2,7 @@
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../paper-dialog/paper-dialog.html">
 <link rel="import" href="../../paper-tabs/paper-tabs.html">
+<link rel="import" href="../../paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../paper-listbox/paper-listbox.html">
 <link rel="import" href="../../paper-item/paper-item.html">
@@ -16,27 +17,30 @@
 
 <dom-module id="t-teaching-dialog-class">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
+        @apply(--layout-vertical);
         display: block;
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
       }
-      .font-face-big-bold {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-        font-weight: bold;
-      }
-      .font-face-normal {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-      }
+
       paper-tabs {
-        --paper-tabs-selection-bar-color: #F44336;
-        background-color: var(--paper-grey-50);
+        --paper-tabs-selection-bar-color: #cceeff;
+        --paper-tab-content-unselected: {
+          opacity: 0.52;
+        };
+        background-color: #3f51b5;
+        color: #fff;
         height: 40px;
       }
+
       paper-dialog{
         width: 800px;
-        height: 700px;
       }
 
       paper-input{
@@ -54,13 +58,12 @@
        }
 
       paper-dropdown-menu{
-        width: 150px;
+        width: 98%;
       }
       paper-dropdown-menu.marginleft{
        margin-left: 5px;
       }
       paper-listbox{
-        width: 150px;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
@@ -69,21 +72,38 @@
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
+
+      paper-toolbar.toolbarcolor {
+        --paper-toolbar-background: #47aeb8;
+        --paper-toolbar-title: {
+          font-family: 'Kanit', sans-serif;
+          font-size: 140%;
+          font-weight: bold;
+        };
+      }
     </style>
-      <paper-dialog id="dialog" on-iron-overlay-closed="_disableActive">
-        <div class="layout vertical">
+      <paper-dialog id="dialog" on-iron-overlay-closed="_disableActive" modal>
+        <paper-toolbar class="toolbarcolor">
+          <span class="title" slot="top">การทำวิจัยในชั้นเรียน</span>
+          <paper-progress slot="middle" class="fit" value="60"></paper-progress>
+        </paper-toolbar>
           <div class="layout horizontal">
-            <div class="flex">
-              <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
+            <div class="flex-3">
+              <!--<paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
                 <paper-listbox attr-for-selected="value" selected="{{value.year}}" slot="dropdown-content">
                   <paper-item value="2558">2558</paper-item>
                   <paper-item value="2559">2559</paper-item>
                   <paper-item value="2560">2560</paper-item>
                 </paper-listbox>
-            </paper-dropdown-menu>
+            </paper-dropdown-menu>-->
+            <paper-input label="ปีการศึกษา" 
+              value="{{value.year}}"
+              auto-validate allowed-pattern="[0-9]"
+              char-counter maxlength="4">
+            </paper-input>
             </div>
-            <div class="flex"><paper-input label="งานวิจัยเรื่อง" value="{{value.title}}"></paper-input></div>
-            <div class="flex">
+            <div class="flex-5"><paper-input label="งานวิจัยเรื่อง" value="{{value.title}}"></paper-input></div>
+            <div class="flex-4">
               <paper-dropdown-menu label="ระดับชั้น" class="marginleft custom">
                 <paper-listbox attr-for-selected="value" selected="{{value.class}}" slot="dropdown-content">
                   <paper-item value="ประถมศึกษาปีที่ 1">ประถมศึกษาปีที่ 1</paper-item>
@@ -120,7 +140,7 @@
               <t-teaching-dialog-subject list="{{value.jobs.subject}}"></t-teaching-dialog-subject>
             </div>
           </iron-pages>
-        </div>
+
       <div class="buttons">
         <paper-button dialog-confirm>ตกลง</paper-button>
         <paper-button dialog-dismiss>ปิด</paper-button>

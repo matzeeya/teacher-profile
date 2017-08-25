@@ -10,7 +10,7 @@
 
 <dom-module id="t-training">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
         --paper-input-container-label: {
@@ -20,24 +20,12 @@
           font-family: 'Kanit', sans-serif;
         }
       }
-      .font-face-big-bold {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-        font-weight: bold;
-      }
-      .font-face-normal {
-        font-family: 'Kanit', sans-serif;
-        font-size: 100%;
-      }
-      .margin-top-style{
-        margin-top: 20px;
-      }
 
       .content {
         text-align:left;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
-        opacity: 0.70;
+        /*opacity: 0.70;*/
       }
 
       paper-input{
@@ -58,13 +46,12 @@
        }
 
       paper-dropdown-menu{
-        width: 150px;
+        width: 98%;
       }
       paper-dropdown-menu.marginleft{
        margin-left: 5px;
       }
       paper-listbox{
-        width: 150px;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
@@ -72,16 +59,21 @@
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal content">
           <div class="flex-1">
-            <paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
+            <!--<paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
               <paper-listbox attr-for-selected="value" selected="{{content.year}}" slot="dropdown-content">
                 <paper-item value="2558">2558</paper-item>
                 <paper-item value="2559">2559</paper-item>
                 <paper-item value="2560">2560</paper-item>
               </paper-listbox>
-            </paper-dropdown-menu>
+            </paper-dropdown-menu>-->
+            <paper-input label="ปีการศึกษา" 
+              value="{{content.year}}"
+              auto-validate allowed-pattern="[0-9]"
+              char-counter maxlength="4">
+            </paper-input>
           </div>
-          <div class="flex-2"><paper-input label="หน่วยงานที่จัดอบรม/สัมมนา" value ="{{content.institution_training}}"></paper-input></div>
-          <div class="flex-4"><paper-input label="หัวข้อที่อบรม/สัมมนา" value ="{{content.topic}}"></paper-input></div>
+          <div class="flex-4"><paper-input label="หน่วยงานที่จัดอบรม/สัมมนา" value ="{{content.institution_training}}"></paper-input></div>
+          <div class="flex-5"><paper-input label="หัวข้อที่อบรม/สัมมนา" value ="{{content.topic}}"></paper-input></div>
           <div class="flex-1">
             <paper-input 
               label="ระยะเวลา (ชั่วโมง)" 
