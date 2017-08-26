@@ -11,6 +11,12 @@
       :host {
         @apply(--layout-vertical);
         display: block;
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
       }
 
       /* ---table --*/
@@ -55,17 +61,26 @@
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
+      paper-item{
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
   </style>
 
     <div class="layout horizontal flex content" hidden$="{{!content.show}}">
       <div class="flex-2">
-        <paper-dropdown-menu label="ปี" class="marginleft custom">
+        <!--<paper-dropdown-menu label="ปี" class="marginleft custom">
           <paper-listbox attr-for-selected="value" selected="{{content.year}}" slot="dropdown-content">
             <paper-item value="2558">2558</paper-item>
             <paper-item value="2559">2559</paper-item>
             <paper-item value="2560">2560</paper-item>
           </paper-listbox>
-        </paper-dropdown-menu>
+        </paper-dropdown-menu>-->
+        <paper-input label="ปี" 
+          value="{{content.year}}"
+          auto-validate allowed-pattern="[0-9]"
+          char-counter maxlength="4">
+        </paper-input>
       </div>
       <div class="flex-2"><paper-input label="ชื่อ-นามสกุล นักเรียน" value ="{{content.student_name}}"></paper-input></div>
       <div class="flex-4"><paper-input label="รางวัลที่ได้รับ" value ="{{content.reward}}"></paper-input></div>

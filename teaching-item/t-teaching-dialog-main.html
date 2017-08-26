@@ -1,6 +1,7 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../paper-dialog/paper-dialog.html">
+<link rel="import" href="../../paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="../../paper-tabs/paper-tabs.html">
 <link rel="import" href="../../paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../iron-pages/iron-pages.html">
@@ -26,6 +27,10 @@
         }
       }
 
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
       paper-tabs {
         --paper-tabs-selection-bar-color: #cceeff;
         --paper-tab-content-unselected: {
@@ -70,10 +75,14 @@
        margin-left: 5px;
       }
       paper-listbox{
+        width: 150px;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
-
+      paper-item{
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
@@ -160,19 +169,18 @@
 
           <paper-tabs selected="{{page}}" noink scrollable fit-container>
             <paper-tab>
-              <div class="font-face-big-bold">รูปแบบจัดกิจกรรม</div>
+              <div class="font-face-normal">รูปแบบจัดกิจกรรม</div>
             </paper-tab>
             <paper-tab>
-              <div class="font-face-big-bold">วัดผลประเมินผล</div>
+              <div class="font-face-normal">วัดผลประเมินผล</div>
             </paper-tab>
           </paper-tabs>
-          
-          
+        <paper-dialog-scrollable> 
           <iron-pages selected="{{page}}"> 
             <t-teaching-dialog-activity  list="{{value.jobs.type_1}}"></t-teaching-dialog-activity>
             <t-teaching-dialog-evaluation  list="{{value.jobs.type_2}}"></t-teaching-dialog-evaluation>
           </iron-pages>
-
+        </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button dialog-confirm>ตกลง</paper-button>
         <paper-button dialog-dismiss>ปิด</paper-button>

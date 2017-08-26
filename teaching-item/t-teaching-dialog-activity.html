@@ -1,5 +1,6 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../paper-input/paper-input.html">
 <link rel="import" href="../../iron-selector/iron-selector.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 
@@ -12,6 +13,12 @@
         @apply(--layout-vertical);
         display: block;
         padding:10px;
+        --paper-input-container-label: {
+            font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
       }
       .font-face-big-bold {
         font-family: 'Kanit', sans-serif;
@@ -51,10 +58,12 @@
     <paper-checkbox name="เพื่อนคู่คิด">เพื่อนคู่คิด</paper-checkbox>
     <paper-checkbox name="การแก้ปัญหา">การแก้ปัญหา</paper-checkbox>
     <paper-checkbox name="กลุ่มสัมพันธ์">กลุ่มสัมพันธ์</paper-checkbox>
-    <paper-checkbox name="การเรียนรู้แบบพหุปัญญา">การเรียนรู้แบบพหุปัญญา</paper-checkbox>
     <paper-checkbox name="การระดับพลังสมอง">การระดับพลังสมอง</paper-checkbox>
-    <paper-checkbox name="อื่นๆ">อื่นๆ </paper-checkbox>
-  </iron-selector>
+    <paper-checkbox name="การเรียนรู้แบบพหุปัญญา">การเรียนรู้แบบพหุปัญญา</paper-checkbox>
+    <paper-checkbox name="บทบาทสมมติ">บทบาทสมมติ</paper-checkbox>
+    <paper-checkbox name="{{etc}}">อื่นๆ</paper-checkbox>
+  </iron-selector>  
+  <paper-input label="โปรดระบุ..." value="{{etc}}"></paper-input>
   </template>
 
   <script>

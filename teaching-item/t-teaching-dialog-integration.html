@@ -1,6 +1,7 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../paper-dialog/paper-dialog.html">
+<link rel="import" href="../../paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="../../paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../iron-icons/iron-icons.html">
@@ -123,7 +124,9 @@
           <div class="layout horizontal">
             <div class="flex font-face-normal">ลักษณะการบูรณาการ ประกอบด้วย</div>
           </div>
+        <paper-dialog-scrollable> 
           <t-teaching-dialog-integration-detail list="{{value.jobs.detail}}"></t-teaching-dialog-integration-detail>
+        </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button dialog-confirm>ตกลง</paper-button>
         <paper-button dialog-dismiss>ปิด</paper-button>

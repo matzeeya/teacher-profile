@@ -58,7 +58,12 @@
        margin-left: 5px;
       }
       paper-listbox{
-        /*width: 100%;*/
+        width: 150px;;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
+
+      paper-item{
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
@@ -67,10 +72,9 @@
         <div class="layout horizontal">
           <div class="flex-2">
             <paper-dropdown-menu label="ระดับการศึกษา" class="marginleft custom">
-            <paper-listbox class="dropdown-content" 
+            <paper-listbox slot="dropdown-content"
               attr-for-selected="value" 
-              selected="{{content.education}}" 
-              slot="dropdown-content">
+              selected="{{content.education}}">
               <paper-item value="ปริญญาตรี">ปริญญาตรี</paper-item>
               <paper-item value="ปริญญาโท">ปริญญาโท</paper-item>
               <paper-item value="ปริญญาเอก">ปริญญาเอก</paper-item>

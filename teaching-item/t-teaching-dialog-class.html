@@ -1,6 +1,7 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../paper-dialog/paper-dialog.html">
+<link rel="import" href="../../paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="../../paper-tabs/paper-tabs.html">
 <link rel="import" href="../../paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
@@ -29,6 +30,10 @@
         }
       }
 
+      .font-face-normal {
+        font-family: 'Kanit', sans-serif;
+        font-size: 100%;
+      }
       paper-tabs {
         --paper-tabs-selection-bar-color: #cceeff;
         --paper-tab-content-unselected: {
@@ -64,10 +69,14 @@
        margin-left: 5px;
       }
       paper-listbox{
+        width: 150px;
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
       }
-
+      paper-item{
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
@@ -125,22 +134,18 @@
 
           <paper-tabs selected="{{page}}" noink scrollable fit-container>
             <paper-tab>
-              <div class="font-face-big-bold">ผลรับรอง</div>
+              <div class="font-face-normal">ผลรับรอง</div>
             </paper-tab>
             <paper-tab>
-              <div class="font-face-big-bold">วิชา</div>
+              <div class="font-face-normal">วิชา</div>
             </paper-tab>
           </paper-tabs>
-
-          <iron-pages selected="{{page}}"> 
-            <div>
+          <paper-dialog-scrollable> 
+            <iron-pages selected="{{page}}"> 
               <t-teaching-dialog-evaluation list="{{value.jobs.approve}}"></t-teaching-dialog-evaluation>
-            </div>
-            <div>
               <t-teaching-dialog-subject list="{{value.jobs.subject}}"></t-teaching-dialog-subject>
-            </div>
-          </iron-pages>
-
+            </iron-pages>
+          </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button dialog-confirm>ตกลง</paper-button>
         <paper-button dialog-dismiss>ปิด</paper-button>
