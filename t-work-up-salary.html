@@ -88,8 +88,8 @@
             <template is="dom-if" if="{{_isFileExist(content.file_name)}}">
               <a download="{{content.file_name}}"
                 href$="data:application/pdf;base64,{{content.file_base64}}"
-                title="Dowload">
-                {{content.file_name}}
+                title="Dowload {{content.file_name}}">
+                <iron-icon icon="icons:file-download"></iron-icon>
               </a>
             </template>
           </div>
