@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="./teaching-item/t-teaching-innovation.html">
@@ -50,13 +51,20 @@
       }
 
       paper-button{
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
         font-family: 'Kanit', sans-serif;
-        font-size: 100%;
+        font-size: 120%;
+      }
+
+      iron-icon:hover {
+        color: #999966;
+        cursor:hand;
+        cursor:pointer;
       }
     </style>
 
       <div class="flex font-face-big-bold margin-style">ผลิตสื่อ/นวัตกรรม</div>
-      <paper-button raised on-click="_addItemInnovation">+ เพิ่ม</paper-button>
       <div class="layout horizontal flex header">
         <div class="flex-1">ปีการศึกษา</div>
         <div class="flex-5">ชื่อสื่อ/นวัตกรรม</div>
@@ -69,6 +77,7 @@
           on-t-teaching-innovation-remove="_removeItemInnovation">
         </t-teaching-innovation>
       </template>
+      <paper-button raised on-click="_addItemInnovation"><iron-icon icon="icons:add" on-click="_addItem"></iron-icon> เพิ่ม</paper-button>
   </template>
 <script>
     class TeacherListTeachingInnovation extends Polymer.Element {
