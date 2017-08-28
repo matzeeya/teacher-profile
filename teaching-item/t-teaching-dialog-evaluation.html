@@ -37,7 +37,7 @@
         @apply(--layout-vertical);
       }
 </style>
-  <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">
+  <iron-selector attr-for-selected="name" selected-values="{{value.list}}" multi selected-attribute="checked">
     <paper-checkbox name="สอบอัตนัย">สอบอัตนัย</paper-checkbox>
     <paper-checkbox name="การปฏิบัติการทดลอง">การปฏิบัติการทดลอง</paper-checkbox>
     <paper-checkbox name="การสืบค้นและส่งงานทาง E-mail">การสืบค้นและส่งงานทาง E-mail</paper-checkbox>
@@ -53,9 +53,12 @@
     <paper-checkbox name="การรายงาน">การรายงาน</paper-checkbox>
     <paper-checkbox name="การสัมภาษณ์">การสัมภาษณ์</paper-checkbox>
     <paper-checkbox name="ถาม-ตอบ">ถาม-ตอบ</paper-checkbox>
-    <paper-checkbox name="{{etc}}">อื่นๆ</paper-checkbox>
-  </iron-selector>
-  <paper-input label="โปรดระบุ..." value="{{etc}}"></paper-input>
+  </iron-selector>  
+  <paper-checkbox name="อื่น ๆ" checked="{{value.etc_selected}}">อื่น ๆ</paper-checkbox>
+  <template is="dom-if" if="{{value.etc_selected}}">
+    <paper-input label="โปรดระบุ..." value="{{value.etc_value}}"></paper-input>  
+  </template>
+</template>
   </template>
 
   <script>
@@ -63,13 +66,10 @@
       static get is() { return 't-teaching-dialog-evaluation'; }
       static get properties() {
         return {
-          list:{
-            type:Array,
-            notify:true,
-            value:function() {
-              return [];
-            }
-          }
+          value:{
+            type:Object,
+            notify:true
+          } 
         }
       }
       

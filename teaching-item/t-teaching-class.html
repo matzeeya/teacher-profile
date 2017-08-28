@@ -61,9 +61,12 @@
       <div class="flex-3">{{content.title}}</div>
       <div class="flex-2 text-center">{{content.class}}</div>
       <div class="flex-2">
-        <template is="dom-repeat" items="{{content.jobs.approve}}" as="approve">
-          <div class="vertical-style">- {{approve}}</div>
-        </template>
+        <template is="dom-repeat" items="{{content.jobs.approve.list}}" as="approve">
+            <div class="vertical-style">- {{approve}}</div>
+          </template>
+          <template is="dom-if" if="{{content.jobs.approve.etc_selected}}">
+            <div class="vertical-style">- (อื่น ๆ) {{content.jobs.approve.etc_value}}</div>
+          </template>
       </div>
       <div class="flex-3">
         <template is="dom-repeat" items="{{content.jobs.subject}}" as="subject">

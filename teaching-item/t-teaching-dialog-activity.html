@@ -36,50 +36,49 @@
       iron-selector{
         @apply(--layout-vertical);
       }
-</style>
-  <iron-selector attr-for-selected="name" selected-values="{{list}}" multi selected-attribute="checked">  
-    <paper-checkbox name="บรรยาย">บรรยาย</paper-checkbox>
-    <paper-checkbox name="การเรียนแบบโครงงาน">การเรียนแบบโครงงาน</paper-checkbox>
-    <paper-checkbox name="ศูนย์การเรียน">ศูนย์การเรียน</paper-checkbox>
-    <paper-checkbox name="การสืบสวนสอบสวน">การสืบสวนสอบสวน</paper-checkbox>
-    <paper-checkbox name="การตั้งคำถาม">การตั้งคำถาม</paper-checkbox>
-    <paper-checkbox name="การเรียนรู้แบบโครงการ">การเรียนรู้แบบโครงการ</paper-checkbox>
-    <paper-checkbox name="การใช้เกมประกอบ">การใช้เกมประกอบ</paper-checkbox>
-    <paper-checkbox name="การเรียนแบบสร้างแผนผังความคิด">การเรียนแบบสร้างแผนผังความคิด</paper-checkbox>
-    <paper-checkbox name="อริยสัท 4">อริยสัท 4</paper-checkbox>
-    <paper-checkbox name="การเรียนรู้แบบร่วมมือ">การเรียนรู้แบบร่วมมือ</paper-checkbox>
-    <paper-checkbox name="การสืบค้นแล้วนำเสนอโดยผู้เรียน">การสืบค้นแล้วนำเสนอโดยผู้เรียน</paper-checkbox>
-    <paper-checkbox name="การศึกษาเป็นรายบุคคล">การศึกษาเป็นรายบุคคล</paper-checkbox>
-    <paper-checkbox name="โปรแกรมสำเร็จรูป">โปรแกรมสำเร็จรูป</paper-checkbox>
-    <paper-checkbox name="การสาธิต/ทดลอง">การสาธิต/ทดลอง</paper-checkbox>
-    <paper-checkbox name="การอธิปรายกลุ่มย่อย – ใหญ่">การอธิปรายกลุ่มย่อย – ใหญ่</paper-checkbox>
-    <paper-checkbox name="คอมพิวเตอร์ช่วยสอน">คอมพิวเตอร์ช่วยสอน</paper-checkbox>
-    <paper-checkbox name="การบูรณาการ">การบูรณาการ</paper-checkbox>
-    <paper-checkbox name="เพื่อนคู่คิด">เพื่อนคู่คิด</paper-checkbox>
-    <paper-checkbox name="การแก้ปัญหา">การแก้ปัญหา</paper-checkbox>
-    <paper-checkbox name="กลุ่มสัมพันธ์">กลุ่มสัมพันธ์</paper-checkbox>
-    <paper-checkbox name="การระดับพลังสมอง">การระดับพลังสมอง</paper-checkbox>
-    <paper-checkbox name="การเรียนรู้แบบพหุปัญญา">การเรียนรู้แบบพหุปัญญา</paper-checkbox>
-    <paper-checkbox name="บทบาทสมมติ">บทบาทสมมติ</paper-checkbox>
-    <paper-checkbox name="{{etc}}">อื่นๆ</paper-checkbox>
-  </iron-selector>  
-  <paper-input label="โปรดระบุ..." value="{{etc}}"></paper-input>
+    </style>
+    <iron-selector attr-for-selected="name" selected-values="{{value.list}}" multi selected-attribute="checked">  
+      <paper-checkbox name="บรรยาย">บรรยาย</paper-checkbox>
+      <paper-checkbox name="การเรียนแบบโครงงาน">การเรียนแบบโครงงาน</paper-checkbox>
+      <paper-checkbox name="ศูนย์การเรียน">ศูนย์การเรียน</paper-checkbox>
+      <paper-checkbox name="การสืบสวนสอบสวน">การสืบสวนสอบสวน</paper-checkbox>
+      <paper-checkbox name="การตั้งคำถาม">การตั้งคำถาม</paper-checkbox>
+      <paper-checkbox name="การเรียนรู้แบบโครงการ">การเรียนรู้แบบโครงการ</paper-checkbox>
+      <paper-checkbox name="การใช้เกมประกอบ">การใช้เกมประกอบ</paper-checkbox>
+      <paper-checkbox name="การเรียนแบบสร้างแผนผังความคิด">การเรียนแบบสร้างแผนผังความคิด</paper-checkbox>
+      <paper-checkbox name="อริยสัท 4">อริยสัท 4</paper-checkbox>
+      <paper-checkbox name="การเรียนรู้แบบร่วมมือ">การเรียนรู้แบบร่วมมือ</paper-checkbox>
+      <paper-checkbox name="การสืบค้นแล้วนำเสนอโดยผู้เรียน">การสืบค้นแล้วนำเสนอโดยผู้เรียน</paper-checkbox>
+      <paper-checkbox name="การศึกษาเป็นรายบุคคล">การศึกษาเป็นรายบุคคล</paper-checkbox>
+      <paper-checkbox name="โปรแกรมสำเร็จรูป">โปรแกรมสำเร็จรูป</paper-checkbox>
+      <paper-checkbox name="การสาธิต/ทดลอง">การสาธิต/ทดลอง</paper-checkbox>
+      <paper-checkbox name="การอธิปรายกลุ่มย่อย – ใหญ่">การอธิปรายกลุ่มย่อย – ใหญ่</paper-checkbox>
+      <paper-checkbox name="คอมพิวเตอร์ช่วยสอน">คอมพิวเตอร์ช่วยสอน</paper-checkbox>
+      <paper-checkbox name="การบูรณาการ">การบูรณาการ</paper-checkbox>
+      <paper-checkbox name="เพื่อนคู่คิด">เพื่อนคู่คิด</paper-checkbox>
+      <paper-checkbox name="การแก้ปัญหา">การแก้ปัญหา</paper-checkbox>
+      <paper-checkbox name="กลุ่มสัมพันธ์">กลุ่มสัมพันธ์</paper-checkbox>
+      <paper-checkbox name="การระดับพลังสมอง">การระดับพลังสมอง</paper-checkbox>
+      <paper-checkbox name="การเรียนรู้แบบพหุปัญญา">การเรียนรู้แบบพหุปัญญา</paper-checkbox>
+      <paper-checkbox name="บทบาทสมมติ">บทบาทสมมติ</paper-checkbox>      
+    </iron-selector>  
+    <paper-checkbox name="อื่น ๆ" checked="{{value.etc_selected}}">อื่น ๆ</paper-checkbox>
+    <template is="dom-if" if="{{value.etc_selected}}">
+      <paper-input label="โปรดระบุ..." value="{{value.etc_value}}"></paper-input>  
+    </template>
   </template>
-
   <script>
     class tTeachingDialogActivity extends Polymer.Element {
       static get is() { return 't-teaching-dialog-activity'; }
       static get properties() {
         return {
-          list:{
-            type:Array,
-            notify:true,
-            value:function() {
-              return [];
-            }
-          }
-        }
+          value:{
+            type:Object,
+            notify:true
+          }          
+        }        
       }
+
       
     }
     window.customElements.define(tTeachingDialogActivity.is, tTeachingDialogActivity);

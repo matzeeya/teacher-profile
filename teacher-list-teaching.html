@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="./teaching-item/t-teaching.html">
@@ -58,6 +59,16 @@
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
       }
+
+      /*iron-icon{
+        margin-right: 10px;
+      }
+
+      iron-icon:hover {
+        color: #999966;
+        cursor:hand;
+        cursor:pointer;
+      }*/
     </style>
 
     <div class="flex font-face-big-bold margin-style">จัดทำแผนการจัดการเรียนรู้ </div>
@@ -73,7 +84,10 @@
       <div class="flex-1">จำนวนแผน</div>
       <div class="flex-2">รูปแบบจัดกิจกรรม</div>
       <div class="flex-1">วัดผลประเมินผล</div>
-      <div class="flex">&nbsp;</div> 
+      <div class="flex horizontal end-justified layout">
+        &nbsp;
+        <!--<iron-icon icon="icons:add" on-click="_addItem"></iron-icon>-->
+      </div> 
     </div>
     <template is="dom-repeat" items="{{list}}">
       <t-teaching content="{{item}}" class$="{{_isEven(index)}}" on-t-teaching-remove="_removeItem">
@@ -103,8 +117,8 @@
       _addItem(event) {
         this.push('list',{'show':true,'active':true,
         'jobs':{
-          'type_1':[],
-          'type_2':[]
+          'type_1':{'list':[]},
+          'type_2':{'list':[]}
           }});
       }
       _removeItem(event) {

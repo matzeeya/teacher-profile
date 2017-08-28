@@ -58,9 +58,12 @@
       <div class="flex-1 text-center">{{content.year}}</div>
       <div class="flex-5">{{content.innovation_name}}</div>
       <div class="flex-4">
-        <template is="dom-repeat" items="{{content.jobs.type1}}" as="type1">
+        <template is="dom-repeat" items="{{content.jobs.type1.list}}" as="type1">
           <div class="vertical-style">- {{type1}}</div>
         </template>
+        <template is="dom-if" if="{{content.jobs.type1.etc_selected}}">
+          <div class="vertical-style">- (อื่น ๆ) {{content.jobs.type1.etc_value}}</div>
+        </template> 
       </div>
       <div class="flex-1 text-center">{{content.unit}}</div>
       <div class="flex-1">

@@ -67,14 +67,23 @@
         <div class="flex-1 text-center">{{content.student_unit}}</div>
         <div class="flex-1 text-center">{{content.plan}}</div>
         <div class="flex-2">
-          <template is="dom-repeat" items="{{content.jobs.type_1}}" as="type1">
+          <template is="dom-repeat" items="{{content.jobs.type_1.list}}" as="type1">
             <div class="vertical-style">- {{type1}}</div>
           </template>
+          <template is="dom-if" if="{{content.jobs.type_1.etc_selected}}">
+            <div class="vertical-style">- (อื่น ๆ) {{content.jobs.type_1.etc_value}}</div>
+          </template>  
         </div>
         <div class="flex-1">
-          <template is="dom-repeat" items="{{content.jobs.type_2}}" as="type2">
+          <!--<template is="dom-repeat" items="{{content.jobs.type_2}}" as="type2">
             <div class="vertical-style">- {{type2}}</div>
-          </template>
+          </template>-->
+          <template is="dom-repeat" items="{{content.jobs.type_2.list}}" as="type2">
+              <div class="vertical-style">- {{type2}}</div>
+            </template>
+            <template is="dom-if" if="{{content.jobs.type_2.etc_selected}}">
+              <div class="vertical-style">- (อื่น ๆ) {{content.jobs.type_2.etc_value}}</div>
+            </template> 
         </div>
       <div class="flex">
         <iron-icon icon="icons:create"  on-click="_editItem"></iron-icon> 

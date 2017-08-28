@@ -102,39 +102,51 @@
 
         <iron-pages selected="{{page}}"> 
           <div>
+            <template is="dom-if" if="{{__isEquals(page,0)}}">
             <t-profile value="{{document.value}}"></t-profile>
+            </template>
           </div>
           <div>
-            <teacher-list-education list="{{document.value.education_list}}"></teacher-list-education>
-            <teacher-list-education-expert value="{{document.value}}"></teacher-list-education-expert>
+            <template is="dom-if" if="{{__isEquals(page,1)}}">
+              <teacher-list-education list="{{document.value.education_list}}"></teacher-list-education>
+              <teacher-list-education-expert value="{{document.value}}"></teacher-list-education-expert>
+            </template>
           </div>
           <div>
-            <teacher-list-work list="{{document.value.work_history}}"></teacher-list-work>
-            <teacher-list-work-upsalary 
-              list="{{document.value.work_upsalary}}">
-            </teacher-list-work-upsalary>
+            <template is="dom-if" if="{{__isEquals(page,2)}}">
+              <teacher-list-work list="{{document.value.work_history}}"></teacher-list-work>
+              <teacher-list-work-upsalary 
+                list="{{document.value.work_upsalary}}">
+              </teacher-list-work-upsalary>
+            </template>
           </div>
           <div>
-            <teacher-list-operating list="{{document.value.operating_class}}"></teacher-list-operating>
-            <teacher-list-operating-course list="{{document.value.operating_course}}"></teacher-list-operating-course>
-            <teacher-list-operating-other list="{{document.value.operating_other}}"></teacher-list-operating-other>
-            <teacher-list-operating-special list="{{document.value.operating_special}}"></teacher-list-operating-special>
+            <template is="dom-if" if="{{__isEquals(page,3)}}">
+              <teacher-list-operating list="{{document.value.operating_class}}"></teacher-list-operating>
+              <teacher-list-operating-course list="{{document.value.operating_course}}"></teacher-list-operating-course>
+              <teacher-list-operating-other list="{{document.value.operating_other}}"></teacher-list-operating-other>
+              <teacher-list-operating-special list="{{document.value.operating_special}}"></teacher-list-operating-special>
+            </template>
           </div>
           <div>
-            <teacher-list-teaching list="{{document.value.teaching}}"></teacher-list-teaching>
-            <teacher-list-teaching-innovation list="{{document.value.teaching_innovation}}"></teacher-list-teaching-innovation>
-            <teacher-list-teaching-integration list="{{document.value.teaching_integration}}"></teacher-list-teaching-integration>
-            <teacher-list-teaching-class list="{{document.value.teaching_class}}"></teacher-list-teaching-class>
-            <teacher-list-teaching-reward list="{{document.value.teaching_reward}}"></teacher-list-teaching-reward>
+            <template is="dom-if" if="{{__isEquals(page,4)}}">
+              <teacher-list-teaching list="{{document.value.teaching}}"></teacher-list-teaching>
+              <teacher-list-teaching-innovation list="{{document.value.teaching_innovation}}"></teacher-list-teaching-innovation>
+              <teacher-list-teaching-integration list="{{document.value.teaching_integration}}"></teacher-list-teaching-integration>
+              <teacher-list-teaching-class list="{{document.value.teaching_class}}"></teacher-list-teaching-class>
+              <teacher-list-teaching-reward list="{{document.value.teaching_reward}}"></teacher-list-teaching-reward>
+            </template>
           </div>
           <div>
-            <teacher-list-training list="{{document.value.training}}"></teacher-list-training>
-            <teacher-list-training-lecturer list="{{document.value.training_lecturer}}"></teacher-list-training-lecturer>
-            <teacher-list-training-reward list="{{document.value.training_reward}}"></teacher-list-training-reward>
+            <template is="dom-if" if="{{__isEquals(page,5)}}">
+              <teacher-list-training list="{{document.value.training}}"></teacher-list-training>
+              <teacher-list-training-lecturer list="{{document.value.training_lecturer}}"></teacher-list-training-lecturer>
+              <teacher-list-training-reward list="{{document.value.training_reward}}"></teacher-list-training-reward>
+            </template>
           </div>
         </iron-pages>
 
-         <div class="buttons">
+         <div class="buttons horizontal end-justified layout">
           <paper-button on-click="update" raised>บันทึก</paper-button>
           <paper-button dialog-dismiss raised>ยกเลิก</paper-button>
           <paper-spinner active="{{loading}}"></paper-spinner>
@@ -204,6 +216,10 @@
 
       __successImg(){
         return this.resolveUrl("./images/success.png");
+      }
+
+      __isEquals(a,b) {
+        return a == b;
       }
 
       __unsuccessImg(){
