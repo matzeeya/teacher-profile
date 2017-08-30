@@ -7,6 +7,8 @@
 <script src="../moment/moment.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
+<link rel="import" href="province-list.html">
+
 <dom-module id="t-profile">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment">
@@ -56,7 +58,11 @@
       </div>
       <div class="layout horizontal">
         <div class="flex"><paper-input label="อำเภอ" value="{{value.host_address.amphoe}}"></paper-input></div>
-        <div class="flex"><paper-input label="จังหวัด" value="{{value.host_address.province}}"></paper-input></div>
+        <div class="flex">
+          <!--<paper-input label="จังหวัด" value="{{value.host_address.province}}"></paper-input>-->
+          <province-list token="{{token}}" value="{{value.host_address.province}}"></province-list>
+          
+        </div>
       </div>
       <div class="layout horizontal">
         <div class="flex"><paper-input label="สำนักงานเขตพื้นที่การศึกษา" value="{{value.office}}"></paper-input></div>

@@ -1,11 +1,13 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../neon-animation/web-animations.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
 <link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../paper-listbox/paper-listbox.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<dom-module id="test-scrollable">
+<dom-module id="demo">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
@@ -27,7 +29,7 @@
     </style>
     <paper-dropdown-menu label="จังหวัด">
       <paper-listbox slot="dropdown-content" 
-        selected="{{province.value}}" 
+        selected="{{provincelist}}" 
         attr-for-selected="province">
         <template is="dom-repeat" items="{{province}}">
           <paper-item province="{{item}}">
@@ -36,11 +38,11 @@
         </template>
       </paper-listbox>
     </paper-dropdown-menu>
-    {{province.value}}
+    {{provincelist}}
 
     <paper-dropdown-menu label="เขต">
       <paper-listbox slot="dropdown-content" 
-        selected="{{area.value}}" 
+        selected="{{arealist}}" 
         attr-for-selected="area">
         <template is="dom-repeat" items="{{area}}">
           <paper-item area="{{item}}">
@@ -49,11 +51,11 @@
         </template>
       </paper-listbox>
     </paper-dropdown-menu>
-    {{area.value}}
+    {{arealist}}
 
     <paper-dropdown-menu label="โรงเรียน">
       <paper-listbox slot="dropdown-content" 
-        selected="{{host.value}}" 
+        selected="{{hostname}}" 
         attr-for-selected="host">
         <template is="dom-repeat" items="{{host}}">
           <paper-item host="{{item}}">
@@ -62,12 +64,12 @@
         </template>
       </paper-listbox>
     </paper-dropdown-menu>
-    {{host.value}}
+    {{hostname}}
   </template>
 
   <script>
-    class testScrollable extends Polymer.Element {
-      static get is() { return 'test-scrollable'; }
+    class demo extends Polymer.Element {
+      static get is() { return 'demo'; }
       static get properties() {
         return {
         }
@@ -76,8 +78,8 @@
       static get observers() {
         return [
           '__provinceQuery(token)',
-          '__areaQuery(province.value)',
-          '__hostQuery(area.value)'
+          '__areaQuery(provincelist)',
+          '__hostQuery(arealist)'
         ]
       }
 
@@ -146,6 +148,6 @@
       }
     }
 
-    window.customElements.define(testScrollable.is, testScrollable);
+    window.customElements.define(demo.is, demo);
   </script>
 </dom-module>

@@ -103,7 +103,7 @@
         <iron-pages selected="{{page}}"> 
           <div>
             <template is="dom-if" if="{{__isEquals(page,0)}}">
-            <t-profile value="{{document.value}}"></t-profile>
+            <t-profile token="{{token}}" value="{{document.value}}"></t-profile>
             </template>
           </div>
           <div>
@@ -258,6 +258,7 @@
                    'Authorization':'JWT '+token,
                   },
                 }).then(function(res) {
+                  //console.log(res.response);
                   var response = res.response;                  
                   var list_properties = [
                     "education_list",
