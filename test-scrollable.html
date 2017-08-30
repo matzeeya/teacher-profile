@@ -1,32 +1,30 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../paper-dialog/paper-dialog.html">
-<link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../iron-ajax/iron-request.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 <dom-module id="test-scrollable">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
+        @apply(--layout-vertical);
         display: block;
       }
     </style>
-
-    <paper-button raised on-click="openDialog">Open</paper-button>
-    <paper-dialog id="dialog">
-      <h2>Scrollable</h2>
-      <paper-dialog-scrollable>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </paper-dialog-scrollable>
-      <div class="buttons">
-        <paper-button dialog-dismiss>Close</paper-button>
-      </div>
-    </paper-dialog>
+    <paper-dropdown-menu label="จังหวัด">
+      <paper-listbox slot="dropdown-content" 
+        selected="{{selected}}" 
+        attr-for-selected="province">
+        <template is="dom-repeat" items="{{province}}">
+          <paper-item province="{{item}}">
+            {{item}}
+          </paper-item>
+        </template>
+      </paper-listbox>
+    </paper-dropdown-menu>
+    {{selected}}
   </template>
 
   <script>
@@ -34,10 +32,39 @@
       static get is() { return 'test-scrollable'; }
       static get properties() {
         return {
+          token: {
+            type: String,
+          },
+          selected:{
+            type:Object,
+            notify:true
+          },
         }
       }
-      openDialog(event) {
-        this.$.dialog.open();              
+
+      static get observers() {
+        return [
+          '__provinceQuery(token)'
+        ]
+      }
+
+      __provinceQuery(token) {
+        if(token == null) return;
+        var ele = document.createElement('iron-request'); 
+        var self = this;
+        ele.send({
+          url:"https://maas.nuqlis.com:8000/v2/obec/school/query",
+          body:{"query":{},"distinct":"province"},
+          method:"POST",
+          handleAs:"json",
+          headers:{
+            "Authorization":"JWT "+token,
+            "Content-Type":"application/json"
+          }
+        }).then(function(res) {
+          console.log(res.response);
+          self.set('province',res.response);
+        });
       }
     }
 

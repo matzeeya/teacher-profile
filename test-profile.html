@@ -2,7 +2,8 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../iron-sessionstorage/iron-sessionstorage.html">
-<link rel="import" href="teacher-profile.html">
+<!--<link rel="import" href="teacher-profile.html">-->
+<link rel="import" href="test-scrollable.html">
 
 <dom-module id="test-profile">
   <template>
@@ -16,7 +17,8 @@
     </iron-sessionstorage>
     <!--<paper-input label="token" value="{{token}}"></paper-input>
     <paper-input label="app" value="cct"></paper-input>-->
-    <teacher-profile token="{{token}}" app="edu"></teacher-profile>
+    <!--<teacher-profile token="{{token}}" app="edu"></teacher-profile>-->
+    <test-scrollable token="{{token}}"></test-scrollable>
   </template>
 
   <script>
