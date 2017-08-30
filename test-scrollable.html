@@ -12,10 +12,22 @@
         @apply(--layout-vertical);
         display: block;
       }
+
+      paper-dropdown-menu{
+        width: 300px;
+      }
+      paper-dropdown-menu.marginleft{
+       margin-left: 5px;
+      }
+      paper-listbox{
+        width: 300px;
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
     </style>
     <paper-dropdown-menu label="จังหวัด">
       <paper-listbox slot="dropdown-content" 
-        selected="{{selected}}" 
+        selected="{{province.value}}" 
         attr-for-selected="province">
         <template is="dom-repeat" items="{{province}}">
           <paper-item province="{{item}}">
@@ -24,7 +36,33 @@
         </template>
       </paper-listbox>
     </paper-dropdown-menu>
-    {{selected}}
+    {{province.value}}
+
+    <paper-dropdown-menu label="เขต">
+      <paper-listbox slot="dropdown-content" 
+        selected="{{area.value}}" 
+        attr-for-selected="area">
+        <template is="dom-repeat" items="{{area}}">
+          <paper-item area="{{item}}">
+            {{item}}
+          </paper-item>
+        </template>
+      </paper-listbox>
+    </paper-dropdown-menu>
+    {{area.value}}
+
+    <paper-dropdown-menu label="โรงเรียน">
+      <paper-listbox slot="dropdown-content" 
+        selected="{{host.value}}" 
+        attr-for-selected="host">
+        <template is="dom-repeat" items="{{host}}">
+          <paper-item host="{{item}}">
+            {{item}}
+          </paper-item>
+        </template>
+      </paper-listbox>
+    </paper-dropdown-menu>
+    {{host.value}}
   </template>
 
   <script>
@@ -32,19 +70,14 @@
       static get is() { return 'test-scrollable'; }
       static get properties() {
         return {
-          token: {
-            type: String,
-          },
-          selected:{
-            type:Object,
-            notify:true
-          },
         }
       }
 
       static get observers() {
         return [
-          '__provinceQuery(token)'
+          '__provinceQuery(token)',
+          '__areaQuery(province.value)',
+          '__hostQuery(area.value)'
         ]
       }
 
@@ -64,6 +97,51 @@
         }).then(function(res) {
           console.log(res.response);
           self.set('province',res.response);
+        });
+      }
+
+      __areaQuery(province) {
+        //console.log(province);
+        if(province == null) return;
+        var ele = document.createElement('iron-request'); 
+        var self = this;
+        ele.send({
+          url:"https://maas.nuqlis.com:8000/v2/obec/school/query",
+          body:{"query":{
+                "province":province,
+              },
+                "distinct":"area"
+          },
+          method:"POST",
+          handleAs:"json",
+          headers:{
+            "Authorization":"JWT "+this.token,
+            "Content-Type":"application/json"
+          }
+        }).then(function(res) {
+          self.set('area',res.response);
+        });
+      }
+      
+      __hostQuery(area) {
+        if(area == null) return;
+        var ele = document.createElement('iron-request'); 
+        var self = this;
+        ele.send({
+          url:"https://maas.nuqlis.com:8000/v2/obec/school/query",
+          body:{"query":{
+                "area":area,
+              },
+                "distinct":"host"
+          },
+          method:"POST",
+          handleAs:"json",
+          headers:{
+            "Authorization":"JWT "+this.token,
+            "Content-Type":"application/json"
+          }
+        }).then(function(res) {
+          self.set('host',res.response);
         });
       }
     }
