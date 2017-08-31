@@ -1,0 +1,70 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-ajax/iron-request.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="area-in-host.html">
+
+<dom-module id="area-list">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
+      :host {
+        display: block;
+      }
+    </style>
+    <area-in-host token="{{token}}" 
+      items="{{area}}">
+    </area-in-host>
+  </template>
+
+  <script>
+    class AreaList extends Polymer.Element {
+      static get is() { return 'area-list'; }
+      static get properties() {
+        return {
+          area:{
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          province:{
+            type:String,
+            notify:true
+          }
+        }
+      }
+
+      static get observers() {
+        return [
+          '__executeQuery(token,province)',
+        ]
+      }
+
+      __executeQuery(token,province) {
+        if(token == null || province == null) return;
+        var ele = document.createElement('iron-request'); 
+        var self = this;
+        ele.send({
+          url:"https://maas.nuqlis.com:8000/v2/obec/school/query",
+          body:{"query":{
+                "province":province,
+              },
+                "distinct":"area"
+          },
+          method:"POST",
+          handleAs:"json",
+          headers:{
+            "Authorization":"JWT "+token,
+            "Content-Type":"application/json"
+          }
+        }).then(function(res) {
+          //console.log(res.response);
+          self.set('area',res.response);
+        });
+      }
+    }
+
+    window.customElements.define(AreaList.is, AreaList);
+  </script>
+</dom-module>

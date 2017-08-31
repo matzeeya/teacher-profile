@@ -54,15 +54,22 @@
 </style>
     <div class="layout vertical">
       <div class="layout horizontal">
+        <div class="flex">
+          <province-list token="{{token}}" selected="{{value.host_address.province}}">            
+          </province-list>
+        </div>
+
+        <area-by-province 
+          province="{{value.host_address.province}}" 
+          token="{{token}}" 
+          selected="{{value.host_address.area}}">            
+        </area-by-province>
+
         <div class="flex"><paper-input label="โรงเรียน" value="{{value.hostname}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
         <div class="flex"><paper-input label="อำเภอ" value="{{value.host_address.amphoe}}"></paper-input></div>
-        <div class="flex">
-          <!--<paper-input label="จังหวัด" value="{{value.host_address.province}}"></paper-input>-->
-          <province-list token="{{token}}" value="{{value.host_address.province}}"></province-list>
-          
-        </div>
+        <!--<div class="flex"><paper-input label="จังหวัด" value="{{value.host_address.province}}"></paper-input></div>-->
       </div>
       <div class="layout horizontal">
         <div class="flex"><paper-input label="สำนักงานเขตพื้นที่การศึกษา" value="{{value.office}}"></paper-input></div>

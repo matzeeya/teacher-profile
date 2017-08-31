@@ -7,9 +7,7 @@
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="area-list.html">
-
-<dom-module id="province-in-host">
+<dom-module id="area-in-host">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
@@ -29,7 +27,7 @@
         font-size: 14px;
       }
     </style>
-    <paper-dropdown-menu label="จังหวัด">
+    <paper-dropdown-menu label="เขต">
       <paper-listbox slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
@@ -41,15 +39,11 @@
       </paper-listbox>
     </paper-dropdown-menu>
     {{selected}}
-
-    <area-list token="{{token}}" 
-      province="{{selected}}">
-    </area-list>
   </template>
 
   <script>
-    class ProvinceInHost extends Polymer.Element {
-      static get is() { return 'province-in-host'; }
+    class AreaInHost extends Polymer.Element {
+      static get is() { return 'area-in-host'; }
       static get properties() {
         return {
           token: {
@@ -66,6 +60,6 @@
       }
     }
 
-    window.customElements.define(ProvinceInHost.is, ProvinceInHost);
+    window.customElements.define(AreaInHost.is, AreaInHost);
   </script>
 </dom-module>
