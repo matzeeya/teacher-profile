@@ -1,24 +1,35 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../neon-animation/web-animations.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="area-in-host.html">
-
-<dom-module id="area-list">
+<dom-module id="area-by-province">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
       }
     </style>
-    <area-in-host token="{{token}}" 
-      items="{{area}}">
-    </area-in-host>
+    <paper-dropdown-menu label="สำนักงานเขตพื้นที่การศึกษา">
+      <paper-listbox slot="dropdown-content" 
+        selected="{{selected}}" 
+        attr-for-selected="value">
+        <template is="dom-repeat" items="{{area}}">
+          <paper-item value="{{item}}">
+            {{item}}
+          </paper-item>
+        </template>
+      </paper-listbox>
+    </paper-dropdown-menu>
   </template>
 
   <script>
-    class AreaList extends Polymer.Element {
-      static get is() { return 'area-list'; }
+    class AreaByProvince extends Polymer.Element {
+      static get is() { return 'area-by-province'; }
       static get properties() {
         return {
           area:{
@@ -29,6 +40,14 @@
             }
           },
           province:{
+            type:String,
+            notify:true
+          },
+          token:{
+            type:String,
+            notify:true
+          },
+          selected:{
             type:String,
             notify:true
           }
@@ -65,6 +84,6 @@
       }
     }
 
-    window.customElements.define(AreaList.is, AreaList);
+    window.customElements.define(AreaByProvince.is, AreaByProvince);
   </script>
 </dom-module>

@@ -7,65 +7,51 @@
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="area-list.html">
-
-<dom-module id="province-in-host">
+<dom-module id="career-title-list">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
-        @apply(--layout-vertical);
         display: block;
       }
-
-      paper-dropdown-menu{
-        width: 300px;
-      }
-      paper-dropdown-menu.marginleft{
-       margin-left: 5px;
-      }
-      paper-listbox{
-        width: 300px;
-        font-family: 'Kanit', sans-serif;
-        font-size: 14px;
-      }
     </style>
-    <paper-dropdown-menu label="จังหวัด">
+    
+    <paper-dropdown-menu label="ตำแหน่ง">
       <paper-listbox slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
-        <template is="dom-repeat" items="{{items}}">
+        <template is="dom-repeat" items="{{career_title}}">      
           <paper-item value="{{item}}">
             {{item}}
           </paper-item>
         </template>
       </paper-listbox>
     </paper-dropdown-menu>
-    {{selected}}
-
-    <area-list token="{{token}}" 
-      province="{{selected}}">
-    </area-list>
   </template>
 
   <script>
-    class ProvinceInHost extends Polymer.Element {
-      static get is() { return 'province-in-host'; }
+    class CareerTitleList extends Polymer.Element {
+      static get is() { return 'career-title-list'; }
       static get properties() {
         return {
-          token: {
-            type: String,
-          },
-          items:{
+          career_title:{
             type:Array,
-            notify:true,
-            value:function() {
-              return [];
-            }
+            notify: true,
+            computed:'_careerTitleList()'
+          },
+          selected:{
+            type:String,
+            notify:true
           }
         }
       }
+
+      _careerTitleList() {
+        var _career_title=[];
+        _career_title.push("ไม่มี","ครูชำนาญการ","ครูชำนาญการพิเศษ","ครูเชี่ยวชาญ","ครูเชี่ยวชาญพิเศษ");
+        return _career_title;
+      }
     }
 
-    window.customElements.define(ProvinceInHost.is, ProvinceInHost);
+    window.customElements.define(CareerTitleList.is, CareerTitleList);
   </script>
 </dom-module>

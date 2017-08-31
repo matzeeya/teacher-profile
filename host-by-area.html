@@ -7,19 +7,18 @@
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<dom-module id="province-list">
+<dom-module id="host-by-area">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         display: block;
       }
     </style>
-    
-    <paper-dropdown-menu label="จังหวัด">
+    <paper-dropdown-menu label="โรงเรียน">
       <paper-listbox slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
-        <template is="dom-repeat" items="{{province}}">      
+        <template is="dom-repeat" items="{{host}}">
           <paper-item value="{{item}}">
             {{item}}
           </paper-item>
@@ -29,16 +28,20 @@
   </template>
 
   <script>
-    class ProvinceList extends Polymer.Element {
-      static get is() { return 'province-list'; }
+    class HostByArea extends Polymer.Element {
+      static get is() { return 'host-by-area'; }
       static get properties() {
         return {
-          province:{
+          host:{
             type:Array,
             notify:true,
             value:function() {
               return [];
             }
+          },
+          area:{
+            type:String,
+            notify:true
           },
           token:{
             type:String,
@@ -53,17 +56,21 @@
 
       static get observers() {
         return [
-          '__executeQuery(token)',
+          '__executeQuery(token,area)',
         ]
       }
 
-      __executeQuery(token) {
-        if(token == null) return;
+      __executeQuery(token,area) {
+        if(token == null || area == null) return;
         var ele = document.createElement('iron-request'); 
         var self = this;
         ele.send({
           url:"https://maas.nuqlis.com:8000/v2/obec/school/query",
-          body:{"query":{},"distinct":"province"},
+          body:{"query":{
+                "area":area,
+              },
+                "distinct":"host"
+          },
           method:"POST",
           handleAs:"json",
           headers:{
@@ -72,11 +79,11 @@
           }
         }).then(function(res) {
           //console.log(res.response);
-          self.set('province',res.response);
+          self.set('host',res.response);
         });
       }
     }
 
-    window.customElements.define(ProvinceList.is, ProvinceList);
+    window.customElements.define(HostByArea.is, HostByArea);
   </script>
 </dom-module>

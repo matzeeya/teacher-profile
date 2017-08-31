@@ -7,7 +7,7 @@
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<dom-module id="province-list">
+<dom-module id="title-list">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
@@ -15,11 +15,11 @@
       }
     </style>
     
-    <paper-dropdown-menu label="จังหวัด">
+    <paper-dropdown-menu label="คำนำหน้า">
       <paper-listbox slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
-        <template is="dom-repeat" items="{{province}}">      
+        <template is="dom-repeat" items="{{title}}">      
           <paper-item value="{{item}}">
             {{item}}
           </paper-item>
@@ -29,11 +29,11 @@
   </template>
 
   <script>
-    class ProvinceList extends Polymer.Element {
-      static get is() { return 'province-list'; }
+    class TitleList extends Polymer.Element {
+      static get is() { return 'title-list'; }
       static get properties() {
         return {
-          province:{
+          title:{
             type:Array,
             notify:true,
             value:function() {
@@ -62,8 +62,8 @@
         var ele = document.createElement('iron-request'); 
         var self = this;
         ele.send({
-          url:"https://maas.nuqlis.com:8000/v2/obec/school/query",
-          body:{"query":{},"distinct":"province"},
+          url:"https://maas.nuqlis.com:8000/v2/obec/teacher_db/query",
+          body:{"query":{},"distinct":"title"},
           method:"POST",
           handleAs:"json",
           headers:{
@@ -72,11 +72,11 @@
           }
         }).then(function(res) {
           //console.log(res.response);
-          self.set('province',res.response);
+          self.set('title',res.response);
         });
       }
     }
 
-    window.customElements.define(ProvinceList.is, ProvinceList);
+    window.customElements.define(TitleList.is, TitleList);
   </script>
 </dom-module>

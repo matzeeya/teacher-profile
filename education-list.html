@@ -7,59 +7,52 @@
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<dom-module id="area-in-host">
+<dom-module id="education-list">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
-        @apply(--layout-vertical);
         display: block;
       }
-
-      paper-dropdown-menu{
-        width: 300px;
-      }
-      paper-dropdown-menu.marginleft{
-       margin-left: 5px;
-      }
-      paper-listbox{
-        width: 300px;
-        font-family: 'Kanit', sans-serif;
-        font-size: 14px;
-      }
     </style>
-    <paper-dropdown-menu label="เขต">
+    
+    <paper-dropdown-menu label="ระดับการศึกษา">
       <paper-listbox slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
-        <template is="dom-repeat" items="{{items}}">
+        <template is="dom-repeat" items="{{education}}">      
           <paper-item value="{{item}}">
             {{item}}
           </paper-item>
         </template>
       </paper-listbox>
     </paper-dropdown-menu>
-    {{selected}}
   </template>
 
   <script>
-    class AreaInHost extends Polymer.Element {
-      static get is() { return 'area-in-host'; }
+    class EducationList extends Polymer.Element {
+      static get is() { return 'education-list'; }
       static get properties() {
         return {
-          token: {
-            type: String,
-          },
-          items:{
+          education:{
             type:Array,
-            notify:true,
-            value:function() {
-              return [];
-            }
+            notify: true,
+            computed:'_educationList()'
+          },
+          selected:{
+            type:String,
+            notify:true
           }
         }
       }
+
+      _educationList() {
+        var _education=[];
+        _education.push("ปริญญาตรี","ปริญญาโท","ปริญญาเอก");
+        //console.log(_education);
+        return _education;
+      }
     }
 
-    window.customElements.define(AreaInHost.is, AreaInHost);
+    window.customElements.define(EducationList.is, EducationList);
   </script>
 </dom-module>

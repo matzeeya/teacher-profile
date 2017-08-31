@@ -8,10 +8,15 @@
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
 <link rel="import" href="province-list.html">
+<link rel="import" href="area-by-province.html">
+<link rel="import" href="host-by-area.html">
+<link rel="import" href="title-list.html">
+<link rel="import" href="year-list.html">
+<link rel="import" href="education-list.html">
 
 <dom-module id="t-profile">
   <template>
-    <style is="customer-style" include="iron-flex iron-flex-alignment">
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
         @apply(--layout-vertical);
         display: block;
@@ -37,7 +42,7 @@
       }
 
       paper-input{
-        margin-left: 5px;
+        margin-right: 5px;
       }
 
       paper-button{
@@ -51,28 +56,24 @@
         margin-left: 5px;
         width: 98%
       }
-</style>
-    <div class="layout vertical">
+    </style>
       <div class="layout horizontal">
-        <div class="flex">
-          <province-list token="{{token}}" selected="{{value.host_address.province}}">            
-          </province-list>
-        </div>
-
-        <area-by-province 
-          province="{{value.host_address.province}}" 
-          token="{{token}}" 
-          selected="{{value.host_address.area}}">            
-        </area-by-province>
-
-        <div class="flex"><paper-input label="โรงเรียน" value="{{value.hostname}}"></paper-input></div>
-      </div>
-      <div class="layout horizontal">
+        <div class="flex"><province-list token="{{token}}" selected="{{value.host_address.province}}"></province-list></div>
         <div class="flex"><paper-input label="อำเภอ" value="{{value.host_address.amphoe}}"></paper-input></div>
-        <!--<div class="flex"><paper-input label="จังหวัด" value="{{value.host_address.province}}"></paper-input></div>-->
-      </div>
-      <div class="layout horizontal">
-        <div class="flex"><paper-input label="สำนักงานเขตพื้นที่การศึกษา" value="{{value.office}}"></paper-input></div>
+        <div class="flex">
+          <area-by-province 
+            province="{{value.host_address.province}}" 
+            token="{{token}}" 
+            selected="{{value.office}}">            
+          </area-by-province>  
+        </div>
+        <div class="flex">
+          <host-by-area
+            area="{{value.office}}"
+            token="{{token}}" 
+            selected="{{value.hostname}}"> 
+          </host-by-area>
+        </div>
       </div>
       <div class="layout horizontal">
         <div class="flex font-face-big-bold margin-top-style">ประเภทบุคลากร</div>
@@ -96,15 +97,12 @@
         </paper-input>
       </div>
       <div class="layout horizontal">
-        <div class="flex"><paper-input label="คำนำหน้า" value="{{value.title}}"></paper-input></div>
+        <div class="flex"><title-list token="{{token}}" selected="{{value.title}}"></title-list></div>
         <div class="flex"><paper-input label="ชื่อ" value="{{value.firstname}}"></paper-input></div>
         <div class="flex"><paper-input label="นามสกุล" value="{{value.lastname}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
         <div class="flex">
-          <!--<vaadin-date-picker label="วัน/เดือน/ปี เกิด"
-            placeholder="วัน/เดือน/ปี เกิด"
-            value="{{value.date_of_birth}}">-->
           <vaadin-date-picker 
             label="วัน/เดือน/ปี เกิด"
             value="{{value.date_of_birth}}">
@@ -118,7 +116,7 @@
         <div class="flex">
           <paper-input 
             label="เบอร์โทรศัพท์" 
-            value="{{value.phone}}"
+            value="{{value.tel}}"
             auto-validate allowed-pattern="[0-9]">
           </paper-input></div>
         <div class="flex"><paper-input label="E-mail" value="{{value.email}}"></paper-input></div>
@@ -168,7 +166,7 @@
           <paper-radio-button name="m" class ="font-face-normal">ครูเชี่ยวชาญพิเศษ</paper-radio-button>
         </paper-radio-group>
       </div>
-    </div>
+
    
   </template>
 <script>

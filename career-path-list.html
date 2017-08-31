@@ -7,7 +7,7 @@
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<dom-module id="province-list">
+<dom-module id="career-path-list">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
@@ -15,11 +15,11 @@
       }
     </style>
     
-    <paper-dropdown-menu label="จังหวัด">
+    <paper-dropdown-menu label="ตำแหน่ง">
       <paper-listbox slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
-        <template is="dom-repeat" items="{{province}}">      
+        <template is="dom-repeat" items="{{career_path}}">      
           <paper-item value="{{item}}">
             {{item}}
           </paper-item>
@@ -29,20 +29,14 @@
   </template>
 
   <script>
-    class ProvinceList extends Polymer.Element {
-      static get is() { return 'province-list'; }
+    class CareerPathList extends Polymer.Element {
+      static get is() { return 'career-path-list'; }
       static get properties() {
         return {
-          province:{
+          career_path:{
             type:Array,
-            notify:true,
-            value:function() {
-              return [];
-            }
-          },
-          token:{
-            type:String,
-            notify:true
+            notify: true,
+            computed:'_careerPathList()'
           },
           selected:{
             type:String,
@@ -51,32 +45,13 @@
         }
       }
 
-      static get observers() {
-        return [
-          '__executeQuery(token)',
-        ]
-      }
-
-      __executeQuery(token) {
-        if(token == null) return;
-        var ele = document.createElement('iron-request'); 
-        var self = this;
-        ele.send({
-          url:"https://maas.nuqlis.com:8000/v2/obec/school/query",
-          body:{"query":{},"distinct":"province"},
-          method:"POST",
-          handleAs:"json",
-          headers:{
-            "Authorization":"JWT "+token,
-            "Content-Type":"application/json"
-          }
-        }).then(function(res) {
-          //console.log(res.response);
-          self.set('province',res.response);
-        });
+      _careerPathList() {
+        var _careerPath=[];
+        _careerPath.push("ครูผู้ช่วย","ครู");
+        return _careerPath;
       }
     }
 
-    window.customElements.define(ProvinceList.is, ProvinceList);
+    window.customElements.define(CareerPathList.is, CareerPathList);
   </script>
 </dom-module>
