@@ -13,10 +13,35 @@
       :host {
         display: block;
       }
+      paper-dropdown-menu.custom {
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+       }
+
+      paper-dropdown-menu.marginleft{
+       margin-left: 5px;
+      }
+      paper-item{
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
+
+      .custom {
+        width: 98%;
+      }
+
+      .custom2 {
+        width: 100%;
+      }
     </style>
     
-    <paper-dropdown-menu label="ตำแหน่ง">
-      <paper-listbox slot="dropdown-content" 
+    <paper-dropdown-menu label="ตำแหน่ง" class="marginleft custom">
+      <paper-listbox class="dropdown-content custom2"
+        slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
         <template is="dom-repeat" items="{{career_path}}">      

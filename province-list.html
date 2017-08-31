@@ -5,6 +5,7 @@
 <link rel="import" href="../paper-listbox/paper-listbox.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
+<link rel="import" href="../iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 <dom-module id="province-list">
@@ -13,10 +14,35 @@
       :host {
         display: block;
       }
+      paper-dropdown-menu.custom {
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+       }
+
+      paper-dropdown-menu.marginleft{
+       margin-left: 5px;
+      }
+      paper-item{
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
+
+      .custom {
+        width: 98%;
+      }
+
+      .custom2 {
+        width: 100%;
+      }
     </style>
     
-    <paper-dropdown-menu label="จังหวัด">
-      <paper-listbox slot="dropdown-content" 
+    <paper-dropdown-menu label="จังหวัด" class="marginleft custom">
+      <paper-listbox class="dropdown-content custom2"
+        slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
         <template is="dom-repeat" items="{{province}}">      
