@@ -1,5 +1,4 @@
 <link rel="import" href="../../polymer/polymer-element.html">
-<link rel="import" href="../../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../paper-dialog/paper-dialog.html">
 <link rel="import" href="../../paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="../../paper-toolbar/paper-toolbar.html">
@@ -7,6 +6,8 @@
 <link rel="import" href="../../iron-icons/iron-icons.html">
 
 <link rel="import" href="t-teaching-dialog-integration-detail.html">
+<link rel="import" href="../year-list.html">
+
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
 <dom-module id="t-teaching-dialog-integration">
@@ -52,25 +53,10 @@
         }
        }
 
-      paper-dropdown-menu{
-        width: 98%;
-      }
-      paper-dropdown-menu.marginleft{
-       margin-left: 5px;
-      }
-      paper-listbox{
-        font-family: 'Kanit', sans-serif;
-        font-size: 14px;
-      }
 
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
-      }
-
-      paper-checkbox{
-        font-family: 'Kanit', sans-serif;
-        font-size: 90%;
       }
 
       paper-toolbar.toolbarcolor {
@@ -89,18 +75,7 @@
         </paper-toolbar>
           <div class="layout horizontal">
             <div class="flex-2">
-              <!--<paper-dropdown-menu label="ปีการศึกษา" class="marginleft custom">
-                <paper-listbox attr-for-selected="value" selected="{{value.year}}" slot="dropdown-content">
-                  <paper-item value="2558">2558</paper-item>
-                  <paper-item value="2559">2559</paper-item>
-                  <paper-item value="2560">2560</paper-item>
-                </paper-listbox>
-            </paper-dropdown-menu>-->
-            <paper-input label="ปีการศึกษา" 
-              value="{{value.year}}"
-              auto-validate allowed-pattern="[0-9]"
-              char-counter maxlength="4">
-            </paper-input>
+              <year-list title="ปีการศึกษา" selected="{{value.year}}"></year-list>
             </div>
             <div class="flex-6"><paper-input label="เรื่อง" value="{{value.chapter}}"></paper-input></div>
             <div class="flex-2">

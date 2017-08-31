@@ -7,7 +7,7 @@
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<dom-module id="career-title-list">
+<dom-module id="class-list">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
@@ -39,12 +39,12 @@
       }
     </style>
     
-    <paper-dropdown-menu label="วิทยฐานะ" class="marginleft custom">
+    <paper-dropdown-menu label="ระดับชั้น" class="marginleft custom">
       <paper-listbox class="dropdown-content custom2"
         slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
-        <template is="dom-repeat" items="{{career_title}}">      
+        <template is="dom-repeat" items="{{classlist}}">      
           <paper-item value="{{item}}">
             {{item}}
           </paper-item>
@@ -54,14 +54,14 @@
   </template>
 
   <script>
-    class CareerTitleList extends Polymer.Element {
-      static get is() { return 'career-title-list'; }
+    class ClassList extends Polymer.Element {
+      static get is() { return 'class-list'; }
       static get properties() {
         return {
-          career_title:{
+          classlist:{
             type:Array,
             notify: true,
-            computed:'_careerTitleList()'
+            computed:'_classList()'
           },
           selected:{
             type:String,
@@ -70,17 +70,24 @@
         }
       }
 
-      _careerTitleList() {
-        var _career_title=[];
-        _career_title.push("ไม่มี",
-          "ครูชำนาญการ",
-          "ครูชำนาญการพิเศษ",
-          "ครูเชี่ยวชาญ",
-          "ครูเชี่ยวชาญพิเศษ");
-        return _career_title;
+      _classList() {
+        var _class=[];
+        _class.push("ประถมศึกษาปีที่ 1",
+        "ประถมศึกษาปีที่ 2",
+        "ประถมศึกษาปีที่ 3",
+        "ประถมศึกษาปีที่ 4",
+        "ประถมศึกษาปีที่ 5",
+        "ประถมศึกษาปีที่ 6",
+        "มัธยมศึกษาปีที่ 1",
+        "มัธยมศึกษาปีที่ 2",
+        "มัธยมศึกษาปีที่ 3",
+        "มัธยมศึกษาปีที่ 4",
+        "มัธยมศึกษาปีที่ 5",
+        "มัธยมศึกษาปีที่ 6");
+          return _class;
       }
     }
 
-    window.customElements.define(CareerTitleList.is, CareerTitleList);
+    window.customElements.define(ClassList.is, ClassList);
   </script>
 </dom-module>

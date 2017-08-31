@@ -72,18 +72,20 @@
       <div class="flex-1">&nbsp;</div> 
     </div>
     <template is="dom-repeat" items="{{list}}">
-      <t-work content="{{item}}" class$="{{_isEven(index)}}" on-t-work-remove="_removeItem"></t-work>
+      <t-work token="{{token}}" content="{{item}}" class$="{{_isEven(index)}}" on-t-work-remove="_removeItem"></t-work>
     </template> 
     <paper-button raised on-click="_addItem">
       <iron-icon icon="icons:add" on-click="_addItem"></iron-icon> เพิ่ม</paper-button>        
   </template>
-
-  
 <script>
     class TeacherListWork extends Polymer.Element {
       static get is() { return 'teacher-list-work'; }
       static get properties() {
         return {
+          token:{
+           type:String,
+           notify:true
+          },
           list : {
             type:Array,
             notify:true,

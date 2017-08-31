@@ -4,13 +4,13 @@
 <link rel="import" href="../../paper-progress/paper-progress.html">
 <link rel="import" href="../../paper-tabs/paper-tabs.html">
 <link rel="import" href="../../paper-toolbar/paper-toolbar.html">
-<link rel="import" href="../../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../iron-pages/iron-pages.html">
 <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../iron-selector/iron-selector.html">
 <link rel="import" href="../../iron-icons/iron-icons.html">
 
 <link rel="import" href="t-teaching-dialog-innovation-type.html">
+<link rel="import" href="../year-list.html">
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
@@ -48,35 +48,9 @@
         font-family: 'Kanit', sans-serif;
       }
 
-      paper-dropdown-menu.custom {
-        --paper-input-container-label: {
-          font-family: 'Kanit', sans-serif;
-        };
-        --paper-input-container-input: {
-          font-family: 'Kanit', sans-serif;
-        }
-       }
-
-      paper-dropdown-menu{
-        width: 98%;
-      }
-      paper-dropdown-menu.marginleft{
-       margin-left: 5px;
-      }
-      paper-listbox{
-        font-family: 'Kanit', sans-serif;
-        font-size: 14px;
-      }
-
       paper-button{
         font-family: 'Kanit', sans-serif;
         font-size: 14px;
-      }
-
-      paper-checkbox{
-        font-family: 'Kanit', sans-serif;
-        font-size: 90%;
-        margin-left:10px;
       }
 
       paper-toolbar.toolbarcolor {
@@ -95,11 +69,7 @@
         </paper-toolbar>
           <div class="layout horizontal">
             <div class="flex-3">
-            <paper-input label="ปีการศึกษา" 
-              value="{{value.year}}"
-              auto-validate allowed-pattern="[0-9]"
-              char-counter maxlength="4">
-            </paper-input>
+              <year-list title="ปีการศึกษา" selected="{{value.year}}"></year-list>
             </div>
             <div class="flex-6"><paper-input label="ชื่อสื่อ/นวัตกรรม" value="{{value.innovation_name}}"></paper-input></div>
             <div class="flex-3">

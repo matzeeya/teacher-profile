@@ -114,8 +114,8 @@
           </div>
           <div>
             <template is="dom-if" if="{{__isEquals(page,2)}}">
-              <teacher-list-work list="{{document.value.work_history}}"></teacher-list-work>
-              <teacher-list-work-upsalary 
+              <teacher-list-work token="{{token}}" list="{{document.value.work_history}}"></teacher-list-work>
+              <teacher-list-work-upsalary token="{{token}}" 
                 list="{{document.value.work_upsalary}}">
               </teacher-list-work-upsalary>
             </template>

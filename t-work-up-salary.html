@@ -8,6 +8,11 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
+<link rel="import" href="province-list.html">
+<link rel="import" href="area-by-province.html">
+<link rel="import" href="host-by-area.html">
+<link rel="import" href="career-path-list.html">
+<link rel="import" href="career-title-list.html">
 <dom-module id="t-work-up-salary">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
@@ -66,22 +71,34 @@
               value="{{content.dates}}">
             </vaadin-date-picker>
           </div>
-          <div class="flex-2">
-            <paper-input label="ตำแหน่ง/วิทยฐานะ"
-              value="{{content.rank}}">
-            </paper-input>
-          </div>
-          <div class="flex-4">
-            <paper-input label="โรงเรียน"
-            value="{{content.school}}">
-            </paper-input>
+          <div class="flex-1">
+            <career-path-list selected="{{content.career_path}}"></career-path-list>
           </div>
           <div class="flex-2">
+            <career-title-list selected="{{content.career_title}}"></career-title-list>
+          </div>
+          <div class="flex-2">
+            <province-list token="{{token}}" selected="{{content.province}}"></province-list>
+          </div>
+          <div class="flex-2">
+            <area-by-province token="{{token}}" 
+              province="{{content.province}}" 
+              selected="{{content.area}}">
+            </area-by-province>
+          </div>
+          <div class="flex-2">
+            <host-by-area
+              area="{{content.area}}"
+              token="{{token}}" 
+              selected="{{content.hostname}}"> 
+            </host-by-area>
+          </div>
+          <div class="flex-1">
             <paper-input label="รับเงินเดือน/ระดับ"
               value="{{content.degree}}">
             </paper-input>
           </div>
-          <div class="flex-3 layout horizontal center">
+          <div class="flex-1 layout horizontal center">
             <vaadin-upload accept=".pdf" target="/upload/file"
               on-upload-response="_uploadResponse">
             </vaadin-upload>

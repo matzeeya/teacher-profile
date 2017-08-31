@@ -5,6 +5,8 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
+<link rel="import" href="../class-list.html">
+
 <dom-module id="t-operating-course">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
@@ -29,11 +31,12 @@
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
-          <div class="flex-6"><paper-input label="กิจกรรม" value ="{{content.activity}}"></paper-input></div>
-          <div class="flex-3">
+          <div class="flex-5"><paper-input label="กิจกรรม" value ="{{content.activity}}"></paper-input></div>
+          <div class="flex-3"><class-list selected="{{content.class}}"></class-list></div>
+          <div class="flex-1">
             <paper-input 
-              label="ชั้น/ห้อง" 
-              value ="{{content.classroom}}">
+              label="ห้อง" 
+              value ="{{content.room}}">
             </paper-input>
           </div>
           <div class="flex-1">
