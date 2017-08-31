@@ -4,6 +4,8 @@
 
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
+<link rel="import" href="branch-expert-list.html">
+
 <dom-module id="teacher-list-education-expert">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
@@ -43,7 +45,9 @@
       <div class="flex font-face-big-bold margin-style">ความชำนาญ</div>
     </div>
     <div class="layout horizontal content">
-      <div class="flex-8"><paper-input label="สาขาวิชาที่ชำนาญ" value="{{value.branch_expert}}"></paper-input></div>
+      <div class="flex-8">
+        <branch-expert-list title="สาขาวิชาที่ชำนาญ" selected="{{value.branch_expert}}"></branch-expert-list>
+      </div>
       <div class="flex-3">
         <paper-input 
           label="ประสบการณ์การสอน (ปี)"

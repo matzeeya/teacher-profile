@@ -74,7 +74,8 @@
     <template is="dom-repeat" items="{{list}}">
       <t-work content="{{item}}" class$="{{_isEven(index)}}" on-t-work-remove="_removeItem"></t-work>
     </template> 
-    <paper-button raised on-click="_addItem"><iron-icon icon="icons:add" on-click="_addItem"></iron-icon> เพิ่ม</paper-button>        
+    <paper-button raised on-click="_addItem">
+      <iron-icon icon="icons:add" on-click="_addItem"></iron-icon> เพิ่ม</paper-button>        
   </template>
 
   

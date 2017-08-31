@@ -7,7 +7,7 @@
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
-<dom-module id="year-list">
+<dom-module id="branch-expert-list">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
@@ -44,7 +44,7 @@
         slot="dropdown-content" 
         selected="{{selected}}" 
         attr-for-selected="value">
-        <template is="dom-repeat" items="{{years}}">      
+        <template is="dom-repeat" items="{{branchExpert}}">      
           <paper-item value="{{item}}">
             {{item}}
           </paper-item>
@@ -54,36 +54,40 @@
   </template>
 
   <script>
-    class YearList extends Polymer.Element {
-      static get is() { return 'year-list'; }
+    class BranchExpertList extends Polymer.Element {
+      static get is() { return 'branch-expert-list'; }
       static get properties() {
         return {
-          title:{
+          branchExpert:{
+            type:Array,
+            notify: true,
+            computed:'_branchExpertList()'
+          },
+          selected:{
             type:String,
             notify:true
           },
-          years:{
-            type:Array,
-            notify: true,
-            computed:'_yearList()'
-          },
-          selected:{
+          title:{
             type:String,
             notify:true
           }
         }
       }
 
-      _yearList() {
-        var _years=[];
-        for(var i=2500;i<=2600;i++){
-          _years.push(i);
-        }
-          //console.log(_years);
-          return _years;
+      _branchExpertList() {
+        var _branchExpert=[];
+        _branchExpert.push("กลุ่มสาระการเรียนรู้ภาษาไทย",
+          "กลุ่มสาระการเรียนรู้สุขศึกษาและพลศึกษา",
+          "กลุ่มสาระการเรียนรู้คณิตศาสตร์",
+          "กลุ่มสาระการเรียนรู้ศิลปะ",
+          "กลุ่มสาระการเรียนรู้วิทยาศาสตร์",
+          "กลุ่มสาระการเรียนรู้การงานอาชีพและเทคโนโลยี",
+          "กลุ่มสาระการเรียนรู้สังคมศึกษา ศาสนา และวัฒนธรรม",
+          "กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ");
+        return _branchExpert;
       }
     }
 
-    window.customElements.define(YearList.is, YearList);
+    window.customElements.define(BranchExpertList.is, BranchExpertList);
   </script>
 </dom-module>

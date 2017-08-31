@@ -9,6 +9,9 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
+<link rel="import" href="education-list.html">
+<link rel="import" href="year-list.html">
+
 <dom-module id="t-education">
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
@@ -41,54 +44,18 @@
         cursor:pointer;
       }
 
-      paper-dropdown-menu.custom {
-        /*--paper-input-container-focus-color: #000;*/
-        --paper-input-container-label: {
-          font-family: 'Kanit', sans-serif;
-        };
-        --paper-input-container-input: {
-          font-family: 'Kanit', sans-serif;
-        }
-       }
-
-      paper-dropdown-menu{
-        width: 98%;
-      }
-      paper-dropdown-menu.marginleft{
-       margin-left: 5px;
-      }
-      paper-listbox{
-        width: 150px;;
-        font-family: 'Kanit', sans-serif;
-        font-size: 14px;
-      }
-
-      paper-item{
-        font-family: 'Kanit', sans-serif;
-        font-size: 14px;
-      }
     </style>
     <div class="layout vertical" hidden$="{{!content.show}}">
         <div class="layout horizontal">
           <div class="flex-2">
-            <paper-dropdown-menu label="ระดับการศึกษา" class="marginleft custom">
-            <paper-listbox slot="dropdown-content"
-              attr-for-selected="value" 
-              selected="{{content.education}}">
-              <paper-item value="ปริญญาตรี">ปริญญาตรี</paper-item>
-              <paper-item value="ปริญญาโท">ปริญญาโท</paper-item>
-              <paper-item value="ปริญญาเอก">ปริญญาเอก</paper-item>
-            </paper-listbox>
-          </paper-dropdown-menu>
+            <education-list selected="{{content.education}}"></education-list>
           </div>
           <div class="flex-1">
-            <paper-input label="ปีที่จบ" 
-              value="{{content.year}}"
-              auto-validate allowed-pattern="[0-9]"
-              char-counter maxlength="4"></paper-input></div>
+            <year-list title="ปีที่จบ" selected="{{content.year}}"></year-list>
+          </div>
           <div class="flex-2"><paper-input label="วุฒิการศึกษา" value="{{content.educational}}"></paper-input></div>
-          <div class="flex-2"><paper-input label="สาขาวิชา/วิชาเอก" value="{{content.branch}}"></paper-input></div>
-          <div class="flex-4"><paper-input label="สถานศึกษา" value="{{content.place_of_education}}"></paper-input></div>
+          <div class="flex-3"><paper-input label="สาขาวิชา/วิชาเอก" value="{{content.branch}}"></paper-input></div>
+          <div class="flex-3"><paper-input label="สถานศึกษา" value="{{content.place_of_education}}"></paper-input></div>
           <div class="flex-1">
             <paper-radio-group aria-labelledby="label1" selected="{{content.honor}}">
               <paper-radio-button name="1">เกียรตินิยมอันดับ 1</paper-radio-button>
