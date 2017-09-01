@@ -7,11 +7,10 @@
 <script src="../moment/moment.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
-<link rel="import" href="province-list.html">
-<link rel="import" href="area-by-province.html">
-<link rel="import" href="host-by-area.html">
-<link rel="import" href="title-list.html">
+<link rel="import" href="db-distinct-field.html">
 <link rel="import" href="career-path-list.html">
+<link rel="import" href="thaiid-input.html">
+
 
 <dom-module id="t-profile">
   <template>
@@ -57,21 +56,30 @@
       }
     </style>
       <div class="layout horizontal">
-        <div class="flex-3"><province-list token="{{token}}" selected="{{value.host_address.province}}"></province-list></div>
+        <div class="flex-3">          
+          <db-distinct-field token="{{token}}" 
+            title="จังหวัด"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+            query='{"query":{},"distinct":"province"}'
+            selected="{{value.host_address.province}}">            
+          </db-distinct-field>
+        </div>
         <div class="flex-2"><paper-input label="อำเภอ" value="{{value.host_address.amphoe}}"></paper-input></div>
         <div class="flex-3">
-          <area-by-province 
-            province="{{value.host_address.province}}" 
-            token="{{token}}" 
-            selected="{{value.office}}">            
-          </area-by-province>  
+          <db-distinct-field token="{{token}}" 
+            title="สำนักงานเขตพื้นที่การศึกษา"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+            query$='{"query":{"province":"{{value.host_address.province}}"},"distinct":"area"}'
+            selected="{{value.area}}">
+          </db-distinct-field>          
         </div>
         <div class="flex-4">
-          <host-by-area
-            area="{{value.office}}"
-            token="{{token}}" 
-            selected="{{value.hostname}}"> 
-          </host-by-area>
+          <db-distinct-field token="{{token}}" 
+            title="โรงเรียน"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+            query$='{"query":{"area":"{{value.area}}"},"distinct":"host"}'
+            selected="{{value.hostname}}">
+          </db-distinct-field>  
         </div>
       </div>
       <div class="layout horizontal">
@@ -88,15 +96,30 @@
         <div class="flex font-face-big-bold margin-top-style">ข้อมูลส่วนบุคคล</div>
       </div>
       <div class="layout horizontal">
+          <paper-input-container always-float-label auto-validate attr-for-value="value">
+            <label slot="label">หมายเลขบัตรประชาชน</label>
+            <thaiid-input class="paper-input-input" slot="input" value="{{value.cid}}"></thaiid-input>
+            <paper-input-error slot="add-on">Invalid!</paper-input-error>
+          </paper-input-container>
+          {{value.cid}}
+            <!--
         <paper-input class="flex" 
           label="หมายเลขบัตรประชาชน" 
           value="{{value.cid}}" 
           char-counter maxlength="13"
           auto-validate allowed-pattern="[0-9]">
         </paper-input>
+      -->
       </div>
       <div class="layout horizontal">
-        <div class="flex"><title-list token="{{token}}" selected="{{value.title}}"></title-list></div>
+        <div class="flex">
+          <db-distinct-field token="{{token}}" 
+            title="คำนำหน้า"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/teacher_db/query"
+            query='{"query":{},"distinct":"title"}'
+            selected="{{value.title}}">
+          </db-distinct-field> 
+        </div>
         <div class="flex"><paper-input label="ชื่อ" value="{{value.firstname}}"></paper-input></div>
         <div class="flex"><paper-input label="นามสกุล" value="{{value.lastname}}"></paper-input></div>
       </div>
@@ -130,17 +153,35 @@
             value="{{value.start_date}}">
           </vaadin-date-picker>
         </div>
-        <div class="flex-2"><career-path-list selected="{{value.rank}}"></career-path-list></div>
+        <div class="flex-2">
+          <career-path-list selected="{{value.rank}}"></career-path-list></div>
         <div class="flex-3"><paper-input label="เลขประจำตำแหน่งเลขที่" value="{{value.rank_id}}"></paper-input></div>
-        <div class="flex-4"><province-list token="{{token}}" selected="{{value.first_school.province}}"></province-list></div>
+        <div class="flex-4">
+          <db-distinct-field token="{{token}}" 
+            title="จังหวัด"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+            query='{"query":{},"distinct":"province"}'
+            selected="{{value.first_school.province}}">            
+          </db-distinct-field>
+        </div>
       </div>
       <div class="layout horizontal">
         <div class="flex-2"><paper-input label="อำเภอ" value="{{value.first_school.amphoe}}"></paper-input></div>
-        <div class="flex-3"><area-by-province province="{{value.first_school.province}}" 
-          token="{{token}}" selected="{{value.first_school.office}}"></area-by-province>  
+        <div class="flex-3">
+          <db-distinct-field token="{{token}}" 
+            title="เขต"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+            query$='{"query":{"province":"{{value.first_school.province}}"},"distinct":"area"}'
+            selected="{{value.first_school.area}}">            
+          </db-distinct-field>
         </div>
-        <div class="flex-4"><host-by-area area="{{value.first_school.office}}" 
-          token="{{token}}" selected="{{value.first_school.hostname}}"></host-by-area>
+        <div class="flex-4">
+          <db-distinct-field token="{{token}}" 
+            title="โรงเรียน"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+            query$='{"query":{"area":"{{value.first_school.area}}"},"distinct":"host"}'
+            selected="{{value.first_school.hostname}}">
+          </db-distinct-field>  
         </div>  
         <div class="flex-3">
           <vaadin-date-picker
@@ -212,6 +253,10 @@
           value['first_school'] = {};
         }
         this.set('value',value);
+      }
+
+      __initialProvince() {
+        return ["texes"];
       }
     }
     window.customElements.define(tProfile.is, tProfile);

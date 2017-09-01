@@ -1,0 +1,68 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="thaiid-validator.html">
+
+<dom-module id="thaiid-input">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+      }
+      :host([hidden]) {
+        display: none !important;
+      }
+
+      input {
+        font: inherit;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        width: auto;
+        text-align: center;
+      }
+
+      .container {
+        @apply --layout-horizontal;
+      }
+      </style>      
+      
+      <thaiid-validator></thaiid-validator>      
+      <div class="container">
+      <iron-input bind-value="{{value}}">
+        <input maxlength="13" size="13">
+      </iron-input>
+    </div>
+      <!--
+      <paper-input class="flex" 
+        label="หมายเลขบัตรประชาชน" 
+        value="{{value}}" 
+        char-counter maxlength="13"
+        error-message="letters only!"
+        auto-validate >
+    </paper-input>
+    -->
+  </template>
+  <script>
+
+    Polymer({
+      is: 'thaiid-input',
+      behaviors: [
+        Polymer.IronValidatableBehavior
+      ],
+
+      properties: {
+        value: {
+          notify: true,
+          type: String
+        },
+        validator: {
+          type: String,
+          value: 'thaiid-validator'
+        }
+      }                
+    });
+      
+  </script>
+</dom-module>

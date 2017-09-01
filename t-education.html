@@ -9,6 +9,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
+<link rel="import" href="db-distinct-field.html">
 <link rel="import" href="education-list.html">
 <link rel="import" href="year-list.html">
 
@@ -53,7 +54,19 @@
           <div class="flex-1">
             <year-list title="ปีที่จบ" selected="{{content.year}}"></year-list>
           </div>
-          <div class="flex-2"><paper-input label="วุฒิการศึกษา" value="{{content.educational}}"></paper-input></div>
+          <div class="flex-2">
+            <db-distinct-field token="{{token}}" 
+              title="วุฒิการศึกษา"
+              initial-set="{{__initialEducation()}}"
+              db-url="https://maas.nuqlis.com:8000/v2/obec/teacher_db/query"
+              query='{"query":{},"distinct":"education_list.educational"}'
+              selected="{{content.educational}}"
+              autocomplete>            
+            </db-distinct-field>
+            <!--
+            <paper-input label="วุฒิการศึกษา" value="{{content.educational}}"></paper-input></div>
+            -->
+          </div>
           <div class="flex-3"><paper-input label="สาขาวิชา/วิชาเอก" value="{{content.branch}}"></paper-input></div>
           <div class="flex-3"><paper-input label="สถานศึกษา" value="{{content.place_of_education}}"></paper-input></div>
           <div class="flex-1">
@@ -88,6 +101,14 @@
           detail:this.document
         }); 
         this.dispatchEvent(eve);
+      }
+
+      __initialEducation(){
+        return ["การศึกษาบัณฑิต","การศึกษามหาบัณฑิต","ครุศาสตรบัณฑิต",
+        "ครุศาสตรมหาบัณฑิต","คหกรรมศาสตรมหาบัณฑิต","นิเทศศาสตร์บัณฑิต",
+        "บริหารธุรกิจบัณฑิต","รัฐประศาสนศาสตรมหาบัณฑิต","วิทยาศาสตรบัณฑิต",
+        "วิทยาศาสตรมหาบัณฑิต","ศิลปศาสตรบัณฑิต","ศึกษาศาสตรบัณฑิต",
+        "ศึกษาศาสตรมหาบัณฑิต","สังคมสงเคราะห์ศาสตร์มหาบัณฑิต"];
       }
     }
     window.customElements.define(TEducation.is, TEducation);

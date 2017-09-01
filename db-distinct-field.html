@@ -1,0 +1,158 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../neon-animation/web-animations.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../iron-ajax/iron-request.html">
+<link rel="import" href="../iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-sessionstorage/iron-sessionstorage.html">
+
+<link rel="import" href="../paper-autocomplete/paper-autocomplete.html">
+
+<dom-module id="db-distinct-field">
+  <template>
+    <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
+      :host {
+        display: block;
+      }
+      paper-dropdown-menu.custom {
+        --paper-input-container-label: {
+          font-family: 'Kanit', sans-serif;
+        };
+        --paper-input-container-input: {
+          font-family: 'Kanit', sans-serif;
+        }
+       }
+
+      paper-dropdown-menu.marginleft{
+       margin-left: 5px;
+      }
+      paper-item{
+        font-family: 'Kanit', sans-serif;
+        font-size: 14px;
+      }
+
+      .custom {
+        width: 98%;
+      }
+
+      .custom2 {
+        width: 100%;
+      }
+    </style>    
+
+    <iron-sessionstorage name="token" use-raw value="{{token}}">
+    </iron-sessionstorage>
+
+    <template is="dom-if" if="{{autocomplete}}">
+        <paper-autocomplete label="{{title}}" source="{{list}}" value="{{selected}}" text="{{selected}}"></paper-autocomplete>
+    </template>
+
+    <template is="dom-if" if="{{!autocomplete}}">
+        <paper-dropdown-menu label="{{title}}" class="marginleft custom">
+        <paper-listbox class="dropdown-content custom2"
+            slot="dropdown-content" 
+            selected="{{selected}}" 
+            attr-for-selected="value">
+            <template is="dom-repeat" items="{{list}}">      
+            <paper-item value="{{item.value}}">
+                {{item.text}}
+            </paper-item>
+            </template>
+        </paper-listbox>
+        </paper-dropdown-menu>
+    </template>
+  </template>
+
+  <script>
+    class DbDistinctField extends Polymer.Element {
+      static get is() { return 'db-distinct-field'; }
+      static get properties() {
+        return {
+          list:{
+            type:Array,
+            notify:true,
+            value:function() {
+              return [];
+            }
+          },
+          token:{
+            type:String,
+            notify:true
+          },
+          selected:{
+            type:String,
+            notify:true
+          },
+          dbUrl:{
+            type:String,
+            notify:true
+          },
+          query:{
+            type:Object,
+            notify:true,
+            reflectToAttribute:true
+          },
+          title:{
+            type:String,
+            notify:true
+          },
+          initialSet:{
+            type:Array,
+            value:function() {
+                return [];
+            }
+          },
+          autocomplete:{
+            type:Boolean,
+            notify:true,
+            reflectToAttribute:true,
+            value:function() {
+                return false;
+            }
+          }
+        }
+      }
+
+      static get observers() {
+        return [
+          '__executeQuery(token,dbUrl,query)',
+        ]
+      }
+
+      __executeQuery(token,dbUrl,query) {        
+        if(token == null || dbUrl == null || query == null) return;            
+        var initialSet = this.initialSet;
+        for(var key in query.query) {            
+          if(query.query[key] == '') return;
+        }
+        //console.log(query);
+        var ele = document.createElement('iron-request'); 
+        var self = this;
+        ele.send({
+          url:dbUrl,
+          body:query,
+          method:"POST",
+          handleAs:"json",
+          headers:{
+            "Authorization":"JWT "+token,
+            "Content-Type":"application/json"
+          }
+        }).then(function(res) {          
+          var list = [];
+          initialSet.forEach(function(item) {
+            list.push({'text':item,'value':item});
+          });          
+          res.response.forEach(function(item) {
+            list.push({'text':item,'value':item});
+          })
+          self.set('list',list);
+        });
+      }
+    }
+
+    window.customElements.define(DbDistinctField.is, DbDistinctField);
+  </script>
+</dom-module>
