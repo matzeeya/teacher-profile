@@ -96,23 +96,14 @@
         <div class="flex font-face-big-bold margin-top-style">ข้อมูลส่วนบุคคล</div>
       </div>
       <div class="layout horizontal">
+        <div class="flex-2">
           <paper-input-container always-float-label auto-validate attr-for-value="value">
             <label slot="label">หมายเลขบัตรประชาชน</label>
             <thaiid-input class="paper-input-input" slot="input" value="{{value.cid}}"></thaiid-input>
             <paper-input-error slot="add-on">Invalid!</paper-input-error>
           </paper-input-container>
-          {{value.cid}}
-            <!--
-        <paper-input class="flex" 
-          label="หมายเลขบัตรประชาชน" 
-          value="{{value.cid}}" 
-          char-counter maxlength="13"
-          auto-validate allowed-pattern="[0-9]">
-        </paper-input>
-      -->
       </div>
-      <div class="layout horizontal">
-        <div class="flex">
+        <div class="flex-2">
           <db-distinct-field token="{{token}}" 
             title="คำนำหน้า"
             db-url="https://maas.nuqlis.com:8000/v2/obec/teacher_db/query"
@@ -120,8 +111,8 @@
             selected="{{value.title}}">
           </db-distinct-field> 
         </div>
-        <div class="flex"><paper-input label="ชื่อ" value="{{value.firstname}}"></paper-input></div>
-        <div class="flex"><paper-input label="นามสกุล" value="{{value.lastname}}"></paper-input></div>
+        <div class="flex-4"><paper-input label="ชื่อ" value="{{value.firstname}}"></paper-input></div>
+        <div class="flex-4"><paper-input label="นามสกุล" value="{{value.lastname}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
         <div class="flex">
