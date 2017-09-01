@@ -54,6 +54,10 @@
         margin-left: 5px;
         width: 98%
       }
+
+      paper-input-container{
+        margin-left: 5px;
+      }
     </style>
       <div class="layout horizontal">
         <div class="flex-3">          
@@ -97,7 +101,7 @@
       </div>
       <div class="layout horizontal">
         <div class="flex-2">
-          <paper-input-container always-float-label auto-validate attr-for-value="value">
+          <paper-input-container auto-validate attr-for-value="value">
             <label slot="label">หมายเลขบัตรประชาชน</label>
             <thaiid-input class="paper-input-input" slot="input" value="{{value.cid}}"></thaiid-input>
             <paper-input-error slot="add-on">Invalid!</paper-input-error>

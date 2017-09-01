@@ -7,10 +7,24 @@
     behaviors: [
       Polymer.IronValidatorBehavior
     ],
-    validate: function(value) { 
-      //console.log(value.length);         
+    validate: function(value) {      
       if(!value || value.length < 13) return false;
-      return true;
+      var j=13;
+      var total=0;
+      for(var i=0;i<13;i++){
+        var res = value.substr(i,1);
+        var sum = res*j;
+        if(j>1){
+          total += sum;
+          j--; 
+        }
+      }
+      var result=total % 11;
+      if((11-result)==value.substr(12,1)){
+        return true;
+      }else{
+        return false;
+      }
     }
   });
 </script>

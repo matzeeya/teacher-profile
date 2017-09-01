@@ -15,12 +15,24 @@
       }
 
       input {
-        font: inherit;
+        position: relative; /* to make a stacking context */
         outline: none;
         box-shadow: none;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        background: transparent;
         border: none;
-        width: auto;
-        text-align: center;
+        color: var(--paper-input-container-input-color, var(--primary-text-color));
+        -webkit-appearance: none;
+        text-align: inherit;
+        vertical-align: bottom;
+
+        /* Firefox sets a min-width on the input, which can cause layout issues */
+        min-width: 0;
+
+        @apply --paper-font-subhead;
+        @apply --paper-input-container-input;
       }
 
       .container {
@@ -30,19 +42,10 @@
       
       <thaiid-validator></thaiid-validator>      
       <div class="container">
-      <iron-input bind-value="{{value}}">
-        <input maxlength="13" size="13">
-      </iron-input>
-    </div>
-      <!--
-      <paper-input class="flex" 
-        label="หมายเลขบัตรประชาชน" 
-        value="{{value}}" 
-        char-counter maxlength="13"
-        error-message="letters only!"
-        auto-validate >
-    </paper-input>
-    -->
+        <iron-input bind-value="{{value}}">
+          <input maxlength="13" size="13">
+        </iron-input>
+      </div>
   </template>
   <script>
 
