@@ -9,6 +9,8 @@
 
 <link rel="import" href="db-distinct-field.html">
 <link rel="import" href="career-path-list.html">
+<link rel="import" href="religion-list.html">
+<link rel="import" href="nationality-list.html">
 <link rel="import" href="thaiid-input.html">
 
 
@@ -125,9 +127,9 @@
             value="{{value.date_of_birth}}">
           </vaadin-date-picker>
         </div>
-        <div class="flex"><paper-input label="เชื้อชาติ" value="{{value.race}}"></paper-input></div>
-        <div class="flex"><paper-input label="สัญชาติ" value="{{value.nationality}}"></paper-input></div>
-        <div class="flex"><paper-input label="ศาสนา" value="{{value.religion}}"></paper-input></div>
+        <div class="flex"><nationality-list title="เชื้อชาติ" selected="{{value.race}}"></nationality-list></div>
+        <div class="flex"><nationality-list title="สัญชาติ" selected="{{value.nationality}}"></nationality-list></div>
+        <div class="flex"><religion-list selected="{{value.religion}}"></religion-list></div>
       </div>
       <div class="layout horizontal">
         <div class="flex">

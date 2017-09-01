@@ -10,9 +10,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<link rel="import" href="province-list.html">
-<link rel="import" href="area-by-province.html">
-<link rel="import" href="host-by-area.html">
+<link rel="import" href="db-distinct-field.html">
 <link rel="import" href="./work-history/work-dialog1.html">
 <link rel="import" href="./work-history/work-dialog2.html">
 <link rel="import" href="./work-history/work-dialog3.html">
@@ -93,22 +91,30 @@
       <div class="flex font-face-bold">หน่วยงานที่ปฏิบัติหน้าที่</div>
       <div class="layout horizontal">
         <div class="flex-6">
-          <province-list token="{{token}}" selected="{{value.province}}"></province-list>
+          <db-distinct-field token="{{token}}" 
+            title="จังหวัด"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+            query='{"query":{},"distinct":"province"}'
+            selected="{{value.province}}">            
+          </db-distinct-field>
         </div>
         <div class="flex-6">
-          <area-by-province token="{{token}}" 
-            province="{{value.province}}" 
-            selected="{{value.area}}">
-          </area-by-province>
+          <db-distinct-field token="{{token}}" 
+            title="สำนักงานเขตพื้นที่การศึกษา"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+            query$='{"query":{"province":"{{value.province}}"},"distinct":"area"}'
+            selected="{{value.area}}">            
+          </db-distinct-field>
         </div>
       </div>
       <div class="layout horizontal">
         <div class="flex-9">
-          <host-by-area
-            area="{{value.area}}"
-            token="{{token}}" 
-            selected="{{value.hostname}}"> 
-          </host-by-area>
+          <db-distinct-field token="{{token}}" 
+            title="โรงเรียน"
+            db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+            query$='{"query":{"area":"{{value.area}}"},"distinct":"host"}'
+            selected="{{value.hostname}}">
+          </db-distinct-field>  
         </div>
         <div class="flex-3">
           <paper-input label="ระยะเวลา (ปี)" 

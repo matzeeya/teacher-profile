@@ -8,9 +8,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Itim&amp;subset=thai" rel="stylesheet">
 
-<link rel="import" href="province-list.html">
-<link rel="import" href="area-by-province.html">
-<link rel="import" href="host-by-area.html">
+<link rel="import" href="db-distinct-field.html">
 <link rel="import" href="career-path-list.html">
 <link rel="import" href="career-title-list.html">
 <dom-module id="t-work-up-salary">
@@ -78,20 +76,28 @@
             <career-title-list selected="{{content.career_title}}"></career-title-list>
           </div>
           <div class="flex-2">
-            <province-list token="{{token}}" selected="{{content.province}}"></province-list>
+            <db-distinct-field token="{{token}}" 
+              title="จังหวัด"
+              db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+              query='{"query":{},"distinct":"province"}'
+              selected="{{content.province}}">            
+            </db-distinct-field>
           </div>
           <div class="flex-2">
-            <area-by-province token="{{token}}" 
-              province="{{content.province}}" 
-              selected="{{content.area}}">
-            </area-by-province>
+            <db-distinct-field token="{{token}}" 
+              title="สำนักงานเขตพื้นที่การศึกษา"
+              db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+              query$='{"query":{"province":"{{content.province}}"},"distinct":"area"}'
+              selected="{{content.area}}">            
+            </db-distinct-field>
           </div>
           <div class="flex-2">
-            <host-by-area
-              area="{{content.area}}"
-              token="{{token}}" 
-              selected="{{content.hostname}}"> 
-            </host-by-area>
+            <db-distinct-field token="{{token}}" 
+              title="โรงเรียน"
+              db-url="https://maas.nuqlis.com:8000/v2/obec/school/query"
+              query$='{"query":{"area":"{{content.area}}"},"distinct":"host"}'
+              selected="{{content.hostname}}">
+            </db-distinct-field>  
           </div>
           <div class="flex-1">
             <paper-input label="รับเงินเดือน/ระดับ"

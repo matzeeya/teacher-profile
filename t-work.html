@@ -60,7 +60,17 @@
 
     <div class="layout horizontal flex table-content" hidden$="{{!content.show}}">
       <div class="flex-2">{{content.type}}</div>
-      <div class="flex-4">โรงเรียน{{content.hostname}} เขต{{content.area}} จังหวัด{{content.province}}</div>
+      <div class="flex-4">
+          <template is="dom-if" if="{{_checkElement(content.hostname)}}">
+            โรงเรียน{{content.hostname}} 
+          </template>
+          <template is="dom-if" if="{{_checkElement(content.area)}}">
+            เขต{{content.area}} 
+          </template>
+          <template is="dom-if" if="{{_checkElement(content.province)}}">
+            จังหวัด{{content.province}}
+          </template>
+      </div>
       <div class="flex-5">
         <template is="dom-repeat" items="{{content.jobs.type_1}}" as="type1">          
           <template is="dom-if" if="{{_checkFirstElement(index)}}">
@@ -130,6 +140,11 @@
 
       _editItem(event) {
         this.set('content.active',true);
+      }
+
+      _checkElement(ele){
+        if(ele == null) return false;
+        return true;
       }
 
       _checkFirstElement(index) {                
