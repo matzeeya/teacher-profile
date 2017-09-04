@@ -11,7 +11,9 @@
 <link rel="import" href="career-path-list.html">
 <link rel="import" href="religion-list.html">
 <link rel="import" href="nationality-list.html">
-<link rel="import" href="thaiid-input.html">
+<!--<link rel="import" href="thaiid-input.html">-->
+<link rel="import" href="thaiid-validator.html">
+<link rel="import" href="email-validator.html">
 
 
 <dom-module id="t-profile">
@@ -52,7 +54,7 @@
 
       vaadin-date-picker{
         font-family: 'Kanit', sans-serif;
-        font-size: 100%;
+        font-size: 100%;        
         margin-left: 5px;
         width: 98%
       }
@@ -102,13 +104,18 @@
         <div class="flex font-face-big-bold margin-top-style">ข้อมูลส่วนบุคคล</div>
       </div>
       <div class="layout horizontal">
-        <div class="flex-2">
-          <paper-input-container auto-validate attr-for-value="value">
-            <label slot="label">หมายเลขบัตรประชาชน</label>
-            <thaiid-input class="paper-input-input" slot="input" value="{{value.cid}}"></thaiid-input>
-            <paper-input-error slot="add-on">Invalid!</paper-input-error>
-          </paper-input-container>
-      </div>
+        <div class="flex-2">          
+            <thaiid-validator></thaiid-validator>     
+            <paper-input 
+            id="thaiid_input"
+            label="หมายเลขบัตรประชาชน" 
+            value="{{value.cid}}"
+            auto-validate 
+            allowed-pattern="[0-9]"
+            error-message="invalid"
+            validator="thaiid-validator">
+          </paper-input>
+        </div>
         <div class="flex-2">
           <db-distinct-field token="{{token}}" 
             title="คำนำหน้า"
@@ -121,15 +128,15 @@
         <div class="flex-4"><paper-input label="นามสกุล" value="{{value.lastname}}"></paper-input></div>
       </div>
       <div class="layout horizontal">
+        <div class="flex"><nationality-list title="เชื้อชาติ" selected="{{value.race}}" autocomplete></nationality-list></div>
+        <div class="flex"><nationality-list title="สัญชาติ" selected="{{value.nationality}}" autocomplete></nationality-list></div>
+        <div class="flex"><religion-list selected="{{value.religion}}"></religion-list></div>
         <div class="flex">
           <vaadin-date-picker 
             label="วัน/เดือน/ปี เกิด"
             value="{{value.date_of_birth}}">
           </vaadin-date-picker>
         </div>
-        <div class="flex"><nationality-list title="เชื้อชาติ" selected="{{value.race}}"></nationality-list></div>
-        <div class="flex"><nationality-list title="สัญชาติ" selected="{{value.nationality}}"></nationality-list></div>
-        <div class="flex"><religion-list selected="{{value.religion}}"></religion-list></div>
       </div>
       <div class="layout horizontal">
         <div class="flex">
@@ -138,7 +145,19 @@
             value="{{value.tel}}"
             auto-validate allowed-pattern="[0-9]">
           </paper-input></div>
-        <div class="flex"><paper-input label="E-mail" value="{{value.email}}"></paper-input></div>
+        <div class="flex">
+          <!--<email-validator></email-validator>
+          <paper-input label="E-mail" 
+            id="email_input"
+            auto-validate            
+            validator="email-validator"
+            error-message="invalid"
+            value="{{value.email}}">
+          </paper-input>-->
+          <paper-input label="E-mail" 
+            value="{{value.email}}">
+        </paper-input>
+        </div>
       </div>
       <div class="layout horizontal">
         <div class="flex font-face-big-bold margin-top-style">(กรณีเป็นข้าราชการ)</div>
@@ -229,6 +248,18 @@
           ];
       }
 
+      validate() {
+        //console.log(this.$.thaiid_input.invalid,this.$.email_input.invalid)
+        //if(!this.$.thaiid_input.invalid && !this.$.email_input.invalid) {
+        if(!this.$.thaiid_input.invalid) {
+          return true;     
+        }
+        
+        this.$.thaiid_input.focus();
+        //.focus();
+        return false;
+      }
+      
       __calculateEndDate(dob) {        
         if(!dob) return;
         //console.log(dob);        

@@ -147,7 +147,9 @@
             list.push({'text':item,'value':item});
           });          
           res.response.forEach(function(item) {
-            list.push({'text':item,'value':item});
+            if(initialSet.indexOf(item)==-1) {
+              list.push({'text':item,'value':item});
+            }
           })
           self.set('list',list);
         });

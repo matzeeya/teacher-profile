@@ -1,20 +1,32 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../iron-input/iron-input.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="thaiid-validator.html">
 
 <dom-module id="thaiid-input">
   <template>
-    <style>
+    <style include="iron-flex iron-flex-alignment">
       :host {
-        display: inline-block;
+        @apply(--layout-horizontal);               
       }
+
       :host([hidden]) {
         display: none !important;
       }
 
+      .container {
+        @apply(--layout-horizontal);       
+        @apply(--layout-flex);  
+      }
+
+      iron-input {
+        @apply(--layout-horizontal);       
+        @apply(--layout-flex);  
+      }
+
       input {
+        @apply(--layout-flex);  
         position: relative; /* to make a stacking context */
         outline: none;
         box-shadow: none;
@@ -32,12 +44,10 @@
         min-width: 0;
 
         @apply --paper-font-subhead;
-        @apply --paper-input-container-input;
+        @apply --paper-input-container-input;  
       }
 
-      .container {
-        @apply --layout-horizontal;
-      }
+
       </style>      
       
       <thaiid-validator></thaiid-validator>      
@@ -64,7 +74,11 @@
           type: String,
           value: 'thaiid-validator'
         }
-      }                
+      }/*,
+      checkValidity:function() {
+        console.log('check input');
+        return false;
+      }*/         
     });
       
   </script>

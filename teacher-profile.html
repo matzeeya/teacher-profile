@@ -103,7 +103,7 @@
         <iron-pages selected="{{page}}"> 
           <div>
             <template is="dom-if" if="{{__isEquals(page,0)}}">
-            <t-profile token="{{token}}" value="{{document.value}}"></t-profile>
+            <t-profile id="t_profile" token="{{token}}" value="{{document.value}}"></t-profile>
             </template>
           </div>
           <div>
@@ -298,6 +298,29 @@
       
       update(event) {
         if(!this.document.key) return;
+        var validate_list = [];        
+        validate_list.push({
+          'page':0,
+          'objects':[this.shadowRoot.querySelector('#t_profile')]
+        });
+        var _pass = true;
+        for(var i=0;i<validate_list.length;i++) {          
+          if(validate_list[i]!=null) {
+            for(var j=0;j<validate_list[i].objects.length;j++) {          
+              if(!validate_list[i].objects[j].validate()) {
+                this.set('page',validate_list[i].page);
+                _pass = false;
+                break;
+              }
+              console.log(_pass);
+            }
+          }
+        }
+
+        console.log(_pass);        
+
+        if(!_pass) return;
+
         var self = this;
         var ele = document.createElement('iron-request');
         var key = this.document.key;

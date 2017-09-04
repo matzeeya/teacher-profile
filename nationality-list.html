@@ -6,6 +6,7 @@
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../paper-autocomplete/paper-autocomplete.html">
 
 <dom-module id="nationality-list">
   <template>
@@ -40,18 +41,24 @@
       }
     </style>
     
-    <paper-dropdown-menu label="{{title}}" class="marginleft custom">
-      <paper-listbox class="dropdown-content custom2"
-        slot="dropdown-content" 
-        selected="{{selected}}" 
-        attr-for-selected="value">
-        <template is="dom-repeat" items="{{list}}">      
-          <paper-item value="{{item}}">
-            {{item}}
-          </paper-item>
-        </template>
-      </paper-listbox>
-    </paper-dropdown-menu>
+    <template is="dom-if" if="{{autocomplete}}">
+      <paper-autocomplete label="{{title}}" source="{{list}}" value="{{selected}}" text="{{selected}}"></paper-autocomplete>
+    </template>
+
+    <template is="dom-if" if="{{!autocomplete}}">
+      <paper-dropdown-menu label="{{title}}" class="marginleft custom">
+        <paper-listbox class="dropdown-content custom2"
+          slot="dropdown-content" 
+          selected="{{selected}}" 
+          attr-for-selected="value">
+          <template is="dom-repeat" items="{{list}}">      
+            <paper-item value="{{item}}">
+              {{item}}
+            </paper-item>
+          </template>
+        </paper-listbox>
+      </paper-dropdown-menu>
+    </template>
   </template>
 
   <script>
@@ -71,6 +78,14 @@
           selected:{
             type:String,
             notify:true
+          },
+          autocomplete:{
+            type:Boolean,
+            notify:true,
+            reflectToAttribute:true,
+            value:function() {
+                return false;
+            }
           }
         }
       }
