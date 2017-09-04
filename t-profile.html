@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
@@ -37,6 +38,11 @@
       .font-face-normal {
         font-family: 'Kanit', sans-serif;
         font-size: 100%;
+      }
+
+      .horizontal-center{
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
       }
 
       .margin-top-style{
@@ -106,12 +112,13 @@
       <div class="layout horizontal">
         <div class="flex-2">          
             <thaiid-validator></thaiid-validator>     
-            <paper-input 
+          <paper-input 
             id="thaiid_input"
             label="หมายเลขบัตรประชาชน" 
             value="{{value.cid}}"
             auto-validate 
             allowed-pattern="[0-9]"
+            maxlength="13"
             error-message="invalid"
             validator="thaiid-validator">
           </paper-input>
@@ -147,16 +154,16 @@
           </paper-input></div>
         <div class="flex">
           <!--<email-validator></email-validator>
-          <paper-input label="E-mail" 
-            id="email_input"
+          <paper-input id="email_input"
+            label="E-mail" 
+            value="{{value.email}}"
             auto-validate            
-            validator="email-validator"
             error-message="invalid"
-            value="{{value.email}}">
+            validator="email-validator">
           </paper-input>-->
           <paper-input label="E-mail" 
             value="{{value.email}}">
-        </paper-input>
+          </paper-input>
         </div>
       </div>
       <div class="layout horizontal">
@@ -227,6 +234,16 @@
           <paper-radio-button name="m" class ="font-face-normal">ครูเชี่ยวชาญพิเศษ</paper-radio-button>
         </paper-radio-group>
       </div>
+
+      <paper-dialog id="dialog_unsuccess" modal>
+        <h2>
+          <div class="font-face-big-bold">คุณกรอกหมายเลขบัตรประจำตัวประชาชนผิด!!!</div>
+        </h2>
+        <div class="font-face-normal horizontal-center">กรุณาตรวจสอบอีกครั้งค่ะ</div>
+        <div class="buttons">
+          <paper-button class="color" dialog-confirm>ตกลง</paper-button>
+        </div>
+      </paper-dialog>
   </template>
 <script>
     class tProfile extends Polymer.Element {
@@ -253,11 +270,11 @@
         //if(!this.$.thaiid_input.invalid && !this.$.email_input.invalid) {
         if(!this.$.thaiid_input.invalid) {
           return true;     
+        }else{
+          this.$.dialog_unsuccess.open(); 
+          this.$.thaiid_input.focus();
+          return false;
         }
-        
-        this.$.thaiid_input.focus();
-        //.focus();
-        return false;
       }
       
       __calculateEndDate(dob) {        
