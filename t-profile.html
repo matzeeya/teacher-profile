@@ -12,7 +12,6 @@
 <link rel="import" href="career-path-list.html">
 <link rel="import" href="religion-list.html">
 <link rel="import" href="nationality-list.html">
-<!--<link rel="import" href="thaiid-input.html">-->
 <link rel="import" href="thaiid-validator.html">
 <link rel="import" href="email-validator.html">
 
@@ -153,17 +152,17 @@
             auto-validate allowed-pattern="[0-9]">
           </paper-input></div>
         <div class="flex">
-          <!--<email-validator></email-validator>
+          <email-validator></email-validator>
           <paper-input id="email_input"
             label="E-mail" 
             value="{{value.email}}"
             auto-validate            
             error-message="invalid"
             validator="email-validator">
-          </paper-input>-->
-          <paper-input label="E-mail" 
-            value="{{value.email}}">
           </paper-input>
+          <!--<paper-input label="E-mail" 
+            value="{{value.email}}">
+          </paper-input>-->
         </div>
       </div>
       <div class="layout horizontal">
@@ -178,7 +177,13 @@
         </div>
         <div class="flex-2">
           <career-path-list selected="{{value.rank}}"></career-path-list></div>
-        <div class="flex-3"><paper-input label="เลขประจำตำแหน่งเลขที่" value="{{value.rank_id}}"></paper-input></div>
+        <div class="flex-3">
+          <paper-input 
+            label="เลขประจำตำแหน่งเลขที่" 
+            auto-validate allowed-pattern="[0-9]"
+            value="{{value.rank_id}}">
+          </paper-input>
+        </div>
         <div class="flex-4">
           <db-distinct-field token="{{token}}" 
             title="จังหวัด"
@@ -237,7 +242,7 @@
 
       <paper-dialog id="dialog_unsuccess" modal>
         <h2>
-          <div class="font-face-big-bold">คุณกรอกหมายเลขบัตรประจำตัวประชาชนผิด!!!</div>
+          <div class="font-face-big-bold">{{error_msg}}</div>
         </h2>
         <div class="font-face-normal horizontal-center">กรุณาตรวจสอบอีกครั้งค่ะ</div>
         <div class="buttons">
@@ -253,6 +258,10 @@
           value:{
             type:Object,
             notify:true,
+          },
+          error_msg:{
+            type:String,
+            notify:true,
           }
         }        
       }  
@@ -266,13 +275,19 @@
       }
 
       validate() {
-        //console.log(this.$.thaiid_input.invalid,this.$.email_input.invalid)
-        //if(!this.$.thaiid_input.invalid && !this.$.email_input.invalid) {
-        if(!this.$.thaiid_input.invalid) {
+        //console.log(this.$.thaiid_input.invalid,this.$.email_input.invalid);
+        if(!this.$.thaiid_input.invalid && !this.$.email_input.invalid) {
           return true;     
         }else{
-          this.$.dialog_unsuccess.open(); 
-          this.$.thaiid_input.focus();
+          if(this.$.thaiid_input.invalid){
+            this.set("error_msg","คุณกรอกหมายเลขบัตรประจำตัวประชาชนผิด!!!");
+            this.$.dialog_unsuccess.open(); 
+            this.$.thaiid_input.focus();
+          }else if(this.$.email_input.invalid){
+            this.set("error_msg","คุณกรอก E-mail ผิด!!!");
+            this.$.dialog_unsuccess.open(); 
+            this.$.email_input.focus();
+          }
           return false;
         }
       }
