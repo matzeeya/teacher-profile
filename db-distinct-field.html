@@ -4,6 +4,7 @@
 <link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../paper-listbox/paper-listbox.html">
 <link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../iron-ajax/iron-request.html">
 <link rel="import" href="../iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
@@ -17,6 +18,11 @@
       :host {
         display: block;
       }
+
+      paper-autocomplete {
+        margin-left: 5px;   
+      }
+
       paper-dropdown-menu.custom {
         --paper-input-container-label: {
           font-family: 'Kanit', sans-serif;
@@ -29,6 +35,7 @@
       paper-dropdown-menu.marginleft{
        margin-left: 5px;
       }
+
       paper-item{
         width:150px;
         font-family: 'Kanit', sans-serif;
@@ -42,16 +49,20 @@
       .custom2 {
         width: 100%;
       }
-      paper-autocomplete{
-        margin-left: 5px;
-      }
+
     </style>    
 
     <iron-sessionstorage name="token" use-raw value="{{token}}">
     </iron-sessionstorage>
 
     <template is="dom-if" if="{{autocomplete}}">
-        <paper-autocomplete label="{{title}}" source="{{list}}" value="{{selected}}" text="{{selected}}"></paper-autocomplete>
+        <paper-autocomplete 
+          label="{{title}}" 
+          source="{{list}}" 
+          value="{{selected}}" 
+          text="{{selected}}">
+          <paper-icon-button slot="suffix" suffix icon="search"></paper-icon-button>
+        </paper-autocomplete>
     </template>
 
     <template is="dom-if" if="{{!autocomplete}}">
