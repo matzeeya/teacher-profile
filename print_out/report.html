@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ดาวโหลด pdf</title>
+    <script src="assets/js/pdfmake.min.js"></script>
+    <script src="assets/js/vfs_fonts.js"></script>
+    <script src="assets/js/moment-with-locales.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  </head>
+  <body>
+    <script>
+      var docDefinition = {
+        content: [
+          {
+            table: {
+              headerRows: 1,
+              widths: [ '*', 'auto', 100, '*' ],
+  
+              body: [
+                [ 'First', 'Second', 'Third', 'The last one' ],
+                [ 'Value 1', 'Value 2', 'Value 3', 'Value 4' ],
+                [ { text: 'Bold value', bold: true }, 'Val 2', 'Val 3', 'Val 4' ]
+              ]
+            }
+          }
+        ]
+      };
+      //pdfMake.createPdf(docDefinition).download('optionalName.pdf');
+    </script>
+    <button type="button" onclick="pdfMake.createPdf(docDefinition).open();">Get PDF</button>
+    <button type="button" onclick="pdfMake.createPdf(docDefinition).download();">Download PDF</button>
+  </body>
+</html>
