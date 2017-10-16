@@ -31,7 +31,9 @@
     "web-animations-js": "^2.2.5",
     "paper-autocomplete": "ellipticaljs/paper-autocomplete#^3.1.0",
     "iron-validator-behavior": "PolymerElements/iron-validator-behavior#^2.0.0",
-    "pdf-element": "streetturtle/pdf-element#^1.0.14"
+    "pdf-element": "streetturtle/pdf-element#^1.0.14",
+    "pdfmake": "^0.1.33",
+    "mustache.js": "mustache#^2.3.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

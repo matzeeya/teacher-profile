@@ -1,0 +1,93 @@
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../iron-ajax/iron-ajax.html">
+<link rel="import" href="../../paper-button/paper-button.html">
+
+<script src="../../pdfmake/build/pdfmake.min.js"></script>
+<script src="../../mustache.js/mustache.min.js"></script>
+<script src="./vfs_fonts.js"></script>
+
+<dom-module id="print-out">
+ <template>
+   <paper-button disabled="{{!generated}}" on-tap="_download"> 
+    Print Out
+   </paper-button>
+   <iron-ajax auto
+     handle-as="text"
+     on-response="_handleTemplateResponse"
+     url$="{{localTemplate}}">
+   </iron-ajax>
+ </template>
+ <script>
+   class PrintOut extends Polymer.Element {
+     static get is() {
+       return 'print-out';
+     }
+     static get properties() {
+       return {
+         pdfDocument : {
+           type: Object,
+           notify: true
+         },
+         document : {
+           type: Object,
+           notify: true
+         },
+         templateName: {
+           type:String,
+           notify:true
+         },
+         generated : {
+           type:Boolean,
+           notify:true,
+           value:function() {
+             return false;
+           }
+         },
+         template: {
+           type:Object,
+           notify:true
+         },
+         localTemplate : {
+           type:String,
+           computed:'_getLocalTemplate(templateName)'
+         }
+       };
+     }
+
+     static get observers() {
+       return [
+         '_generatePdf(template,document)'
+       ]
+     }
+
+     _handleTemplateResponse(event) {
+       if(event.detail.response != null) {
+         this.set('template',event.detail.response);
+       }
+     }
+
+     _getLocalTemplate(templateName) {
+       return this.resolveUrl('./'+templateName+'.json');
+     }
+     _generatePdf(template,document) {
+       if(!template || !document) return;
+       pdfMake.fonts = {
+         THSarabun: {
+           normal: 'THSarabun.ttf',
+           bold: 'THSarabunBold.ttf',
+           italics: 'THSarabunItalics.ttf'
+         }
+       };
+       Mustache.parse(template);
+       var rendered = Mustache.render(template,document);
+       var obj = JSON.parse(rendered);
+       this.set('pdfDocument',pdfMake.createPdf(obj.docDefinition)); //.download('optionalName.pdf');
+       this.set('generated',true);
+     }
+     _download(event) {
+       this.pdfDocument.download('optionalName.pdf');
+     }
+   };
+   window.customElements.define(PrintOut.is,PrintOut);
+ </script>
+</dom-module>
