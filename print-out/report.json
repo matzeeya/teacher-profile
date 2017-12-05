@@ -1,0 +1,100 @@
+{
+  "docDefinition": {
+    "pageSize": "A4",
+    "defaultStyle": {
+      "font": "THSarabun",
+      "fontSize": 14
+    },
+    "styles": {
+      "bigheader": {
+        "bold": true,
+        "fontSize": 20
+      },
+      "header": {
+        "bold": true,
+        "fontSize": 16
+      },
+      "subheader": {
+        "bold": true,
+        "fontSize": 14
+      }
+    },
+    "content": [
+      {
+        "table": {
+          "widths": [
+            500
+          ],
+          "body": [
+            [
+              {
+                "columns": [
+                  {
+                    "width": 150,
+                    "text": "ข้อมูลทั่วไป"
+                  },
+                  {
+                    "stack": [
+                      {
+                        "width": 2,
+                        "text": "{{name}}"
+                      },
+                      {
+                        "canvas": [
+                          {
+                            "type": "line",
+                            "x1": -1,
+                            "y1": 0,
+                            "x2": 150,
+                            "y2": 0,
+                            "lineWidth": 0.75
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "width": 40,
+                    "text": "ตำแหน่ง"
+                  },
+                  {
+                    "stack": [
+                      {
+                        "width": 100,
+                        "text": " "
+                      },
+                      {
+                        "canvas": [
+                          {
+                            "type": "line",
+                            "x1": -1,
+                            "y1": 0,
+                            "x2": 150,
+                            "y2": 0,
+                            "lineWidth": 0.75
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "margin": [
+                  0,
+                  1,
+                  0,
+                  1
+                ]
+              }
+            ]
+          ]
+        },
+        "margin": [
+          0,
+          -10,
+          0,
+          20
+        ]
+      }
+    ]
+  }
+}
