@@ -20,7 +20,7 @@
   <template>
     <style is="customer-style" include="iron-flex iron-flex-alignment iron-flex-factors">
       :host {
-        @apply(--layout-vertical);
+        @apply --layout-vertical;
         display: block;
         --paper-input-container-label: {
           font-family: 'Kanit', sans-serif;
@@ -40,8 +40,8 @@
       }
 
       .horizontal-center{
-        @apply(--layout-horizontal);
-        @apply(--layout-center-justified);
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
       }
 
       .margin-top-style{
