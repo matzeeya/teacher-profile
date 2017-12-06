@@ -62,6 +62,8 @@
     "iron-image": "^2.1.2",
     "iron-input": "^2.0.1",
     "iron-meta": "^2.0.3",
-    "paper-card": "^2.0.0"
+    "paper-card": "^2.0.0",
+    "iron-behaviors": "^2.0.0",
+    "iron-autogrow-textarea": "1 - 2"
   }
 }

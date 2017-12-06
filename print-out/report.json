@@ -20,80 +20,174 @@
       }
     },
     "content": [
+      {"text": "ข้อมูลทั่วไป","bold": true, "fontSize": 18,"margin": [0, -10, 0, 0]},
+      {
+        "columns": [
+          {"width": 50,"text": "โรงเรียน"},
+          {"stack": [{"width": 300,"text": "{{hostname}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 300,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 50,"text": "อำเภอ"},
+          {"stack": [{"width": 150,"text": "{{host_address.amphoe}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 150,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 50,"text": "จังหวัด"},
+          {"stack": [{"width": 150,"text": "{{host_address.province}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 150,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 150,"text": "สำนักงานเขตพื้นที่การศึกษา"},
+          {"stack": [{"width": 250,"text": "{{area}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 250,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 150,"text": "ประเภทบุคลากร"},
+          {"stack": [{"width": 250,"text": "{{type}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 250,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 150,"text": "เลขประจำตัวประชาชน"},
+          {"stack": [{"width": 250,"text": "{{cid}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 250,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 50,"text": "คำนำหน้า"},
+          {"stack": [{"width": 50,"text": "{{title}}"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 50,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 50,"text": "ชื่อ-สกุล"},
+          {"stack": [{"width": 250,"text": "{{firstname}} {{lastname}}"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 250,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 80,"text": "วัน/เดือน/ปี เกิด"},
+          {"stack": [{"width": 70,"text": "{{date_of_birth}}"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 70,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 50,"text": "เชื้อชาติ"},
+          {"stack": [{"width": 50,"text": "{{race}}"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 50,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 50,"text": "สัญชาติ"},
+          {"stack": [{"width": 50,"text": "{{nationality}}"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 50,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 50,"text": "ศาสนา"},
+          {"stack": [{"width": 50,"text": "{{religion}}"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 50,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 80,"text": "เบอร์โทรศัพท์"},
+          {"stack": [{"width": 80,"text": "{{tel}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 80,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 50,"text": "E-mail"},
+          {"stack": [{"width": 150,"text": "{{email}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 150,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {"text": "(กรณีเป็นข้าราชการ)","bold": true, "fontSize": 18,"margin": [0, 10, 0, 0]},
+      {
+        "columns": [
+          {"width": 150,"text": "เริ่มรับราชการเมื่อวันที่"},
+          {"stack": [{"width": 80,"text": "{{start_date}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 80,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 50,"text": "ตำแหน่ง"},
+          {"stack": [{"width": 150,"text": "{{rank}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 150,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 80,"text": "โรงเรียน"},
+          {"stack": [{"width": 80,"text": "{{first_school.hostname}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 80,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 150,"text": "สำนักงานเขตพื้นที่การศึกษา"},
+          {"stack": [{"width": 150,"text": "{{first_school.area}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 150,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 50,"text": "อำเภอ"},
+          {"stack": [{"width": 150,"text": "{{first_school.amphoe}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 150,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 50,"text": "จังหวัด"},
+          {"stack": [{"width": 150,"text": "{{first_school.province}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 150,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 150,"text": "เลขประจำตำแหน่งเลขที่"},
+          {"stack": [{"width": 80,"text": "{{rank_id}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 80,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 100,"text": "เกษียณอายุวันที่"},
+          {"stack": [{"width": 150,"text": "{{end_date}}"},
+            {"canvas": [{"type": "line","x1": 0,"y1": 0,"x2": 150,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 150,"text": "ปัจจุบันดำรงตำแหน่ง"},
+          {"stack": [{"width": 100,"text": "{{career_path}}"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 100,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {
+        "columns": [
+          {"width": 150,"text": "วิทยฐานะ"},
+          {"stack": [{"width": 100,"text": "{{career_title}}"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 100,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {"text": "คุณวุฒิและความชำนาญ","bold": true, "fontSize": 18,"margin": [0, 10, 0, 0]},
+      {"text": "คุณวุฒิที่จบการศึกษา","margin": [0, 0, 0, 0]},
       {
         "table": {
-          "widths": [
-            500
-          ],
+          "widths": [500],
+          "headerRows":1,
+          "widths":[60,70,90,120,120,40],
           "body": [
-            [
-              {
-                "columns": [
-                  {
-                    "width": 150,
-                    "text": "ข้อมูลทั่วไป"
-                  },
-                  {
-                    "stack": [
-                      {
-                        "width": 2,
-                        "text": "{{name}}"
-                      },
-                      {
-                        "canvas": [
-                          {
-                            "type": "line",
-                            "x1": -1,
-                            "y1": 0,
-                            "x2": 150,
-                            "y2": 0,
-                            "lineWidth": 0.75
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "width": 40,
-                    "text": "ตำแหน่ง"
-                  },
-                  {
-                    "stack": [
-                      {
-                        "width": 100,
-                        "text": " "
-                      },
-                      {
-                        "canvas": [
-                          {
-                            "type": "line",
-                            "x1": -1,
-                            "y1": 0,
-                            "x2": 150,
-                            "y2": 0,
-                            "lineWidth": 0.75
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "margin": [
-                  0,
-                  1,
-                  0,
-                  1
-                ]
-              }
-            ]
+            ["ระดับการศึกษา","ปีการศึกษาที่จบ","วุฒิการศึกษา","สาขาวิชา/วิชาเอก","สถานศึกษา","เกียรตินิยม"],
+            {{#education_list}}
+            ["{{education}}","{{year}}","{{educational}}","{{branch}}","{{place_of_education}}","{{education}}"]          
+            {{/education_list}}
           ]
-        },
-        "margin": [
-          0,
-          -10,
-          0,
-          20
-        ]
+        },"margin": [0,10,0,20]
       }
     ]
   }

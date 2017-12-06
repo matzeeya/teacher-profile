@@ -10,6 +10,7 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../iron-sessionstorage/iron-sessionstorage.html">
     <link rel="import" href="../print-out/print-out.html">
 
     <custom-style>
@@ -21,9 +22,10 @@
     <div class="vertical-section-container">
       <demo-snippet>
         <template>
+          <iron-sessionstorage name="token" use-raw value="{{token}}">
+          </iron-sessionstorage>
           <print-out template-name="report"
-           document='{"name":"Test 123"}'>
-          </print-out>
+            token="{{token}}" app="edu"></print-out>
         </template>
       </demo-snippet>
     </div>

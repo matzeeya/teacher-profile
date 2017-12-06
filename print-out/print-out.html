@@ -1,6 +1,9 @@
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../../iron-ajax/iron-ajax.html">
+<link rel="import" href="../../iron-ajax/iron-request.html">
 <link rel="import" href="../../paper-button/paper-button.html">
+<link rel="import" href="../../iron-sessionstorage/iron-sessionstorage.html">
+<link rel="import" href="../../jwt-decode/jwt-decode.html">
 
 <script src="../../pdfmake/build/pdfmake.min.js"></script>
 <script src="../../mustache.js/mustache.min.js"></script>
@@ -8,9 +11,11 @@
 
 <dom-module id="print-out">
  <template>
-   <paper-button disabled="{{!generated}}" on-tap="_download"  raised> 
-    Print Out
-   </paper-button>
+
+  <iron-sessionstorage name="token" use-raw value="{{token}}">
+  </iron-sessionstorage>
+
+  <paper-button disabled="{{!generated}}" on-tap="_download"  raised>Print Out</paper-button>
    <iron-ajax auto
      handle-as="text"
      on-response="_handleTemplateResponse"
@@ -24,41 +29,92 @@
      }
      static get properties() {
        return {
-         pdfDocument : {
-           type: Object,
-           notify: true
-         },
-         document : {
-           type: Object,
-           notify: true
-         },
-         templateName: {
-           type:String,
-           notify:true
-         },
-         generated : {
-           type:Boolean,
-           notify:true,
-           value:function() {
-             return false;
-           }
-         },
-         template: {
-           type:Object,
-           notify:true
-         },
-         localTemplate : {
-           type:String,
-           computed:'_getLocalTemplate(templateName)'
-         }
+          token: {
+            type: String,
+            notify:true
+          },
+          app: {
+            type: String,
+            notify:true
+          },
+          pdfDocument : {
+            type: Object,
+            notify: true
+          },
+          document : {
+            type: Object,
+            notify: true
+          },
+          templateName: {
+            type:String,
+            notify:true
+          },
+          generated : {
+            type:Boolean,
+            notify:true,
+            value:function() {
+              return false;
+            }
+          },
+          template: {
+            type:Object,
+            notify:true
+          },
+          localTemplate : {
+            type:String,
+            computed:'_getLocalTemplate(templateName)'
+          },
+          items:{
+            type: Object,
+            notify: true
+          }
        };
      }
 
      static get observers() {
        return [
-         '_generatePdf(template,document)'
+          '__executeQuery(token,app)',
+          '_generatePdf(template,items)'
        ]
      }
+
+     __executeQuery(token,app) {
+        if(!token || !app) return;
+        var self = this;
+        try {
+          var profile = jwt_decode(token,{'header':false});
+          var ele = document.createElement('iron-request');
+          ele.send({
+            url:'https://maas.nuqlis.com:9000/apis/query/role_db/app_user',
+            method:'POST',
+            headers:{
+              'Authorization':'JWT '+token,
+              'Content-Type':'application/json'
+            },
+            handleAs:'json',
+            body:{'match':[app,profile.UserID],'limit':1,'include_doc':true}
+          }).then(function(res) {
+            if(res.response.length == 1) {
+              var doc = res.response[0].value.doc;
+              if(doc.profile.teacher_id) {
+                var tle = document.createElement('iron-request');
+                tle.send({
+                  url:'https://maas.nuqlis.com:9000/apis/dbs/teacher_db/'+doc.profile.teacher_id,
+                  method:'GET',
+                  handleAs:'json',
+                  headers:{
+                  'Authorization':'JWT '+token,
+                  },
+                }).then(function(res) {
+                  //console.log(res.response);
+                  self.set('items',res.response);
+                });
+              }
+            }
+          });
+        } catch(e) {
+        }
+      }
 
      _handleTemplateResponse(event) {
        if(event.detail.response != null) {
