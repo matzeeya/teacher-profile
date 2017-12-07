@@ -185,8 +185,130 @@
           "body": [
             ["ระดับการศึกษา","ปีการศึกษาที่จบ","วุฒิการศึกษา","สาขาวิชา/วิชาเอก","สถานศึกษา","เกียรตินิยม"],
             {{#education_list}}
-            ["{{education}}","{{year}}","{{educational}}","{{branch}}","{{place_of_education}}","อันดับ {{honor}}"]          
+            ["{{education}}","{{year}}","{{educational}}","{{branch}}","{{place_of_education}}","{{honor}}"],          
             {{/education_list}}
+            ["","","","","",""]
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "ความชำนาญ","margin": [0, 0, 0, 0]},
+      {
+        "columns": [
+          {"width": 100,"text": "สาขาวิชาที่ชำนาญ"},
+          {"stack": [{"width": 170,"text": "{{branch_expert}}"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 170,"y2": 0,"lineWidth": 0.75}]}]
+          },
+          {"width": 100,"text": "ประสบการณ์การสอน"},
+          {"stack": [{"width": 50,"text": "{{experience}} ปี"},
+            {"canvas": [{"type": "line","x1": -1,"y1": 0,"x2": 50,"y2": 0,"lineWidth": 0.75}]}]
+          }
+        ],"margin": [0,1,0,1]
+      },
+      {"text": "ประวัติการทำงาน","bold": true, "fontSize": 18,"margin": [0, 10, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[80,200,380,80],
+          "body": [
+            ["ตำแหน่ง/หน้าที่","หน่วยงานที่ปฏิบัติหน้าที่","ลักษณะงานที่ปฏิบัติ","ระยะเวลา (ปี)"],
+            {{#work_history}}
+            ["{{type}}","โรงเรียน{{hostname}} เขต{{area}} จังหวัด{{province}}","{{jobs}}","{{period_of_time}}"],          
+            {{/work_history}}
+            ["","","",""]
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "(กรณีเป็นข้าราชการ)","margin": [0, 0, 0, 0]},
+      {"text": "ประวัติการเลื่อนขั้นเงินเดือน","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[80,200,380,80],
+          "body": [
+            ["วันเดือนปี","ตำแหน่ง/วิทยฐานะ","โรงเรียน","รับเงินเดือน (ระดับ)"],
+            {{#work_upsalary}}
+            ["{{dates}}","{{career_path}} / {{career_title}}","โรงเรียน{{hostname}} เขต{{area}} จังหวัด{{province}}","{{degree}}"],          
+            {{/work_upsalary}}
+            ["","","",""]
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "ประวัติการปฏิบัติงาน","bold": true, "fontSize": 18,"margin": [0, 10, 0, 0]},
+      {"text": "ตารางแสดงการทำหน้าที่ครูประจำชั้น","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[185,185,185,185],
+          "body": [
+            ["ปีการศึกษา","ภาคเรียน","ชั้น/ห้อง","จำนวนนักเรียน"],
+            {{#operating_class}}
+            ["{{year}}","{{semester}}","{{class}}/{{room}}","{{studentAmount}}"],          
+            {{/operating_class}}
+            ["","","",""]
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "ตารางแสดงจำนวนกิจกรรมเสริมหลักสูตรที่ปฏิบัติในภาคเรียน","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[440,100,100,100],
+          "body": [
+            ["กิจกรรม","ชั้น/ห้อง","จำนวนนักเรียน","จำนวนชั่วโมง"],
+            {{#operating_course}}
+            ["{{activity}}","{{class}}/{{room}}","{{studentAmount}}","{{hourPerWeek}}"],          
+            {{/operating_course}}
+            ["","","",""]
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "งานอื่น ๆ ในโรงเรียน","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[100,540,100],
+          "body": [
+            ["ปีการศึกษา","งาน","ตำแหน่ง"],
+            {{#operating_other}}
+            ["{{year}}","{{work}}","{{career_path}}"],          
+            {{/operating_other}}
+            ["","",""]
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "ตารางแสดงงานพิเศษที่ได้รับมอบหมาย","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[100,440,100,100],
+          "body": [
+            ["ปีการศึกษา","งานพิเศษที่ได้รับมอบหมาย","วันที่เริ่มต้น","วันที่สิ้นสุด"],
+            {{#operating_special}}
+            ["{{year}}","{{work_special}}","{{start_date}}","{{end_date}}"],          
+            {{/operating_special}}
+            ["","","",""]
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "การจัดการเรียนการสอน","bold": true, "fontSize": 18,"margin": [0, 10, 0, 0]},
+      {"text": "จัดทำแผนการจัดการเรียนรู้","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[35,30,110,60,50,85,60,45,110,110],
+          "body": [
+            ["ปีการศึกษา","ภาคเรียนที่","รายวิชา","ระดับชั้น","จำนวนชั่วโมง","จำนวนหน่วยการเรียนรู้","จำนวนนักเรียน","จำนวนแผน","รูปแบบการจัดกิจกรรม","วัดผลประเมินผล"],
+            {{#teaching}}
+            ["{{year}}","{{semester}}","{{subject}}","{{class}}","{{hour}}","{{unit}}","{{student_unit}}","{{plan}}","{{jobs}}","{{jobs}}"],          
+            {{/teaching}}
+            ["","","","","","","","","",""]
           ]
         },"margin": [0,10,0,20]
       }
