@@ -185,9 +185,8 @@
           "body": [
             ["ระดับการศึกษา","ปีการศึกษาที่จบ","วุฒิการศึกษา","สาขาวิชา/วิชาเอก","สถานศึกษา","เกียรตินิยม"],
             {{#education_list}}
-            ["{{education}}","{{year}}","{{educational}}","{{branch}}","{{place_of_education}}","{{honor}}"],          
+            ["{{education}}","{{year}}","{{educational}}","{{branch}}","{{place_of_education}}","{{honor}}"]{{#comma}},{{/comma}}         
             {{/education_list}}
-            ["","","","","",""]
           ]
         },"margin": [0,10,0,20]
       },
@@ -213,9 +212,17 @@
           "body": [
             ["ตำแหน่ง/หน้าที่","หน่วยงานที่ปฏิบัติหน้าที่","ลักษณะงานที่ปฏิบัติ","ระยะเวลา (ปี)"],
             {{#work_history}}
-            ["{{type}}","โรงเรียน{{hostname}} เขต{{area}} จังหวัด{{province}}","{{jobs}}","{{period_of_time}}"],          
+            ["{{type}}","โรงเรียน{{hostname}} เขต{{area}} จังหวัด{{province}}",
+              {{#jobs}}
+              {
+                "columns": [
+                  {"width": 100,"text": "กลุ่มบริหารงานวิชาการ","bold": true},
+                  {"stack": [{"width": 170,"text": "{{type_1}}"}]}
+                ],"margin": [0,1,0,1]
+              }
+              {{/jobs}}
+              ,"{{period_of_time}}"]{{#comma}},{{/comma}}         
             {{/work_history}}
-            ["","","",""]
           ]
         },"margin": [0,10,0,20]
       },
@@ -229,9 +236,8 @@
           "body": [
             ["วันเดือนปี","ตำแหน่ง/วิทยฐานะ","โรงเรียน","รับเงินเดือน (ระดับ)"],
             {{#work_upsalary}}
-            ["{{dates}}","{{career_path}} / {{career_title}}","โรงเรียน{{hostname}} เขต{{area}} จังหวัด{{province}}","{{degree}}"],          
+            ["{{dates}}","{{career_path}} / {{career_title}}","โรงเรียน{{hostname}} เขต{{area}} จังหวัด{{province}}","{{degree}}"]{{#comma}},{{/comma}}           
             {{/work_upsalary}}
-            ["","","",""]
           ]
         },"margin": [0,10,0,20]
       },
@@ -245,9 +251,8 @@
           "body": [
             ["ปีการศึกษา","ภาคเรียน","ชั้น/ห้อง","จำนวนนักเรียน"],
             {{#operating_class}}
-            ["{{year}}","{{semester}}","{{class}}/{{room}}","{{studentAmount}}"],          
+            ["{{year}}","{{semester}}","{{class}}/{{room}}","{{studentAmount}}"]{{#comma}},{{/comma}}            
             {{/operating_class}}
-            ["","","",""]
           ]
         },"margin": [0,10,0,20]
       },
@@ -260,9 +265,8 @@
           "body": [
             ["กิจกรรม","ชั้น/ห้อง","จำนวนนักเรียน","จำนวนชั่วโมง"],
             {{#operating_course}}
-            ["{{activity}}","{{class}}/{{room}}","{{studentAmount}}","{{hourPerWeek}}"],          
+            ["{{activity}}","{{class}}/{{room}}","{{studentAmount}}","{{hourPerWeek}}"]{{#comma}},{{/comma}}          
             {{/operating_course}}
-            ["","","",""]
           ]
         },"margin": [0,10,0,20]
       },
@@ -275,9 +279,8 @@
           "body": [
             ["ปีการศึกษา","งาน","ตำแหน่ง"],
             {{#operating_other}}
-            ["{{year}}","{{work}}","{{career_path}}"],          
+            ["{{year}}","{{work}}","{{career_path}}"]{{#comma}},{{/comma}}          
             {{/operating_other}}
-            ["","",""]
           ]
         },"margin": [0,10,0,20]
       },
@@ -290,9 +293,8 @@
           "body": [
             ["ปีการศึกษา","งานพิเศษที่ได้รับมอบหมาย","วันที่เริ่มต้น","วันที่สิ้นสุด"],
             {{#operating_special}}
-            ["{{year}}","{{work_special}}","{{start_date}}","{{end_date}}"],          
+            ["{{year}}","{{work_special}}","{{start_date}}","{{end_date}}"]{{#comma}},{{/comma}}          
             {{/operating_special}}
-            ["","","",""]
           ]
         },"margin": [0,10,0,20]
       },
@@ -306,9 +308,8 @@
           "body": [
             ["ปีการศึกษา","ภาคเรียนที่","รายวิชา","ระดับชั้น","จำนวนชั่วโมง","จำนวนหน่วยการเรียนรู้","จำนวนนักเรียน","จำนวนแผน","รูปแบบการจัดกิจกรรม","วัดผลประเมินผล"],
             {{#teaching}}
-            ["{{year}}","{{semester}}","{{subject}}","{{class}}","{{hour}}","{{unit}}","{{student_unit}}","{{plan}}","{{jobs}}","{{jobs}}"],          
+            ["{{year}}","{{semester}}","{{subject}}","{{class}}","{{hour}}","{{unit}}","{{student_unit}}","{{plan}}","{{jobs}}","{{jobs}}"]{{#comma}},{{/comma}}          
             {{/teaching}}
-            ["","","","","","","","","",""]
           ]
         },"margin": [0,10,0,20]
       }

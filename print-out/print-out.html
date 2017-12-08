@@ -107,6 +107,30 @@
                   },
                 }).then(function(res) {
                   //console.log(res.response);
+                  for(var i=0;i<res.response.education_list.length-1;i++){
+                    res.response.education_list[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.work_history.length-1;i++){
+                    res.response.work_history[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.work_upsalary.length-1;i++){
+                    res.response.work_upsalary[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.operating_class.length-1;i++){
+                    res.response.operating_class[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.operating_course.length-1;i++){
+                    res.response.operating_course[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.operating_other.length-1;i++){
+                    res.response.operating_other[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.operating_special.length-1;i++){
+                    res.response.operating_special[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.teaching.length-1;i++){
+                    res.response.teaching[i].comma = true;
+                  }
                   self.set('items',res.response);
                 });
               }
