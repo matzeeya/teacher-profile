@@ -308,8 +308,150 @@
           "body": [
             ["ปีการศึกษา","ภาคเรียนที่","รายวิชา","ระดับชั้น","จำนวนชั่วโมง","จำนวนหน่วยการเรียนรู้","จำนวนนักเรียน","จำนวนแผน","รูปแบบการจัดกิจกรรม","วัดผลประเมินผล"],
             {{#teaching}}
-            ["{{year}}","{{semester}}","{{subject}}","{{class}}","{{hour}}","{{unit}}","{{student_unit}}","{{plan}}","{{jobs}}","{{jobs}}"]{{#comma}},{{/comma}}          
+            ["{{year}}","{{semester}}","{{subject}}","{{class}}","{{hour}}","{{unit}}","{{student_unit}}","{{plan}}",
+              {{#jobs}}
+              {
+                "columns": [
+                  {"stack": [{"width": 110,"text": "{{type_1.list}}"}]}
+                ],"margin": [0,1,0,1]
+              }
+              {{/jobs}},
+              {{#jobs}}
+              {
+                "columns": [
+                  {"stack": [{"width": 110,"text": "{{type_2.list}}"}]}
+                ],"margin": [0,1,0,1]
+              }
+              {{/jobs}}]{{#comma}},{{/comma}}          
             {{/teaching}}
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "ผลิตสื่อ/นวัตกรรม","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[100,320,220,100],
+          "body": [
+            ["ปีการศึกษา","ชื่อสื่อ/นวัตกรรม","ประเภท","จำนวน(ชิ้น)"],
+            {{#teaching_innovation}}
+            ["{{year}}","{{innovation_name}}",
+              {{#jobs}}
+              {
+                "columns": [
+                  {"stack": [{"width": 220,"text": "{{type1.list}}"}]}
+                ],"margin": [0,1,0,1]
+              }
+              {{/jobs}},"{{unit}}"]{{#comma}},{{/comma}}          
+            {{/teaching_innovation}}
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "จัดทำหน่วยการเรียนรู้แบบบูรณาการ","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[100,100,150,290,100],
+          "body": [
+            ["ปีการศึกษา","หน่วยที่","เรื่อง","รายละเอียดการบูรณาการ","จำนวนชั่วโมง"],
+            {{#teaching_integration}}
+            ["{{year}}","{{unit}}","{{chapter}}",
+              {{#jobs}}
+              {
+                "columns": [
+                  {"stack": [{"width": 150,"text": "{{detail}}"}]}
+                ],"margin": [0,1,0,1]
+              }
+              {{/jobs}},"{{hour}}"]{{#comma}},{{/comma}}          
+            {{/teaching_integration}}
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "การทำวิจัยในชั้นเรียน","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[70,180,100,210,180],
+          "body": [
+            ["ปีการศึกษา","งานวิจัยเรื่อง","ระดับชั้น","ผลรับรอง","วิชา"],
+            {{#teaching_class}}
+            ["{{year}}","{{title}}","{{class}}",
+              {{#jobs}}
+              {
+                "columns": [
+                  {"stack": [{"width": 210,"text": "{{approve.list}}"}]}
+                ],"margin": [0,1,0,1]
+              }
+              {{/jobs}},
+              {{#jobs}}
+              {
+                "columns": [
+                  {"stack": [{"width": 180,"text": "{{subject}}"}]}
+                ],"margin": [0,1,0,1]
+              }
+              {{/jobs}}
+              ]{{#comma}},{{/comma}}          
+            {{/teaching_class}}
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "การพัฒนานักเรียนจนได้รับรางวัล/ยกย่องเชิดชูเกียรติ","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[100,150,250,250],
+          "body": [
+            ["ปีการศึกษา","ชื่อ-นามสกุล นักเรียน","รางวัลที่ได้รับ","หน่วยงานที่มอบรางวัล"],
+            {{#teaching_reward}}
+            ["{{year}}","{{student_name}}","{{reward}}","{{institution_reward}}"]{{#comma}},{{/comma}}          
+            {{/teaching_reward}}
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "ประวัติการพัฒนา","bold": true, "fontSize": 18,"margin": [0, 10, 0, 0]},
+      {"text": "การเข้าร่วมกิจกรรมทางวิชาการ อบรม สัมมนา ศึกษาดูงาน","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[120,250,250,120],
+          "body": [
+            ["ปีการศึกษา","หน่วยงานที่จัดอบรม/สัมมนา","หัวข้อที่อบรม/สัมมนา","ระยะเวลา(ชั่วโมง)"],
+            {{#training}}
+            ["{{year}}","{{institution_training}}","{{topic}}","{{hour}}"]{{#comma}},{{/comma}}          
+            {{/training}}
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "การเป็นวิทยากร","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[80,80,160,150,160,80],
+          "body": [
+            ["ปีการศึกษา","วัน/เดือน/ปี","เรื่องที่เป็นวิทยากร","กลุ่มเป้าหมาย","หน่วยงานที่จัดอบรม/สัมมนา","จำนวนชั่วโมง"],
+            {{#training_lecturer}}
+            ["{{year}}","{{date}}","{{topic}}","{{target}}","{{institution_training}}","{{hour}}"]{{#comma}},{{/comma}}          
+            {{/training_lecturer}}
+          ]
+        },"margin": [0,10,0,20]
+      },
+      {"text": "การได้รับรางวัล/การประกาศเกียรติคุณ","margin": [0, 0, 0, 0]},
+      {
+        "table": {
+          "widths": [740],
+          "headerRows":1,
+          "widths":[120,120,250,250],
+          "body": [
+            ["ปีการศึกษา","วัน/เดือน/ปี","รางวัลที่ได้รับ","หน่วยงานที่มอบรางวัล"],
+            {{#training_reward}}
+            ["{{year}}","{{date}}","{{reward}}","{{institution_reward}}"]{{#comma}},{{/comma}}          
+            {{/training_reward}}
           ]
         },"margin": [0,10,0,20]
       }

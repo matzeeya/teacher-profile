@@ -107,6 +107,7 @@
                   },
                 }).then(function(res) {
                   //console.log(res.response);
+                  
                   for(var i=0;i<res.response.education_list.length-1;i++){
                     res.response.education_list[i].comma = true;
                   }
@@ -130,6 +131,27 @@
                   }
                   for(var i=0;i<res.response.teaching.length-1;i++){
                     res.response.teaching[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.teaching_innovation.length-1;i++){
+                    res.response.teaching_innovation[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.teaching_integration.length-1;i++){
+                    res.response.teaching_integration[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.teaching_class.length-1;i++){
+                    res.response.teaching_class[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.teaching_reward.length-1;i++){
+                    res.response.teaching_reward[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.training.length-1;i++){
+                    res.response.training[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.training_lecturer.length-1;i++){
+                    res.response.training_lecturer[i].comma = true;
+                  }
+                  for(var i=0;i<res.response.training_reward.length-1;i++){
+                    res.response.training_reward[i].comma = true;
                   }
                   self.set('items',res.response);
                 });
